@@ -53,3 +53,7 @@ pip install -r requirements.txt
    ```
    ./manage.py createsuperuser --username=admin --email=admin@example.com
    ```
+9. Start server
+   ```
+   python manage.py runserver 0.0.0.0:8000
+   ```
