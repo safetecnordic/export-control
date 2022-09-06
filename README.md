@@ -42,3 +42,21 @@ pip install -r requirements.txt
    - Search `flake8` -> check `Python > Linting: Flake8 Enabled`
    - Search `formatting` -> choose `black` in `Python > Formatting Provider`
    - Search `format on save` -> check `Editor: Format On Save`
+
+7. Make migrations
+
+```
+python manage.py migrate
+```
+
+8. Create admin user
+
+```
+python manage.py createsuperuser --username=admin --email=admin@example.com
+```
+
+9. Start server
+
+```
+python manage.py runserver 0.0.0.0:8000
+```
