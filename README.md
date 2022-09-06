@@ -43,17 +43,20 @@ pip install -r requirements.txt
    - Search `formatting` -> choose `black` in `Python > Formatting Provider`
    - Search `format on save` -> check `Editor: Format On Save`
 
+7. Make migrations
 
-7. Make migrations 
-   ```
-   python manage.py migrate
-   ```
+```
+python manage.py migrate
+```
 
 8. Create admin user
-   ```
-   ./manage.py createsuperuser --username=admin --email=admin@example.com
-   ```
+
+```
+python manage.py createsuperuser --username=admin --email=admin@example.com
+```
+
 9. Start server
-   ```
-   python manage.py runserver 0.0.0.0:8000
-   ```
+
+```
+python manage.py runserver 0.0.0.0:8000
+```
