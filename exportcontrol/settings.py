@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from . import utils
 
 # Loads environment variables from .env file
 load_dotenv()
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", "false") == "true"
+DEBUG = os.getenv("DEBUG", default="false") == "true"
 
 ALLOWED_HOSTS = []
 
@@ -66,25 +67,21 @@ WSGI_APPLICATION = "exportcontrol.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME", default="postgres"),
+        "USER": os.getenv("DB_USER", default="postgres"),
+        "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
+        "HOST": os.getenv("DB_HOST", default="localhost"),
+        "PORT": utils.to_int_or_default(os.getenv("DB_PORT"), default=5432),
     }
 }
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
