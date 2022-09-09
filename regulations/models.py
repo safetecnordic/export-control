@@ -14,11 +14,12 @@ class Regulation(models.Model):
 
     A regulation has text, which can be a single or multiple paragraphs, with notes and sub-paragraphs (points).
     """
-
+    category = models.ForeignKey("Category", on_delete=models.CASCADE)
+    sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
+    regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
     category = models.ForeignKey("Category")
     sub_category = models.ForeignKey("SubCategory")
     regime = models.ForeignKey("Regime")
-
     text = models.ManyToManyField("Paragraph")
 
 
@@ -32,7 +33,7 @@ class Category(models.Model):
     """
 
     identifier = models.IntegerField()
-    name = models.CharField()
+    name = models.CharField(max_length=256)
 
 
 class SubCategory(models.Model):
@@ -44,9 +45,11 @@ class SubCategory(models.Model):
     - an identifier (e.g. A)
     - a name (e.g. Systems, Equipment and Components)
     """
-
+    identifier = models.CharField(max_length=256)
+    name = models.CharField(max_length=256)
     identifier = models.CharField()
     name = models.CharField()
+
 
 
 class Regime(models.Model):
