@@ -19,7 +19,7 @@ class Regulation(models.Model):
     sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
 
-    text = models.ManyToManyField("TextSection")
+    text = models.ManyToManyField("Paragraph")
 
 
 class Category(models.Model):
