@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", default="false") == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0:8000"]
 
 INSTALLED_APPS = [
+    "regulations",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -69,7 +70,7 @@ WSGI_APPLICATION = "exportcontrol.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", default="postgres"),
+        "NAME": os.getenv("DB_NAME", default="exportcontrol"),
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
