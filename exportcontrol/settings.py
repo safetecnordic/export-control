@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = os.getenv("DEBUG", "false") == "true"
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 INTERNAL_IPS = ["127.0.0.1"]
