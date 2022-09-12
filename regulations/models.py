@@ -73,6 +73,9 @@ class Paragraph(models.Model):
     ```
     In this example, each subpoint is its own `Paragraph`, with its `parent` set to the top sentence.
 
+    Paragraphs have a zero-indexed `order` field for the order in which they should be displayed on their nesting level.
+    In the example above, subpoint `a.` has `order=0`, subpoint `b.` has `order=1`, etc.
+
     Paragraphs may also be notes, e.g.:
     ```
     1C232   Helium-3, mixtures containing helium-3, and products or devices containing any of the foregoing.
@@ -82,5 +85,6 @@ class Paragraph(models.Model):
     """
 
     text = models.TextField()
+    order = models.IntegerField(unique=True)
     parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
-    note = models.BooleanField()
+    note = models.BooleanField(default=False)
