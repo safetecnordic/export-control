@@ -134,7 +134,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-<<<<<<< HEAD
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
@@ -272,8 +271,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-=======
->>>>>>> 23dac51d8a0b085fbbcf1294cae5ab7d7c6452df
 env/
 venv/
 ENV/
@@ -312,3 +309,6 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+
+# Static files built with `python manage.py collectstatic`
+exportcontrol/public/static/

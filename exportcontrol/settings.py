@@ -1,7 +1,14 @@
 import os
+from django.urls import reverse_lazy
 from pathlib import Path
 from dotenv import load_dotenv
 from . import utils
+
+
+# Path helper
+def location(x):
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), x)
+
 
 # Loads environment variables from .env file
 load_dotenv()
@@ -27,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "accounts",
+    "base",
 ]
 
 MIDDLEWARE = [
@@ -86,14 +94,16 @@ USE_I18N = True
 USE_TZ = True
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = location("public/static")
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
 
-
+# HOMEPAGE
+HOMEPAGE = reverse_lazy("presentation")
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
