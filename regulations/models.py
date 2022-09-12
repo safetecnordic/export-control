@@ -6,20 +6,21 @@ class Regulation(models.Model):
     A regulation is an item in the appendix of the Norwegian Export Control Law.
 
     It has:
-    - a category (e.g. 4 - Navigation and Avionics)
-    - a subcategory (e.g. A - Systems, Equipment and Components)
-    - a regime (e.g. 001)
+    - a `category` (e.g. 4 - Navigation and Avionics)
+    - a `sub_category` (e.g. A - Systems, Equipment and Components)
+    - a `regime` (e.g. 001)
 
     ...which together form its identifier (e.g. 4A001).
 
-    A regulation has text, which can be a single or multiple paragraphs, with notes and sub-paragraphs (points).
+    A regulation's text consists of `paragraphs`, connected through a foreign key from the `Paragraph` model below.
     """
 
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
 
-    text = models.ManyToManyField("Paragraph")
+    def __str__(self) -> str:
+        return f"{self.category.identifier}{self.sub_category.identifier}{self.regime.identifier}"
 
 
 class Category(models.Model):
@@ -33,6 +34,9 @@ class Category(models.Model):
 
     identifier = models.IntegerField()
     name = models.CharField(max_length=256)
+
+    def __str__(self) -> str:
+        return f"{self.identifier}: {self.name}"
 
 
 class SubCategory(models.Model):
@@ -48,6 +52,9 @@ class SubCategory(models.Model):
     identifier = models.CharField(max_length=256)
     name = models.CharField(max_length=256)
 
+    def __str__(self) -> str:
+        return f"{self.identifier}: {self.name}"
+
 
 class Regime(models.Model):
     """
@@ -58,6 +65,9 @@ class Regime(models.Model):
     """
 
     identifier = models.IntegerField()
+
+    def __str__(self) -> str:
+        return f"{self.identifier}"
 
 
 class Paragraph(models.Model):
@@ -73,6 +83,9 @@ class Paragraph(models.Model):
     ```
     In this example, each subpoint is its own `Paragraph`, with its `parent` set to the top sentence.
 
+    Paragraphs have a zero-indexed `order` field for the order in which they should be displayed on their nesting level.
+    In the example above, subpoint `a.` has `order=0`, subpoint `b.` has `order=1`, etc.
+
     Paragraphs may also be notes, e.g.:
     ```
     1C232   Helium-3, mixtures containing helium-3, and products or devices containing any of the foregoing.
@@ -81,6 +94,17 @@ class Paragraph(models.Model):
     In this example, the `Note:` is its own `Paragraph`, with `note=True`.
     """
 
-    text = models.TextField()
+    regulation = models.ForeignKey("Regulation", on_delete=models.CASCADE, related_name="paragraphs")
+
+    text = models.TextField(blank=False)
+    order = models.IntegerField(unique=True)
+    note = models.BooleanField(default=False)
     parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
-    note = models.BooleanField()
+
+    def __str__(self) -> str:
+        s = f"Paragraph {self.order} of {self.regulation.__str__()}"
+
+        if self.parent is not None:
+            s += f" (child of {self.parent.__str__()})"
+
+        return s
