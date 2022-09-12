@@ -313,5 +313,5 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
-# public/static files
+# Static files built with `python manage.py collectstatic`
 exportcontrol/public/static/
