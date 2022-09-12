@@ -19,6 +19,9 @@ class Regulation(models.Model):
     sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return f"{self.category.identifier}{self.sub_category.identifier}{self.regime.identifier}"
+
 
 class Category(models.Model):
     """
@@ -31,6 +34,9 @@ class Category(models.Model):
 
     identifier = models.IntegerField()
     name = models.CharField(max_length=256)
+
+    def __str__(self) -> str:
+        return f"{self.identifier}: {self.name}"
 
 
 class SubCategory(models.Model):
@@ -46,6 +52,9 @@ class SubCategory(models.Model):
     identifier = models.CharField(max_length=256)
     name = models.CharField(max_length=256)
 
+    def __str__(self) -> str:
+        return f"{self.identifier}: {self.name}"
+
 
 class Regime(models.Model):
     """
@@ -56,6 +65,9 @@ class Regime(models.Model):
     """
 
     identifier = models.IntegerField()
+
+    def __str__(self) -> str:
+        return f"{self.identifier}"
 
 
 class Paragraph(models.Model):
@@ -88,3 +100,11 @@ class Paragraph(models.Model):
     order = models.IntegerField(unique=True)
     note = models.BooleanField(default=False)
     parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        s = f"Paragraph {self.order} of {self.regulation.__str__()}"
+
+        if self.parent is not None:
+            s += f" (child of {self.parent.__str__()})"
+
+        return s
