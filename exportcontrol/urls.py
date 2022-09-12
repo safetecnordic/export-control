@@ -7,7 +7,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    import debug_toolbar
+    import debug_toolbar  # type: ignore
 
     # Allow error pages to be tested
     urlpatterns += [
