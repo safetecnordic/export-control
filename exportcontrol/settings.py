@@ -60,6 +60,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "base.context_processors.metadata",
             ],
         },
     },
@@ -104,6 +105,11 @@ AUTH_USER_MODEL = "accounts.User"
 
 # HOMEPAGE
 HOMEPAGE = reverse_lazy("presentation")
+
+# DEFAULTS
+SITE_NAME = "ExportControl"
+SITE_TAGLINE = "Legislation"
+
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
