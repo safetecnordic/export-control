@@ -13,9 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", default="false") == "true"
 
-ALLOWED_HOSTS = ["0.0.0.0:8000"]
+DEBUG = os.getenv("DEBUG", "false") == "true"
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
     "regulations",
@@ -62,7 +64,7 @@ WSGI_APPLICATION = "exportcontrol.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", default="exportcontrol"),
+        "NAME": os.getenv("DB_NAME", default="postgres"),
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
@@ -92,3 +94,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # HOMEPAGE
 HOMEPAGE = reverse_lazy("presentation")
+if DEBUG:
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
