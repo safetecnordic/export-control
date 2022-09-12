@@ -6,20 +6,18 @@ class Regulation(models.Model):
     A regulation is an item in the appendix of the Norwegian Export Control Law.
 
     It has:
-    - a category (e.g. 4 - Navigation and Avionics)
-    - a subcategory (e.g. A - Systems, Equipment and Components)
-    - a regime (e.g. 001)
+    - a `category` (e.g. 4 - Navigation and Avionics)
+    - a `sub_category` (e.g. A - Systems, Equipment and Components)
+    - a `regime` (e.g. 001)
 
     ...which together form its identifier (e.g. 4A001).
 
-    A regulation has text, which can be a single or multiple paragraphs, with notes and sub-paragraphs (points).
+    A regulation's text consists of `paragraphs`, connected through a foreign key from the `Paragraph` model below.
     """
 
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
-
-    text = models.ManyToManyField("Paragraph")
 
 
 class Category(models.Model):
@@ -84,7 +82,9 @@ class Paragraph(models.Model):
     In this example, the `Note:` is its own `Paragraph`, with `note=True`.
     """
 
-    text = models.TextField()
+    regulation = models.ForeignKey("Regulation", on_delete=models.CASCADE, related_name="paragraphs")
+
+    text = models.TextField(blank=False)
     order = models.IntegerField(unique=True)
-    parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
     note = models.BooleanField(default=False)
+    parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
