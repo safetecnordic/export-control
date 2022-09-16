@@ -4,7 +4,7 @@
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <a href="{% url 'presentation' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           <img src="{% static 'img/logo/safetec-logo-rgb.png' %}"  width="150">
         </a>
   
@@ -19,7 +19,7 @@
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> {% trans "Profile" %}</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-right"></i> {% trans "Logout" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-in-right"></i> {% trans "Logout" %}</a></li>
           </ul>
         </div>
       </div>
