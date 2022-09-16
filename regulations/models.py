@@ -1,4 +1,5 @@
 from django.db import models
+from utils import types  # type: ignore
 
 
 class Regulation(models.Model):
@@ -15,9 +16,9 @@ class Regulation(models.Model):
     A regulation's text consists of `paragraphs`, connected through a foreign key from the `Paragraph` model below.
     """
 
-    category = models.ForeignKey("Category", on_delete=models.CASCADE)
-    sub_category = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
-    regime = models.ForeignKey("Regime", on_delete=models.CASCADE)
+    category: types.ForeignKey["Category"] = models.ForeignKey("Category", on_delete=models.CASCADE)
+    sub_category: types.ForeignKey["SubCategory"] = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
+    regime: types.ForeignKey["Regime"] = models.ForeignKey("Regime", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"{self.category.identifier}{self.sub_category.identifier}{self.regime.identifier}"
@@ -32,8 +33,8 @@ class Category(models.Model):
     - a name (e.g. Navigation and Avionics)
     """
 
-    identifier = models.IntegerField()
-    name = models.CharField(max_length=256)
+    identifier: types.IntegerField = models.IntegerField()
+    name: types.CharField = models.CharField(max_length=256)
 
     def __str__(self) -> str:
         return f"{self.identifier}: {self.name}"
@@ -49,8 +50,8 @@ class SubCategory(models.Model):
     - a name (e.g. Systems, Equipment and Components)
     """
 
-    identifier = models.CharField(max_length=256)
-    name = models.CharField(max_length=256)
+    identifier: types.CharField = models.CharField(max_length=256)
+    name: types.CharField = models.CharField(max_length=256)
 
     def __str__(self) -> str:
         return f"{self.identifier}: {self.name}"
@@ -64,7 +65,7 @@ class Regime(models.Model):
     - an identifier (e.g. 001)
     """
 
-    identifier = models.IntegerField()
+    identifier: types.IntegerField = models.IntegerField()
 
     def __str__(self) -> str:
         return f"{self.identifier}"
@@ -94,12 +95,14 @@ class Paragraph(models.Model):
     In this example, the `Note:` is its own `Paragraph`, with `note=True`.
     """
 
-    regulation = models.ForeignKey("Regulation", on_delete=models.CASCADE, related_name="paragraphs")
+    regulation: types.ForeignKey[Regulation] = models.ForeignKey(
+        "Regulation", on_delete=models.CASCADE, related_name="paragraphs"
+    )
 
-    text = models.TextField(blank=False)
-    order = models.IntegerField(unique=True)
-    note = models.BooleanField(default=False)
-    parent = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+    text: types.TextField = models.TextField(blank=False)
+    order: types.IntegerField = models.IntegerField(unique=True)
+    note: types.BooleanField = models.BooleanField(default=False)
+    parent: types.ForeignKey["Paragraph"] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         s = f"Paragraph {self.order} of {self.regulation.__str__()}"

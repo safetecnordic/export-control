@@ -1,2 +1,11 @@
 [tool.black]
 line-length = 120
+
+[tool.mypy]
+strict_optional = true
+exclude = ["migrations", "venv"]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "exportcontrol.settings"
+ignore_missing_model_attributes = true
