@@ -25,7 +25,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
-    "regulations",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -33,6 +32,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
+    "widget_tweaks",
+    "regulations",
     "accounts",
     "base",
 ]
