@@ -1,6 +1,6 @@
 from django.conf import settings
-from django.views.generic import TemplateView
 from django.utils.translation import gettext as _
+from django.views.generic import TemplateView
 
 
 class PresentationView(TemplateView):
