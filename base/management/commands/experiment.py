@@ -9,7 +9,7 @@ def main():
                 text += line
     node = Node()
     parse_one_paragraph(text, node)
-    print(node.children["b"].children["2"].children)
+    print(node.children["b"].children["5"].text)
 
 
 def parse_one_paragraph(paragraph, node, indent = 0):
@@ -18,13 +18,15 @@ def parse_one_paragraph(paragraph, node, indent = 0):
     indent = count_space(lines[0])
     while i < len(lines):
         line = lines[i]
-        
-        if bool(re.search("^[ ]*[a-z][.]", line)) or bool(re.search("^[ ]*[0-9]+[.]", line)):
+        if is_item(line) or is_note(line):
             indent = count_space(line)
             child_node = Node()
-            dot = line.strip().index(".")
-            child_node.label = line.strip()[:dot+1]
-            node.children[line.strip()[:dot]] = child_node
+            if is_item(line):
+                sep = line.strip().index(".")
+            else:
+                sep = line.strip().index(":")
+            child_node.label = line.strip()[:sep+1]
+            node.children[line.strip()[:sep]] = child_node
             child_node.parent = node
             end_index = len(paragraph)-1
             new_indent = indent
@@ -34,7 +36,7 @@ def parse_one_paragraph(paragraph, node, indent = 0):
             for j in range(i+1, len(lines)):
                 line2 = lines[j]
                 i += 1
-                if bool(re.search("^[ ]*[a-z][.]", line2)) or bool(re.search("^[ ]*[0-9]+[.]", line2)):
+                if is_item(line2):
                     new_indent = count_space(line2)
                     if new_indent <= indent:
                         end_index = paragraph.index(line2)
@@ -42,7 +44,7 @@ def parse_one_paragraph(paragraph, node, indent = 0):
                     elif j == len(lines)-1:
                         end_index = len(paragraph)
                         i += 1  
-            start = paragraph.index(line)+dot+1+indent
+            start = paragraph.index(line)+sep+1+indent
             parse_one_paragraph(paragraph[start:end_index], child_node, new_indent)
         else:
             node.text += line #text fortsetter
@@ -69,8 +71,15 @@ def count_space(str):
             break
     return count
 
+def is_item(line):
+    return bool(re.search("^[ ]*[a-z][.]", line)) or bool(re.search("^[ ]*[0-9]+[.]", line))
 
-
+def is_note(line):
+    """
+    Determines whether the text line is a start of a Note
+    """
+    note = bool(re.search("^[ ]*Note[ ]*[0-9]*:", line)) or bool(re.search("^[ ]*N.B.:", line))
+    return note
 
 if __name__ == "__main__":
     main()
