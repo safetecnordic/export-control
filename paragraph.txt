@@ -1,0 +1,19 @@
+Telecommunications test, inspection and production equipment, components and accessories, as
+        follows:
+        a.     Equipment and specially designed components or accessories therefor, specially designed for the
+               "development" or "production" of equipment, functions or features, specified in 5A001;
+               Note: 5B001.a. does not control optical fibre characterization equipment.
+        b.     Equipment and specially designed components or accessories therefor, specially designed for the
+               "development" of any of the following telecommunication transmission or switching equipment:
+               1.     Not used;
+               2.     Equipment employing a "laser" and having any of the following:
+                      a.     A transmission wavelength exceeding 1 750 nm; or
+                      b.     Not used;
+                      c.     Not used;
+                      d.     Employing analogue techniques and having a bandwidth exceeding 2,5 GHz; or
+                             Note: 5B001.b.2.d. does not control equipment specially designed for the
+                                   "development" of commercial TV systems.
+               3.     Not used;
+               4.     Radio equipment employing Quadrature-Amplitude-Modulation (QAM) techniques
+                      above level 1 024;
+               5.     Not used.

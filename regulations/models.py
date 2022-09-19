@@ -65,7 +65,7 @@ class Regime(models.Model):
     - an identifier (e.g. 001)
     """
 
-    identifier: types.IntegerField = models.IntegerField()
+    identifier: types.CharField = models.CharField(max_length=3)
 
     def __str__(self) -> str:
         return f"{self.identifier}"
