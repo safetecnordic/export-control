@@ -1,4 +1,6 @@
+from __future__ import annotations
 from django.db import models
+from django.db.models import Q
 from utils import types  # type: ignore
 
 
@@ -16,12 +18,12 @@ class Regulation(models.Model):
     A regulation's text consists of `paragraphs`, connected through a foreign key from the `Paragraph` model below.
     """
 
-    category: types.ForeignKey["Category"] = models.ForeignKey("Category", on_delete=models.CASCADE)
-    sub_category: types.ForeignKey["SubCategory"] = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
-    regime: types.ForeignKey["Regime"] = models.ForeignKey("Regime", on_delete=models.CASCADE)
+    category: types.ForeignKey[Category] = models.ForeignKey("Category", on_delete=models.CASCADE)
+    sub_category: types.ForeignKey[SubCategory] = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
+    regime_number: types.ForeignKey[RegimeNumber] = models.ForeignKey("RegimeNumber", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f"{self.category.identifier}{self.sub_category.identifier}{self.regime.identifier}"
+        return f"{self.category.identifier}{self.sub_category.identifier}{self.regime_number}"
 
 
 class Category(models.Model):
@@ -59,16 +61,35 @@ class SubCategory(models.Model):
 
 class Regime(models.Model):
     """
-    A regime is the final category of a regulation in the Norwegian Export Control Law.
+    Each regulation in the Norwegian Export Control Law stems from a regime:
+    an arrangement that Norway has entered into, which governs the control of certain products.
+
+    It has:
+    - a name (e.g. Wassenaar Arrangement)
+    """
+
+    name: types.CharField = models.CharField(max_length=256)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+
+class RegimeNumber(models.Model):
+    """
+    A regime number is the final category of a regulation in the Norwegian Export Control Law.
+    Each regime covers a range of numbers, e.g. the Wassenaar Arrangement covers regime numbers 001-099.
 
     It has:
     - an identifier (e.g. 001)
     """
 
-    identifier: types.IntegerField = models.IntegerField()
+    number: types.IntegerField = models.IntegerField()
+    group: types.ForeignKey[Regime] = models.ForeignKey("Regime", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f"{self.identifier}"
+        # 03d fills the string with leading zeros if the number is less than 3 digits.
+        # e.g. 1 -> "001"
+        return f"{self.number:03d} (group: {self.group.name})"
 
 
 class Paragraph(models.Model):
@@ -93,16 +114,39 @@ class Paragraph(models.Model):
             Note: 1C232 does not control a product or device containing less than 1 g of helium-3.
     ```
     In this example, the `Note:` is its own `Paragraph`, with `note=True`.
-    """
 
-    regulation: types.ForeignKey[Regulation] = models.ForeignKey(
-        "Regulation", on_delete=models.CASCADE, related_name="paragraphs"
-    )
+    Paragraphs can either:
+    - belong to a regulation (in which `category` and `sub_category` are `NULL`)
+    - belong to a category (in which case `regulation` and `sub_category` are `NULL`)
+    - belong to a sub-category (in which case only `regulation` is `NULL`, since we must also specify category)
+    """
 
     text: types.TextField = models.TextField(blank=False)
     order: types.IntegerField = models.IntegerField(unique=True)
     note: types.BooleanField = models.BooleanField(default=False)
-    parent: types.ForeignKey["Paragraph"] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+    parent: types.ForeignKey[Paragraph] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+
+    regulation: types.ForeignKey[Regulation] = models.ForeignKey(
+        "Regulation", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+    )
+    category: types.ForeignKey[Category] = models.ForeignKey(
+        "Category", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+    )
+    sub_category: types.ForeignKey[SubCategory] = models.ForeignKey(
+        "SubCategory", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+    )
+
+    class Meta:
+        constraints = [
+            # Enforces that a paragraph belongs to an appropriate parent, as described in the Paragraph docstring above.
+            models.CheckConstraint(
+                name="valid_parent",
+                check=(
+                    (Q(regulation__isnull=False) & Q(category__isnull=True) & Q(sub_category__isnull=True))
+                    | (Q(regulation__isnull=True) & Q(category__isnull=False))
+                ),
+            )
+        ]
 
     def __str__(self) -> str:
         s = f"Paragraph {self.order} of {self.regulation.__str__()}"
