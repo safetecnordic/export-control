@@ -95,189 +95,172 @@ CATEGORY 0 - NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
                                                                                                                     26
 CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
 
-      11.   Centrifuge housing/recipients to contain the rotor tube assembly of a gas centrifuge,
-            consisting of a rigid cylinder of wall thickness up to 30 mm with precision machined ends
-            that are parallel to each other and perpendicular to the cylinder’s longitudinal axis to
-            within 0,05  or less;
-      12.   Scoops consisting of specially designed or prepared tubes for the extraction of UF6 gas
-            from within the rotor tube by a Pitot tube action and capable of being fixed to the central
-            gas extraction system;
-      13.   Frequency changers (converters or inverters) specially designed or prepared to supply
-            motor stators for gas centrifuge enrichment, having all of the following characteristics,
-            and specially designed components therefor:
-            a.     A multiphase frequency output of 600 Hz or greater; and
-            b.     High stability (with frequency control better than 0,2%);
-      14.   Shut-off and control valves as follows:
-            a.     Shut-off valves specially designed or prepared to act on the feed, product or tails
-                   UF6 gaseous streams of an individual gas centrifuge;
-            b.     Bellows-sealed valves, shut-off or control, made of or protected by "materials
-                   resistant to corrosion by UF6", with an inside diameter of 10 mm to 160 mm,
-                   specially designed or prepared for use in main or auxiliary systems of gas
-                   centrifuge enrichment plants;
- c.   Equipment and components, specially designed or prepared for gaseous diffusion separation
-      process, as follows:
-      1.    Gaseous diffusion barriers made of porous metallic, polymer or ceramic "materials
-            resistant to corrosion by UF6" with a pore size of 10 to 100 nm, a thickness of 5 mm or
-            less, and, for tubular forms, a diameter of 25 mm or less;
-      2.    Gaseous diffuser housings made of or protected by "materials resistant to corrosion by
-            UF6";
-      3.    Compressors or gas blowers with a suction volume capacity of 1 m 3/min or more of UF6,
-            with a discharge pressure up to 500 kPa, and having a pressure ratio of 10:1 or less, and
-            made of or protected by "materials resistant to corrosion by UF 6";
-      4.    Rotary shaft seals for compressors or blowers specified in 0B001.c.3. and designed for a
-            buffer gas in-leakage rate of less than 1 000 cm3/min.;
-      5.    Heat exchangers made of or protected by "materials resistant to corrosion by UF 6", and
-            designed for a leakage pressure rate of less than 10 Pa per hour under a pressure
-            differential of 100 kPa;
-      6.    Bellows-sealed valves, manual or automated, shut-off or control, made of or protected by
-            "materials resistant to corrosion by UF6";
- d.   Equipment and components, specially designed or prepared for aerodynamic separation process,
-      as follows:
-      1.    Separation nozzles consisting of slit-shaped, curved channels having a radius of curvature
-            less than 1 mm, resistant to corrosion by UF6, and having a knife-edge contained within
-            the nozzle which separates the gas flowing through the nozzle into two streams;
-      2.    Cylindrical or conical tubes, (vortex tubes), made of or protected by "materials resistant
-            to corrosion by UF6" and with one or more tangential inlets;
-      3.    Compressors or gas blowers made of or protected by "materials resistant to corrosion by
-            UF6", and rotary shaft seals therefor;
-      4.    Heat exchangers made of or protected by "materials resistant to corrosion by UF6";
-
-
-
-
-                                                                                                          27
-CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
-
-      5.    Separation element housings, made of or protected by "materials resistant to corrosion by
-            UF6" to contain vortex tubes or separation nozzles;
-      6.    Bellows-sealed valves, manual or automated, shut-off or control, made of or protected by
-            "materials resistant to corrosion by UF6", with a diameter of 40 mm or more;
-      7.    Process systems for separating UF6 from carrier gas (hydrogen or helium) to 1 ppm UF6
-            content or less, including:
-            a.     Cryogenic heat exchangers and cryoseparators capable of temperatures of 153K (-
-                   120oC) or less;
-            b.     Cryogenic refrigeration units capable of temperatures of 153 K (-120oC) or less;
-            c.     Separation nozzle or vortex tube units for the separation of UF 6 from carrier gas;
-            d.     UF6 cold traps capable of freezing out UF6;
- e.   Equipment and components, specially designed or prepared for chemical exchange separation
-      process, as follows:
-      1.    Fast-exchange liquid-liquid pulse columns with stage residence time of 30 s or less and
-            resistant to concentrated hydrochloric acid (e.g. made of or protected by suitable plastic
-            materials such as fluorinated hydrocarbon polymers or glass);
-      2.    Fast-exchange liquid-liquid centrifugal contactors with stage residence time of 30 s or
-            less and resistant to concentrated hydrochloric acid (e.g. made of or protected by suitable
-            plastic materials such as fluorinated hydrocarbon polymers or glass);
-      3.    Electrochemical reduction cells resistant to concentrated hydrochloric acid solutions, for
-            reduction of uranium from one valence state to another;
-      4.    Electrochemical reduction cells feed equipment to take U +4 from the organic stream and,
-            for those parts in contact with the process stream, made of or protected by suitable
-            materials (e.g. glass, fluorocarbon polymers, polyphenyl sulphate, polyether sulfone and
-            resin-impregnated graphite);
-      5.    Feed preparation systems for producing high purity uranium chloride solution consisting
-            of dissolution, solvent extraction and/or ion exchange equipment for purification and
-            electrolytic cells for reducing the uranium U+6 or U+4 to U+3;
-      6.    Uranium oxidation systems for oxidation of U+3 to U+4;
- f.   Equipment and components, specially designed or prepared for ion-exchange separation process,
-      as follows:
-      1.    Fast reacting ion-exchange resins, pellicular or porous macro-reticulated resins in which
-            the active chemical exchange groups are limited to a coating on the surface of an inactive
-            porous support structure, and other composite structures in any suitable form, including
-            particles or fibres, with diameters of 0,2 mm or less, resistant to concentrated hydrochloric
-            acid and designed to have an exchange rate half-time of less than 10 s and capable of
-            operating at temperatures in the range of 373 K (100oC) to 473 K (200oC);
-      2.    Ion exchange columns (cylindrical) with a diameter greater than 1 000 mm, made of or
-            protected by materials resistant to concentrated hydrochloric acid (e.g. titanium or
-            fluorocarbon plastics) and capable of operating at temperatures in the range of 373 K
-            (100oC) to 473 K (200oC) and pressures above 0,7 MPa;
-      3.    Ion exchange reflux systems (chemical or electrochemical oxidation or reduction
-            systems) for regeneration of the chemical reducing or oxidizing agents used in ion
-            exchange enrichment cascades;
- g.   Equipment and components, specially designed or prepared for laser-based separation processes
-      using atomic vapour laser isotope separation, as follows:
-      1.    Uranium metal vaporization systems designed to achieve a delivered power of 1 kW or
-            more on the target for use in laser enrichment;
-
-
-                                                                                                            28
-CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
-
-      2.    Liquid or vapour uranium metal handling systems specially designed or prepared for
-            handling molten uranium, molten uranium alloys or uranium metal vapour for use in laser
-            enrichment, and specially designed components therefor;
-            N.B.   SEE ALSO 2A225.
-      3.    Product and tails collector assemblies for collecting uranium metal in liquid or solid form,
-            made of or protected by materials resistant to the heat and corrosion of uranium metal
-            vapour or liquid, such as yttria-coated graphite or tantalum;
-      4.    Separator module housings (cylindrical or rectangular vessels) for containing the uranium
-            metal vapour source, the electron beam gun and the product and tails collectors;
-      5.    "Lasers" or "laser" systems specially designed or prepared for the separation of uranium
-            isotopes with a spectrum frequency stabilisation for operation over extended periods of
-            time;
-            N.B.   SEE ALSO 6A005 AND 6A205.
- h.   Equipment and components, specially designed or prepared for laser-based separation processes
-      using molecular laser isotope separation, as follows:
-      1.    Supersonic expansion nozzles for cooling mixtures of UF 6 and carrier gas to 150 K (-
-            123oC) or less and made from "materials resistant to corrosion by UF6";
-      2.    Product or tails collector components or devices specially designed or prepared for
-            collecting uranium material or uranium tails material following illumination with laser
-            light, made of "materials resistant to corrosion by UF6";
-      3.    Compressors made of or protected by "materials resistant to corrosion by UF 6", and rotary
-            shaft seals therefor;
-      4.    Equipment for fluorinating UF5 (solid) to UF6 (gas);
-      5.    Process systems for separating UF6 from carrier gas (e.g. nitrogen, argon or other gas)
-            including:
-            a.     Cryogenic heat exchangers and cryoseparators capable of temperatures of 153 K
-                   (-120oC) or less;
-            b.     Cryogenic refrigeration units capable of temperatures of 153 K (-120oC) or less;
-            c.     UF6 cold traps capable of freezing out UF6;
-      6.    "Lasers" or "laser" systems specially designed or prepared for the separation of uranium
-            isotopes with a spectrum frequency stabilisation for operation over extended periods of
-            time;
-            N.B.   SEE ALSO 6A005 AND 6A205.
- i.   Equipment and components, specially designed or prepared for plasma separation process, as
-      follows:
-      1.    Microwave power sources and antennae for producing or accelerating ions, with an output
-            frequency greater than 30 GHz and mean power output greater than 50 kW;
-      2.    Radio frequency ion excitation coils for frequencies of more than 100 kHz and capable
-            of handling more than 40 kW mean power;
-      3.    Uranium plasma generation systems;
-      4.    Not used;
-      5.    Product and tails collector assemblies for uranium metal in solid form,made of or
-            protected by materials resistant to the heat and corrosion of uranium vapour such as
-            yttria-coated graphite or tantalum;
-
-
-
-
-                                                                                                           29
-        CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
-
-                6.     Separator module housings (cylindrical) for containing the uranium plasma source,
-                       radio-frequency drive coil and the product and tails collectors and made of a suitable
-                       non-magnetic material (e.g. stainless steel);
-         j.     Equipment and components, specially designed or prepared for electromagnetic separation
+                11.   Centrifuge housing/recipients to contain the rotor tube assembly of a gas centrifuge,
+                        consisting of a rigid cylinder of wall thickness up to 30 mm with precision machined ends
+                        that are parallel to each other and perpendicular to the cylinder’s longitudinal axis to
+                        within 0,05  or less;
+                12.   Scoops consisting of specially designed or prepared tubes for the extraction of UF6 gas
+                        from within the rotor tube by a Pitot tube action and capable of being fixed to the central
+                        gas extraction system;
+                13.   Frequency changers (converters or inverters) specially designed or prepared to supply
+                        motor stators for gas centrifuge enrichment, having all of the following characteristics,
+                        and specially designed components therefor:
+                        a.     A multiphase frequency output of 600 Hz or greater; and
+                        b.     High stability (with frequency control better than 0,2%);
+                14.   Shut-off and control valves as follows:
+                        a.     Shut-off valves specially designed or prepared to act on the feed, product or tails
+                            UF6 gaseous streams of an individual gas centrifuge;
+                        b.     Bellows-sealed valves, shut-off or control, made of or protected by "materials
+                            resistant to corrosion by UF6", with an inside diameter of 10 mm to 160 mm,
+                            specially designed or prepared for use in main or auxiliary systems of gas
+                            centrifuge enrichment plants;
+        c.   Equipment and components, specially designed or prepared for gaseous diffusion separation
                 process, as follows:
-                1.     Ion sources, single or multiple, consisting of a vapour source, ioniser, and beam
-                       accelerator made of suitable non-magnetic materials (e.g. graphite, stainless steel, or
-                       copper) and capable of providing a total ion beam current of 50 mA or greater;
-                2.     Ion collector plates for collection of enriched or depleted uranium ion beams, consisting
-                       of two or more slits and pockets and made of suitable non-magnetic materials (e.g.
-                       graphite or stainless steel);
-                3.     Vacuum housings for uranium electromagnetic separators made of non-magnetic
-                       materials (e.g. stainless steel) and designed to operate at pressures of 0,1 Pa or lower;
-                4.     Magnet pole pieces with a diameter greater than 2 m;
-                5.     High voltage power supplies for ion sources, having all of the following characteristics:
-                       a.     Capable of continuous operation;
-                       b.     Output voltage of 20 000 V or greater;
-                       c.     Output current of 1 A or greater; and
-                       d.     Voltage regulation of better than 0,01% over a period of 8 hours;
-                       N.B.   SEE ALSO 3A227.
-                6.     Magnet power supplies (high power, direct current) having all of the following
-                       characteristics:
-                       a.     Capable of continuous operation with a current output of 500 A or greater at a
-                              voltage of 100 V or greater; and
-                       b.     Current or voltage regulation better than 0,01% over a period of 8 hours.
-                       N.B.   SEE ALSO 3A226.
+                1.    Gaseous diffusion barriers made of porous metallic, polymer or ceramic "materials
+                        resistant to corrosion by UF6" with a pore size of 10 to 100 nm, a thickness of 5 mm or
+                        less, and, for tubular forms, a diameter of 25 mm or less;
+                2.    Gaseous diffuser housings made of or protected by "materials resistant to corrosion by
+                        UF6";
+                3.    Compressors or gas blowers with a suction volume capacity of 1 m 3/min or more of UF6,
+                        with a discharge pressure up to 500 kPa, and having a pressure ratio of 10:1 or less, and
+                        made of or protected by "materials resistant to corrosion by UF 6";
+                4.    Rotary shaft seals for compressors or blowers specified in 0B001.c.3. and designed for a
+                        buffer gas in-leakage rate of less than 1 000 cm3/min.;
+                5.    Heat exchangers made of or protected by "materials resistant to corrosion by UF 6", and
+                        designed for a leakage pressure rate of less than 10 Pa per hour under a pressure
+                        differential of 100 kPa;
+                6.    Bellows-sealed valves, manual or automated, shut-off or control, made of or protected by
+                        "materials resistant to corrosion by UF6";
+        d.   Equipment and components, specially designed or prepared for aerodynamic separation process,
+                as follows:
+                1.    Separation nozzles consisting of slit-shaped, curved channels having a radius of curvature
+                        less than 1 mm, resistant to corrosion by UF6, and having a knife-edge contained within
+                        the nozzle which separates the gas flowing through the nozzle into two streams;
+                2.    Cylindrical or conical tubes, (vortex tubes), made of or protected by "materials resistant
+                        to corrosion by UF6" and with one or more tangential inlets;
+                3.    Compressors or gas blowers made of or protected by "materials resistant to corrosion by
+                        UF6", and rotary shaft seals therefor;
+                4.    Heat exchangers made of or protected by "materials resistant to corrosion by UF6";
+
+                5.    Separation element housings, made of or protected by "materials resistant to corrosion by
+                        UF6" to contain vortex tubes or separation nozzles;
+                6.    Bellows-sealed valves, manual or automated, shut-off or control, made of or protected by
+                        "materials resistant to corrosion by UF6", with a diameter of 40 mm or more;
+                7.    Process systems for separating UF6 from carrier gas (hydrogen or helium) to 1 ppm UF6
+                        content or less, including:
+                        a.     Cryogenic heat exchangers and cryoseparators capable of temperatures of 153K (-
+                            120oC) or less;
+                        b.     Cryogenic refrigeration units capable of temperatures of 153 K (-120oC) or less;
+                        c.     Separation nozzle or vortex tube units for the separation of UF 6 from carrier gas;
+                        d.     UF6 cold traps capable of freezing out UF6;
+        e.   Equipment and components, specially designed or prepared for chemical exchange separation
+                process, as follows:
+                1.    Fast-exchange liquid-liquid pulse columns with stage residence time of 30 s or less and
+                        resistant to concentrated hydrochloric acid (e.g. made of or protected by suitable plastic
+                        materials such as fluorinated hydrocarbon polymers or glass);
+                2.    Fast-exchange liquid-liquid centrifugal contactors with stage residence time of 30 s or
+                        less and resistant to concentrated hydrochloric acid (e.g. made of or protected by suitable
+                        plastic materials such as fluorinated hydrocarbon polymers or glass);
+                3.    Electrochemical reduction cells resistant to concentrated hydrochloric acid solutions, for
+                        reduction of uranium from one valence state to another;
+                4.    Electrochemical reduction cells feed equipment to take U +4 from the organic stream and,
+                        for those parts in contact with the process stream, made of or protected by suitable
+                        materials (e.g. glass, fluorocarbon polymers, polyphenyl sulphate, polyether sulfone and
+                        resin-impregnated graphite);
+                5.    Feed preparation systems for producing high purity uranium chloride solution consisting
+                        of dissolution, solvent extraction and/or ion exchange equipment for purification and
+                        electrolytic cells for reducing the uranium U+6 or U+4 to U+3;
+                6.    Uranium oxidation systems for oxidation of U+3 to U+4;
+        f.   Equipment and components, specially designed or prepared for ion-exchange separation process,
+                as follows:
+                1.    Fast reacting ion-exchange resins, pellicular or porous macro-reticulated resins in which
+                        the active chemical exchange groups are limited to a coating on the surface of an inactive
+                        porous support structure, and other composite structures in any suitable form, including
+                        particles or fibres, with diameters of 0,2 mm or less, resistant to concentrated hydrochloric
+                        acid and designed to have an exchange rate half-time of less than 10 s and capable of
+                        operating at temperatures in the range of 373 K (100oC) to 473 K (200oC);
+                2.    Ion exchange columns (cylindrical) with a diameter greater than 1 000 mm, made of or
+                        protected by materials resistant to concentrated hydrochloric acid (e.g. titanium or
+                        fluorocarbon plastics) and capable of operating at temperatures in the range of 373 K
+                        (100oC) to 473 K (200oC) and pressures above 0,7 MPa;
+                3.    Ion exchange reflux systems (chemical or electrochemical oxidation or reduction
+                        systems) for regeneration of the chemical reducing or oxidizing agents used in ion
+                        exchange enrichment cascades;
+        g.   Equipment and components, specially designed or prepared for laser-based separation processes
+                using atomic vapour laser isotope separation, as follows:
+                1.    Uranium metal vaporization systems designed to achieve a delivered power of 1 kW or
+                        more on the target for use in laser enrichment;
+
+                2.    Liquid or vapour uranium metal handling systems specially designed or prepared for
+                        handling molten uranium, molten uranium alloys or uranium metal vapour for use in laser
+                        enrichment, and specially designed components therefor;
+                        N.B.   SEE ALSO 2A225.
+                3.    Product and tails collector assemblies for collecting uranium metal in liquid or solid form,
+                        made of or protected by materials resistant to the heat and corrosion of uranium metal
+                        vapour or liquid, such as yttria-coated graphite or tantalum;
+                4.    Separator module housings (cylindrical or rectangular vessels) for containing the uranium
+                        metal vapour source, the electron beam gun and the product and tails collectors;
+                5.    "Lasers" or "laser" systems specially designed or prepared for the separation of uranium
+                        isotopes with a spectrum frequency stabilisation for operation over extended periods of
+                        time;
+                        N.B.   SEE ALSO 6A005 AND 6A205.
+        h.   Equipment and components, specially designed or prepared for laser-based separation processes
+                using molecular laser isotope separation, as follows:
+                1.    Supersonic expansion nozzles for cooling mixtures of UF 6 and carrier gas to 150 K (-
+                        123oC) or less and made from "materials resistant to corrosion by UF6";
+                2.    Product or tails collector components or devices specially designed or prepared for
+                        collecting uranium material or uranium tails material following illumination with laser
+                        light, made of "materials resistant to corrosion by UF6";
+                3.    Compressors made of or protected by "materials resistant to corrosion by UF 6", and rotary
+                        shaft seals therefor;
+                4.    Equipment for fluorinating UF5 (solid) to UF6 (gas);
+                5.    Process systems for separating UF6 from carrier gas (e.g. nitrogen, argon or other gas)
+                        including:
+                        a.     Cryogenic heat exchangers and cryoseparators capable of temperatures of 153 K
+                            (-120oC) or less;
+                        b.     Cryogenic refrigeration units capable of temperatures of 153 K (-120oC) or less;
+                        c.     UF6 cold traps capable of freezing out UF6;
+                6.    "Lasers" or "laser" systems specially designed or prepared for the separation of uranium
+                        isotopes with a spectrum frequency stabilisation for operation over extended periods of
+                        time;
+                        N.B.   SEE ALSO 6A005 AND 6A205.
+        i.   Equipment and components, specially designed or prepared for plasma separation process, as
+                follows:
+                1.    Microwave power sources and antennae for producing or accelerating ions, with an output
+                        frequency greater than 30 GHz and mean power output greater than 50 kW;
+                2.    Radio frequency ion excitation coils for frequencies of more than 100 kHz and capable
+                        of handling more than 40 kW mean power;
+                3.    Uranium plasma generation systems;
+                4.    Not used;
+                5.    Product and tails collector assemblies for uranium metal in solid form,made of or
+                        protected by materials resistant to the heat and corrosion of uranium vapour such as
+                        yttria-coated graphite or tantalum;
+                6.     Separator module housings (cylindrical) for containing the uranium plasma source,
+                                radio-frequency drive coil and the product and tails collectors and made of a suitable
+                                non-magnetic material (e.g. stainless steel);
+        j.     Equipment and components, specially designed or prepared for electromagnetic separation
+                            process, as follows:
+                            1.     Ion sources, single or multiple, consisting of a vapour source, ioniser, and beam
+                                accelerator made of suitable non-magnetic materials (e.g. graphite, stainless steel, or
+                                copper) and capable of providing a total ion beam current of 50 mA or greater;
+                            2.     Ion collector plates for collection of enriched or depleted uranium ion beams, consisting
+                                of two or more slits and pockets and made of suitable non-magnetic materials (e.g.
+                                graphite or stainless steel);
+                            3.     Vacuum housings for uranium electromagnetic separators made of non-magnetic
+                                materials (e.g. stainless steel) and designed to operate at pressures of 0,1 Pa or lower;
+                            4.     Magnet pole pieces with a diameter greater than 2 m;
+                            5.     High voltage power supplies for ion sources, having all of the following characteristics:
+                                a.     Capable of continuous operation;
+                                b.     Output voltage of 20 000 V or greater;
+                                c.     Output current of 1 A or greater; and
+                                d.     Voltage regulation of better than 0,01% over a period of 8 hours;
+                                N.B.   SEE ALSO 3A227.
+                            6.     Magnet power supplies (high power, direct current) having all of the following
+                                characteristics:
+                                a.     Capable of continuous operation with a current output of 500 A or greater at a
+                                        voltage of 100 V or greater; and
+                                b.     Current or voltage regulation better than 0,01% over a period of 8 hours.
+                                N.B.   SEE ALSO 3A226.
 0B002    Specially designed or prepared auxiliary systems, equipment and components as follows, for isotope
          separation plant specified in 0B001, made of or protected by "materials resistant to corrosion by UF 6":
          a.     Feed autoclaves, ovens or systems used for passing UF6 to the enrichment process;
@@ -298,7 +281,9 @@ CATEGORY 0 - NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
 
 
 
-
+27
+28
+29
                                                                                                                     30
         CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
 
@@ -9286,7 +9271,6 @@ CATEGORY 8 - MARINE
         a.     Space launch vehicles;
         b.     "Spacecraft";
 
-228
 
                                                                                                                        229
                      CATEGORY 9 – AEROSPACE AND PROPULSION
