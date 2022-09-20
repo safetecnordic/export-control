@@ -128,7 +128,7 @@ class Paragraph(models.Model):
     In this example, the `Note:` is its own `Paragraph`, with `note=True`.
 
     Paragraphs can either:
-    - belong to a regulation (in which `category` and `sub_category` are `NULL`)
+    - belong to a regulation (in which case `category` and `sub_category` are `NULL`)
     - belong to a category (in which case `regulation` and `sub_category` are `NULL`)
     - belong to a sub-category (in which case only `regulation` is `NULL`, since we must also specify category)
     """
