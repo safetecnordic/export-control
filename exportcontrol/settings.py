@@ -25,7 +25,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
-    "regulations",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -33,6 +32,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
+    "widget_tweaks",
+    "regulations",
     "accounts",
     "base",
 ]
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "exportcontrol.urls"
@@ -93,6 +95,17 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
+
+
+def gettext_noop(s):
+    return s
+
+
+LANGUAGES = (
+    ("en", gettext_noop("English")),
+    ("no", gettext_noop("Norwegian")),
+)
+
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = "/static/"

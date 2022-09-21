@@ -10,5 +10,4 @@ class PresentationView(TemplateView):
         context = super(PresentationView, self).get_context_data(**kwargs)
         context["page_title"] = settings.SITE_NAME
         context["page_description"] = _("This is a test to see if the translations work")
-
         return context
