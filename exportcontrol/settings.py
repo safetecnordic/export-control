@@ -25,7 +25,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
-    "regulations",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -33,6 +32,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
+    "widget_tweaks",
+    "regulations",
     "accounts",
     "base",
 ]
@@ -61,6 +62,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "base.context_processors.metadata",
             ],
         },
     },
@@ -108,6 +110,7 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = "/static/"
 STATIC_ROOT = location("public/static")
+STATICFILES_DIRS = (location("static/"),)
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -116,6 +119,11 @@ AUTH_USER_MODEL = "accounts.User"
 
 # HOMEPAGE
 HOMEPAGE = reverse_lazy("presentation")
+
+# DEFAULTS
+SITE_NAME = "ExportControl"
+SITE_TAGLINE = "Legislation"
+
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
