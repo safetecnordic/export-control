@@ -47,15 +47,20 @@ class Category(models.Model):
     A top-level category of regulations in the Norwegian Export Control Law.
 
     It has:
-    - an `identifier` (e.g. 4)
+    - an `identifier` (e.g. 7)
     - a `name` (e.g. Navigation and Avionics)
+    - an optional `part` (e.g. 1, for Category 5 Part 1: Telecommunications)
+      - categories with parts are represented with one category per part in the database
+      - the `name` of the category for each part is the name of the part (e.g. Telecommunications)
     """
 
-    identifier: types.IntegerField = models.IntegerField(unique=True)
+    identifier: types.IntegerField = models.IntegerField()
     name: types.CharField = models.CharField(max_length=256)
+    part: types.IntegerField = models.IntegerField(null=True, default=None)
 
     def __str__(self) -> str:
-        return f"{self.identifier}: {self.name}"
+        part_str = f".{self.part}" if self.part is not None else ""
+        return f"{self.identifier}{part_str}: {self.name}"
 
 
 class SubCategory(models.Model):
