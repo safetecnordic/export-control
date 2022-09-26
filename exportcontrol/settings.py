@@ -123,7 +123,7 @@ HOMEPAGE = reverse_lazy("presentation")
 # DEFAULTS
 SITE_NAME = "ExportControl"
 SITE_TAGLINE = "Legislation"
-
+LOGIN_REDIRECT_URL = reverse_lazy("profile")
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
