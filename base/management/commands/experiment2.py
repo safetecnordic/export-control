@@ -1,7 +1,7 @@
 import re
 def main():
     text = ""
-    with open('paragraph2.txt',  'r', encoding="utf8" ) as f:
+    with open('paragraph3.txt',  'r', encoding="utf8" ) as f:
             while(True):    
                 line = f.readline()
                 if not line:
@@ -11,7 +11,7 @@ def main():
 
     node = dict()
     parse_one_paragraph(text, node)
-    print(node["children"][1]["children"][2])
+    print(node["children"][1]["children"][0]["text"])
 
 #node["0A001"] = {"label":"a.", "parent": None, "text": "Ciao", "children": [{},{} ]}
 
@@ -55,9 +55,44 @@ def parse_one_paragraph(paragraph, node):
                     
             start = paragraph.index(line)+sep+1
             parse_one_paragraph(paragraph[start:end_index], child_node)
+        elif is_note(line) or is_nb(line):#if a line is a start of node parse the wholde note, does not 
+            #find label part f. ex. Note 1, N.B.,...
+            sep =  line.strip().index(":") if is_note(line) else line.strip().index(" ")
+            child_node = dict()
+            child_node["label"] = line.strip()[:sep]
+            node["children"].append(child_node)
+            #child_node.parent = node
+            end_index = len(paragraph)
+            new_indent = indent
+
+            # find the index where the note is finished
+            if i == len(lines) -1:
+                end_index = len(paragraph)
+                i += 1
+            for j in range(i+1, len(lines)):
+                line2 = lines[j]
+                i += 1
+                if is_note(line2) or is_nb(line2):  # if new note, så er vi ferdig her
+                    end_index = paragraph.index(line2)
+                elif is_item(line2):
+                    new_indent = count_space(line2)
+                    if new_indent <= indent: # manuel change of forskrift to pass this condition
+                        end_index = paragraph.index(line2) 
+                        break  
+                    elif j == len(lines)-1:
+                        end_index = len(paragraph)
+                        i += 1  
+                else:
+                    if j == len(lines)-1:
+                        end_index = len(paragraph)
+                        i += 1  
+                    
+            start = paragraph.index(line)+sep+1+indent
+            child_node["text"] = paragraph[start:end_index]
         else:
             node["text"] += " " + line #text fortsetter
             i += 1
+
 
 def is_letter_item(line):
     return bool(re.search("^[ ]*[a-z][.]", line)) 
@@ -92,6 +127,18 @@ def count_space(str):
         else:
             break
     return count
+
+def is_note(line):
+    """
+    Determines whether the text line is a start of a Note
+    """
+    note = bool(re.search("^[ ]*Note[ ]*[0-9]*:", line)) \
+    or bool(re.search("^[ ]*N.B.:", line)) \
+    or  bool(re.search("^[ ]*Technical Note[ ]*[0-9]*:", line)) 
+    return note
+
+def is_nb(line):
+    return  bool(re.search("^[ ]*N.B.[ ]*[0-9]*", line))
 
 if __name__ == "__main__":
     main()
