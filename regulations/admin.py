@@ -22,7 +22,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
-    model = Category
+    model = SubCategory
     list_display = (
         "identifier",
         "name",
@@ -30,7 +30,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 
 class RegimeAdmin(admin.ModelAdmin):
-    model = Category
+    model = Regime
     list_display = (
         "name",
         "number_range_max",
@@ -39,7 +39,7 @@ class RegimeAdmin(admin.ModelAdmin):
 
 
 class ParagraphAdmin(admin.ModelAdmin):
-    model = Category
+    model = Paragraph
     list_display = (
         "text",
         "order",
