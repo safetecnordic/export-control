@@ -24,18 +24,6 @@ class Regulation(models.Model):
     regime: types.ForeignKey[Regime] = models.ForeignKey("Regime", on_delete=models.CASCADE)
     regime_number: types.IntegerField = models.IntegerField()
 
-    class Meta:
-        constraints = [
-            # Ensures that regime_number is within the range of the regulation's regime.
-            models.CheckConstraint(
-                name="valid_regime_number",
-                check=(
-                    Q(regime_number__gte=F("regime__number_range_min"))
-                    & Q(regime_number__lte=F("regime__number_range_max"))
-                ),
-            )
-        ]
-
     def __str__(self) -> str:
         # regime_number:03d fills the string with leading zeros if the regime number is less than 3 digits.
         # e.g. 1 -> "001"
