@@ -29,9 +29,6 @@ class Regulation(models.Model):
         # e.g. 1 -> "001"
         return f"{self.category.identifier}{self.sub_category.identifier}{self.regime_number:03d}"
 
-    def get_last_paragraph(self):
-        return self.paragraphs.last()
-
 
 class Category(models.Model):
     """
@@ -129,10 +126,8 @@ class Paragraph(models.Model):
     - belong to a sub-category (in which case only `regulation` is `NULL`, since we must also specify category)
     """
 
-    code: types.CharField = models.CharField(max_length=256)
-
     text: types.TextField = models.TextField(blank=False)
-    order: types.IntegerField = models.IntegerField()
+    order: types.IntegerField = models.IntegerField(unique=True)
     note: types.BooleanField = models.BooleanField(default=False)
     parent: types.ForeignKey[Paragraph] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
 
@@ -165,3 +160,5 @@ class Paragraph(models.Model):
             s += f" (child of {self.parent.__str__()})"
 
         return s
+
+    # inserire related name = children
