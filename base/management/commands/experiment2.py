@@ -1,7 +1,9 @@
 import re
+import pprint
+
 def main():
     text = ""
-    with open('paragraph4.txt',  'r', encoding="utf8" ) as f:
+    with open('paragraph2.txt',  'r', encoding="utf8" ) as f:
             while(True):    
                 line = f.readline()
                 if not line:
@@ -11,7 +13,9 @@ def main():
 
     node = dict()
     parse_one_paragraph(text, node)
-    print(node["children"][1]["children"][7])
+    print(len(node["children"][1]["children"]))
+    
+    #pprint.pprint(node)
 
 #node["0A001"] = {"label":"a.", "parent": None, "text": "Ciao", "children": [{},{} ]}
 
@@ -111,6 +115,8 @@ def is_next_item(label, line):
     line_label = line.strip()[:sep]
     if label.isdigit() and line_label.isdigit():
         if int(line_label)-int(label) == 1:
+            return True
+        if (int(label) == 1 and line_label.is_alpha()) or (label == 'a' and line_label.is_digit()):
             return True
     if label.isalpha() and line_label.isalpha():
         if ord(line_label.strip()[0])-ord(label.strip()[0]) == 1:
