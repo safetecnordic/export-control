@@ -41,7 +41,6 @@ class RegimeAdmin(admin.ModelAdmin):
 class ParagraphAdmin(admin.ModelAdmin):
     model = Category
     list_display = (
-        "code",
         "text",
         "order",
         "note",
