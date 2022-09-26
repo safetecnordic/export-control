@@ -111,3 +111,5 @@ class Paragraph(models.Model):
             s += f" (child of {self.parent.__str__()})"
 
         return s
+
+    # inserire related name = children
