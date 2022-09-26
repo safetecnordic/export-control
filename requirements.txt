@@ -9,3 +9,4 @@ psycopg2-binary==2.9.3
 django-bootstrap5==22.1
 django-debug-toolbar==3.2.4 
 PyPDF2==2.10.9
+django-widget-tweaks==1.4.12
