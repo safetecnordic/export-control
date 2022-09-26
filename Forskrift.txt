@@ -95,19 +95,19 @@ CATEGORY 0 - NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
                                                                                                                     26
 CATEGORY 0 NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
 
-                11.   Centrifuge housing/recipients to contain the rotor tube assembly of a gas centrifuge,
+               11.   Centrifuge housing/recipients to contain the rotor tube assembly of a gas centrifuge,
                         consisting of a rigid cylinder of wall thickness up to 30 mm with precision machined ends
                         that are parallel to each other and perpendicular to the cylinder’s longitudinal axis to
                         within 0,05  or less;
-                12.   Scoops consisting of specially designed or prepared tubes for the extraction of UF6 gas
+               12.   Scoops consisting of specially designed or prepared tubes for the extraction of UF6 gas
                         from within the rotor tube by a Pitot tube action and capable of being fixed to the central
                         gas extraction system;
-                13.   Frequency changers (converters or inverters) specially designed or prepared to supply
+               13.   Frequency changers (converters or inverters) specially designed or prepared to supply
                         motor stators for gas centrifuge enrichment, having all of the following characteristics,
                         and specially designed components therefor:
                         a.     A multiphase frequency output of 600 Hz or greater; and
                         b.     High stability (with frequency control better than 0,2%);
-                14.   Shut-off and control valves as follows:
+               14.   Shut-off and control valves as follows:
                         a.     Shut-off valves specially designed or prepared to act on the feed, product or tails
                             UF6 gaseous streams of an individual gas centrifuge;
                         b.     Bellows-sealed valves, shut-off or control, made of or protected by "materials

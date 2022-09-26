@@ -46,7 +46,7 @@ def parse_one_paragraph(paragraph, node):
                 i += 1
                 if is_item(line2) or is_note(line2) or is_nb(line2):
                     new_indent = count_space(line2)
-                    if ((is_item(line2) and is_next_item(label, line2))  or (is_note(line2) or is_nb(line2) ) and new_indent <= indent):
+                    if ((is_item(line2) and is_next_item(label, line2) and new_indent <= indent)  or (is_note(line2) or is_nb(line2) ) and new_indent <= indent):
                         end_index = paragraph.index(line2)
                         break  
                     elif j == len(lines)-1:
