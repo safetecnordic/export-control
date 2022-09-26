@@ -3,7 +3,7 @@ import pprint
 
 def main():
     text = ""
-    with open('paragraph2.txt',  'r', encoding="utf8" ) as f:
+    with open('paragraph4.txt',  'r', encoding="utf8" ) as f:
             while(True):    
                 line = f.readline()
                 if not line:
@@ -13,7 +13,7 @@ def main():
 
     node = dict()
     parse_one_paragraph(text, node)
-    print(len(node["children"][1]["children"]))
+    print(node)
     
     #pprint.pprint(node)
 
@@ -78,6 +78,7 @@ def parse_one_paragraph(paragraph, node):
                 i += 1
                 if is_note(line2) or is_nb(line2):  # if new note, så er vi ferdig her
                     end_index = paragraph.index(line2)
+                    break
                 elif is_item(line2):
                     new_indent = count_space(line2)
                     if new_indent <= indent: # manuel change of forskrift to pass this condition
