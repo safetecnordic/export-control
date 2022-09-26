@@ -15,9 +15,9 @@
                centrifuge separation process, as follows:
                Technical Note:
                In 0B001.b. 'high strength-to-density ratio material' means any of the following:
-               1.    Maraging steel capable of an ultimate tensile strength of 1,95 GPa or more;
-               2.    Aluminium alloys capable of an ultimate tensile strength of 0,46 GPa or more; or
-               3.    "Fibrous or filamentary materials" with a "specific modulus" of more than 3,18 x 106m
+                1.    Maraging steel capable of an ultimate tensile strength of 1,95 GPa or more;
+                2.    Aluminium alloys capable of an ultimate tensile strength of 0,46 GPa or more; or
+                3.    "Fibrous or filamentary materials" with a "specific modulus" of more than 3,18 x 106m
                      and a "specific tensile strength" greater than 7,62 x 104 m;
                1.    Gas centrifuges;
                2.     Complete rotor assemblies;
