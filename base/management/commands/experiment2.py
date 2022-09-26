@@ -1,7 +1,7 @@
 import re
 def main():
     text = ""
-    with open('paragraph3.txt',  'r', encoding="utf8" ) as f:
+    with open('paragraph4.txt',  'r', encoding="utf8" ) as f:
             while(True):    
                 line = f.readline()
                 if not line:
@@ -11,7 +11,7 @@ def main():
 
     node = dict()
     parse_one_paragraph(text, node)
-    print(node["children"][1]["children"][0]["text"])
+    print(len(node["children"]))
 
 #node["0A001"] = {"label":"a.", "parent": None, "text": "Ciao", "children": [{},{} ]}
 
@@ -40,9 +40,9 @@ def parse_one_paragraph(paragraph, node):
             for j in range(i+1, len(lines)):
                 line2 = lines[j]
                 i += 1
-                if is_item(line2):
+                if is_item(line2) or is_note(line2) or is_nb(line2):
                     new_indent = count_space(line2)
-                    if is_next_item(label, line2)  and new_indent <= indent:
+                    if ((is_item(line2) and is_next_item(label, line2))  or is_note(line2) or is_nb(line2) ) and new_indent <= indent:
                         end_index = paragraph.index(line2)
                         break  
                     elif j == len(lines)-1:
@@ -87,7 +87,7 @@ def parse_one_paragraph(paragraph, node):
                         end_index = len(paragraph)
                         i += 1  
                     
-            start = paragraph.index(line)+sep+1+indent
+            start = paragraph.index(line)+sep+1
             child_node["text"] = paragraph[start:end_index]
         else:
             node["text"] += " " + line #text fortsetter
