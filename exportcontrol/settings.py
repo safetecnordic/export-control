@@ -74,7 +74,7 @@ WSGI_APPLICATION = "exportcontrol.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", default="postgres"),
+        "NAME": os.getenv("DB_NAME", default="exportcontrol"),
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
