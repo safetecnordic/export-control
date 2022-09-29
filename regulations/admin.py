@@ -5,11 +5,13 @@ from regulations.models import *
 class RegulationAdmin(admin.ModelAdmin):
     model = Regulation
     list_display = (
+        "__str__",
         "category",
         "sub_category",
         "regime",
         "regime_number",
     )
+    list_filter = ("category", "sub_category", "regime")
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -19,6 +21,7 @@ class CategoryAdmin(admin.ModelAdmin):
         "name",
         "part",
     )
+    list_filter = ("identifier",)
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
@@ -27,6 +30,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
         "identifier",
         "name",
     )
+    list_filter = ("identifier",)
 
 
 class RegimeAdmin(admin.ModelAdmin):
@@ -36,16 +40,19 @@ class RegimeAdmin(admin.ModelAdmin):
         "number_range_max",
         "number_range_min",
     )
+    list_filter = ("name",)
 
 
 class ParagraphAdmin(admin.ModelAdmin):
     model = Paragraph
     list_display = (
+        "__str__",
         "text",
         "order",
         "note",
         "parent",
     )
+    list_filter = ("regulation",)
 
 
 admin.site.register(Regulation, RegulationAdmin)
