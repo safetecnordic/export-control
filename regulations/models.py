@@ -127,7 +127,8 @@ class Paragraph(models.Model):
     """
 
     text: types.TextField = models.TextField(blank=False)
-    order: types.IntegerField = models.IntegerField(unique=True)
+    label: types.TextField = models.TextField(null=True)
+    order: types.IntegerField = models.IntegerField() # it is not unique for the table, right?
     note: types.BooleanField = models.BooleanField(default=False)
     parent: types.ForeignKey[Paragraph] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
 
