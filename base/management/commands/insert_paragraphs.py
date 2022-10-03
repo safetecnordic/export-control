@@ -10,14 +10,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         paragraphs_dict = self._create_paragraphs_dictionary()
         #print(paragraphs_dict["5A003"])
-        # TODO: parse all paragraphs into the dictionary
-        par_key = "3A002"
-        paragraph = paragraphs_dict[par_key]
-        # creeate dictionary from the paragraph
-        node = dict()
-        self._parse_one_paragraph(paragraph, node)
-        self._insert_node_into_db(node, par_key)
-        
+        for par_key in paragraphs_dict.keys():
+            paragraph = paragraphs_dict[par_key]
+            # creeate dictionary from the paragraph
+            node = dict()
+            self._parse_one_paragraph(paragraph, node)
+            self._insert_node_into_db(node, par_key)
 
     
     def _insert_node_into_db(self, node, par_key=None, regulation = None,  parent=None, order=0):
