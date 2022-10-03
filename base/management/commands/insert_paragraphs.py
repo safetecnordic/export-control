@@ -11,7 +11,7 @@ class Command(BaseCommand):
         paragraphs_dict = self._create_paragraphs_dictionary()
         #print(paragraphs_dict["5A003"])
         # TODO: parse all paragraphs into the dictionary
-        par_key = "6A005"
+        par_key = "3A002"
         paragraph = paragraphs_dict[par_key]
         # creeate dictionary from the paragraph
         node = dict()

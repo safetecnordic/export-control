@@ -7578,8 +7578,8 @@ CATEGORY 6 - SENSORS AND LASERS
             2.     "Radar frequency agility" techniques;
         i.   Providing ground-based operation with a maximum 'instrumented range' exceeding 185 km;
             Note: 6A008.i. does not control:
-            a.    Fishing ground surveillance radar;
-            b.    Ground radar equipment specially designed for enroute air traffic control and having all
+             a.    Fishing ground surveillance radar;
+             b.    Ground radar equipment specially designed for enroute air traffic control and having all
                   the following:
                   1.      A maximum 'instrumented range' of 500 km or less;
                   2.      Configured so that radar target data can be transmitted only one way from the
@@ -7587,7 +7587,7 @@ CATEGORY 6 - SENSORS AND LASERS
                   3.      Contains no provisions for remote control of the radar scan rate from the enroute
                           ATC centre; and
                   4.      Permanently installed;
-            c.    Weather balloon tracking radars.
+             c.    Weather balloon tracking radars.
             Technical Note:
             For the purposes of 6A008.i. 'instrumented range' is the specified unambiguous display range of
             a radar.
