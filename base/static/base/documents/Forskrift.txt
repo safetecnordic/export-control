@@ -6632,8 +6632,8 @@ CATEGORY 6 - SENSORS AND LASERS
                       superimposed.
         Note 2:       Excimer, semiconductor, chemical, CO, CO2, and 'non-repetitive pulsed' Nd:glass
                       "lasers" are only specified in 6A005.d.
-                      Technical Note:
-                      'Non-repetitive pulsed' refers to "lasers" that produce either a single output pulse or that
+                                          Technical Note:
+                                          'Non-repetitive pulsed' refers to "lasers" that produce either a single output pulse or that
                       have a time interval between pulses exceeding one minute.
         Note 3:       6A005 includes fibre "lasers".
         Note 4:       The control status of "lasers" incorporating frequency conversion (i.e., wavelength change)
@@ -6641,9 +6641,9 @@ CATEGORY 6 - SENSORS AND LASERS
                       control parameters for both the output of the source "laser" and the frequency-converted
                       optical output.
         Note 5:       6A005 does not control "lasers" as follows:
-                      a.    Ruby with output energy below 20 J;
-                      b.    Nitrogen;
-                      c.    Krypton.
+                                          a.    Ruby with output energy below 20 J;
+                                          b.    Nitrogen;
+                                          c.    Krypton.
         Note 6:       For the purposes of 6A005.a. and 6A005.b., 'single transverse mode' refers to "lasers" with
                       a beam profile having an M 2-factor of less than 1,3, while 'multiple transverse mode' refers
                       to "lasers" with a beam profile having an M 2-factor of 1,3 or higher.
@@ -7003,8 +7003,6 @@ CATEGORY 6 - SENSORS AND LASERS
  
                      a.     "Pulse duration" not exceeding 1 µs and output energy exceeding 50 J per pulse;
                             or
-
-
                      b.     "Pulse duration" exceeding 1 µs and output energy exceeding 100 J per pulse;
                      Note: 'Non-repetitive pulsed' refers to "lasers" that produce either a single output pulse
                            or that have a time interval between pulses exceeding one minute.
