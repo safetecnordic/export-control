@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "widget_tweaks",
+    "ckeditor",
+    "treebeard",
     "regulations",
     "accounts",
     "base",
