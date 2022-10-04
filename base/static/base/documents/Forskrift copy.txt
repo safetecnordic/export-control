@@ -4476,56 +4476,53 @@ CATEGORY 3 - ELECTRONICS
                                           of a range exceeding 300 km.
 3A201      Electronic components, other than those specified in 3A001, as follows;
            a.     Capacitors having either of the following sets of characteristics:
-                  1.     a.      Voltage rating greater than 1,4 kV;
-                         b.      Energy storage greater than 10 J;
-                         c.      Capacitance greater than 0,5 μF; and
-                         d.      Series inductance less than 50 nH; or
-                  2.     a.      Voltage rating greater than 750 V;
-                         b.      Capacitance greater than 0,25 μF; and
-                         c.      Series inductance less than 10 nH;
-
-
-
-                                                                                                                       127
-                                       CATEGORY 3 - ELECTRONICS
+              1.     
+                     a.      Voltage rating greater than 1,4 kV;
+                     b.      Energy storage greater than 10 J;
+                     c.      Capacitance greater than 0,5 μF; and
+                     d.      Series inductance less than 50 nH; or
+              2.     
+                     a.      Voltage rating greater than 750 V;
+                     b.      Capacitance greater than 0,25 μF; and
+                     c.      Series inductance less than 10 nH;
 
            b.        Superconducting solenoidal electromagnets having all of the following characteristics:
-                     1.     Capable of creating magnetic fields greater than 2 T;
-                     2.     A ratio of length to inner diameter greater than 2;
-                     3.     Inner diameter greater than 300 mm; and
-3A201.b.             continued
-
-                     4.     Magnetic field uniform to better than 1% over the central 50% of the inner volume;
-                     Note: 3A201.b. does not control magnets specially designed for and exported 'as parts of'
+              1.     Capable of creating magnetic fields greater than 2 T;
+              2.     A ratio of length to inner diameter greater than 2;
+              3.     Inner diameter greater than 300 mm; and
+              4.     Magnetic field uniform to better than 1% over the central 50% of the inner volume;
+              Note: 3A201.b. does not control magnets specially designed for and exported 'as parts of'
                            medical nuclear magnetic resonance (NMR) imaging systems. The phrase 'as part of' does
                            not necessarily mean physical part in the same shipment; separate shipments from
                            different sources are allowed, provided the related export documents clearly specify that
                            the shipments are dispatched 'as part of' the imaging systems.
            c.        Flash X-ray generators or pulsed electron accelerators having either of the following sets of
                      characteristics:
-                     1.     a.     An accelerator peak electron energy of 500 keV or greater but less than 25 MeV;
+                 1.     
+                     a.     An accelerator peak electron energy of 500 keV or greater but less than 25 MeV;
                                    and
-                            b.     With a 'figure of merit' (K) of 0,25 or greater; or
-                     2.     a.     An accelerator peak electron energy of 25 MeV or greater; and
-                            b.     A 'peak power' greater than 50 MW.
-                     Note: 3A201.c. does not control accelerators that are component parts of devices designed for
+                     b.     With a 'figure of merit' (K) of 0,25 or greater; or
+                 2.     
+                     a.     An accelerator peak electron energy of 25 MeV or greater; and
+                     b.     A 'peak power' greater than 50 MW.
+                 Note: 3A201.c. does not control accelerators that are component parts of devices designed for
                            purposes other than electron beam or X-ray radiation (electron microscopy, for example)
                            nor those designed for medical purposes.
-                     Technical Notes:
-                                   1.    The 'figure of merit' (K) is defined as:
-                                   K = 1,7 x 103V2,65Q
-                                   V is the peak electron energy in million electron volts.
-                                   If the accelerator beam pulse duration is less than or equal to 1 µs, then Q is the total
-                                   accelerated charge in Coulombs. If the accelerator beam pulse duration is greater than
-                                   1 µs, then Q is the maximum accelerated charge in 1 µs.
-                                   Q equals the integral of i with respect to t, over the lesser of 1 µs or the time duration of
-                                   the beam pulse (Q =  idt), where i is beam current in amperes and t is time in seconds.
-                                   2.    'Peak power' = (peak potential in volts) x (peak beam current in amperes).
-                                   3.    In machines based on microwave accelerating cavities, the time duration of the beam
-                                   pulse is the lesser of 1 µs or the duration of the bunched beam packet resulting from one
-                                   microwave modulator pulse.
-                                   4.    In machines based on microwave accelerating cavities, the peak beam current is the
-                                   average current in the time duration of a bunched beam packet.
+                  Technical Notes:
+                                          1.    The 'figure of merit' (K) is defined as:
+                                          K = 1,7 x 103V2,65Q
+                                          V is the peak electron energy in million electron volts.
+                                          If the accelerator beam pulse duration is less than or equal to 1 µs, then Q is the total
+                                          accelerated charge in Coulombs. If the accelerator beam pulse duration is greater than
+                                          1 µs, then Q is the maximum accelerated charge in 1 µs.
+                                          Q equals the integral of i with respect to t, over the lesser of 1 µs or the time duration of
+                                          the beam pulse (Q =  idt), where i is beam current in amperes and t is time in seconds.
+                                          2.    'Peak power' = (peak potential in volts) x (peak beam current in amperes).
+                                          3.    In machines based on microwave accelerating cavities, the time duration of the beam
+                                          pulse is the lesser of 1 µs or the duration of the bunched beam packet resulting from one
+                                          microwave modulator pulse.
+                                          4.    In machines based on microwave accelerating cavities, the peak beam current is the
+                                          average current in the time duration of a bunched beam packet.
 3A225      Frequency changers or generators, other than those specified in 0B001.b.13., usable as a variable or
            fixed frequency motor drive, having all of the following characteristics:
            N.B. 1.          "Software" specially designed to enhance or release the performance of a frequency
@@ -4888,8 +4885,8 @@ CATEGORY 3 - ELECTRONICS
         Note 1:      3E002 does not control "technology" for multimedia extensions.
         Note 2:      3E002 does not control "technology" for micro-processor cores, having all of the
                      following:
-                     a.     Using "technology" at or above 0,130 µm; and
-                     b.     Incorporating multi-layer structures with five or fewer metal layers.
+                                   a.     Using "technology" at or above 0,130 µm; and
+                                   b.     Incorporating multi-layer structures with five or fewer metal layers.
         Note 3:      3E002 includes "technology" for the "development" or "production" of digital signal
                      processors and digital array processors.
 
@@ -4958,36 +4955,28 @@ CATEGORY 3 - ELECTRONICS
 4A003   "Digital computers", "electronic assemblies", and related equipment therefor, as follows and specially
         designed components therefor:
         Note 1:       4A003 includes the following:
-                      -     'Vector processors';
-                      -     Array processors;
-                      -     Digital signal processors;
-                      -     Logic processors;
-                      -     Equipment designed for "image enhancement".
+                                   -     'Vector processors';
+                                   -     Array processors;
+                                   -     Digital signal processors;
+                                   -     Logic processors;
+                                   -     Equipment designed for "image enhancement".
         Note 2:       The control status of the "digital computers" and related equipment described in 4A003
                       is determined by the control status of other equipment or systems provided:
-                      a.     The "digital computers" or related equipment are essential for the operation of the
-                             other equipment or systems;
-                      b.     The "digital computers" or related equipment are not a "principal element" of the
-                             other equipment or systems; and
+                                          a.     The "digital computers" or related equipment are essential for the operation of the
+                                                 other equipment or systems;
+                                          b.     The "digital computers" or related equipment are not a "principal element" of the
+                                                 other equipment or systems; and
 
-
-                                                                                                                     139
-                                    CATEGORY 4 - COMPUTERS
-
-
-
-4A003 continued
-
-                            N.B. 1:         The control status of "signal processing" or "image enhancement"
-                                            equipment specially designed for other equipment with functions
-                                            limited to those required for the other equipment is determined by
-                                            the control status of the other equipment even if it exceeds the
-                                            "principal element" criterion.
-                            N.B. 2:         For the control status of "digital computers" or related equipment
-                                            for telecommunications equipment, see Category 5, Part 1
-                                            (Telecommunications).
-                     c.     The "technology" for the "digital computers" and related equipment is determined
-                            by 4E.
+                                          N.B. 1:         The control status of "signal processing" or "image enhancement"
+                                                        equipment specially designed for other equipment with functions
+                                                        limited to those required for the other equipment is determined by
+                                                        the control status of the other equipment even if it exceeds the
+                                                        "principal element" criterion.
+                                          N.B. 2:         For the control status of "digital computers" or related equipment
+                                                        for telecommunications equipment, see Category 5, Part 1
+                                                        (Telecommunications).
+                                          c.     The "technology" for the "digital computers" and related equipment is determined
+                                                 by 4E.
         a.    Not used;
         b.    "Digital computers" having an "Adjusted Peak Performance" ("APP") exceeding 29 Weighted
               TeraFLOPS (WT);
@@ -5183,10 +5172,10 @@ CATEGORY 3 - ELECTRONICS
                              landing systems with instruments meeting ICAO standards covering Microwave
                              Landing Systems (MLS).
                Note 2:       5A001.d. does not control antennae specially designed for any of the following:
-                             a.    Civil cellular or WLAN radio-communications systems;
-                             b.    IEEE 802.15 or wireless HDMI; or
-                             c.    Fixed or mobile satellite earth stations for commercial civil
-                                   telecommunications.
+                                          a.    Civil cellular or WLAN radio-communications systems;
+                                          b.    IEEE 802.15 or wireless HDMI; or
+                                          c.    Fixed or mobile satellite earth stations for commercial civil
+                                                 telecommunications.
                Technical Note:
                For the purposes of 5A001.d. 'electronically steerable phased array antenna' is an antenna
                which forms a beam by means of phase coupling, (i.e., the beam direction is controlled by the
@@ -5198,7 +5187,7 @@ CATEGORY 3 - ELECTRONICS
                1.     "Instantaneous bandwidth" of 10 MHz or more; and
                2.     Capable of finding a Line Of Bearing (LOB) to non-cooperating radio transmitters with
                       a signal duration of less than 1 ms;
-         f     Mobile telecommunications interception or jamming equipment, and monitoring equipment
+         f.    Mobile telecommunications interception or jamming equipment, and monitoring equipment
                therefor, as follows, and specially designed components therefor:
                1.     Interception equipment designed for the extraction of voice or data, transmitted over the
                       air interface;
@@ -5211,58 +5200,49 @@ CATEGORY 3 - ELECTRONICS
                       a.     Simulate the functions of Radio Access Network (RAN) equipment;
                       b.     Detect and exploit specific characteristics of the mobile telecommunications
                              protocol employed (e.g., GSM); or
-
-
-
-                                                                                                                    146
-CATEGORY 5 - TELECOMMUNICATIONS AND "INFORMATION SECURITY" PART 1
-
-                    c.     Exploit specific characteristics of the mobile telecommunications protocol
+                      c.     Exploit specific characteristics of the mobile telecommunications protocol
                            employed (e.g. GSM);
-5A001 continued
-
-             4.     RF monitoring equipment designed or modified to identify the operation of items
+                4.     RF monitoring equipment designed or modified to identify the operation of items
                     specified in 5A001.f.1., 5A001.f.2. or 5A001.f.3.;
-             Note: 5A001.f.1. and 5A001.f.2. do not control any of the following:
-                                   a.    Equipment specially designed for the interception of analogue Private Mobile
-                                          Radio (PMR), IEEE 802.11 WLAN;
-                                   b.    Equipment designed for mobile telecommunications network operators; or
-                                   c.    Equipment designed for the "development" or "production" of mobile
-                                          telecommunications equipment or systems.
-             N.B.1. SEE ALSO MILITARY GOODS CONTROLS.
-             N.B.2. For radio receivers see 5A001.b.5.
+                Note: 5A001.f.1. and 5A001.f.2. do not control any of the following:
+                                          a.    Equipment specially designed for the interception of analogue Private Mobile
+                                                 Radio (PMR), IEEE 802.11 WLAN;
+                                          b.    Equipment designed for mobile telecommunications network operators; or
+                                          c.    Equipment designed for the "development" or "production" of mobile
+                                                 telecommunications equipment or systems.
+                N.B.1. SEE ALSO MILITARY GOODS CONTROLS.
+                N.B.2. For radio receivers see 5A001.b.5.
         g.   Passive Coherent Location (PCL) systems or equipment, specially designed for detecting and
              tracking moving objects by measuring reflections of ambient radio frequency emissions,
              supplied by non-radar transmitters;
-             Technical Note:
-             Non-radar transmitters may include              commercial    radio,   television   or   cellular
-             telecommunications base stations.
-             Note: 5A001.g. does not control any of the following:
-                                   a.    Radio-astronomical equipment; or
-                                   b.    Systems or equipment, that require any radio transmission from the target.
+              Technical Note:
+              Non-radar transmitters may include commercial radio, television or cellular telecommunications base stations.
+              Note: 5A001.g. does not control any of the following:
+                                          a.    Radio-astronomical equipment; or
+                                          b.    Systems or equipment, that require any radio transmission from the target.
         h.   Counter Improvised Explosive Device (IED) equipment and related equipment, as follows:
-             1.     Radio Frequency (RF) transmitting equipment, not specified in 5A001.f., designed or
-                    modified for prematurely activating or preventing the initiation of Improvised Explosive
-                    Devices (IEDs);
-             2.     Equipment using techniques designed to enable radio communications in the same
-                    frequency channels on which co-located equipment specified in 5A001.h.1. is
-                    transmitting;
-             N.B.   SEE ALSO MILITARY GOODS CONTROLS.
+              1.     Radio Frequency (RF) transmitting equipment, not specified in 5A001.f., designed or
+                     modified for prematurely activating or preventing the initiation of Improvised Explosive
+                     Devices (IEDs);
+              2.     Equipment using techniques designed to enable radio communications in the same
+                     frequency channels on which co-located equipment specified in 5A001.h.1. is
+                     transmitting;
+              N.B.   SEE ALSO MILITARY GOODS CONTROLS.
         i.   Not used;
         j.   Internet Protocol (IP) network communications surveillance systems or equipment, and specially
              designed components therefor, having all of the following:
-             1.     Performing all of the following on a carrier class Internet Protocol (IP) network (e.g.,
-                    national grade IP backbone):
-                    a.     Analysis at the application layer (e.g., Layer 7 of Open Systems Interconnection
-                           (OSI) model (ISO/IEC 7498-1));
-                    b.     Extraction of selected metadata and application content (e.g., voice, video,
-                           messages, attachments); and
-                    c.     Indexing of extracted data; and
-             2.     Being specially designed to carry out all of the following:
-                    a.     Execution of searches on the basis of "hard selectors"; and
-                    b.     Mapping of the relational network of an individual or of a group of people.
-             Note: 5A001.j. does not control systems or equipment, specially designed for any of the
-                   following:
+              1.     Performing all of the following on a carrier class Internet Protocol (IP) network (e.g.,
+                     national grade IP backbone):
+                     a.     Analysis at the application layer (e.g., Layer 7 of Open Systems Interconnection
+                            (OSI) model (ISO/IEC 7498-1));
+                     b.     Extraction of selected metadata and application content (e.g., voice, video,
+                            messages, attachments); and
+                     c.     Indexing of extracted data; and
+              2.     Being specially designed to carry out all of the following:
+                     a.     Execution of searches on the basis of "hard selectors"; and
+                     b.     Mapping of the relational network of an individual or of a group of people.
+              Note: 5A001.j. does not control systems or equipment, specially designed for any of the
+                     following:
                                                  a.     Marketing purpose;
                                                  b.   Network Quality of Service (QoS); or
                                                  c.   Quality of Experience (QoE).
@@ -7301,19 +7281,12 @@ CATEGORY 6 - SENSORS AND LASERS
                         "software" or "technology" constraints that limit the performance to less than that
                         specified below, provided they meet any of the following:
 
-
-
-                                                                                                                       198
-                           CATEGORY 6 - SENSORS AND LASERS
-
-                      1.     They need to be returned to the original manufacturer to make the enhancements
-                             or release the constraints;
-                      2.     They require "software" as specified in 6D203 to enhance or release the
-                             performance to meet the characteristics of 6A203; or
-6A203 continued
-
-                      3.     They require "technology" in the form of keys or codes as specified in 6E203 to
-                             enhance or release the performance to meet the characteristics of 6A203.
+                                          1.     They need to be returned to the original manufacturer to make the enhancements
+                                                 or release the constraints;
+                                          2.     They require "software" as specified in 6D203 to enhance or release the
+                                                 performance to meet the characteristics of 6A203; or
+                                          3.     They require "technology" in the form of keys or codes as specified in 6E203 to
+                                                 enhance or release the performance to meet the characteristics of 6A203.
         a.     Streak cameras, and specially designed components therefor, as follows:
                1.     Streak cameras with writing speeds greater than 0,5 mm/μs;
                2.     Electronic streak cameras capable of 50 ns or less time resolution;
