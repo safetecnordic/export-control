@@ -1,16 +1,18 @@
 from django.contrib import admin
 from regulations.models import *
+from treebeard.admin import TreeAdmin
+from treebeard.forms import movenodeform_factory
 
 
 class RegulationAdmin(admin.ModelAdmin):
     model = Regulation
     list_display = (
-        "__str__",
+        "code",
         "category",
         "sub_category",
         "regime",
-        "regime_number",
     )
+    ordering = ("code",)
     list_filter = ("category", "sub_category", "regime")
 
 
@@ -43,16 +45,16 @@ class RegimeAdmin(admin.ModelAdmin):
     list_filter = ("name",)
 
 
-class ParagraphAdmin(admin.ModelAdmin):
-    model = Paragraph
+class ParagraphAdmin(TreeAdmin):
+    class Media:
+        css = {"all": ("base/css/admin.css",)}
+
+    form = movenodeform_factory(Paragraph)
     list_display = (
-        "__str__",
+        "code",
         "text",
-        "order",
-        "note",
-        "parent",
     )
-    list_filter = ("regulation",)
+    list_filter = ("category", "sub_category", "regulation")
 
 
 admin.site.register(Regulation, RegulationAdmin)
