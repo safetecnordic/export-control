@@ -1,6 +1,7 @@
 from __future__ import annotations
 from django.db import models
-from django.db.models import Q, F
+from django.db.models import Q, F, QuerySet
+from django.contrib.postgres.search import SearchVector
 from utils import types  # type: ignore
 
 
@@ -23,6 +24,18 @@ class Regulation(models.Model):
     sub_category: types.ForeignKey[SubCategory] = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime: types.ForeignKey[Regime] = models.ForeignKey("Regime", on_delete=models.CASCADE)
     regime_number: types.IntegerField = models.IntegerField()
+
+    @staticmethod
+    def search(search_term: str) -> QuerySet[Regulation]:
+        return Regulation.objects.annotate(
+            search=SearchVector(
+                "category__identifier",
+                "category__name",
+                "sub_category__identifier",
+                "sub_category__name",
+                "regime__identifier",
+            )
+        ).filter(search=search_term)
 
     def __str__(self) -> str:
         # regime_number:03d fills the string with leading zeros if the regime number is less than 3 digits.
@@ -152,6 +165,10 @@ class Paragraph(models.Model):
                 ),
             )
         ]
+
+    @staticmethod
+    def search(search_term: str) -> QuerySet[Paragraph]:
+        return Paragraph.objects.filter(text_search=search_term)
 
     def __str__(self) -> str:
         s = f"Paragraph {self.order} of {self.regulation.__str__()}"
