@@ -14,7 +14,7 @@ def main():
                 newText += " "*newLineSpacing + line.strip() + "\n"
     
     #write the newText to a file
-    f = open("DEMOforskrift.txt", "w")
+    f = open("DEMOforskrift.txt", "w",  encoding="utf8")
     f.write(newText)
     f.close()
 

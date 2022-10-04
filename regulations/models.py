@@ -146,6 +146,7 @@ class Paragraph(MP_Node):
     - belong to a sub-category (in which case only `regulation` is `NULL`, since we must also specify category)
     """
 
+<<<<<<< HEAD
     BASE, NOTE, NOTA_BENE, TECHNICAL_NOTE = (
         "base",
         "note",
@@ -171,6 +172,13 @@ class Paragraph(MP_Node):
 
     text: types.RichTextField = RichTextField(blank=False)
     is_public: types.BooleanField = models.BooleanField(default=True)
+=======
+    text: types.TextField = models.TextField(blank=False)
+    label: types.TextField = models.TextField(null=True)
+    order: types.IntegerField = models.IntegerField() # it is not unique for the table, right?
+    note: types.BooleanField = models.BooleanField(default=False)
+    parent: types.ForeignKey[Paragraph] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+>>>>>>> ee200cb41a956fe1634d317d7a2afa093cf3fe1a
 
     regulation: types.ForeignKey[Regulation] = models.ForeignKey(
         "Regulation", null=True, on_delete=models.CASCADE, related_name="paragraphs"
