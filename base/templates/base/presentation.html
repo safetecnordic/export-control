@@ -22,27 +22,29 @@
             <i class="bi bi-search"></i> {% trans "Search" %}
         </h3>
         <h3>
-            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="">
+          <form>
+            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
+          </form>
         </h3>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Category" %}</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
+                {% if categories %}
+                  {% for category in categories %}
+                    <li><a class="dropdown-item" href="#">{{category}}</a></li>
+                  {% endfor %}
+                {% endif %}
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Subcategory" %}</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
+                {% if subcategories %}
+                  {% for subcategory in subcategories %}
+                    <li><a class="dropdown-item" href="#">{{ subcategory}}</a></li>
+                  {% endfor %}
+                {% endif %}
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -58,18 +60,27 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Regime" %}</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
+                {% if regimes %}
+                  {% for regime in regimes %}
+                    <li><a class="dropdown-item" href="#">{{ regime}}</a></li>
+                  {% endfor %}
+                {% endif %}
               </ul>
             </li>
           </ul>
         <hr>
+        {% if q %}
+          <p>
+            {% with paragraphs.count as total_results %}
+              Found {{total_results}} result{{total_results | pluralize}}
+            {% endwith %}
+          </p>
+        {% endif %}
         <p>
-            What is Lorem Ipsum?
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          {% for paragraph in paragraphs %}   
+          <p>{{paragraph.regulation}}: {{paragraph.headline | safe}} ..</p>
+          <hr>
+        {% endfor %}
         </p>
         </div>
 

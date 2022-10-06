@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.postgres",
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "widget_tweaks",
@@ -78,7 +79,7 @@ DATABASES = {
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
-        "PORT": utils.to_int_or_default(os.getenv("DB_PORT"), default=5432),
+        "PORT": utils.to_int_or_default(os.getenv("DB_PORT"), default=5433),
     }
 }
 
