@@ -1,8 +1,12 @@
 from __future__ import annotations
+import re
 from django.db import models
-from django.db.models import Q, F, QuerySet
-from django.contrib.postgres.search import SearchVector
+from django.db.models import Q, F
+from django.utils.translation import gettext as _
+from django.db.models import Exists, OuterRef
 from utils import types  # type: ignore
+from ckeditor.fields import RichTextField
+from treebeard.mp_tree import MP_Node
 
 
 class Regulation(models.Model):
@@ -23,7 +27,10 @@ class Regulation(models.Model):
     category: types.ForeignKey[Category] = models.ForeignKey("Category", on_delete=models.CASCADE)
     sub_category: types.ForeignKey[SubCategory] = models.ForeignKey("SubCategory", on_delete=models.CASCADE)
     regime: types.ForeignKey[Regime] = models.ForeignKey("Regime", on_delete=models.CASCADE)
-    regime_number: types.IntegerField = models.IntegerField()
+    code: types.CharField = models.CharField(max_length=256, null=True, unique=True)
+
+    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
     @staticmethod
     def search(search_term: str) -> QuerySet[Regulation]:
@@ -40,7 +47,10 @@ class Regulation(models.Model):
     def __str__(self) -> str:
         # regime_number:03d fills the string with leading zeros if the regime number is less than 3 digits.
         # e.g. 1 -> "001"
-        return f"{self.category.identifier}{self.sub_category.identifier}{self.regime_number:03d}"
+        return self.code
+
+    def get_last_paragraph(self):
+        return self.paragraphs.order_by("date_created").last()
 
 
 class Category(models.Model):
@@ -57,7 +67,10 @@ class Category(models.Model):
 
     identifier: types.IntegerField = models.IntegerField()
     name: types.CharField = models.CharField(max_length=256)
-    part: types.IntegerField = models.IntegerField(null=True, default=None)
+    part: types.IntegerField = models.IntegerField(null=True, default=1)
+
+    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
     def __str__(self) -> str:
         part_str = f".{self.part}" if self.part is not None else ""
@@ -76,6 +89,9 @@ class SubCategory(models.Model):
 
     identifier: types.CharField = models.CharField(max_length=256, unique=True)
     name: types.CharField = models.CharField(max_length=256)
+
+    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
     def __str__(self) -> str:
         return f"{self.identifier}: {self.name}"
@@ -98,6 +114,9 @@ class Regime(models.Model):
     number_range_min: types.IntegerField = models.IntegerField(unique=True)
     number_range_max: types.IntegerField = models.IntegerField(unique=True)
 
+    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+
     class Meta:
         # Enforces that number_range_min is less than number_range_max.
         constraints = [
@@ -110,7 +129,7 @@ class Regime(models.Model):
         return f"{self.name}"
 
 
-class Paragraph(models.Model):
+class Paragraph(MP_Node):
     """
     A paragraph is a part of the text for a regulation in the Norwegian Export Control Law.
 
@@ -131,7 +150,7 @@ class Paragraph(models.Model):
     1C232   Helium-3, mixtures containing helium-3, and products or devices containing any of the foregoing.
             Note: 1C232 does not control a product or device containing less than 1 g of helium-3.
     ```
-    In this example, the `Note:` is its own `Paragraph`, with `note=True`.
+    In this example, has a special note_type.
 
     Paragraphs can either:
     - belong to a regulation (in which case `category` and `sub_category` are `NULL`)
@@ -139,10 +158,31 @@ class Paragraph(models.Model):
     - belong to a sub-category (in which case only `regulation` is `NULL`, since we must also specify category)
     """
 
-    text: types.TextField = models.TextField(blank=False)
-    order: types.IntegerField = models.IntegerField(unique=True)
-    note: types.BooleanField = models.BooleanField(default=False)
-    parent: types.ForeignKey[Paragraph] = models.ForeignKey("Paragraph", null=True, on_delete=models.CASCADE)
+    BASE, NOTE, NOTA_BENE, TECHNICAL_NOTE = (
+        "base",
+        "note",
+        "nota_bene",
+        "technical_note",
+    )
+
+    NOTE_TYPE_CHOICES = (
+        (BASE, _("Base")),
+        (NOTE, _("Note")),
+        (NOTA_BENE, _("N.B.")),
+        (TECHNICAL_NOTE, _("Technical Note")),
+    )
+
+    node_order_by = ["code"]
+
+    code: types.CharField = models.CharField(max_length=256, default="-")
+    note_type: types.CharField = models.CharField(
+        max_length=256,
+        choices=NOTE_TYPE_CHOICES,
+        default=BASE,
+    )
+
+    text: types.RichTextField = RichTextField(blank=False)
+    is_public: types.BooleanField = models.BooleanField(default=True)
 
     regulation: types.ForeignKey[Regulation] = models.ForeignKey(
         "Regulation", null=True, on_delete=models.CASCADE, related_name="paragraphs"
@@ -154,26 +194,55 @@ class Paragraph(models.Model):
         "SubCategory", null=True, on_delete=models.CASCADE, related_name="paragraphs"
     )
 
-    class Meta:
-        constraints = [
-            # Enforces that a paragraph belongs to an appropriate parent, as described in the Paragraph docstring above.
-            models.CheckConstraint(
-                name="valid_parent",
-                check=(
-                    (Q(regulation__isnull=False) & Q(category__isnull=True) & Q(sub_category__isnull=True))
-                    | (Q(regulation__isnull=True) & Q(category__isnull=False))
-                ),
-            )
-        ]
+    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
-    @staticmethod
-    def search(search_term: str) -> QuerySet[Paragraph]:
-        return Paragraph.objects.filter(text_search=search_term)
+    _full_name_separator = " > "
 
-    def __str__(self) -> str:
-        s = f"Paragraph {self.order} of {self.regulation.__str__()}"
+    def __str__(self):
+        return self.full_name
 
-        if self.parent is not None:
-            s += f" (child of {self.parent.__str__()})"
+    @property
+    def full_name(self):
+        codes = [paragraph.code for paragraph in self.get_ancestors_and_self()]
+        return "".join(codes)
 
-        return s
+    def set_ancestors_are_public(self):
+        included_in_non_public_subtree = self.__class__.objects.filter(
+            is_public=False, path__rstartswith=OuterRef("path"), depth__lt=OuterRef("depth")
+        )
+        self.get_descendants_and_self().update(
+            ancestors_are_public=Exists(included_in_non_public_subtree.values("id"), negated=True)
+        )
+        self.refresh_from_db()
+
+    @classmethod
+    def fix_tree(cls, destructive=False):
+        super().fix_tree(destructive)
+        for node in cls.get_root_nodes():
+            if not node.ancestors_are_public:
+                node.ancestors_are_public = True
+                node.save()
+            else:
+                node.set_ancestors_are_public()
+
+    def get_ancestors_and_self(self):
+        """
+        :returns: A queryset containing the current paragraph's ancestors, \
+            starting by the root paragraph and descending to the paragraph, and the paragraph itself.
+        """
+        if self.is_root():
+            return [self]
+        return list(self.get_ancestors()) + [self]
+
+    def get_descendants_and_self(self):
+        """
+        :returns: A queryset of descendant paragraphs ordered as DFS, including the paragraph itself.
+        """
+        return self.get_tree(self)
+
+    def is_special(self):
+        """
+        :returns: True if the paragraph is Note, N.B. or Technical Note, False otherwise.
+        """
+        return self.note_type != self.BASE
