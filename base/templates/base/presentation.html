@@ -69,19 +69,44 @@
             </li>
           </ul>
         <hr>
-        {% if q %}
-          <p>
-            {% with paragraphs.count as total_results %}
-              Found {{total_results}} result{{total_results | pluralize}}
-            {% endwith %}
-          </p>
-        {% endif %}
+      
         <p>
           {% for paragraph in paragraphs %}   
-          <p>{{paragraph.regulation}}: {{paragraph.headline | safe}} ..</p>
-          <hr>
-        {% endfor %}
+            <p>{{paragraph.regulation}}: {{paragraph.headline | safe}} ..</p>
+            <hr>
+          {% endfor %}
         </p>
+        {% if paragraphs.has_other_pages %}
+            <ul class="pagination">
+              {% if paragraphs.has_previous %}
+                <li class="page-item">
+                  <a href="?q={{q}}&page={{paragraphs.previous_page_number}}" class="page-link">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a href="" class="page-link">&laquo;</a>
+                </li>
+              {% endif %}
+              {% for i in paragraphs.paginator.page_range %}
+                {% if paragraphs.number == i %}
+                  <li class="page-item active">
+                    <a class="page-link" href="#">{{i}} </a>
+                  </li>
+                {% else %}
+                  <li class="page-item"><a href="?q={{q}}&page={{i}}" class="page-link">{{i}}</a></li>
+                {% endif %}
+              {% endfor %}
+              {% if paragraphs.has_next %}
+              <li class="page-item">
+                <a href="?q={{q}}&page={{paragraphs.next_page_number}}" class="page-link">&raquo;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a href="" class="page-link">&raquo;</a>
+              </li>
+            {% endif %}
+            </ul>
+        {% endif %}
         </div>
 
         <div class="col-md-4">
