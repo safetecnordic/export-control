@@ -80,7 +80,7 @@ DATABASES = {
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
-        "PORT": to_int_or_default(os.getenv("DB_PORT"), default=5433),
+        "PORT": to_int_or_default(os.getenv("DB_PORT"), default=5432),
     }
 }
 
