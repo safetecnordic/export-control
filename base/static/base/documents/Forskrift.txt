@@ -7795,6 +7795,7 @@ CATEGORY 6 - SENSORS AND LASERS
         'Inertial measurement equipment or systems' specified in 7A103.a. incorporate accelerometers or gyros
         to measure changes in velocity and orientation in order to determine or maintain heading or position
         without requiring an external reference once aligned.
+
         Note: 'Inertial measurement equipment or systems' in 7A103.a. include:
                                           -       Attitude and Heading Reference Systems (AHRSs);
                                           -       Gyrocompasses;
@@ -7835,6 +7836,7 @@ CATEGORY 6 - SENSORS AND LASERS
          Technical Note:
          In 7A103 'missile' means complete rocket systems and unmanned aerial vehicle systems capable of a
          range exceeding 300 km.
+
 7A104    Gyro-astro compasses and other devices, other than those specified in 7A004, which derive position or
          orientation by means of automatically tracking celestial bodies or satellites and specially designed
          components therefor.
@@ -8427,19 +8429,20 @@ CATEGORY 8 - MARINE
         a.     Incorporating any of the "technologies" specified in 9E003.a., 9E003.h. or 9E003.i.; or
                Note 1:         9A001.a. does not control aero gas turbine engines which meet all of the
                                following:
-                               a.    Certified by the civil aviation authorities of one or more EU Member States
-                                     or Wassenaar Arrangement Participating States; and
-                               b.    Intended to power non-military manned "aircraft" for which any of the
-                                     following has been issued by civil aviation authorities of one or more EU
-                                     Member States or Wassenaar Arrangement Participating States for the
-                                     "aircraft" with this specific engine type:
-                                     1.      A civil type certificate; or
-                                     2.      An equivalent document recognized by the International Civil
-                                             Aviation Organisation (ICAO).
+                                          a.    Certified by the civil aviation authorities of one or more EU Member States
+                                                 or Wassenaar Arrangement Participating States; and
+                                          b.    Intended to power non-military manned "aircraft" for which any of the
+                                                 following has been issued by civil aviation authorities of one or more EU
+                                                 Member States or Wassenaar Arrangement Participating States for the
+                                                 "aircraft" with this specific engine type:
+                                                 1.      A civil type certificate; or
+                                                 2.      An equivalent document recognized by the International Civil
+                                                        Aviation Organisation (ICAO).
                Note 2:         9A001.a. does not control aero gas turbine engines designed for Auxiliary Power
                                Units (APUs) approved by the civil aviation authority in a EU Member States or
                                Wassenaar Arrangement Participating States.
         b.     Designed to power an "aircraft" to cruise at Mach 1 or higher, for more than thirty minutes.
+
 9A002   'Marine gas turbine engines' designed to use liquid fuel and having all of the following, and specially
         designed assemblies and components therefor:
         a.     Maximum continuous power when operating in "steady state mode" at standard reference
@@ -8463,12 +8466,7 @@ CATEGORY 8 - MARINE
         a.     Space launch vehicles;
         b.     "Spacecraft";
 
-
-                                                                                                                       229
-                     CATEGORY 9 – AEROSPACE AND PROPULSION
-
         c.     "Spacecraft buses";
-9A004 continued
 
         d.     "Spacecraft payloads" incorporating items specified in 3A001.b.1.a.4., 3A002.g., 5A001.a.1.,
                5A001.b.3., 5A002.c., 5A002.e., 6A002.a.1., 6A002.a.2., 6A002.b., 6A002.d., 6A003.b.,
@@ -8497,10 +8495,10 @@ CATEGORY 8 - MARINE
                       Technical Note:
                       For the purposes of 9A004.f.2., 'verification of operational procedures' is any of the
                       following:
-                      1.     Command sequence confirmation;
-                      2.     Operational training;
-                      3.     Operational rehearsals; or
-                      4.     Operational analysis.
+                                                 1.     Command sequence confirmation;
+                                                 2.     Operational training;
+                                                 3.     Operational rehearsals; or
+                                                 4.     Operational analysis.
         g.     "Aircraft" specially designed or modified to be air-launch platforms for space launch vehicles;
         h.     "Sub-orbital craft".
 9A005   Liquid rocket propulsion systems containing any of the systems or components, specified in 9A006.
@@ -8705,23 +8703,23 @@ CATEGORY 8 - MARINE
         b.     Not used;
         c.     Thrust vector control sub-systems, usable in "missiles";
                Technical Note:
-               Examples of methods of achieving thrust vector control specified in 9A106.c. are:
-               1.    Flexible nozzle;
-               2.    Fluid or secondary gas injection;
-               3.    Movable engine or nozzle;
-               4.    Deflection of exhaust gas stream (jet vanes or probes); or
-               5.    Thrust tabs.
+                                          Examples of methods of achieving thrust vector control specified in 9A106.c. are:
+                                          1.    Flexible nozzle;
+                                          2.    Fluid or secondary gas injection;
+                                          3.    Movable engine or nozzle;
+                                          4.    Deflection of exhaust gas stream (jet vanes or probes); or
+                                          5.    Thrust tabs.
         d.     Liquid, slurry and gel propellant (including oxidisers) control systems, and specially designed
                components therefor, usable in "missiles", designed or modified to operate in vibration
                environments greater than 10 g rms between 20 Hz and 2 kHz;
                Note: The only servo valves, pumps and gas turbines specified in 9A106.d., are the following:
-                                   a.    Servo valves designed for flow rates equal to or greater than 24 litres per minute, at an
-                                          absolute pressure equal to or greater than 7 MPa, that have an actuator response time of
-                                          less than 100 ms;
-                                   b.    Pumps, for liquid propellants, with shaft speeds equal to or greater than 8 000 r.p.m. at
-                                          a maximum operating mode or with discharge pressures equal to or greater than 7 MPa;
-                                   c.    Gas turbines, for liquid propellant turbopumps, with shaft speeds equal to or greater than
-                                          8 000 r.p.m. at the maximum operating mode.
+                                          a.    Servo valves designed for flow rates equal to or greater than 24 litres per minute, at an
+                                                 absolute pressure equal to or greater than 7 MPa, that have an actuator response time of
+                                                 less than 100 ms;
+                                          b.    Pumps, for liquid propellants, with shaft speeds equal to or greater than 8 000 r.p.m. at
+                                                 a maximum operating mode or with discharge pressures equal to or greater than 7 MPa;
+                                          c.    Gas turbines, for liquid propellant turbopumps, with shaft speeds equal to or greater than
+                                                 8 000 r.p.m. at the maximum operating mode.
         e.     Combustion chambers and nozzles for liquid propellant rocket engines or gel propellant rocket
                motors specified in 9A005 or 9A105.
 9A107   Solid propellant rocket motors, usable in complete rocket systems or unmanned aerial vehicles, capable
@@ -8733,16 +8731,14 @@ CATEGORY 8 - MARINE
         a.     Rocket motor cases and "insulation" components therefor, usable in subsystems specified in 9A007, 9A009, 9A107 or 9A109.a.;
         b.     Rocket nozzles, usable in subsystems specified in 9A007, 9A009, 9A107 or 9A109.a.;
  
-         c.     Thrust vector control sub-systems, usable in "missiles".
-              Technical Note:
-9A108 continued
-
-                Examples of methods of achieving thrust vector control specified in 9A108.c. are:
-                1.   Flexible nozzle;
-                2.   Fluid or secondary gas injection;
-                3.   Movable engine or nozzle;
-                4.   Deflection of exhaust gas stream (jet vanes or probes); or
-                5.   Thrust tabs.
+        c.     Thrust vector control sub-systems, usable in "missiles".
+               Technical Note:
+                                          Examples of methods of achieving thrust vector control specified in 9A108.c. are:
+                                          1.   Flexible nozzle;
+                                          2.   Fluid or secondary gas injection;
+                                          3.   Movable engine or nozzle;
+                                          4.   Deflection of exhaust gas stream (jet vanes or probes); or
+                                          5.   Thrust tabs.
 9A109    Hybrid rocket motors and specially designed components as follows:
          a.     Hybrid rocket motors usable in complete rocket systems or unmanned aerial vehicles, capable of
                 300 km, other than those specified in 9A009, having a total impulse capacity equal to or greater
@@ -9021,19 +9017,13 @@ CATEGORY 8 - MARINE
         specified in 9A104 or 'missiles'
         Note:            9D105 includes "software" specially designed for a manned "aircraft" converted to
                 operate as "unmanned aerial vehicle", as follows:
-                a.     "Software" specially designed or modified to integrate the conversion equipment with the
-                       "aircraft" system functions; and
-                b.     "Software" specially designed or modified to operate the "aircraft" as an "unmanned
-                       aerial vehicle".
+                                          a.     "Software" specially designed or modified to integrate the conversion equipment with the
+                                                 "aircraft" system functions; and
+                                          b.     "Software" specially designed or modified to operate the "aircraft" as an "unmanned
+                                                 aerial vehicle".
         Technical Note:
         In 9D105 'missile' means complete rocket systems and unmanned aerial vehicle systems capable of a
         range exceeding 300 km.
-
-
-
-
-                                                                                                                     243
-                      CATEGORY 9 – AEROSPACE AND PROPULSION
 
 9E      Technology
         Note: "Development" or "production" "technology" specified in 9E001 to 9E003 for gas turbine
@@ -9066,17 +9056,17 @@ CATEGORY 8 - MARINE
                       Note: The "required" "technology" for holes in 9E003.a.2. is limited to the derivation of
                             the geometry and location of the holes.
                       Technical Notes:
-                                   1.    'Thermally decoupled liners' are liners that feature at least a support structure
-                                          designed to carry mechanical loads and a combustion facing structure designed
-                                          to protect the support structure from the heat of combustion. The combustion
-                                          facing structure and support structure have independent thermal displacement
-                                          (mechanical displacement due to thermal load) with respect to one another, i.e.
-                                          they are thermally decoupled.
-                                   2.     'Combustor exit temperature' is the bulk average gas path total (stagnation)
-                                          temperature between the combustor exit plane and the leading edge of the turbine
-                                          inlet guide vane (i.e., measured at engine station T40 as defined in SAE ARP 755A)
-                                          when the engine is running in a "steady state mode" of operation at the certificated
-                                          maximum continuous operating temperature.
+                                                 1.    'Thermally decoupled liners' are liners that feature at least a support structure
+                                                        designed to carry mechanical loads and a combustion facing structure designed
+                                                        to protect the support structure from the heat of combustion. The combustion
+                                                        facing structure and support structure have independent thermal displacement
+                                                        (mechanical displacement due to thermal load) with respect to one another, i.e.
+                                                        they are thermally decoupled.
+                                                 2.     'Combustor exit temperature' is the bulk average gas path total (stagnation)
+                                                        temperature between the combustor exit plane and the leading edge of the turbine
+                                                        inlet guide vane (i.e., measured at engine station T40 as defined in SAE ARP 755A)
+                                                        when the engine is running in a "steady state mode" of operation at the certificated
+                                                        maximum continuous operating temperature.
                N.B.   See 9E003.c. for "technology" "required" for manufacturing cooling holes.
                3.     Components that are any of the following:
                       a.     Manufactured from organic "composite" materials designed to operate above
@@ -9090,8 +9080,6 @@ CATEGORY 8 - MARINE
 
                              1.     Metal "matrix" "composites" reinforced by any of the following:
                                     a.      Materials specified in 1C007;
-9E003.a.        continued
-
                                     b.      "Fibrous or filamentary materials" specified in 1C010; or
                                     c.      Aluminides specified in 1C002.a.; or
                              2.     Ceramic "matrix" "composites" specified in 1C007.; or
@@ -9156,16 +9144,16 @@ CATEGORY 8 - MARINE
                      holes that are straight through and enter and exit on the external surfaces of the
                      component.
                Technical Notes:
-                                          1.    For the purposes of 9E003.c., the 'cross-sectional area' is the area of the hole in the plane
-                                                 perpendicular to the hole axis.
-                                          2.    For the purposes of 9E003.c., 'hole shape ratio' is the nominal length of the axis of the
-                                                 hole divided by the square root of its minimum 'cross-sectional area'.
-                                          3.    For the purposes of 9E003.c., 'incidence angle' is the acute angle measured between the
-                                                 plane tangential to the aerofoil surface and the hole axis at the point where the hole axis
-                                                 enters the aerofoil surface.
-                                          4.    Methods for manufacturing holes in 9E003.c. include "laser" beam machining, water jet
-                                                 machining, Electro-Chemical Machining (ECM) or Electrical Discharge Machining
-                                                 (EDM).
+                                                 1.    For the purposes of 9E003.c., the 'cross-sectional area' is the area of the hole in the plane
+                                                        perpendicular to the hole axis.
+                                                 2.    For the purposes of 9E003.c., 'hole shape ratio' is the nominal length of the axis of the
+                                                        hole divided by the square root of its minimum 'cross-sectional area'.
+                                                 3.    For the purposes of 9E003.c., 'incidence angle' is the acute angle measured between the
+                                                        plane tangential to the aerofoil surface and the hole axis at the point where the hole axis
+                                                        enters the aerofoil surface.
+                                                 4.    Methods for manufacturing holes in 9E003.c. include "laser" beam machining, water jet
+                                                        machining, Electro-Chemical Machining (ECM) or Electrical Discharge Machining
+                                                        (EDM).
          d.    "Technology" "required" for the "development" or "production" of helicopter power transfer
                systems or tilt rotor or tilt wing "aircraft" power transfer systems;
          e.    "Technology" for the "development" or "production" of reciprocating diesel engine ground
@@ -9178,15 +9166,15 @@ CATEGORY 8 - MARINE
                Technical Note:
                'Box volume' in 9E003.e. is the product of three perpendicular dimensions measured in the
                following way:
-                      Length: The length of the crankshaft from front flange to flywheel face;
-                      Width:    The widest of any of the following:
-                               a.     The outside dimension from valve cover to valve cover;
-                               b.     The dimensions of the outside edges of the cylinder heads; or
-                               c.     The diameter of the flywheel housing;
-                      Height: The largest of any of the following:
-                               a.     The dimension of the crankshaft centre-line to the top plane of the valve
-                                      cover (or cylinder head) plus twice the stroke; or
-                               b.     The diameter of the flywheel housing.
+                                                 Length: The length of the crankshaft from front flange to flywheel face;
+                                                 Width:    The widest of any of the following:
+                                                        a.     The outside dimension from valve cover to valve cover;
+                                                        b.     The dimensions of the outside edges of the cylinder heads; or
+                                                        c.     The diameter of the flywheel housing;
+                                                 Height: The largest of any of the following:
+                                                        a.     The dimension of the crankshaft centre-line to the top plane of the valve
+                                                               cover (or cylinder head) plus twice the stroke; or
+                                                        b.     The diameter of the flywheel housing.
          f.    "Technology" "required" for the "production" of specially designed components for high output
                diesel engines, as follows:
 
@@ -9252,13 +9240,11 @@ CATEGORY 8 - MARINE
                  3.     "Development" "technology" for the control law algorithms, including "source code",
                         unique to the adjustable flow path system and that maintain engine stability.
                  Note: 9E003.i. does not control "technology" for any of the following:
-                                          a.    Inlet guide vanes;
-                                          b.    Variable pitch fans or prop-fans;
-                                          c.    Variable compressor vanes;
-                                          d.    Compressor bleed valves; or
-9E003.i. continued
-
-                        e.     Adjustable flow path geometry for reverse thrust.
+                                                        a.    Inlet guide vanes;
+                                                        b.    Variable pitch fans or prop-fans;
+                                                        c.    Variable compressor vanes;
+                                                        d.    Compressor bleed valves; or
+                                                        e.     Adjustable flow path geometry for reverse thrust.
 
           j.     "Technology" "required" for the "development" of wing-folding systems designed for fixed-
                  wing "aircraft" powered by gas turbine engines.
