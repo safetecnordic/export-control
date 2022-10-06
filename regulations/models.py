@@ -215,15 +215,22 @@ class Paragraph(MP_Node):
                 node.set_ancestors_are_public()
 
     def get_ancestors_and_self(self):
+        """
+        :returns: A queryset containing the current paragraph's ancestors, \
+            starting by the root paragraph and descending to the paragraph, and the paragraph itself.
+        """
         if self.is_root():
             return [self]
         return list(self.get_ancestors()) + [self]
 
     def get_descendants_and_self(self):
+        """
+        :returns: A queryset of descendant paragraphs ordered as DFS, including the paragraph itself.
+        """
         return self.get_tree(self)
 
     def is_special(self):
-        value = False
-        if self.note_type != self.BASE:
-            value = True
-        return value
+        """
+        :returns: True if the paragraph is Note, N.B. or Technical Note, False otherwise.
+        """
+        return self.note_type != self.BASE
