@@ -1,0 +1,14 @@
+.btn-primary {
+    background-color: #58B0AE;
+    border: none;
+    margin-left:10px;
+    font-weight: bolder;
+}
+
+.btn-primary:hover {
+    background-color: #347F82;
+  }
+
+  .button-div {
+    margin-right: 10px;
+  }

@@ -1,7 +1,6 @@
 {% extends "base/layout.html" %}
 {% load i18n %} 
 
-
 {% block breadcrumbs %}
  
 {% endblock %}
@@ -85,7 +84,9 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">SEARCH</button>
+          <div class="row button-div">
+              <button type="submit" class="btn-block btn btn-primary">Search  <i class="bi bi-search"></i></button>
+          </div>
         </form>
         <hr>
       
@@ -93,48 +94,47 @@
           {% for paragraph in paragraphs %}   
             <p>{{paragraph.full_name}}: 
               {% if q %}
-                {{paragraph.headline | safe}}
+                {{paragraph.headline | safe}}...
               {% else %}
                 {{paragraph.text | truncatechars:100}}
               {% endif %}
-              
             </p>
             <hr>
           {% endfor %}
         </p>
         {% if paragraphs.has_other_pages %}
-            <ul class="pagination">
-              {% if paragraphs.has_previous %}
-                <li class="page-item">
-                  <a href="?q={{q}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&laquo;</a>
-                </li>
-              {% else %}
-                <li class="page-item disabled">
-                  <a href="" class="page-link">&laquo;</a>
-                </li>
-              {% endif %}
-              {% for i in paragraphs.paginator.page_range %}
-                {% if paragraphs.number == i %}
-                  <li class="page-item active">
-                    <a class="page-link" href="#">{{i}} </a>
-                  </li>
-                {% else %}
-                  <li class="page-item"><a href="?q={{q}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">{{i}}</a></li>
-                {% endif %}
-              {% endfor %}
-              {% if paragraphs.has_next %}
+        
+          <ul class="pagination">
+            {% if paragraphs.has_previous %}
               <li class="page-item">
-                <a href="?q={{q}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&raquo;</a>
+                <a href="?q={{q}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&laquo;</a>
               </li>
             {% else %}
               <li class="page-item disabled">
-                <a href="" class="page-link">&raquo;</a>
+                <a href="" class="page-link">&laquo;</a>
               </li>
             {% endif %}
-            </ul>
+            {% for i in paragraphs.paginator.page_range %}
+              {% if paragraphs.number == i %}
+                <li class="page-item active">
+                  <a class="page-link" href="#">{{i}} </a>
+                </li>
+              {% else %}
+                <li class="page-item"><a href="?q={{q}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">{{i}}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if paragraphs.has_next %}
+            <li class="page-item">
+              <a href="?q={{q}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&raquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a href="" class="page-link">&raquo;</a>
+            </li>
+          {% endif %}
+          </ul>
         {% endif %}
         </div>
-
         <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
             <div class="p-4 mb-3 bg-light rounded">
