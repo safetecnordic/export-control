@@ -1,7 +1,8 @@
 from __future__ import annotations
 import re
 from django.db import models
-from django.db.models import Q, F
+from django.db.models import Q, F, QuerySet
+from django.contrib.postgres.search import SearchVector
 from django.utils.translation import gettext as _
 from django.db.models import Exists, OuterRef
 from utils import types  # type: ignore

@@ -22,47 +22,83 @@
             <i class="bi bi-search"></i> {% trans "Search" %}
         </h3>
         <h3>
-          <form>
+        <form novalidate>
             <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
-          </form>
         </h3>
-        <ul class="nav nav-pills">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Category" %}</a>
-              <ul class="dropdown-menu">
-                {% if categories %}
-                  {% for category in categories %}
-                    <li><a class="dropdown-item" href="#">{{category}}</a></li>
-                  {% endfor %}
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <select name = "category" class = form-control>
+                {% if category %}
+                  <option value="{{category.id}}" class="fw-bold" selected = "true">
+                    {{category}}
+                  </option>
+                  <option value = "{{NULL}}">
+                    Choose Category
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Category
+                  </option>
+                  {% endif %}
+                {% for category in categories %}
+                      <option value="{{category.id}}">{{category}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <select name = "subcategory" class = form-control>
+                {% if subcategory %}
+                  <option value="{{subcategory.id}}" class="fw-bold" selected = "true">
+                    {{subcategory}}
+                  </option>
+                  <option value = "{{NULL}}">
+                    Choose Subcategory
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Subcategory
+                  </option>
                 {% endif %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Subcategory" %}</a>
-              <ul class="dropdown-menu">
-                {% if subcategories %}
-                  {% for subcategory in subcategories %}
-                    <li><a class="dropdown-item" href="#">{{ subcategory}}</a></li>
-                  {% endfor %}
-                {% endif %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Regime" %}</a>
-              <ul class="dropdown-menu">
-                {% if regimes %}
-                  {% for regime in regimes %}
-                    <li><a class="dropdown-item" href="#">{{ regime}}</a></li>
-                  {% endfor %}
-                {% endif %}
-              </ul>
-            </li>
-          </ul>
+                {% for subcategory in subcategories %}
+                      <option value="{{subcategory.id}}">{{subcategory}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <select name = "regime" class = form-control>
+                  {% if regime %}
+                  <option value = "{{NULL}}">
+                    Choose Regime
+                  </option>
+                  <option value="{{regime.id}}" class="fw-bold" selected = "true">
+                    {{regime}}
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Regime
+                  </option>
+                  {% endif %}
+                
+                {% for regime in regimes %}
+                      <option value="{{regime.id}}">{{regime}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">SEARCH</button>
+        </form>
         <hr>
       
         <p>
           {% for paragraph in paragraphs %}   
-            <p>{{paragraph.full_name}}: {{paragraph.headline | safe}} ..</p>
+            <p>{{paragraph.full_name}}: 
+              {% if q %}
+                {{paragraph.headline | safe}}
+              {% else %}
+                {{paragraph.text | truncatechars:100}}
+              {% endif %}
+              
+            </p>
             <hr>
           {% endfor %}
         </p>
@@ -70,7 +106,7 @@
             <ul class="pagination">
               {% if paragraphs.has_previous %}
                 <li class="page-item">
-                  <a href="?q={{q}}&page={{paragraphs.previous_page_number}}" class="page-link">&laquo;</a>
+                  <a href="?q={{q}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&laquo;</a>
                 </li>
               {% else %}
                 <li class="page-item disabled">
@@ -83,12 +119,12 @@
                     <a class="page-link" href="#">{{i}} </a>
                   </li>
                 {% else %}
-                  <li class="page-item"><a href="?q={{q}}&page={{i}}" class="page-link">{{i}}</a></li>
+                  <li class="page-item"><a href="?q={{q}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">{{i}}</a></li>
                 {% endif %}
               {% endfor %}
               {% if paragraphs.has_next %}
               <li class="page-item">
-                <a href="?q={{q}}&page={{paragraphs.next_page_number}}" class="page-link">&raquo;</a>
+                <a href="?q={{q}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&raquo;</a>
               </li>
             {% else %}
               <li class="page-item disabled">
