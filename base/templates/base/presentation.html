@@ -62,7 +62,7 @@
       
         <p>
           {% for paragraph in paragraphs %}   
-            <p>{{paragraph.regulation}}: {{paragraph.headline | safe}} ..</p>
+            <p>{{paragraph.full_name}}: {{paragraph.headline | safe}} ..</p>
             <hr>
           {% endfor %}
         </p>
