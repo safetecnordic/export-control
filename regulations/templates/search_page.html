@@ -22,11 +22,26 @@
         </h3>
         <h3>
         <form novalidate>
-          {% if q %}
-            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="{{q}}" required="" name = "q" value="{{q}}">
+          {% if search_term %}
+            <input
+              type="text"
+              class="form-control border-0 border-bottom-1"
+              id="address"
+              placeholder="{{search_term}}"
+              required=""
+              name="q"
+              value="{{search_term}}"
+            >
           {% else %}
-          <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
-          {% endif %}  
+            <input
+              type="text"
+              class="form-control border-0 border-bottom-1"
+              id="address"
+              placeholder="Enter the text..."
+              required=""
+              name="q"
+            >
+          {% endif %}
         </h3>
           <div class="row">
             <div class="col-md-4 mb-3">
@@ -89,7 +104,7 @@
             </div>
           </div>
           <div class="row button-div">
-              <button type="submit" class="btn-block btn btn-primary">Search  <i class="bi bi-search"></i></button>
+              <button type="submit" class="btn-block btn btn-primary">Search<i class="bi bi-search"></i></button>
           </div>
         </form>
         <hr>
@@ -97,7 +112,7 @@
         <p>
           {% for paragraph in paragraphs %}   
             <p>{{paragraph.full_name}}: 
-              {% if q %}
+              {% if search_term %}
                 {{paragraph.headline | safe}}...
               {% else %}
                 {{paragraph.text | truncatechars:100}}
@@ -111,7 +126,10 @@
           <ul class="pagination">
             {% if paragraphs.has_previous %}
               <li class="page-item">
-                <a href="?q={{q}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&laquo;</a>
+                <a
+                  href="?q={{search_term}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
+                  class="page-link"
+                >&laquo;</a>
               </li>
             {% else %}
               <li class="page-item disabled">
@@ -124,12 +142,19 @@
                   <a class="page-link" href="#">{{i}} </a>
                 </li>
               {% else %}
-                <li class="page-item"><a href="?q={{q}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">{{i}}</a></li>
+                <li class="page-item">
+                  <a
+                    href="?q={{search_term}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
+                    class="page-link"
+                  >{{i}}</a></li>
               {% endif %}
             {% endfor %}
             {% if paragraphs.has_next %}
             <li class="page-item">
-              <a href="?q={{q}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&raquo;</a>
+              <a
+                href="?q={{search_term}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
+                class="page-link"
+              >&raquo;</a>
             </li>
           {% else %}
             <li class="page-item disabled">
@@ -149,5 +174,4 @@
         </div>
         </div>
     </div>
-    
 {% endblock %}
