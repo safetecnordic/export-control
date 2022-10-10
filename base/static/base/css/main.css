@@ -31,18 +31,20 @@ header {
     font-weight: bolder;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
     background-color: #347F82;
-  }
+}
 
 .button-div {
     margin-right: 10px;
-  }
+}
 
   
 .logo {
      margin-right:30px;
-    }
+}
 
 .active {
   color: #00abd7;
@@ -52,3 +54,7 @@ header {
   color: #00abd7;
 }
     
+footer {
+  background-color: #002748;
+  color:white;
+}
