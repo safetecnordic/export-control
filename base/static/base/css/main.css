@@ -1,3 +1,29 @@
+@font-face {
+  font-family: 'AktivGrotesk-Regular';
+  src: url('../fonts/AktivGrotesk-Regular.ttf') format("truetype"),
+       url('../fonts/AktivGrotesk-Regular.otf') format("truetype"),
+       url('../fonts/AktivGroteskCorp-Regular.woff') format("truetype"),
+       url('../fonts/AktivGroteskCorp-Regular.woff2') format("truetype");
+}
+
+@font-face {
+  font-family: 'AktivGrotesk-Light';
+  src: url('../fonts/AktivGrotesk-Light.ttf') format("truetype");
+}
+
+body {
+  font-family: "AktivGrotesk-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+
+header {
+  font-family: "AktivGrotesk-Light";
+  font-size: 21px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #3c3c3b;
+}
+
 .btn-primary {
     background-color: #58B0AE;
     border: none;
@@ -9,6 +35,20 @@
     background-color: #347F82;
   }
 
-  .button-div {
+.button-div {
     margin-right: 10px;
   }
+
+  
+.logo {
+     margin-right:30px;
+    }
+
+.active {
+  color: #00abd7;
+}
+
+.nav-link:hover {
+  color: #00abd7;
+}
+    
