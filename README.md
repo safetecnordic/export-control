@@ -75,3 +75,9 @@ Info site for the Norwegian Export Control law.
     ```
     python manage.py createsuperuser --username=admin --email=admin@example.com
     ```
+
+12. Parse pdf into the database
+
+      ```
+      python manage.py loaddata regulations.json
+      ```
