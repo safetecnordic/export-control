@@ -1,8 +1,6 @@
 from __future__ import annotations
-import re
 from django.db import models
-from django.db.models import Q, F, QuerySet
-from django.contrib.postgres.search import SearchVector
+from django.db.models import Q, F
 from django.utils.translation import gettext as _
 from django.db.models import Exists, OuterRef
 from utils import types  # type: ignore
@@ -32,18 +30,6 @@ class Regulation(models.Model):
 
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
-
-    @staticmethod
-    def search(search_term: str) -> QuerySet[Regulation]:
-        return Regulation.objects.annotate(
-            search=SearchVector(
-                "category__identifier",
-                "category__name",
-                "sub_category__identifier",
-                "sub_category__name",
-                "regime__identifier",
-            )
-        ).filter(search=search_term)
 
     def __str__(self) -> str:
         # regime_number:03d fills the string with leading zeros if the regime number is less than 3 digits.
@@ -197,10 +183,6 @@ class Paragraph(MP_Node):
 
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
-
-    @staticmethod
-    def search(search_term: str) -> QuerySet[Paragraph]:
-        return Paragraph.objects.filter(text_search=search_term)
 
     _full_name_separator = " > "
 
