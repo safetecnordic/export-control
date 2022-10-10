@@ -1,7 +1,6 @@
 {% extends "base/layout.html" %}
 {% load i18n %} 
 
-
 {% block breadcrumbs %}
  
 {% endblock %}
@@ -22,57 +21,120 @@
             <i class="bi bi-search"></i> {% trans "Search" %}
         </h3>
         <h3>
-            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="">
+        <form novalidate>
+            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
         </h3>
-        <ul class="nav nav-pills">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Category" %}</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Subcategory" %}</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Level" %}</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{% trans "Regime" %}</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-                <li><a class="dropdown-item" href="#">Test</a></li>
-              </ul>
-            </li>
-          </ul>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <select name = "category" class = form-control>
+                {% if category %}
+                  <option value="{{category.id}}" class="fw-bold" selected = "true">
+                    {{category}}
+                  </option>
+                  <option value = "{{NULL}}">
+                    Choose Category
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Category
+                  </option>
+                  {% endif %}
+                {% for category in categories %}
+                      <option value="{{category.id}}">{{category}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <select name = "subcategory" class = form-control>
+                {% if subcategory %}
+                  <option value="{{subcategory.id}}" class="fw-bold" selected = "true">
+                    {{subcategory}}
+                  </option>
+                  <option value = "{{NULL}}">
+                    Choose Subcategory
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Subcategory
+                  </option>
+                {% endif %}
+                {% for subcategory in subcategories %}
+                      <option value="{{subcategory.id}}">{{subcategory}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <select name = "regime" class = form-control>
+                  {% if regime %}
+                  <option value = "{{NULL}}">
+                    Choose Regime
+                  </option>
+                  <option value="{{regime.id}}" class="fw-bold" selected = "true">
+                    {{regime}}
+                  </option>
+                  {% else%}
+                  <option value = "{{NULL}}" selected = "true">
+                    Choose Regime
+                  </option>
+                  {% endif %}
+                
+                {% for regime in regimes %}
+                      <option value="{{regime.id}}">{{regime}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row button-div">
+              <button type="submit" class="btn-block btn btn-primary">Search  <i class="bi bi-search"></i></button>
+          </div>
+        </form>
         <hr>
+      
         <p>
-            What is Lorem Ipsum?
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          {% for paragraph in paragraphs %}   
+            <p>{{paragraph.full_name}}: 
+              {% if q %}
+                {{paragraph.headline | safe}}...
+              {% else %}
+                {{paragraph.text | truncatechars:100}}
+              {% endif %}
+            </p>
+            <hr>
+          {% endfor %}
         </p>
+        {% if paragraphs.has_other_pages %}
+        
+          <ul class="pagination">
+            {% if paragraphs.has_previous %}
+              <li class="page-item">
+                <a href="?q={{q}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&laquo;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a href="" class="page-link">&laquo;</a>
+              </li>
+            {% endif %}
+            {% for i in paragraphs.paginator.page_range %}
+              {% if paragraphs.number == i %}
+                <li class="page-item active">
+                  <a class="page-link" href="#">{{i}} </a>
+                </li>
+              {% else %}
+                <li class="page-item"><a href="?q={{q}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">{{i}}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if paragraphs.has_next %}
+            <li class="page-item">
+              <a href="?q={{q}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}" class="page-link">&raquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a href="" class="page-link">&raquo;</a>
+            </li>
+          {% endif %}
+          </ul>
+        {% endif %}
         </div>
-
         <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
             <div class="p-4 mb-3 bg-light rounded">
