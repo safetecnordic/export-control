@@ -22,7 +22,11 @@
         </h3>
         <h3>
         <form novalidate>
-            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
+          {% if q %}
+            <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="{{q}}" required="" name = "q" value="{{q}}">
+          {% else %}
+          <input type="text" class="form-control border-0 border-bottom-1" id="address" placeholder="Enter the text..." required="" name = "q">
+          {% endif %}  
         </h3>
           <div class="row">
             <div class="col-md-4 mb-3">
