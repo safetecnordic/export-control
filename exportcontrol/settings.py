@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "regulations",
     "accounts",
     "base",
+    "contacts",
 ]
 
 MIDDLEWARE = [
