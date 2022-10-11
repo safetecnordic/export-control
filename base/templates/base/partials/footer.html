@@ -1,15 +1,34 @@
 <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 mt-4 border-top">  
-    <div class="col-md-1 d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 d-flex align-items-left">
+          <p><span class = "footer-title">SEARCH</span> <br />
+         <a href="{% url 'search_page' %}">Search in Export Control Low</a>  <br />
+      </div>
+      <div class="col-md-3 d-flex align-items-left">
+        <p><span class = "footer-title">ABOUT US</span> <br />
+       <a href="{% url 'about_us' %}">About Us</a>  <br />
+       <a href="https://www.safetec.no/">Safetech</a></p>
+      </div>
+      <div class="col-md-3 d-flex align-items-left">
+        <p><span class = "footer-title">CONTACT US</span> <br />
+       <a href="{% url 'contact_us' %}">Contact Us</a>  <br />
+      </div>
+      <div class="col-md-3 d-flex justify-content-end align-items-left">
+      <span class = "footer-title">FOLLOW US</span>  <br />
+        <ul class="list-unstyled  d-flex">
+          <li class="ms-3">
+            <a class = "social-icon" href="https://www.linkedin.com/company/safetec-nordic-as/">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class = "social-icon" href="https://www.safetec.no/feed/">
+              <i class="bi bi-rss"></i>
+            </a>
+          </li>
+       </ul>
+      </div>
     </div>
-    <div class="col-md-4 d-flex align-items-left">
-      <span class="text-decoration-none">© 2021 Company, Inc</span>
-    </div>
-        
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook"></i></a></li>
-      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram"></i></a></li>
-      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-google"></i></a></li>
-    </ul>
-    <div class="col-md-1 d-flex align-items-center">
-    </div>
+  </div>  
 </footer>

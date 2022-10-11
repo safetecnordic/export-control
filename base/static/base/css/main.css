@@ -57,4 +57,38 @@ header {
 footer {
   background-color: #002748;
   color:white;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.social-icon {
+  color:grey;
+}
+
+.social-icon:hover,
+.social-icon:active,
+.social-icon:focus {
+    color: #0DABCD;
+}
+
+.footer-title {
+  color: #009fcd;
+  display: block;
+}
+
+footer a {
+  color: white;
+  display: block;
+  line-height: 8px;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer aactive,
+.footer a:focus {
+    color: #0DABCD;
+}
+
+footer ul {
+  display: block;
 }
