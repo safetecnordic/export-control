@@ -19,6 +19,7 @@ class AddContactView(CreateView):
     model = Contact
     form_class = ContactForm
     template_name = "contact_form.html"
-    #success_url = '/' # here should be reverse?
-    def form_valid(self, form): # new
+    #success_url = '/' 
+    def form_valid(self, form): 
+        form.save()
         return redirect(reverse('search_page'))
