@@ -9,6 +9,11 @@
     background-color: #347F82;
   }
 
-  .button-div {
-    margin-right: 10px;
-  }
+.button-div {
+  margin-right: 10px;
+}
+
+.btn-warning {
+  color: white;
+  font-weight: bolder;
+}

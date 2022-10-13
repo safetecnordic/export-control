@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "ckeditor",
     "treebeard",
+    "phonenumber_field",
     "regulations",
     "accounts",
     "base",

@@ -10,6 +10,7 @@
         <li><a href="#" class="nav-link px-2 link-dark">{% trans "Search" %}</a></li>
         <li><a href="{% url 'about_us' %}" class="nav-link px-2 link-dark">{% trans "About us" %}</a></li>
         <li><a href="{% url 'contact_us' %}" class="nav-link px-2 link-dark">{% trans "Contact us" %}</a></li>
+        <li>{% include "contact_form.html" %}</li>
       </ul>
       <div class="dropdown text-end">
         <a
