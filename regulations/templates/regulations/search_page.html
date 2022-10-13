@@ -1,0 +1,33 @@
+{% extends "base/layout.html" %}
+{% load i18n %} 
+{% load widget_tweaks %}
+{% block breadcrumbs %}
+ 
+{% endblock %}
+
+{% block content %}
+    <div class="row g-5">
+        <div class="col-md-12">
+          <h3 class="pb-4 fst-italic">
+              <i class="bi bi-search"></i> <a href="{% url 'search' %}" style="text-decoration:none;">{% trans "Search query:" %}</a> <b>{{search_term}}</b>
+          </h3>
+          {% block search %}{% include "base/partials/search.html" %}{% endblock %}
+        <p>
+          
+          {% for paragraph in paragraph_list %}
+            <a href="{% url 'regulation_detail' code=paragraph.regulation.code %}" class="text-dark text-decoration-none">   
+              <p>{{ paragraph.full_name }}: &nbsp;
+                {% if search_term %}
+                  {{paragraph.headline | safe}}...
+                {% else %}
+                  {{paragraph.text | truncatechars:100}}
+                {% endif %}
+              </p>
+            </a>
+            <hr>
+          {% endfor %}
+        </p>
+        </div>
+    </div>
+    {% include "base/partials/pagination.html" %}
+{% endblock %}

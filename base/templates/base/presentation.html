@@ -21,8 +21,7 @@
             <i class="bi bi-search"></i> {% trans "Search" %}
         </h3>
         <h3>
-          {% block search %}{% include "base/search.html" %}{% endblock %}
-        <hr>
+          {% block search %}{% include "base/partials/search.html" %}{% endblock %}
         <p>
           {% for paragraph in paragraphs %}   
             <p>{{paragraph.full_name}}: 
@@ -35,48 +34,6 @@
             <hr>
           {% endfor %}
         </p>
-        {% if paragraphs.has_other_pages %}
-        
-          <ul class="pagination">
-            {% if paragraphs.has_previous %}
-              <li class="page-item">
-                <a
-                  href="?q={{search_term}}&page={{paragraphs.previous_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
-                  class="page-link"
-                >&laquo;</a>
-              </li>
-            {% else %}
-              <li class="page-item disabled">
-                <a href="" class="page-link">&laquo;</a>
-              </li>
-            {% endif %}
-            {% for i in paragraphs.paginator.page_range %}
-              {% if paragraphs.number == i %}
-                <li class="page-item active">
-                  <a class="page-link" href="#">{{i}} </a>
-                </li>
-              {% else %}
-                <li class="page-item">
-                  <a
-                    href="?q={{search_term}}&page={{i}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
-                    class="page-link"
-                  >{{i}}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if paragraphs.has_next %}
-            <li class="page-item">
-              <a
-                href="?q={{search_term}}&page={{paragraphs.next_page_number}}&category={{category.id}}&subcategory={{subcategory.id}}&regime={{regime.id}}"
-                class="page-link"
-              >&raquo;</a>
-            </li>
-          {% else %}
-            <li class="page-item disabled">
-              <a href="" class="page-link">&raquo;</a>
-            </li>
-          {% endif %}
-          </ul>
-        {% endif %}
         </div>
         <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">

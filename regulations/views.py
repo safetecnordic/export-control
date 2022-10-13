@@ -6,43 +6,46 @@ from django.core.paginator import Paginator
 from utils.converters import str_to_int_or_none
 from regulations.forms import SearchForm
 from django.views.generic.list import ListView
-from .models import Category, Paragraph, Regulation, SubCategory, Regime
-from .search import search_paragraphs, filter_paragraphs
+from django.views.generic import DetailView
+
+from regulations.models import Category, Paragraph, Regulation, SubCategory, Regime
+from regulations.search import search_paragraphs, filter_paragraphs
 
 
 class SearchView(ListView):
     model = Paragraph
-    paginate_by = 100
+    paginate_by = 20
     template_name = "regulations/search_page.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["search_term"] = self.request.GET.get("q", "")
         context["search_form"] = SearchForm(self.request.GET)
         context["page_title"] = _("Search")
         return context
 
     def get_queryset(self):
         q = self.request.GET.get("q", "")
-
-        category = self.request.GET.get("category", "")
-        subcategory = self.request.GET.get("subcategory", "")
-        regime = self.request.GET.get("regime", "")
-
         paragraphs = search_paragraphs(q) if q else Paragraph.get_root_nodes()
-        paragraphs = filter_paragraphs(paragraphs, category, subcategory, regime)
+        paragraphs = filter_paragraphs(
+            paragraphs,
+            self.request.GET.get("category", None),
+            self.request.GET.get("subcategory", None),
+            self.request.GET.get("regime", None),
+        )
 
         return paragraphs
 
 
-def regulation_page(request: HttpRequest, regulation_code: str) -> HttpResponse:
-    regulation = Regulation.objects.get(code=regulation_code)
-    root_paragraphs = regulation.paragraphs.filter(depth=1)
+class RegulationDetailView(DetailView):
+    model = Regulation
+    template_name_suffix = "_detail"
+    slug_field = "code"
+    slug_url_kwarg = "code"
 
-    context = {
-        "page_title": settings.SITE_NAME,
-        "page_description": _("This is a test to see if the translations work"),
-        "regulation": regulation,
-        "root_paragraphs": root_paragraphs,
-    }
-
-    return render(request, "regulation_page.html", context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = settings.SITE_NAME
+        context["page_description"] = _("This is a test to see if the translations work")
+        context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
+        return super(RegulationDetailView, self).get_context_data(**kwargs)
