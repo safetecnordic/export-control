@@ -31,6 +31,8 @@ class Regulation(models.Model):
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
+    paragraphs: models.Manager[Paragraph]
+
     def __str__(self) -> str:
         # regime_number:03d fills the string with leading zeros if the regime number is less than 3 digits.
         # e.g. 1 -> "001"
