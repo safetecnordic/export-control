@@ -4,13 +4,13 @@
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start logo">
       <div class="logo">
-        <a href="{% url 'search_page' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <a href="{% url 'presentation' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           <img src="{% static 'img/logo/safetec-logo-rgb.png' %}" width="150" />
         </a>
       </div>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ml-2">
         <li class="nav-item">
-          <a href="{% url 'search_page' %}" class="nav-link px-2 link-dark 
+          <a href="{% url 'presentation' %}" class="nav-link px-2 link-dark 
             {% if request.path == '/en/' or request.path == '/no/' or 'search' in request.path %} active {% endif %}">
               {% trans "Search" %}
           </a>
