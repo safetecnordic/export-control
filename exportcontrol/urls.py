@@ -6,7 +6,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from regulations.views import SearchView
 from base.views import PresentationView
-from regulations.views import regulation_page, search_page
+from regulations.views import regulation_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -17,7 +17,6 @@ urlpatterns += i18n_patterns(
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/", include("accounts.urls")),
     path("", PresentationView.as_view(), name="presentation"),
-    path("", search_page, name="search_page"),
     path("regulation/<str:regulation_code>", regulation_page, name="regulation_page"),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
     path("contact-us/", TemplateView.as_view(template_name="base/contact_us.html"), name="contact_us"),
