@@ -17,6 +17,7 @@ urlpatterns += i18n_patterns(
     path("", search_page, name="search_page"),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
     path("contact-us/", TemplateView.as_view(template_name="base/contact_us.html"), name="contact_us"),
+    path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
 )
 
 if settings.DEBUG:
