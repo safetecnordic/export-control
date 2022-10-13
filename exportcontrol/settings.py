@@ -2,7 +2,7 @@ import os
 from django.urls import reverse_lazy
 from pathlib import Path
 from dotenv import load_dotenv
-from . import utils
+from exportcontrol.utils import to_int_or_default
 
 
 # Path helper
@@ -30,9 +30,12 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.postgres",
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "widget_tweaks",
+    "ckeditor",
+    "treebeard",
     "regulations",
     "accounts",
     "base",
@@ -78,7 +81,7 @@ DATABASES = {
         "USER": os.getenv("DB_USER", default="postgres"),
         "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
         "HOST": os.getenv("DB_HOST", default="localhost"),
-        "PORT": utils.to_int_or_default(os.getenv("DB_PORT"), default=5432),
+        "PORT": to_int_or_default(os.getenv("DB_PORT"), default=5432),
     }
 }
 
