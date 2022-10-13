@@ -31,6 +31,7 @@ class Regulation(models.Model):
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
+    # Related field from foreign key on Paragraph model
     paragraphs: models.Manager[Paragraph]
 
     def __str__(self) -> str:
@@ -195,6 +196,10 @@ class Paragraph(MP_Node):
     def full_name(self):
         codes = [paragraph.code for paragraph in self.get_ancestors_and_self()]
         return "".join(codes)
+
+    @property
+    def is_note(self):
+        return self.note_type != self.BASE
 
     def set_ancestors_are_public(self):
         included_in_non_public_subtree = self.__class__.objects.filter(
