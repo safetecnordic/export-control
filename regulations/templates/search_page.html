@@ -45,14 +45,16 @@
         <hr>
       
         <p>
-          {% for paragraph in paragraphs %}   
-            <p>{{paragraph.full_name}}: 
-              {% if search_term %}
-                {{paragraph.headline | safe}}...
-              {% else %}
-                {{paragraph.text | truncatechars:100}}
-              {% endif %}
-            </p>
+          {% for paragraph in paragraphs %}
+            <a href="/regulation/{{ paragraph.regulation.code }}" class="text-dark text-decoration-none">   
+              <p>{{paragraph.full_name}}: 
+                {% if search_term %}
+                  {{paragraph.headline | safe}}...
+                {% else %}
+                  {{paragraph.text | truncatechars:100}}
+                {% endif %}
+              </p>
+            </a>
             <hr>
           {% endfor %}
         </p>

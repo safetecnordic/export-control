@@ -3,11 +3,11 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
-from regulations.models import Category, Paragraph, SubCategory, Regime
-from .search import search_paragraphs, filter_paragraphs
 from utils.converters import str_to_int_or_none
 from regulations.forms import SearchForm
 from django.views.generic.list import ListView
+from .models import Category, Paragraph, Regulation, SubCategory, Regime
+from .search import search_paragraphs, filter_paragraphs
 
 
 class SearchView(ListView):
@@ -32,3 +32,17 @@ class SearchView(ListView):
         paragraphs = filter_paragraphs(paragraphs, category, subcategory, regime)
 
         return paragraphs
+
+
+def regulation_page(request: HttpRequest, regulation_code: str) -> HttpResponse:
+    regulation = Regulation.objects.get(code=regulation_code)
+    root_paragraphs = regulation.paragraphs.filter(depth=1)
+
+    context = {
+        "page_title": settings.SITE_NAME,
+        "page_description": _("This is a test to see if the translations work"),
+        "regulation": regulation,
+        "root_paragraphs": root_paragraphs,
+    }
+
+    return render(request, "regulation_page.html", context)
