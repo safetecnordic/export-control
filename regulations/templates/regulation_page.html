@@ -1,13 +1,17 @@
 {% extends "base/layout.html" %} {% load i18n %} {% block breadcrumbs %} {% endblock %} {% block header %}
 <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
   <div class="col-md-8 px-0">
-    <h1 class="display-4 fst-italic">{% trans "Example Title" %}</h1>
-    <p class="lead my-2">{% trans "Example Description" %}</p>
+    <h1 class="display-4 fst-italic">{% trans "Regulation" %} {{regulation.code}}</h1>
   </div>
 </div>
 {% endblock %} {% block content %}
 <div class="row g-5">
   <div class="col-md-4">
+    <div>
+      {% for paragraph in paragraphs %}
+      <div>{{paragraph.text}}</div>
+      {% endfor %}
+    </div>
     <div class="position-sticky" style="top: 2rem">
       <div class="p-4 mb-3 bg-light rounded">
         <h4 class="fst-italic">{% trans "About" %}</h4>
