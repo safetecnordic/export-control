@@ -6,38 +6,29 @@ from django.core.paginator import Paginator
 from regulations.models import Category, Paragraph, SubCategory, Regime
 from .search import search_paragraphs, filter_paragraphs
 from utils.converters import str_to_int_or_none
+from regulations.forms import SearchForm
+from django.views.generic.list import ListView
 
 
-def search_page(request: HttpRequest) -> HttpResponse:
-    search_term = request.GET.get("q")
-    page = str_to_int_or_none(request.GET.get("page"))
-    category_id = str_to_int_or_none(request.GET.get("category"))
-    subcategory_id = str_to_int_or_none(request.GET.get("subcategory"))
-    regime_id = str_to_int_or_none(request.GET.get("regime"))
+class SearchView(ListView):
+    model = Paragraph
+    paginate_by = 100
+    template_name = "regulations/search_page.html"
 
-    paragraphs = search_paragraphs(search_term) if search_term else Paragraph.get_root_nodes()
-    paragraphs = filter_paragraphs(paragraphs, category_id, subcategory_id, regime_id)
-    paragraphs = Paginator(paragraphs, 10).get_page(page) if paragraphs else None
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = SearchForm(self.request.GET)
+        context["page_title"] = _("Search")
+        return context
 
-    categories = Category.objects.all()
-    subcategories = SubCategory.objects.all()
-    regimes = Regime.objects.all()
+    def get_queryset(self):
+        q = self.request.GET.get("q", "")
 
-    category = Category.objects.get(id=category_id) if category_id else None
-    subcategory = SubCategory.objects.get(id=subcategory_id) if subcategory_id else None
-    regime = Regime.objects.get(id=regime_id) if regime_id else None
+        category = self.request.GET.get("category", "")
+        subcategory = self.request.GET.get("subcategory", "")
+        regime = self.request.GET.get("regime", "")
 
-    context = {
-        "page_title": settings.SITE_NAME,
-        "page_description": _("This is a test to see if the translations work"),
-        "search_term": search_term,
-        "paragraphs": paragraphs,
-        "categories": categories,
-        "subcategories": subcategories,
-        "regimes": regimes,
-        "category": category,
-        "subcategory": subcategory,
-        "regime": regime,
-    }
+        paragraphs = search_paragraphs(q) if q else Paragraph.get_root_nodes()
+        paragraphs = filter_paragraphs(paragraphs, category, subcategory, regime)
 
-    return render(request, "search_page.html", context)
+        return paragraphs

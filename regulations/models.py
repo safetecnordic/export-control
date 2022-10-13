@@ -60,8 +60,7 @@ class Category(models.Model):
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
     def __str__(self) -> str:
-        part_str = f".{self.part}" if self.part is not None else ""
-        return f"{self.identifier}{part_str}: {self.name}"
+        return f"{self.identifier}.{self.part}: {self.name}"
 
 
 class SubCategory(models.Model):
