@@ -45,13 +45,13 @@ def search_page(request: HttpRequest) -> HttpResponse:
 
 def regulation_page(request: HttpRequest, regulation_code: str) -> HttpResponse:
     regulation = Regulation.objects.get(code=regulation_code)
-    paragraphs = regulation.paragraphs.all()
+    root_paragraphs = regulation.paragraphs.filter(depth=1)
 
     context = {
         "page_title": settings.SITE_NAME,
         "page_description": _("This is a test to see if the translations work"),
         "regulation": regulation,
-        "paragraphs": paragraphs,
+        "root_paragraphs": root_paragraphs,
     }
 
     return render(request, "regulation_page.html", context)

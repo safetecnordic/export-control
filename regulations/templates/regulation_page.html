@@ -1,15 +1,25 @@
-{% extends "base/layout.html" %} {% load i18n %} {% block breadcrumbs %} {% endblock %} {% block header %}
-<div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-  <div class="col-md-8 px-0">
-    <h1 class="display-4 fst-italic">{% trans "Regulation" %} {{regulation.code}}</h1>
+{% extends "base/layout.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block header %}
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+    <div class="col-md-8 px-0">
+      <h1 class="display-4 fst-italic">
+        {% trans "Regulation" %} {{regulation.code}}
+      </h1>
+    </div>
   </div>
-</div>
-{% endblock %} {% block content %}
-<div class="row g-5">
-  <div class="col-md-4">
+{% endblock %}
+
+{% block content %}
+  <div class="row g-5">
     <div>
-      {% for paragraph in paragraphs %}
-      <div>{{paragraph.text}}</div>
+      {% for paragraph in root_paragraphs %}
+        {% include "components/recursive_paragraph.html" %}
       {% endfor %}
     </div>
     <div class="position-sticky" style="top: 2rem">
@@ -26,5 +36,4 @@
       </div>
     </div>
   </div>
-</div>
 {% endblock %}
