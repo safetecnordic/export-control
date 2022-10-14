@@ -12,8 +12,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/", include("accounts.urls")),
     path("", PresentationView.as_view(), name="presentation"),
     path("regulations/", include("regulations.urls")),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
