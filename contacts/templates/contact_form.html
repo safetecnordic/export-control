@@ -1,10 +1,18 @@
 {% include "base/base.html" %}
 <main class="container">
-  <div class="form-group">
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Submit">
-    </form>
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-md-8 offset-md-2">
+      <h2 class="mb-3 text-center">Consult Safetech</h2>
+      <p class="text-center">Any questions? Send a message and we get back to you soon!</p>
+      <div class="form-group">
+        <form method="post">
+          {% csrf_token %}
+          {{ form}}
+          <div class="row button-div">
+            <button type="submit" class="btn-block btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </main>
