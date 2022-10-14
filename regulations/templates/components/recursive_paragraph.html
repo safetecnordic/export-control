@@ -1,0 +1,19 @@
+<li>
+  {% if paragraph.depth != 1 %}
+    <span class="fw-bold">{{ paragraph.code }} </span>
+  {% endif %}
+
+  <span class="{% if paragraph.is_note %}fst-italic{% endif %}">
+    {{ paragraph.text | safe }}
+  </span>
+
+  {% if paragraph.get_children_count != 0 %}
+    <ul>
+      {% for child_paragraph in paragraph.get_children %}
+        {% with paragraph=child_paragraph template_name="components/recursive_paragraph.html" %}
+          {% include template_name %}
+        {%endwith%}
+      {%endfor%}
+    </ul>
+  {% endif %}
+</li>

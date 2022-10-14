@@ -2,15 +2,37 @@
 
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="{% url 'search_page' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-        <img src="{% static 'img/logo/safetec-logo-rgb.png' %}" width="150" />
-      </a>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start logo">
+      <div class="logo">
+        <a href="{% url 'search_page' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <img src="{% static 'img/logo/safetec-logo-rgb.png' %}" width="150" />
+        </a>
+      </div>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ml-2">
-        <li><a href="#" class="nav-link px-2 link-dark">{% trans "Search" %}</a></li>
-        <li><a href="{% url 'about_us' %}" class="nav-link px-2 link-dark">{% trans "About us" %}</a></li>
-        <li><a href="{% url 'contact_us' %}" class="nav-link px-2 link-dark">{% trans "Contact us" %}</a></li>
+        <li class="nav-item">
+          <a href="{% url 'search_page' %}" class="nav-link px-2 link-dark 
+            {% if request.path == '/en/' or request.path == '/no/' or 'search' in request.path %} active {% endif %}">
+              {% trans "Search" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'about_us' %}" class="nav-link px-2 link-dark {% if 'about-us' in request.path %} active {% endif %}">
+            {% trans "About us" %} 
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'contact_us' %}" class="nav-link px-2 link-dark {% if 'contact-us' in request.path %} active {% endif %}">
+            {% trans "Contact us" %}
+          </a>
+        </li>
+         <li>
+          <a
+            href="{% url 'export_control_law' %}"
+            class="nav-link px-2 link-dark"
+            >{% trans "Export Control Law" %}</a>
+        </li>
       </ul>
+      
       <div class="dropdown text-end">
         <a
           href="#"

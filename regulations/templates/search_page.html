@@ -22,26 +22,19 @@
         </h3>
         <h3>
         <form novalidate>
-          {% if search_term %}
-            <input
-              type="text"
-              class="form-control border-0 border-bottom-1"
-              id="address"
-              placeholder="{{search_term}}"
-              required=""
-              name="q"
+          
+          <input
+            type="text"
+            class="form-control border-0 border-bottom-1"
+            id="address"
+            required=""
+            name="q"
+            {% if search_term %}
               value="{{search_term}}"
-            >
-          {% else %}
-            <input
-              type="text"
-              class="form-control border-0 border-bottom-1"
-              id="address"
+              placeholder="{{search_term}}"
+            {% else %}
               placeholder="Enter the text..."
-              required=""
-              name="q"
-            >
-          {% endif %}
+            {% endif %} />
         </h3>
           <div class="row">
             <div class="col-md-4 mb-3">
@@ -104,20 +97,22 @@
             </div>
           </div>
           <div class="row button-div">
-              <button type="submit" class="btn-block btn btn-primary">Search <i class="bi bi-search"></i></button>
+              <button type="submit" class="btn-block btn btn-primary shadow-none">Search <i class="bi bi-search"></i></button>
           </div>
         </form>
         <hr>
       
         <p>
-          {% for paragraph in paragraphs %}   
-            <p>{{paragraph.full_name}}: 
-              {% if search_term %}
-                {{paragraph.headline | safe}}...
-              {% else %}
-                {{paragraph.text | truncatechars:100}}
-              {% endif %}
-            </p>
+          {% for paragraph in paragraphs %}
+            <a href="/regulation/{{ paragraph.regulation.code }}" class="text-dark text-decoration-none">   
+              <p>{{paragraph.full_name}}: 
+                {% if search_term %}
+                  {{paragraph.headline | safe}}...
+                {% else %}
+                  {{paragraph.text | truncatechars:100}}
+                {% endif %}
+              </p>
+            </a>
             <hr>
           {% endfor %}
         </p>

@@ -1,0 +1,84 @@
+{% extends "base/layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'presentation' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+      {% trans "Export control law" %}
+    </li>
+  </ol>
+</nav>
+{% endblock %} {% block header %}
+<div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+  <div class="col-md-8 px-0">
+    <h1 class="display-6 fst-italic">
+      {% trans "About the export control law " %}
+    </h1>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mb-4">
+  <div>
+    <a
+      class="btn btn-info btn-large"
+      href="{% static 'documents/Liste1.pdf' %}"
+    >
+      Liste I
+    </a>
+  </div>
+  <div>
+    <a class="btn btn-info btn-large" href="{% static 'documents/Liste2.pdf' %}"
+      >Liste II</a
+    >
+  </div>
+  <div>
+    <a class="btn btn-info btn-large" href="https://lovdata.no/dokument/SF/forskrift/2013-06-19-718#KAPITTEL_8">
+        Lovdata eksportkontrollforskriften
+    </a>
+  </div>
+</div>
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="text-center">
+        Formål med loven
+    </h2>
+    <h3>
+        Lovgiving
+    </h3>
+    <p>
+        Det er forbudt å eksportere visse strategiske varer, 
+        tjenester og teknologi uten tillatelse (lisens)  fra Utenriksdepartementet. 
+        Bedrifter og enkeltpersoner oppfordres til å sette seg inn i og å overholde 
+        eksportkontrollregelverket. Regelverket består av Eksportkontrolloven, 
+        Eksportkontrollforskriften og Retningslinjer for saksbehandlingen. 
+        Sistnevnte publiseres i årlig stortingsmelding.
+    </p>
+    <h3>
+        Eksportkontrollforskriften
+    </h3>
+    <p>
+        Forskrift om eksport av forsvarsmateriell, flerbruksvarer, teknologi og 
+        tjenester gir nærmere anvisninger på hva lisensplikten omfatter mht. 
+        varelister, tjenester, handel og formidling.  
+        Videre inneholder Eksportkontrollforskriften en bestemmelse om mer vidtgående 
+        lisensplikt under visse omstendigheter, fang-alt bestemmelsen. 
+        Denne bestemmelsen innebærer at det er lisensplikt uansett i 
+        fire tilfelle (forkortet og forenklet her): i forbindendelse med 
+        masseødeleggelsesvåpen, til militær bruk når  et land er underlagt sanksjoner, 
+        til militær bruk i områder hvor det er krig, 
+        krig truer eller det er borgerkrig samt dersom eksporten kan 
+        tjene til å utvikle militær evne i strid med vesentlige norske interesser. 
+        I tillegg inneholder forskriften særlige bestemmelser for eksport av 
+        forsvarsmateriell innen EØS området. 
+        De to norske varelistene er vedlegg til Eksportkontrollforskriften.
+    </p>
+  </div>
+  <div class="col-md-5">
+    <img style="width:70%;" src="{% static 'img/norway_coat_of_arms.png' %}"
+    alt="Riksvåpenet" />
+  </div>
+</div>
+
+{% endblock %}

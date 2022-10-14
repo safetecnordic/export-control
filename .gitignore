@@ -315,3 +315,6 @@ exportcontrol/public/static/
 
 # Mac DS_Store files
 .DS_Store
+
+# VSCode project settings
+.vscode
