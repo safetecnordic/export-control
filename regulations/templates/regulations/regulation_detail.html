@@ -8,8 +8,8 @@
 {% block header %}
   <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
     <div class="col-md-8 px-0">
-      <h1 class="display-4 fst-italic">
-        {% trans "Regulation" %} {{regulation.code}}
+      <h1 class="display-6 fst-italic">
+        {% trans "Regulation" %} {{ object.code }}
       </h1>
     </div>
   </div>
@@ -19,7 +19,7 @@
   <div class="row g-5">
     <div>
       {% for paragraph in root_paragraphs %}
-        {% include "components/recursive_paragraph.html" %}
+        {% include "regulations/partials/recursive_paragraph.html" %}
       {% endfor %}
     </div>
     <div class="position-sticky" style="top: 2rem">

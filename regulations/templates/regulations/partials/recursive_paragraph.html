@@ -10,7 +10,7 @@
   {% if paragraph.get_children_count != 0 %}
     <ul>
       {% for child_paragraph in paragraph.get_children %}
-        {% with paragraph=child_paragraph template_name="components/recursive_paragraph.html" %}
+        {% with paragraph=child_paragraph template_name="regulations/partials/recursive_paragraph.html" %}
           {% include template_name %}
         {%endwith%}
       {%endfor%}
