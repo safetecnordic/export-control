@@ -1,0 +1,42 @@
+{% extends "base/layout.html" %}
+{% load i18n %} 
+{% load widget_tweaks %}
+{% block breadcrumbs %}
+ 
+{% endblock %}
+
+{% block content %}
+    <div class="row g-5">
+        <div class="col-md-12">
+          {% block search %}{% include "base/partials/search.html" %}{% endblock %}
+          <div class="row pb-4 fst-italic mt-1">
+            <div class="col-md-12">
+              <i class="bi bi-search"></i> {% trans "Searched:" %}<b> {{search_term}}</b>
+            </div>
+            <div class="col-md-12 text-right">
+              <i class="bi bi-check2-circle"></i>{% trans "Results:" %}</a> <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
+            </div>
+          </div>
+            {% if paragraph_list %}
+              <div class="mt-5">
+                {% for paragraph in paragraph_list %}
+                <a href="{% url 'regulation_detail' code=paragraph.regulation.code %}" class="text-dark text-decoration-none">   
+                  <p>{{ paragraph.full_name }}: &nbsp;
+                    {% if search_term %}
+                      {{paragraph.headline | safe}}...
+                    {% else %}
+                      {{paragraph.text | truncatechars:100}}
+                      {% endif %}
+                    </p>
+                  </a>
+                  <hr>
+                  {% endfor %}
+                </div>
+              {% include "base/partials/pagination.html" %}
+            {% else %}
+              
+                  
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
