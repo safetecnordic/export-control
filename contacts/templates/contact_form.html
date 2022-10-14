@@ -1,15 +1,17 @@
 {% include "base/base.html" %}
+{% load crispy_forms_tags %}
+
 <main class="container">
-  <div class="row" style="margin-top: 50px;">
+  <div class="row mt-5">
     <div class="col-md-8 offset-md-2">
       <h2 class="mb-3 text-center">Consult Safetech</h2>
       <p class="text-center">Any questions? Send a message and we get back to you soon!</p>
       <div class="form-group">
         <form method="post">
           {% csrf_token %}
-          {{ form}}
+          {{ form | crispy}}
           <div class="row button-div">
-            <button type="submit" class="btn-block btn btn-primary">Send Message</button>
+            <button type="submit" class="btn-block btn btn-primary mt-4">Send Message</button>
           </div>
         </form>
       </div>

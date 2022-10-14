@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     "ckeditor",
     "treebeard",
     "phonenumber_field",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "regulations",
     "accounts",
     "base",
     "contacts",
 ]
+
+# https://pypi.org/project/crispy-bootstrap5/
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

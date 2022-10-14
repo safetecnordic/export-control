@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import CreateView
@@ -22,4 +23,6 @@ class AddContactView(CreateView):
     #success_url = '/' 
     def form_valid(self, form): 
         form.save()
+        # TODO: redirect to the thank you page
+        #messages.success(self.request, "Thank you for your question, we get back to you soon!")
         return redirect(reverse('search_page'))
