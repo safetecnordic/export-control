@@ -1,13 +1,14 @@
+from re import template
 from django.urls import path
 from django.conf import settings
 from django.conf.urls import include
-from contacts.views import send_contact, AddContactView
+from django.views.generic import TemplateView
+from contacts.views import AddContactView
 
 urlpatterns = [
-    path('add-contact',  AddContactView.as_view(),  name = 'add_contact'),
-    #path('', ContactFormView.as_view(), name = 'add_contact')
+    path('add-contact/',  AddContactView.as_view(),  name='add_contact'),
+    path('thank-you/', TemplateView.as_view(template_name="thank_you.html"), name = 'thank_you')
 ]
-
 
 if settings.DEBUG:
     import debug_toolbar  # type: ignore

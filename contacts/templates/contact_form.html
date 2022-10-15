@@ -10,21 +10,14 @@
   </nav>
 {% endblock %}
 
-{% block header %}
-    <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-        <div class="col-md-8 px-0">
-        <h1 class="display-6 fst-italic">{% trans "Consult Safetech" %}</h1>
-        <p class="mt-3 fst-italic mb-0">Any questions? Send a message and we get back to you soon!</p>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
 {% load crispy_forms_tags %}
 
 
   <div class="row mt-5">
     <div class="col-md-8 ">
+      <h1 class="display-6 fst-italic">{% trans "Consult Safetech" %}</h1>
+      <p class="mt-3 fst-italic">Any questions? Send a message and we get back to you soon!</p>
       <div class="form-group">
         <form method="post">
           {% csrf_token %}

@@ -23,5 +23,4 @@ class AddContactView(CreateView):
     #success_url = '/' 
     def form_valid(self, form): 
         form.save()
-        # TODO: redirect to the thank you page
-        return redirect(reverse('presentation'))
+        return redirect(reverse('thank_you'))
