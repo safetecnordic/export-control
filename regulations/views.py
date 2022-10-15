@@ -49,4 +49,4 @@ class RegulationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
-        return super(RegulationDetailView, self).get_context_data(**kwargs)
+        return context

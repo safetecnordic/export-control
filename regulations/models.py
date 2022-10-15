@@ -161,8 +161,6 @@ class Paragraph(MP_Node):
         (TECHNICAL_NOTE, _("Technical Note")),
     )
 
-    node_order_by = ["code"]
-
     code: types.CharField = models.CharField(max_length=256, default="-")
     note_type: types.CharField = models.CharField(
         max_length=256,
@@ -197,7 +195,10 @@ class Paragraph(MP_Node):
         return "".join(codes)
 
     @property
-    def is_note(self):
+    def is_special(self):
+        """
+        :returns: True if the paragraph is Note, N.B. or Technical Note, False otherwise.
+        """
         return self.note_type != self.BASE
 
     def set_ancestors_are_public(self):
@@ -233,9 +234,3 @@ class Paragraph(MP_Node):
         :returns: A queryset of descendant paragraphs ordered as DFS, including the paragraph itself.
         """
         return self.get_tree(self)
-
-    def is_special(self):
-        """
-        :returns: True if the paragraph is Note, N.B. or Technical Note, False otherwise.
-        """
-        return self.note_type != self.BASE
