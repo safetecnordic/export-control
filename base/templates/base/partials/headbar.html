@@ -10,8 +10,8 @@
       </div>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ml-2">
         <li class="nav-item">
-          <a href="{% url 'presentation' %}" class="nav-link px-2 link-dark 
-            {% if request.path == '/en/' or request.path == '/no/' or 'search' in request.path %} active {% endif %}">
+          <a href="{% url 'search' %}" class="nav-link px-2 link-dark 
+            {% if  'search' in request.path %} active {% endif %}">
               {% trans "Search" %}
           </a>
         </li>
