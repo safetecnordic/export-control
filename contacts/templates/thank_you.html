@@ -12,4 +12,14 @@
 {% endblock %}
 
 {% block content %}
+<div class="row featurette">
+    <div class="col-md-8 ">
+      <p class="lead">Would you like to visit our home page to find out more about our services?</p>
+      <hr/>
+      <div class="text-center">
+        <a class="btn btn-primary shadow-none" href="https://www.safetec.no/">Visit Safetech</a>
+        <a class="btn btn-outline-primary shadow-none" href="{% url 'search' %}">Continue search</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
