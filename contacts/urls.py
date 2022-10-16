@@ -9,11 +9,3 @@ urlpatterns = [
     path('add-contact/',  AddContactView.as_view(),  name='add_contact'),
     path('thank-you/', TemplateView.as_view(template_name="thank_you.html"), name = 'thank_you')
 ]
-
-if settings.DEBUG:
-    import debug_toolbar  # type: ignore
-
-    # Allow error pages to be tested
-    urlpatterns += [
-        path("__debug__/", include(debug_toolbar.urls)),
-    ]
