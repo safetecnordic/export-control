@@ -29,7 +29,7 @@
 
                     {% block errors %}
                         {% for error in field.errors %}
-                            <span class="error-block"><i class="bi bi-exclamation-circle"></i> {{ error }}</span>
+                            <span class="error-block" style="color:red;"> {{ error }}</span>
                         {% endfor %}
                     {% endblock %}
 
