@@ -2,12 +2,20 @@
 {% load i18n %}
 
 {% block breadcrumbs %}
-
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'presentation' %}">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.category }}</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.sub_category }}</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.regime }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ object.code }} {% if user.is_authenticated and user.is_staff %}<a href="{% url 'admin:regulations_regulation_change' object.pk %}"><i class="bi bi-gear"></i></a>{% endif %} </li>
+    </ol>
+  </nav>
 {% endblock %}
 
 {% block header %}
-  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-    <div class="col-md-8 px-0">
+  <div class="row p-4 mb-4 p-md-5 text-dark rounded bg-light">
+    <div class="col-md-12">
       <h1 class="display-6 fst-italic">
         {% trans "Regulation" %} {{ object.code }}
       </h1>
@@ -16,24 +24,14 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row g-5">
-    <div>
-      {% for paragraph in root_paragraphs %}
-        {% include "regulations/partials/recursive_paragraph.html" %}
-      {% endfor %}
-    </div>
-    <div class="position-sticky" style="top: 2rem">
-      <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="fst-italic">{% trans "About" %}</h4>
-        <p class="mb-0">
-          What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-          has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-          type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-          into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-          Aldus PageMaker including versions of Lorem Ipsum. up to you.
-        </p>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+        <ul>
+          {% for paragraph in root_paragraphs %} 
+            {% include "regulations/partials/recursive_paragraph.html" %}
+          {%endfor%}
+        </ul>
     </div>
   </div>
 {% endblock %}
+  

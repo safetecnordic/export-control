@@ -20,7 +20,7 @@
             {% if paragraph_list %}
               <div class="mt-5">
                 {% for paragraph in paragraph_list %}
-                <a href="{% url 'regulation_detail' code=paragraph.regulation.code %}" class="text-dark text-decoration-none">   
+                <a href="{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}" class="text-dark text-decoration-none">   
                   <p>{{ paragraph.full_name }}: &nbsp;
                     {% if search_term %}
                       {{paragraph.headline | safe}}...
