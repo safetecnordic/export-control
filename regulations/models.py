@@ -195,7 +195,7 @@ class Paragraph(MP_Node):
         return "".join(codes)
 
     @property
-    def is_special(self):
+    def is_note(self):
         """
         :returns: True if the paragraph is Note, N.B. or Technical Note, False otherwise.
         """
