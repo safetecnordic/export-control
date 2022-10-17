@@ -161,11 +161,11 @@ class Command(BaseCommand):
         paragraph = paragraph_parent.add_child(regulation=regulation, text=text, code=code, note_type=note_type)
         return paragraph
 
-    def _create_regulation(self, first_word, line, part=1):
+    def _create_regulation(self, first_word, line):
         category, new = Category.objects.get_or_create(identifier=first_word[0], part=part)
         sub_category, new = SubCategory.objects.get_or_create(identifier=first_word[1])
 
-        regime, new = Regime.objects.get_or_create(number_range_max=99)
+        regime = self._get_regime_from_code(first_word)
         regulation = Regulation.objects.create(
             category=category, sub_category=sub_category, regime=regime, code=first_word
         )
@@ -203,6 +203,12 @@ class Command(BaseCommand):
         Regime.objects.create(number_range_min=201, number_range_max=299, name="Nuclear Suppliers Group (NSG)")
         Regime.objects.create(number_range_min=301, number_range_max=399, name="Australia Group (AG)")
         Regime.objects.create(number_range_min=401, number_range_max=499, name="Chemical Weapons Convention (CWC)")
+
+    def _get_regime_from_code(self, code):
+        if code and len(code) == 5:
+            regime_number = int(code[2:])
+            return Regime.objects.filter(number_range_max__gte=regime_number).first()
+        return None
 
 
 """

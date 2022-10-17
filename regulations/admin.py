@@ -54,7 +54,7 @@ class ParagraphAdmin(TreeAdmin):
         "code",
         "text",
     )
-    list_filter = ("category", "sub_category", "regulation")
+    list_filter = ("category", "sub_category", "regulation__regime", "regulation")
 
 
 admin.site.register(Regulation, RegulationAdmin)
