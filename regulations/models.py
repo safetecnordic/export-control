@@ -57,13 +57,14 @@ class Category(models.Model):
 
     identifier: types.IntegerField = models.IntegerField()
     name: types.CharField = models.CharField(max_length=256)
-    part: types.IntegerField = models.IntegerField(null=True, default=1)
+    part: types.IntegerField = models.IntegerField(null=True)
 
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
     def __str__(self) -> str:
-        return f"{self.identifier}.{self.part}: {self.name}"
+        part_str = f".{self.part}" if self.part is not None else ""
+        return f"{self.identifier}{part_str}: {self.name}"
 
 
 class SubCategory(models.Model):
