@@ -34,19 +34,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "widget_tweaks",
+    "tinymce",
     "ckeditor",
     "treebeard",
     "phonenumber_field",
-    "crispy_forms",
-    "crispy_bootstrap5",
     "regulations",
     "base",
     "contacts",
 ]
-
-# https://pypi.org/project/crispy-bootstrap5/
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -79,6 +74,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "exportcontrol.wsgi.application"
+
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
