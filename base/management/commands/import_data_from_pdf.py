@@ -161,8 +161,11 @@ class Command(BaseCommand):
         paragraph = paragraph_parent.add_child(regulation=regulation, text=text, code=code, note_type=note_type)
         return paragraph
 
-    def _create_regulation(self, first_word, line):
-        category, new = Category.objects.get_or_create(identifier=first_word[0], part=part)
+    def _create_regulation(self, first_word, line, part=None):
+        category_identifier = first_word[0]
+        category_part = 1 if category_identifier == "5" else None
+        category, new = Category.objects.get_or_create(identifier=category_identifier, part=category_part)
+
         sub_category, new = SubCategory.objects.get_or_create(identifier=first_word[1])
 
         regime = self._get_regime_from_code(first_word)
