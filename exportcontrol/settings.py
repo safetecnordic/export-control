@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "widget_tweaks",
-    "tinymce",
     "ckeditor",
     "treebeard",
     "phonenumber_field",
