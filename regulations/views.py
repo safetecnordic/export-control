@@ -1,14 +1,9 @@
-from django.conf import settings
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
 from django.utils.translation import gettext as _
-from django.core.paginator import Paginator
-from utils.converters import str_to_int_or_none
 from regulations.forms import SearchForm
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 
-from regulations.models import Category, Paragraph, Regulation, SubCategory, Regime
+from regulations.models import Paragraph, Regulation
 from regulations.search import search_paragraphs, filter_paragraphs
 
 
@@ -49,4 +44,4 @@ class RegulationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
-        return super(RegulationDetailView, self).get_context_data(**kwargs)
+        return context

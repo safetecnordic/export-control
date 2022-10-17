@@ -1,19 +1,22 @@
-<li>
-  {% if paragraph.depth != 1 %}
-    <span class="fw-bold">{{ paragraph.code }} </span>
-  {% endif %}
-
+<li> 
+  <span class="fw-bold {% if paragraph.is_note %}fst-italic{% endif %}" id="{{ paragraph.pk }}">
+    {% if user.is_authenticated and user.is_staff %}
+      <a href="{% url 'admin:regulations_paragraph_change' paragraph.pk %}">{{ paragraph.code }}</a>
+    {% else %}
+      {{ paragraph.code }}
+    {% endif %}
+  </span>
   <span class="{% if paragraph.is_note %}fst-italic{% endif %}">
     {{ paragraph.text | safe }}
   </span>
-
-  {% if paragraph.get_children_count != 0 %}
+  
+  {%if paragraph.numchild %}
     <ul>
-      {% for child_paragraph in paragraph.get_children %}
-        {% with paragraph=child_paragraph template_name="regulations/partials/recursive_paragraph.html" %}
-          {% include template_name %}
+      {%for child in paragraph.get_children %}
+        {%with paragraph=child template_name="regulations/partials/recursive_paragraph.html" %}
+          {%include template_name %}
         {%endwith%}
       {%endfor%}
     </ul>
-  {% endif %}
+  {%endif%}
 </li>
