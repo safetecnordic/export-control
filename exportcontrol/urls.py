@@ -12,11 +12,11 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path("", PresentationView.as_view(), name="presentation"),
     path("regulations/", include("regulations.urls")),
+    path("contacts/", include("contacts.urls")),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
-    path("contact-us/", TemplateView.as_view(template_name="base/contact_us.html"), name="contact_us"),
     path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
+    path("", PresentationView.as_view(), name="presentation"),
 )
 
 if settings.DEBUG:

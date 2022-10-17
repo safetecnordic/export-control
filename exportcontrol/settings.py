@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "ckeditor",
     "treebeard",
+    "phonenumber_field",
     "regulations",
     "base",
+    "contacts",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "exportcontrol.wsgi.application"
+
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {

@@ -11,6 +11,11 @@
   src: url('../fonts/AktivGrotesk-Light.ttf') format("truetype");
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   font-family: "AktivGrotesk-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
@@ -18,7 +23,7 @@ body {
 
 header {
   font-family: "AktivGrotesk-Light";
-  font-size: 21px;
+  font-size: 19px;
   line-height: 21px;
   font-weight: 400;
   color: #3c3c3b;
@@ -26,15 +31,31 @@ header {
 
 .btn-primary {
     background-color: #58B0AE;
-    border: none;
+    border: 2px solid #58B0AE;
+    border: 2px solid #58B0AE;
     margin-left:10px;
-    font-weight: bolder;
+    font-weight: normal;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
     background-color: #347F82;
+    border: 2px solid #347F82;
+}
+
+.btn-outline-primary {
+  color: #58B0AE;
+  margin-left:0px;
+  font-weight: normal;
+  border: 2px solid #58B0AE;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+  background-color: #347F82;
+  border: 2px solid #347F82;
 }
 
 .button-div {
@@ -91,4 +112,29 @@ footer aactive,
 
 footer ul {
   display: block;
+}
+
+body {
+  margin-bottom: 140px;
+  /* bottom = footer height */
+  padding-bottom: 40px;
+}
+
+footer{
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin-bottom: 320px;
+  }
+  footer {
+    height: 320px;
+    width: 100%;
+    overflow: hidden;
+  }
 }
