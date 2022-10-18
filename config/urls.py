@@ -4,7 +4,7 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
-from base.views import PresentationView
+from base.views import FrontPageView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -16,7 +16,7 @@ urlpatterns += i18n_patterns(
     path("contacts/", include("contacts.urls")),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
     path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
-    path("", PresentationView.as_view(), name="presentation"),
+    path("", FrontPageView.as_view(), name="front_page"),
 )
 
 if settings.DEBUG:

@@ -1,6 +1,14 @@
-# exportcontrol
+# export-control
 
 Info site for the Norwegian Export Control law.
+
+## Project structure
+
+- `config` contains the configuration (settings and URLs) for the Django app
+- `regulations` contains the models and pages for regulations in the export control law
+- `contacts` contains models and pages for contact information from users
+- `base` contains base templates and and pages for the website
+- `utils` contains utility functions and types for the app
 
 ## Project setup
 
@@ -19,8 +27,8 @@ Info site for the Norwegian Export Control law.
 3. Clone the repo (and navigate into it)
 
    ```
-   git clone https://github.com/cdp-group4/exportcontrol.git
-   cd exportcontrol
+   git clone https://github.com/cdp-group4/export-control.git
+   cd export-control
    ```
 
 4. Set up Python virtual environment (to isolate dependencies)
@@ -78,6 +86,6 @@ Info site for the Norwegian Export Control law.
 
 12. Parse pdf into the database
 
-      ```
-      python manage.py loaddata regulations.json
-      ```
+    ```
+    python manage.py loaddata regulations.json
+    ```
