@@ -1,4 +1,4 @@
-# exportcontrol
+# export-control
 
 Info site for the Norwegian Export Control law.
 
@@ -19,8 +19,8 @@ Info site for the Norwegian Export Control law.
 3. Clone the repo (and navigate into it)
 
    ```
-   git clone https://github.com/cdp-group4/exportcontrol.git
-   cd exportcontrol
+   git clone https://github.com/cdp-group4/export-control.git
+   cd export-control
    ```
 
 4. Set up Python virtual environment (to isolate dependencies)
@@ -78,6 +78,6 @@ Info site for the Norwegian Export Control law.
 
 12. Parse pdf into the database
 
-      ```
-      python manage.py loaddata regulations.json
-      ```
+    ```
+    python manage.py loaddata regulations.json
+    ```
