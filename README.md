@@ -2,6 +2,14 @@
 
 Info site for the Norwegian Export Control law.
 
+## Project structure
+
+- `config` contains the configuration (settings and URLs) for the Django app
+- `regulations` contains the models and pages for regulations in the export control law
+- `contacts` contains models and pages for contact information from users
+- `base` contains base templates and and pages for the website
+- `utils` contains utility functions and types for the app
+
 ## Project setup
 
 1. Make sure you have Python 3.10 installed (https://www.python.org/downloads/)
