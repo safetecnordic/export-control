@@ -64,7 +64,7 @@ Info site for the Norwegian Export Control law.
    DEBUG=true
    ```
 
-   If you have set a custom database name, user, password, host or port for Postgres, also add values for `DB_NAME`/`DB_USER`/`DB_PASSWORD`/`DB_HOST`/`DB_PORT`.
+   If you have set a custom database name, user, password, host or port for Postgres, also add values for `DBNAME`/`DBUSER`/`DBPASS`/`DBHOST`/`DBPORT`.
 
 9. Start server (requires Postgres database server to be running as well)
 
