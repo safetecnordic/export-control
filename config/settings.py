@@ -21,7 +21,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", "false") == "true"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+AZURE_WEBSITE_HOSTNAME = os.getenv("WEBSITE_HOSTNAME")
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + [AZURE_WEBSITE_HOSTNAME] if AZURE_WEBSITE_HOSTNAME is not None else []
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
