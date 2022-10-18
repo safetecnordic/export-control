@@ -8,27 +8,29 @@
           <img src="{% static 'img/logo/safetec-logo-rgb.png' %}" width="150" />
         </a>
       </div>
+    </div>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ml-2">
-        <li class="nav-item">
+        <li class="nav-item my-2">
           <a href="{% url 'search' %}" class="nav-link px-2 link-dark 
             {% if  'search' in request.path %} active {% endif %}">
               {% trans "Search" %}
           </a>
         </li>
-        <li>
+        <li class="nav-item my-2 mx-5">
           <a href="{% url 'about_us' %}" class="nav-link px-2 link-dark {% if 'about-us' in request.path %} active {% endif %}">
             {% trans "About us" %} 
           </a>
         </li>
-        <li>
+        <li class="nav-item my-2">
           <a
             href="{% url 'export_control_law' %}"
             class="nav-link px-2 link-dark  {% if 'export' in request.path %} active {% endif %}"
             >{% trans "Export Control Law" %}</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item my-2 mx-5">
           <a href="{% url 'add_contact' %}" class="nav-link px-2 link-dark {% if  'add' in request.path %} active {% endif %}">
-              {% trans "Consult Safetech" %}
+              {% trans "Consult Safetec" %}
           </a>
         </li>
       </ul>
