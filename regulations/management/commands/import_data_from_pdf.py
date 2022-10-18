@@ -7,9 +7,9 @@ from regulations.models import Category, SubCategory, Regime, Regulation, Paragr
 class Command(BaseCommand):
     """
     To run the command:
-    `python manage.py import_data_from_pdf --file=regulations/static/forskrift.txt --flush=True`
+    `python manage.py import_data_from_pdf --file=regulations/static/export-control.txt --flush=True`
 
-    To dump importe data to `regulations.json`:
+    To dump imported data to `regulations.json`:
     `python manage.py dumpdata regulations > regulations.json`
     """
 
