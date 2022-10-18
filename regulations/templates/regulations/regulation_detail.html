@@ -5,10 +5,10 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'presentation' %}">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.category }}</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.sub_category }}</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'presentation' %}">{{ object.regime }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ object.code }} {% if user.is_authenticated and user.is_staff %}<a href="{% url 'admin:regulations_regulation_change' object.pk %}"><i class="bi bi-gear"></i></a>{% endif %} </li>
+      <li class="breadcrumb-item" aria-current="page">{{ object.category }}</li>
+      <li class="breadcrumb-item" aria-current="page">{{ object.sub_category }}</li>
+      <li class="breadcrumb-item" aria-current="page">{{ object.regime }}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{ object.code }}</li>
     </ol>
   </nav>
 {% endblock %}

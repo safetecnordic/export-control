@@ -158,23 +158,37 @@ class Command(BaseCommand):
             code = f"{code} {line.split()[1]}"
         if code.startswith("Technical"):
             code = f"{code} {line.split()[1]}"
-        paragraph = paragraph_parent.add_child(regulation=regulation, text=text, code=code, note_type=note_type)
+        paragraph = paragraph_parent.add_child(
+            regulation=regulation,
+            text=text,
+            code=code,
+            note_type=note_type,
+            category=regulation.category,
+            sub_category=regulation.sub_category,
+        )
         return paragraph
 
-    def _create_regulation(self, first_word, line, part=None):
-        category_identifier = first_word[0]
-        category_part = 1 if category_identifier == "5" else None
-        category, new = Category.objects.get_or_create(identifier=category_identifier, part=category_part)
-
+    def _create_regulation(self, first_word, line):
+        part = None
+        if first_word[0] == "5":
+            part = 1
+            if first_word in ["5A002", "5A003", "5A004", "5B002", "5D002", "5E002"]:
+                part = 2
+        category, new = Category.objects.get_or_create(identifier=first_word[0], part=part)
         sub_category, new = SubCategory.objects.get_or_create(identifier=first_word[1])
 
-        regime, new = Regime.objects.get_or_create(number_range_max=99)
+        regime = self._get_regime_from_code(first_word)
         regulation = Regulation.objects.create(
             category=category, sub_category=sub_category, regime=regime, code=first_word
         )
         text = " ".join(line.split()[1:])
         paragraph = Paragraph.add_root(
-            regulation=regulation, text=text, code=f"{regulation.__str__()}.", note_type="base"
+            regulation=regulation,
+            text=text,
+            code=f"{regulation.__str__()}.",
+            note_type="base",
+            category=category,
+            sub_category=sub_category,
         )
         return regulation
 
@@ -207,46 +221,8 @@ class Command(BaseCommand):
         Regime.objects.create(number_range_min=301, number_range_max=399, name="Australia Group (AG)")
         Regime.objects.create(number_range_min=401, number_range_max=499, name="Chemical Weapons Convention (CWC)")
 
-
-"""
-def _create_node(self, lines, level) -> [dict, bool]:
-items = []
-i = 0
-flag = False
-while len(lines) > 0:
-    if i == 0:
-        level += 1
-        items.append({"label": lines[0], "children": [], "level": level})
-    else:
-        if lines[0] == self._get_next(items[-1]["label"]):
-            items.append({"label": lines[0], "children": [], "level": level})
-        else:
-            if lines[0] == "a." or lines[0] == "1.":
-                items[-1]["children"], flag = self._create_node(lines, level)
-                i = 0
-            else:
-                return items, True
-
-    if not flag:
-        lines.pop(0)
-    else:
-        flag = False
-    i += 1
-return items, True
-
-
-2B001
-3A001
-3B001
-
-7A003
-
----domani
-5A001
-5A002
-6A003
-6A001
-6A002
-6A005
-7E004
-"""
+    def _get_regime_from_code(self, code):
+        if code and len(code) == 5:
+            regime_number = int(code[2:])
+            return Regime.objects.filter(number_range_max__gte=regime_number).first()
+        return None

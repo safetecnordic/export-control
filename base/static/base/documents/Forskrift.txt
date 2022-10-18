@@ -240,27 +240,27 @@ CATEGORY 0 - NUCLEAR MATERIALS, FACILITIES, AND EQUIPMENT
                                 non-magnetic material (e.g. stainless steel);
         j.     Equipment and components, specially designed or prepared for electromagnetic separation
                             process, as follows:
-                            1.     Ion sources, single or multiple, consisting of a vapour source, ioniser, and beam
-                                accelerator made of suitable non-magnetic materials (e.g. graphite, stainless steel, or
-                                copper) and capable of providing a total ion beam current of 50 mA or greater;
-                            2.     Ion collector plates for collection of enriched or depleted uranium ion beams, consisting
-                                of two or more slits and pockets and made of suitable non-magnetic materials (e.g.
-                                graphite or stainless steel);
-                            3.     Vacuum housings for uranium electromagnetic separators made of non-magnetic
-                                materials (e.g. stainless steel) and designed to operate at pressures of 0,1 Pa or lower;
-                            4.     Magnet pole pieces with a diameter greater than 2 m;
-                            5.     High voltage power supplies for ion sources, having all of the following characteristics:
-                                a.     Capable of continuous operation;
-                                b.     Output voltage of 20 000 V or greater;
-                                c.     Output current of 1 A or greater; and
-                                d.     Voltage regulation of better than 0,01% over a period of 8 hours;
-                                N.B.   SEE ALSO 3A227.
-                            6.     Magnet power supplies (high power, direct current) having all of the following
-                                characteristics:
-                                a.     Capable of continuous operation with a current output of 500 A or greater at a
-                                        voltage of 100 V or greater; and
-                                b.     Current or voltage regulation better than 0,01% over a period of 8 hours.
-                                N.B.   SEE ALSO 3A226.
+               1.     Ion sources, single or multiple, consisting of a vapour source, ioniser, and beam
+                     accelerator made of suitable non-magnetic materials (e.g. graphite, stainless steel, or
+                     copper) and capable of providing a total ion beam current of 50 mA or greater;
+               2.     Ion collector plates for collection of enriched or depleted uranium ion beams, consisting
+                     of two or more slits and pockets and made of suitable non-magnetic materials (e.g.
+                     graphite or stainless steel);
+               3.     Vacuum housings for uranium electromagnetic separators made of non-magnetic
+                     materials (e.g. stainless steel) and designed to operate at pressures of 0,1 Pa or lower;
+               4.     Magnet pole pieces with a diameter greater than 2 m;
+               5.     High voltage power supplies for ion sources, having all of the following characteristics:
+                      a.     Capable of continuous operation;
+                      b.     Output voltage of 20 000 V or greater;
+                      c.     Output current of 1 A or greater; and
+                      d.     Voltage regulation of better than 0,01% over a period of 8 hours;
+                      N.B.   SEE ALSO 3A227.
+               6.     Magnet power supplies (high power, direct current) having all of the following
+                     characteristics:
+                      a.     Capable of continuous operation with a current output of 500 A or greater at a
+                            voltage of 100 V or greater; and
+                      b.     Current or voltage regulation better than 0,01% over a period of 8 hours.
+                      N.B.   SEE ALSO 3A226.
 0B002    Specially designed or prepared auxiliary systems, equipment and components as follows, for isotope
          separation plant specified in 0B001, made of or protected by "materials resistant to corrosion by UF 6":
          a.     Feed autoclaves, ovens or systems used for passing UF6 to the enrichment process;
