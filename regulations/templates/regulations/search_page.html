@@ -9,7 +9,7 @@
     <div class="row g-5">
         <div class="col-md-12">
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
-          <div class="row pb-4 fst-italic mt-1">
+          <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
             <div class="col-md-12">
               <i class="bi bi-search"></i> {% trans "Searched:" %}<b> {{search_term}}</b>
             </div>
@@ -22,11 +22,7 @@
                 {% for paragraph in paragraph_list %}
                 <a href="{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}" class="text-dark text-decoration-none">   
                   <p>{{ paragraph.full_name }}: &nbsp;
-                    {% if search_term %}
                       {{paragraph.headline | safe}}...
-                    {% else %}
-                      {{paragraph.text | truncatechars:100}}
-                      {% endif %}
                     </p>
                   </a>
                   <hr>

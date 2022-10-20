@@ -1,20 +1,43 @@
+{% load display_tags %}
 {% load i18n %} 
 
 <form id="search_form" action="{{ form_action }}" method=get" enctype="multipart/form-data">
-    <input type="text" class="form-control border-bottom-1" id="query" value="{{ search_term }}" placeholder="{% trans 'Enter the text...'%}" required="" name = "q">
-    <div class="row justify-content-center mt-2">
-    {% for field in search_form %}
-        {% if field.name != "q"%} 
-            {% include 'base/partials/form_field_inline.html' with field=field %}
-        {% endif %}
-    {% endfor %}
-    </div>
-    
-    <div class="row justify-content-center">
-        <div class="col text-center mt-2">
-            <button class="btn btn-lg btn-rounded btn-primary" type="submit" data-loading-text="{% trans "Searching...." %}">
-            <i class="bi bi-search"></i> {% trans 'Search' %}
-            </button>
+    {% if not advanced %}
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-left mt-2">
+                <input type="text" class="form-control border-bottom-1" style="margin-left:10px;" id="query" value="{{ search_term }}" placeholder="{% trans 'Enter the text...'%}" required="" name = "q">
+            </div>
+            <div class="col-md-2 text-left mt-2">
+                <button class="btn btn-primary" type="submit" data-loading-text="{% trans "Searching...." %}">
+                    <i class="bi bi-search"></i> {% trans 'Search' %}
+                </button>
+            </div>
         </div>
-    </div>
+    {% endif %}
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-left mt-2">
+            <p>
+                <a class="btn btn-primary" href="{% url 'search' %}?advanced=true">
+                    {% trans "Advanced Search" %} <i class="bi bi-gear"></i>
+                </a>
+                {% if advanced %}
+                    <a class="btn btn-secondary" href="{% url 'search' %}">
+                        {% trans "Close" %} <i class="bi bi-x-circle"></i>
+                    </a>
+                {% endif %}
+            </p>
+            {% if advanced %}
+            <div>
+                {% for field in search_form %}
+                    {% include 'base/partials/form_field_search.html' with field=field %}
+                {% endfor %}
+                </div>
+                <div class="col mt-2">
+                    <button class="btn btn-lg btn-primary" type="submit" data-loading-text="{% trans "Searching...." %}">
+                        <i class="bi bi-search"></i> {% trans 'Search' %}
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
 </form>
