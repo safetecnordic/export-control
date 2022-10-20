@@ -5,11 +5,6 @@ from dotenv import load_dotenv
 from utils.converters import to_int_or_default
 
 
-# Path helper
-def location(x):
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), x)
-
-
 # Loads environment variables from .env file
 load_dotenv()
 
@@ -23,7 +18,7 @@ DEBUG = os.getenv("DEBUG", "false") == "true"
 
 AZURE_WEBSITE_HOSTNAME = os.getenv("WEBSITE_HOSTNAME")
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + [AZURE_WEBSITE_HOSTNAME] if AZURE_WEBSITE_HOSTNAME is not None else []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + ([AZURE_WEBSITE_HOSTNAME] if AZURE_WEBSITE_HOSTNAME is not None else [])
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
@@ -53,6 +48,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -116,8 +112,8 @@ LANGUAGES = (
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = location("public/static")
-STATICFILES_DIRS = (location("static/"),)
+STATIC_ROOT = os.path.join(BASE_DIR, "public/static")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
