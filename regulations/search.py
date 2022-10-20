@@ -1,6 +1,6 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
 from treebeard.mp_tree import MP_NodeManager
-from .models import Paragraph
+from regulations.models import Paragraph
 
 
 def search_paragraphs(search_term: str) -> MP_NodeManager:
@@ -15,6 +15,7 @@ def search_paragraphs(search_term: str) -> MP_NodeManager:
         .filter(rank__gte=0.001)
         .order_by("-rank")
     )
+    paragraphs = Paragraph.objects.annotate(search=search_vector).filter(search=search_query)
     return paragraphs
 
 
