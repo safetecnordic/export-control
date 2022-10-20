@@ -173,13 +173,13 @@ class Paragraph(MP_Node):
     is_public: types.BooleanField = models.BooleanField(default=True)
 
     regulation: types.ForeignKey[Regulation] = models.ForeignKey(
-        "Regulation", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+        "Regulation", null=True, blank=True, on_delete=models.CASCADE, related_name="paragraphs"
     )
     category: types.ForeignKey[Category] = models.ForeignKey(
-        "Category", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+        "Category", null=True, blank=True, on_delete=models.CASCADE, related_name="paragraphs"
     )
     sub_category: types.ForeignKey[SubCategory] = models.ForeignKey(
-        "SubCategory", null=True, on_delete=models.CASCADE, related_name="paragraphs"
+        "SubCategory", null=True, blank=True, on_delete=models.CASCADE, related_name="paragraphs"
     )
 
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
