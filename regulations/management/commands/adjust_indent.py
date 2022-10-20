@@ -1,7 +1,7 @@
 def main():
     text = ""
     newText = ""
-    with open("export-control.txt", "r", encoding="utf8") as f:
+    with open("export-control-appendix2.txt", "r", encoding="utf8") as f:
         while True:
             line = f.readline()
             if not line:
@@ -13,7 +13,7 @@ def main():
             newText += " " * newLineSpacing + line.strip() + "\n"
 
     # write the newText to a file
-    f = open("demo-export-control.txt", "w", encoding="utf8")
+    f = open("demo-export-control-appendix2.txt", "w", encoding="utf8")
     f.write(newText)
     f.close()
 
