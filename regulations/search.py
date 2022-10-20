@@ -3,19 +3,17 @@ from treebeard.mp_tree import MP_NodeManager
 from regulations.models import Paragraph
 
 
-def search_paragraphs(search_term: str) -> MP_NodeManager:
+def get_searched_paragraphs(search_term: str) -> MP_NodeManager:
     field_to_search = "text"
+    search_term = search_term.lower()
+    breakpoint()
     search_vector = SearchVector(field_to_search)
+    # search_query = SearchQuery(search_term, search_type="phrase")
     search_query = SearchQuery(search_term)
-    search_rank = SearchRank(search_vector, search_query)
     search_headline = SearchHeadline(field_to_search, search_query)
     paragraphs = (
-        Paragraph.objects.annotate(rank=search_rank)
-        .annotate(headline=search_headline)
-        .filter(rank__gte=0.001)
-        .order_by("-rank")
+        Paragraph.objects.annotate(headline=search_headline).annotate(search=search_vector).filter(search=search_query)
     )
-    paragraphs = Paragraph.objects.annotate(search=search_vector).filter(search=search_query)
     return paragraphs
 
 
