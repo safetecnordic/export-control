@@ -1,13 +1,16 @@
-import code
 import string
 import re
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from regulations.models import Category, SubCategory, Regime, Regulation, Paragraph
 
 
 class Command(BaseCommand):
     """
-    ./manage.py import_data_from_pdf  --file=test.pdf
+    To run the command:
+    `python manage.py import_data_from_pdf --file=regulations/static/export-control.txt --flush=True`
+
+    To dump imported data to `regulations.json`:
+    `python manage.py dumpdata regulations > regulations.json`
     """
 
     TOP_SEQUENCE = ". ".join([*string.ascii_lowercase]).split()
@@ -82,9 +85,7 @@ class Command(BaseCommand):
                     elif self.is_fourth_level_paragraph(line):
                         if self.is_special_paragraph(first_word):
                             note_type = first_word
-                        parent_fourth_level = self._create_paragraph(
-                            regulation, line, note_type, first_word, parent_third_level
-                        )
+                        self._create_paragraph(regulation, line, note_type, first_word, parent_third_level)
                     else:
                         if regulation and regulation.get_last_paragraph():
                             paragraph = regulation.get_last_paragraph()
@@ -182,7 +183,7 @@ class Command(BaseCommand):
             category=category, sub_category=sub_category, regime=regime, code=first_word
         )
         text = " ".join(line.split()[1:])
-        paragraph = Paragraph.add_root(
+        Paragraph.add_root(
             regulation=regulation,
             text=text,
             code=f"{regulation.__str__()}.",
