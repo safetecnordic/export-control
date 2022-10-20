@@ -1,8 +1,9 @@
+from django.contrib import messages
 from django.utils.translation import gettext as _
-from regulations.forms import SearchForm
-from django.views.generic.list import ListView
 from django.views.generic import DetailView
+from django.views.generic.list import ListView
 
+from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
 from regulations.search import search_paragraphs, filter_paragraphs
 
@@ -18,20 +19,24 @@ class SearchView(ListView):
         context["search_form"] = SearchForm(self.request.GET)
         context["search_term"] = self.request.GET.get("q", "")
         context["page_title"] = _("Search")
+        context["advanced"] = self.request.GET.get("advanced", False) == "true"
         return context
 
     def get_queryset(self):
         self.form = SearchForm(self.request.GET)
         paragraphs = list()
-        if self.form.is_valid():
-            q = self.request.GET.get("q", "")
-            paragraphs = search_paragraphs(q) if q else Paragraph.get_root_nodes()
+        query = self.request.GET.get("as_q", "")
+        if self.form.is_valid() and query:
+            paragraphs = search_paragraphs(query)
             paragraphs = filter_paragraphs(
                 paragraphs,
                 self.request.GET.get("category", None),
                 self.request.GET.get("subcategory", None),
                 self.request.GET.get("regime", None),
             )
+        else:
+            for error in self.form.errors:
+                messages.error(self.request, f"{error.title()}: {self.form.errors[error]}")
         return paragraphs
 
 

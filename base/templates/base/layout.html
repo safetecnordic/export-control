@@ -9,6 +9,7 @@
     <main class="container">
         {% block breadcrumbs %}{% endblock %}
         {% block header %}{% endblock %}
+        {% include "base/partials/alert_messages.html" %}
         {% block content %}{% endblock %}        
     </main>
     {% include "base/partials/footer.html" %}
