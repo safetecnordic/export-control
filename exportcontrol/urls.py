@@ -16,6 +16,7 @@ urlpatterns += i18n_patterns(
     path("contacts/", include("contacts.urls")),
     path("about-us/", TemplateView.as_view(template_name="base/about_us.html"), name="about_us"),
     path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
+    path("knowledge-transfer/", TemplateView.as_view(template_name="base/knowledge_transfer.html"), name="knowledge_transfer"),
     path("", PresentationView.as_view(), name="presentation"),
 )
 

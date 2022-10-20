@@ -26,6 +26,12 @@
             class="nav-link px-2 link-dark  {% if 'export' in request.path %} active {% endif %}"
             >{% trans "Export Control Law" %}</a>
         </li>
+        <li>
+          <a
+            href="{% url 'knowledge_transfer' %}"
+            class="nav-link px-2 link-dark  {% if 'knowledge_transfer' in request.path %} active {% endif %}"
+            >{% trans "Knowledge transfer" %}</a>
+        </li>
         <li class="nav-item">
           <a href="{% url 'add_contact' %}" class="nav-link px-2 link-dark {% if  'add' in request.path %} active {% endif %}">
               {% trans "Consult Safetech" %}
