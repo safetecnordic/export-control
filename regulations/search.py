@@ -57,4 +57,6 @@ def get_filtered_paragraphs(search_terms: dict, paragraphs: MP_NodeManager) -> M
         )
     if "as_reg" in search_terms.keys() and search_terms["as_reg"]:
         paragraphs = paragraphs.filter(regulation__regime=search_terms["as_reg"])
-    return paragraphs.filter(note_type=search_terms["as_type"])
+    if "as_type" in search_terms.keys() and search_terms["as_type"] and search_terms["as_type"] != "base":
+        paragraphs = paragraphs.filter(note_type=search_terms["as_type"])
+    return paragraphs
