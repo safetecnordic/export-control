@@ -16,19 +16,21 @@ class SearchView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
+        search_term = self.request.GET.get("as_q", "")
         context["search_form"] = SearchForm(self.request.GET)
-        context["search_term"] = self.request.GET.get("q", "")
+        context["search_term"] = search_term
         context["page_title"] = _("Search")
-        context["advanced"] = self.request.GET.get("advanced", False) == "true"
+        context["no_results"] = bool(search_term and not self.get_queryset())
         return context
 
     def get_queryset(self):
         self.form = SearchForm(self.request.GET)
         paragraphs = list()
-        if self.form.is_valid() and "as_q" in self.request.GET.keys() and self.request.GET.get("as_q", ""):
+        if self.form.is_valid() and self.request.GET.get("as_q", ""):
             paragraphs = Paragraph.objects.all()
             paragraphs = get_filtered_paragraphs(self.form.cleaned_data, paragraphs)
             paragraphs = get_searched_paragraphs(self.form.cleaned_data, paragraphs)
+            paragraphs = paragraphs.order_by("-depth")
         else:
             for error in self.form.errors:
                 messages.error(self.request, f"{self.form.fields[error].label} {self.form.errors[error]}")

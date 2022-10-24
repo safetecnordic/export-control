@@ -9,30 +9,43 @@
     <div class="row g-5">
         <div class="col-md-12">
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
-          <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
-            <div class="col-md-12">
-              <i class="bi bi-search"></i> {% trans "Searched:" %}<b> {{search_term}}</b>
+          {% if request.GET.as_q %}
+            <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
+              <div class="col-md-12">
+                {% if request.GET.as_q %}<i class="bi bi-search"></i> {% trans "all these words::" %}<b> {{ request.GET.as_q }}</b><br>{% endif %}
+                {% if request.GET.as_qand %}<i class="bi bi-search"></i> {% trans "this exact phrase:" %}<b> {{ request.GET.as_qand }}</b><br>{% endif %}
+                {% if request.GET.as_qor %}<i class="bi bi-search"></i> {% trans "any of these words:" %}<b> {{ request.GET.as_qor }}</b><br>{% endif %}
+                {% if request.GET.as_qnot %}<i class="bi bi-search"></i> {% trans "none of these words:" %}<b> {{ request.GET.as_qnot }}</b><br>{% endif %}
+              </div>
+              <div class="col-md-12 text-right">
+                <i class="bi bi-check2-circle"></i>{% trans "Results:" %}</a> <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
+              </div>
             </div>
-            <div class="col-md-12 text-right">
-              <i class="bi bi-check2-circle"></i>{% trans "Results:" %}</a> <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
-            </div>
-          </div>
-            {% if paragraph_list %}
-              <div class="mt-5">
-                {% for paragraph in paragraph_list %}
-                <a href="{% if paragraph.regulation %}{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}{% endif %}" class="text-dark text-decoration-none">   
-                  <p>{{ paragraph.full_name }}: &nbsp;
-                      {{paragraph.headline | safe}}...
-                    </p>
-                  </a>
-                  <hr>
-                  {% endfor %}
-                </div>
-              {% include "base/partials/pagination.html" %}
-            {% else %}
-              
-                  
-            {% endif %}
+              {% if paragraph_list%}
+                <div class="mt-5">
+                  {% for paragraph in paragraph_list %}
+                  <a href="{% if paragraph.regulation %}{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}{% endif %}" class="text-dark text-decoration-none">   
+                    <p>{{ paragraph.full_name }}: &nbsp;
+                        {{paragraph.headline | safe}}...
+                      </p>
+                    </a>
+                    <hr>
+                    {% endfor %}
+                  </div>
+                {% include "base/partials/pagination.html" %}
+              {% else %}
+                  <div class="px-4 py-5 my-5 text-center">
+                    <h1 class="display-5 fw-bold">{% trans "No results found...." %}</h1>
+                    <div class="col-lg-6 mx-auto">
+                      <p class="lead mb-4">{% trans "Your search returned no results, please try your search again or contact safetech for more information" %}</p>
+                      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <a href="{% url 'add_contact' %}" class="btn btn-primary px-4 gap-3">{% trans "Consult Safetech" %}</a>
+                        <a href="{% url 'export_control_law' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
+                      </div>
+                    </div>
+                  </div>
+              {% endif %}
+          {% endif %}
         </div>
     </div>
 {% endblock %}
