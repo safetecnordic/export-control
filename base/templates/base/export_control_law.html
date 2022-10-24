@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'presentation' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'front_page' %}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">
       {% trans "Export control law" %}
     </li>
@@ -23,13 +23,13 @@
   <div>
     <a
       class="btn btn-info btn-large"
-      href="{% static 'documents/Liste1.pdf' %}"
+      href="{% static 'base/documents/export-control-appendix1.pdf' %}"
     >
       Liste I
     </a>
   </div>
   <div>
-    <a class="btn btn-info btn-large" href="{% static 'documents/Liste2.pdf' %}"
+    <a class="btn btn-info btn-large" href="{% static 'base/documents/export-control-appendix2.pdf' %}"
       >Liste II</a
     >
   </div>
@@ -76,7 +76,7 @@
     </p>
   </div>
   <div class="col-md-5">
-    <img style="width:70%;" src="{% static 'img/norway_coat_of_arms.png' %}"
+    <img style="width:70%;" src="{% static 'base/img/norway_coat_of_arms.png' %}"
     alt="Riksvåpenet" />
   </div>
 </div>

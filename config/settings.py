@@ -2,12 +2,7 @@ import os
 from django.urls import reverse_lazy
 from pathlib import Path
 from dotenv import load_dotenv
-from exportcontrol.utils import to_int_or_default
-
-
-# Path helper
-def location(x):
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), x)
+from utils.converters import to_int_or_default
 
 
 # Loads environment variables from .env file
@@ -21,7 +16,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", "false") == "true"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+AZURE_WEBSITE_HOSTNAME = os.getenv("WEBSITE_HOSTNAME")
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + ([AZURE_WEBSITE_HOSTNAME] if AZURE_WEBSITE_HOSTNAME is not None else [])
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
@@ -37,9 +34,9 @@ INSTALLED_APPS = [
     "ckeditor",
     "treebeard",
     "phonenumber_field",
-    "regulations",
     "base",
     "contacts",
+    "regulations",
 ]
 
 MIDDLEWARE = [
@@ -51,9 +48,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
-ROOT_URLCONF = "exportcontrol.urls"
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
@@ -72,18 +70,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "exportcontrol.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", default="postgres"),
-        "USER": os.getenv("DB_USER", default="postgres"),
-        "PASSWORD": os.getenv("DB_PASSWORD", default="postgres"),
-        "HOST": os.getenv("DB_HOST", default="localhost"),
-        "PORT": to_int_or_default(os.getenv("DB_PORT"), default=5432),
+        "NAME": os.getenv("DBNAME", default="postgres"),
+        "USER": os.getenv("DBUSER", default="postgres"),
+        "PASSWORD": os.getenv("DBPASS", default="postgres"),
+        "HOST": os.getenv("DBHOST", default="localhost"),
+        "PORT": to_int_or_default(os.getenv("DBPORT"), default=5432),
     }
 }
 
@@ -114,19 +112,19 @@ LANGUAGES = (
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = location("public/static")
-STATICFILES_DIRS = (location("static/"),)
+STATIC_ROOT = os.path.join(BASE_DIR, "public/static")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # HOMEPAGE
-HOMEPAGE = reverse_lazy("presentation")
+HOMEPAGE = reverse_lazy("front_page")
 
 # DEFAULTS
-SITE_NAME = "ExportControl"
-SITE_TAGLINE = "Legislation"
+SITE_NAME = "Export Control"
+SITE_TAGLINE = "Safetec"
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
