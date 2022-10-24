@@ -9,7 +9,7 @@
     <div class="row g-5">
         <div class="col-md-12">
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
-          {% if request.GET.as_q %}
+          {% if search_applied %}
             <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
               <div class="col-md-12">
                 {% if request.GET.as_q %}<i class="bi bi-search"></i> {% trans "all these words::" %}<b> {{ request.GET.as_q }}</b><br>{% endif %}
@@ -21,7 +21,7 @@
                 <i class="bi bi-check2-circle"></i>{% trans "Results:" %}</a> <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
               </div>
             </div>
-              {% if paragraph_list%}
+              {% if paragraph_list %}
                 <div class="mt-5">
                   {% for paragraph in paragraph_list %}
                   <a href="{% if paragraph.regulation %}{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}{% endif %}" class="text-dark text-decoration-none">   

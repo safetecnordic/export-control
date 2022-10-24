@@ -20,13 +20,21 @@ class SearchView(ListView):
         context["search_form"] = SearchForm(self.request.GET)
         context["search_term"] = search_term
         context["page_title"] = _("Search")
+        context["search_applied"] = (
+            True
+            if self.request.GET.get("as_q", False)
+            or self.request.GET.get("as_qand", False)
+            or self.request.GET.get("as_qnot", False)
+            or self.request.GET.get("as_qor", False)
+            else False
+        )
         context["no_results"] = bool(search_term and not self.get_queryset())
         return context
 
     def get_queryset(self):
         self.form = SearchForm(self.request.GET)
         paragraphs = list()
-        if self.form.is_valid() and self.request.GET.get("as_q", ""):
+        if self.form.is_valid():
             paragraphs = Paragraph.objects.all()
             paragraphs = get_filtered_paragraphs(self.form.cleaned_data, paragraphs)
             paragraphs = get_searched_paragraphs(self.form.cleaned_data, paragraphs)
