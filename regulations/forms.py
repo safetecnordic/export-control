@@ -7,7 +7,7 @@ from regulations.utils import get_formated_string
 class SearchForm(forms.Form):
 
     as_q = forms.CharField(
-        required=True,
+        required=False,
         label=_("all these words:"),
         help_text=_("Type in the important words: <b>Chemical Heat Molecular</b>"),
     )

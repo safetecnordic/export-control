@@ -35,10 +35,6 @@ class SearchTests(TestCase):
         self.assertContains(response, _("Advanced Search"))
 
     def test_search_form(self):
-        form = SearchForm(data={})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors["as_q"][0], "This field is required.")
-
         form_data = {"as_q": "Hydrogen", "as_cat": "TEST"}
         form = SearchForm(data=form_data)
         self.assertFalse(form.is_valid())
