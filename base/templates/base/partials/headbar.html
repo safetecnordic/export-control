@@ -16,11 +16,6 @@
           </a>
         </li>
         <li>
-          <a href="{% url 'about_us' %}" class="nav-link px-2 link-dark {% if 'about-us' in request.path %} active {% endif %}">
-            {% trans "About us" %} 
-          </a>
-        </li>
-        <li>
           <a
             href="{% url 'export_control_law' %}"
             class="nav-link px-2 link-dark  {% if 'export' in request.path %} active {% endif %}"
@@ -29,7 +24,7 @@
         <li>
           <a
             href="{% url 'knowledge_transfer' %}"
-            class="nav-link px-2 link-dark  {% if 'knowledge_transfer' in request.path %} active {% endif %}"
+            class="nav-link px-2 link-dark  {% if 'knowledge-transfer' in request.path %} active {% endif %}"
             >{% trans "Knowledge transfer" %}</a>
         </li>
         <li class="nav-item">

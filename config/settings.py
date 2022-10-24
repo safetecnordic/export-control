@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.postgres",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    'django.contrib.flatpages',
     "django_bootstrap5",
     "widget_tweaks",
     "ckeditor",
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -115,6 +118,11 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "public/static")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+
+# public files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'config/public/media')
+
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -123,6 +131,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 HOMEPAGE = reverse_lazy("front_page")
 
 # DEFAULTS
+SITE_ID = 1
 SITE_NAME = "Export Control"
 SITE_TAGLINE = "Safetec"
 if DEBUG:
