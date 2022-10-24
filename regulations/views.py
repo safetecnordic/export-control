@@ -5,7 +5,7 @@ from django.views.generic.list import ListView
 
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
-from regulations.search import get_searched_paragraphs, filter_paragraphs
+from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
 
 
 class SearchView(ListView):
@@ -25,18 +25,13 @@ class SearchView(ListView):
     def get_queryset(self):
         self.form = SearchForm(self.request.GET)
         paragraphs = list()
-        query = self.request.GET.get("as_q", "")
-        if self.form.is_valid() and query:
-            paragraphs = get_searched_paragraphs(query)
-            paragraphs = filter_paragraphs(
-                paragraphs,
-                self.request.GET.get("category", None),
-                self.request.GET.get("subcategory", None),
-                self.request.GET.get("regime", None),
-            )
+        if self.form.is_valid() and "as_q" in self.request.GET.keys() and self.request.GET.get("as_q", ""):
+            paragraphs = Paragraph.objects.all()
+            paragraphs = get_filtered_paragraphs(self.form.cleaned_data, paragraphs)
+            paragraphs = get_searched_paragraphs(self.form.cleaned_data, paragraphs)
         else:
             for error in self.form.errors:
-                messages.error(self.request, f"{error.title()}: {self.form.errors[error]}")
+                messages.error(self.request, f"{self.form.fields[error].label} {self.form.errors[error]}")
         return paragraphs
 
 
