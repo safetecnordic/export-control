@@ -19,7 +19,7 @@ urlpatterns += i18n_patterns(
     path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
     path('knowledge-transfer/', views.flatpage, {'url': '/knowledge-transfer/'}, name="knowledge_transfer"),
     #path("knowledge-transfer/", TemplateView.as_view(template_name="base/knowledge_transfer.html"), name="knowledge_transfer"),
-    path("home/", FrontPageView.as_view(), name="front_page"),
+    path("", FrontPageView.as_view(), name="front_page"),
 )
 
 if settings.DEBUG:

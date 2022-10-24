@@ -13,5 +13,4 @@ class FrontPageView(TemplateView):
         context["search_form"] = SearchForm(self.request.GET)
         context["form_action"] = reverse("search")
         context["flatpage"] = models.FlatPage.objects.get(url='/home/').title
-        #context["flatpage"] = models.FlatPage.objects.get(url=reverse("front_page")).title
         return context
