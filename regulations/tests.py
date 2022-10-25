@@ -71,9 +71,6 @@ class SearchTests(TestCase):
         input_values = {"as_q": "django"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "only"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 2)
         input_values = {"as_q": "only django"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
