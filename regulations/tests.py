@@ -265,3 +265,15 @@ class SearchTests(TestCase):
         }
         paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 0)
+
+    def test_is_public_paragraphs(self):
+        input_values = {"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE}
+        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs.filter(is_public=True))
+        self.assertEqual(paragraphs.count(), 10)
+
+        p = paragraphs.get(code="0A001")
+        p.is_public = False
+        p.save()
+        input_values = {"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE}
+        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs.filter(is_public=True))
+        self.assertEqual(paragraphs.count(), 9)

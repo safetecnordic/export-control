@@ -35,7 +35,7 @@ class SearchView(ListView):
         self.form = SearchForm(self.request.GET)
         paragraphs = list()
         if self.form.is_valid():
-            paragraphs = Paragraph.objects.all()
+            paragraphs = Paragraph.objects.filter(is_public=True)
             paragraphs = get_filtered_paragraphs(self.form.cleaned_data, paragraphs)
             paragraphs = get_searched_paragraphs(self.form.cleaned_data, paragraphs)
             paragraphs = paragraphs.order_by("-depth")
