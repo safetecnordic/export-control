@@ -105,13 +105,13 @@ class SearchTests(TestCase):
         self.assertEqual(paragraphs.count(), 2)
 
         # CHECK "AND QUERY"
-        input_values = {"as_q": "words"}
+        input_values = {"as_q": "field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 6)
-        input_values = {"as_q": "words", "as_qand": "uranium"}
+        input_values = {"as_q": "field", "as_qand": "uranium"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qand": "hydrogen"}
+        input_values = {"as_q": "field", "as_qand": "hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
         input_values = {"as_q": "hydrogen", "as_qand": "uranium and"}
@@ -123,31 +123,31 @@ class SearchTests(TestCase):
         input_values = {"as_q": "hydrogen", "as_qand": "uranium hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "This field"}
+        input_values = {"as_q": "field", "as_qand": "This field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qand": "TEST field"}
+        input_values = {"as_q": "field", "as_qand": "TEST field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "field contains"}
+        input_values = {"as_q": "field", "as_qand": "field contains"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "words", "as_qand": "field contains TEST"}
+        input_values = {"as_q": "field", "as_qand": "field contains TEST"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "field contains the"}
+        input_values = {"as_q": "field", "as_qand": "field contains the"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "words", "as_qand": "This field contains the"}
+        input_values = {"as_q": "field", "as_qand": "This field contains the"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "words", "as_qand": "This field contains TEST"}
+        input_values = {"as_q": "field", "as_qand": "This field contains TEST"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "TEST field contains the"}
+        input_values = {"as_q": "field", "as_qand": "TEST field contains the"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "TEST field contains TEST"}
+        input_values = {"as_q": "field", "as_qand": "TEST field contains TEST"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 0)
 
