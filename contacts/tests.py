@@ -57,7 +57,6 @@ class ContactTests(TestCase):
         )
         success_url = reverse("thank_you")
         self.assertRedirects(response, success_url)
-        self.assertContains(response, _("Thank you"))
 
         contacts = Contact.objects.all()
         contact = contacts.first()
