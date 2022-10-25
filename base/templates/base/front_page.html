@@ -28,13 +28,7 @@
             <div class="p-4 mb-3 bg-light rounded">
             <h4 class="fst-italic">{% trans "About" %}</h4>
             <p class="mb-0">
-                Under Norway’s export control system, a range of products, 
-                technology and services may only be exported from Norway 
-                if the exporter has obtained an export license from the Ministry of Foreign Affairs. 
-                The export control system is intended to ensure that export from Norway is in accordance with Norwegian 
-                security and defence policy, and that exports of dual-use items do not contribute to the 
-                proliferation of weapons of mass destruction (nuclear, chemical, and biological weapons) 
-                or their means of delivery. 
+                {{ flatpage.extendedflatpage.sidebar_text }}
                 <a href="{% url 'export_control_law' %}">Read more</a>
             </p>
             </div>

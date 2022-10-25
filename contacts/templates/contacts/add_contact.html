@@ -13,8 +13,8 @@
 {% block header %}
     <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
         <div class="col-md-8 px-0">
-        <h1 class="display-4 fst-italic">{{ page_title }}</h1>
-        <p class="lead my-2">{% trans "Any questions? Send a message and we get back to you soon!" %}</p>
+        <h1 class="display-4 fst-italic">{{ flatpage.title }}</h1>
+        <p class="lead my-2">{% trans flatpage.extendedflatpage.title_description %}</p>
         </div>
     </div>
 {% endblock %}
@@ -37,8 +37,9 @@
       <div class="position-sticky" style="top: 2rem;">
           <div class="p-4 mb-3 bg-light rounded">
           <h4 class="fst-italic">{% trans "About" %}</h4>
-          <p class="mb-0">What is Lorem Ipsum?
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. up to you.</p>
+          <p class="mb-0">
+            {{ flatpage.extendedflatpage.sidebar_text }}
+          </p>
           </div>
       </div>
       </div>

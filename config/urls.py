@@ -14,7 +14,8 @@ from config.views import error_404
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("home/", error_404),    
+    path("home/", error_404),   
+    path("consult/", error_404),    
     path("i18n/", include(django.conf.urls.i18n)),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
