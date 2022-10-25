@@ -116,13 +116,13 @@ class SearchTests(TestCase):
         self.assertEqual(paragraphs.count(), 1)
 
         # CHECK "OR QUERY"
-        input_values = {"as_q": "words", "as_qor": "Magnesium"}
+        input_values = {"as_q": "field", "as_qor": "Magnesium"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "words", "as_qor": "hydrogen"}
+        input_values = {"as_q": "field", "as_qor": "hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qor": "('hydrogen' OR 'Magnesium')"}
+        input_values = {"as_q": "field", "as_qor": "('hydrogen' OR 'Magnesium')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 6)
         input_values = {"as_qor": "('hydrogen' OR 'Magnesium')"}
@@ -134,10 +134,10 @@ class SearchTests(TestCase):
         input_values = {"as_qor": "('word')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "('words')"}
+        input_values = {"as_qor": "('field')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 6)
-        input_values = {"as_qor": "('words' OR 'word')"}
+        input_values = {"as_qor": "('field' OR 'word')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 7)
 
