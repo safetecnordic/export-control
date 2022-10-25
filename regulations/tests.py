@@ -114,9 +114,6 @@ class SearchTests(TestCase):
         input_values = {"as_q": "field", "as_qand": "hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "hydrogen", "as_qand": "uranium and"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
         input_values = {"as_q": "hydrogen", "as_qand": "uranium and hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
