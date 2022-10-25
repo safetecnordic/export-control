@@ -131,30 +131,15 @@ class SearchTests(TestCase):
         input_values = {"as_q": "TEST", "as_qor": "('hydrogen' OR 'Magnesium')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_qor": "('word')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "('field')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 6)
-        input_values = {"as_qor": "('field' OR 'word')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 7)
 
         # CHECK "AND QUERY" & "NOT QUERY"
         input_values = {"as_q": "hydrogen", "as_qand": "This field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field contains"}
+        self.assertEqual(paragraphs.count(), 5)
+        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "test"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field contain"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "contain"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('contain' OR 'test')"}
+        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('magnesium' OR 'test')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 2)
 
