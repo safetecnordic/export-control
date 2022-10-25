@@ -113,7 +113,7 @@ class SearchTests(TestCase):
         self.assertEqual(paragraphs.count(), 5)
         input_values = {"as_q": "field", "as_qand": "test words"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 5)
+        self.assertEqual(paragraphs.count(), 1)
 
         # CHECK "OR QUERY"
         input_values = {"as_q": "words", "as_qor": "Magnesium"}
