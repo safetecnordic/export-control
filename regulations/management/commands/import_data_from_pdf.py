@@ -154,7 +154,7 @@ class Command(BaseCommand):
 
     def _create_paragraph(self, regulation, line, note_type, first_word, paragraph_parent):
         text = " ".join(line.split()[1:])
-        code = f"0{first_word}" if first_word in self.LOW_SEQUENCE[:10] else first_word
+        code = f"{first_word}" if first_word in self.LOW_SEQUENCE[:10] else first_word
         if code == "Note":
             code = f"{code} {line.split()[1]}"
         if code.startswith("Technical"):
