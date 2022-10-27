@@ -3,25 +3,13 @@
 
 <nav class="bg-light border-bottom">
     <div class="container d-flex flex-wrap">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
       <ul class="nav me-auto"></ul>
       <ul class="nav">
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/norway.png' %}"></a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/english.png' %}"></a></li>
+        <li class="nav-item"><a href="/{{ languages.1.code }}{{ request.path|slice:'3:' }}" class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/norway.png' %}"></a></li>
+        <li class="nav-item"><a href="/{{ languages.0.code }}{{ request.path|slice:'3:' }}"class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/english.png' %}"></a></li>
       </ul>
-      <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-        <input name="next" type="hidden" value="{{ redirect_to }}">
-        <select name="language">
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-            {% for language in languages %}
-                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                    {{ language.name_local }} 
-                    {{ language.code }}
-                </option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Go">
-    </form>
     </div>
   </nav>
