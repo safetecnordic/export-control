@@ -17,62 +17,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
-msgid "Advanced options"
+msgid "Name*"
 msgstr ""
 
-msgid "Contact us"
+msgid "Email*"
 msgstr ""
 
-msgid "Contact Us"
+msgid "Phone Number"
 msgstr ""
 
-msgid "Export control law"
+msgid "Enter your message here..."
 msgstr ""
 
-msgid "About the export control law "
+msgid "New"
 msgstr ""
 
-msgid "Search"
+msgid "In Progress"
 msgstr ""
 
-msgid "About"
+msgid "Resolved"
 msgstr ""
 
-msgid "Knowledge transfer"
+msgid "Canceled"
 msgstr ""
 
-msgid "Saving..."
+msgid "Name"
 msgstr ""
 
-msgid "Save"
+msgid "Email"
 msgstr ""
 
-msgid "or"
+msgid "Message"
 msgstr ""
 
-msgid "cancel"
+msgid "Status"
 msgstr ""
 
-msgid "Oops! We found some errors"
+msgid "Archived"
 msgstr ""
 
-msgid "please check the error messages below and try again"
+msgid "Date created"
 msgstr ""
 
-msgid "Export Control Law"
+msgid "Date updated"
 msgstr ""
 
 msgid "Consult Safetech"
 msgstr ""
 
-msgid "First"
+msgid "Send Message"
 msgstr ""
 
-msgid "Last"
+msgid "About"
 msgstr ""
 
-msgid "Enter the text..."
-msgstr ""
-
-msgid "Searching...."
+msgid "Thank you"
 msgstr ""
