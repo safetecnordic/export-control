@@ -21,11 +21,11 @@ urlpatterns += i18n_patterns(
     path("consult/", error_404),    
     path("regulations/", include("regulations.urls")),
     path("contacts/", include("contacts.urls")),
-    path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
+    #path("export/", TemplateView.as_view(template_name="base/export_control_law.html"), name="export_control_law"),
     path('knowledge-transfer/', views.flatpage, {'url': '/knowledge-transfer/'}, name="knowledge_transfer"),
+    path('export-control-law/', views.flatpage, {'url': '/export/'}, name="export_control_law"),
     #path("knowledge-transfer/", TemplateView.as_view(template_name="base/knowledge_transfer.html"), name="knowledge_transfer"),
     path("", FrontPageView.as_view(), name="front_page"),
-    #prefix_default_language=False,
 )
 
 if settings.DEBUG:

@@ -2,19 +2,23 @@
 {% load i18n %}
 {% load static %}
 {% block breadcrumbs %}
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{% url 'front_page' %}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">
-      {% trans "Export control law" %}
-    </li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans "Export Control Low" %}</li>
   </ol>
 </nav>
 {% endblock %} {% block header %}
+{% get_current_language as LANGUAGE_CODE %}
 <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
   <div class="col-md-8 px-0">
     <h1 class="display-4 fst-italic">
-      {% trans "About the export control law " %}
+      {% if LANGUAGE_CODE == "no" %}
+        {{ flatpage.extendedflatpage.title_no}}
+      {% else %}
+        {{ flatpage.extendedflatpage.title}}
+      {% endif %} 
     </h1>
   </div>
 </div>
