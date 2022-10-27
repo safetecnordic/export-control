@@ -9,7 +9,7 @@
     <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
         <div class="col-md-8 px-0">
         <h1 class="display-4 fst-italic">{% trans  flatpage.title %}</h1>
-        <p class="lead my-2">{% trans  flatpage.extendedflatpage.title_description %}</p>
+        {% comment %}<p class="lead my-2">{% trans  flatpage.extendedflatpage.title_description %}</p>{% endcomment %}
         </div>
     </div>
 {% endblock %}
@@ -20,6 +20,8 @@
         <h3 class="pb-4 fst-italic">
             <i class="bi bi-search"></i> {% trans "Search" %}
         </h3>
+        {% trans "HELLO" %}
+
         <h3>
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
         </div>
