@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 12:44+0200\n"
+"POT-Creation-Date: 2022-10-27 22:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,53 +17,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: .\regulations\forms.py:13
 msgid "Category"
 msgstr ""
 
+#: .\regulations\forms.py:14
 msgid "Choose Category"
 msgstr ""
 
+#: .\regulations\forms.py:19
 msgid "SubCategory"
 msgstr ""
 
+#: .\regulations\forms.py:20
 msgid "Choose SubCategory"
 msgstr ""
 
+#: .\regulations\forms.py:25
 msgid "Regime"
 msgstr ""
 
+#: .\regulations\forms.py:26
 msgid "Choose Regime"
 msgstr ""
 
+#: .\regulations\models.py:31 .\regulations\models.py:62
+#: .\regulations\models.py:83 .\regulations\models.py:107
+#: .\regulations\models.py:185
 msgid "Date created"
 msgstr ""
 
+#: .\regulations\models.py:32 .\regulations\models.py:63
+#: .\regulations\models.py:84 .\regulations\models.py:108
+#: .\regulations\models.py:186
 msgid "Date updated"
 msgstr ""
 
+#: .\regulations\models.py:159
 msgid "Base"
 msgstr ""
 
+#: .\regulations\models.py:160
 msgid "Note"
 msgstr ""
 
+#: .\regulations\models.py:161
 msgid "N.B."
 msgstr ""
 
+#: .\regulations\models.py:162
 msgid "Technical Note"
 msgstr ""
 
+#: .\regulations\templates\regulations\regulation_detail.html:20
 msgid "Regulation"
 msgstr ""
 
+#: .\regulations\templates\regulations\search_page.html:14
 msgid "Searched:"
 msgstr ""
 
+#: .\regulations\templates\regulations\search_page.html:17
 msgid "Results:"
 msgstr ""
 
+#: .\regulations\templates\regulations\search_page.html:17
 msgid "of"
 msgstr ""
 
+#: .\regulations\views.py:20
 msgid "Search"
 msgstr ""

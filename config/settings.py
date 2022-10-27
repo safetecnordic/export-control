@@ -137,3 +137,6 @@ SITE_TAGLINE = "Safetec"
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+
+
+LOCALE_PATHS = [BASE_DIR /'locale']

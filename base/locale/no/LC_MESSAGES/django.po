@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 11:54+0200\n"
+"POT-Creation-Date: 2022-10-27 22:53+0200\n"
 "PO-Revision-Date: 2022-10-27 12:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,65 +17,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: .\base\admin.py:12
 msgid "Advanced options"
-msgstr ""
+msgstr "Avanserte valg"
 
+#: .\base\templates\base\contact_us.html:9
 msgid "Contact us"
-msgstr ""
+msgstr "Kontakt oss"
 
+#: .\base\templates\base\contact_us.html:17
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontakt oss"
 
-msgid "Export control law"
-msgstr ""
+#: .\base\templates\base\export_control_law.html:9
+msgid "Export Control Low"
+msgstr "Eksportkontrollov"
 
-msgid "About the export control law "
-msgstr ""
-
+#: .\base\templates\base\front_page.html:35
+#: .\base\templates\base\partials\headbar.html:15
+#: .\base\templates\base\partials\search.html:16
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
-msgid "HELLO"
-msgstr "HELLO 2"
-
+#: .\base\templates\base\front_page.html:43
 msgid "About"
-msgstr ""
+msgstr "Om eksportkontrollov"
 
+#: .\base\templates\base\knowledge_transfer.html:10
+#: .\base\templates\base\partials\headbar.html:28
 msgid "Knowledge transfer"
-msgstr ""
+msgstr "Kunnskapsoverføring"
 
+#: .\base\templates\base\partials\form.html:11
 msgid "Saving..."
-msgstr ""
+msgstr "Lagrer..."
 
+#: .\base\templates\base\partials\form.html:11
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
+#: .\base\templates\base\partials\form.html:12
 msgid "or"
-msgstr ""
+msgstr "eller"
 
+#: .\base\templates\base\partials\form.html:12
 msgid "cancel"
-msgstr ""
+msgstr "avbryt"
 
+#: .\base\templates\base\partials\form_fields.html:5
 msgid "Oops! We found some errors"
-msgstr ""
+msgstr "Oops! Vi fant noen feil"
 
+#: .\base\templates\base\partials\form_fields.html:5
 msgid "please check the error messages below and try again"
-msgstr ""
+msgstr "sjekk feilen nedenfor og prøb igjen"
 
+#: .\base\templates\base\partials\headbar.html:22
 msgid "Export Control Law"
-msgstr ""
+msgstr "Eksportkontrollov"
 
-msgid "Consult Safetech"
-msgstr ""
+#: .\base\templates\base\partials\headbar.html:32
+msgid "Consult Safetec"
+msgstr "Kontakt Safetec"
 
+#: .\base\templates\base\partials\pagination.html:9
 msgid "First"
-msgstr ""
+msgstr "Først"
 
+#: .\base\templates\base\partials\pagination.html:22
 msgid "Last"
-msgstr ""
+msgstr "Sist"
 
+#: .\base\templates\base\partials\search.html:4
 msgid "Enter the text..."
-msgstr ""
+msgstr "Skriv her..."
 
+#: .\base\templates\base\partials\search.html:15
 msgid "Searching...."
-msgstr ""
+msgstr "Søker..."
+
+#~ msgid "HELLO"
+#~ msgstr "HELLO 2"
