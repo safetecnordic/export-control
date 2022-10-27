@@ -2,6 +2,7 @@
 {% load i18n %} 
 {% load static %}
 
+
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -12,18 +13,30 @@
 {% endblock %}
 
 {% block header %}
+{% get_current_language as LANGUAGE_CODE %}
     <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
         <div class="col-md-8 px-0">
-        <h1 class="display-4 fst-italic">{% trans flatpage.title %}</h1>
+        <h1 class="display-4 fst-italic">
+          {% if LANGUAGE_CODE == "no" %}
+            {{ flatpage.extendedflatpage.title_no}}
+          {% else %}
+            {{ flatpage.extendedflatpage.title}}
+          {% endif %} 
+        </h1>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
 <div class="row featurette">
   <div class="col-md-7">
     <p class="lead">
-      {{ flatpage.extendedflatpage.page_content | safe}}
+      {% if LANGUAGE_CODE == "no" %}
+        {{ flatpage.extendedflatpage.page_content_no | safe}}
+      {% else %}
+        {{ flatpage.extendedflatpage.page_content | safe}}
+      {% endif %} 
     </p>
   </div>
   <div class="col-md-5">
