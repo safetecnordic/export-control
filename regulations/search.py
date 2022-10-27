@@ -9,28 +9,28 @@ def get_search_queries(as_q, as_qand, as_qor, as_qnot):
     and_query = None
     or_query = None
     if as_q:
-        query = SearchQuery(as_q)
+        query = SearchQuery(as_q, config="english_nostop")
     if as_qand:
-        and_query = SearchQuery(as_qand, search_type="phrase")
+        and_query = SearchQuery(as_qand, search_type="phrase", config="english_nostop")
     if as_qor:
         if as_q:
             as_qor = f"{as_q} {as_qor}"
-        or_query = SearchQuery(as_qor, search_type="websearch")
+        or_query = SearchQuery(as_qor, search_type="websearch", config="english_nostop")
     if as_qnot:
-        not_query = SearchQuery(as_qnot, search_type="websearch")
+        not_query = SearchQuery(as_qnot, search_type="websearch", config="english_nostop")
     return query, and_query, or_query, not_query
 
 
 def get_searched_paragraphs(search_terms: dict, paragraphs: MP_NodeManager) -> MP_NodeManager:
     field_to_search = "text"
-    search_vector = SearchVector(field_to_search)
+    search_vector = SearchVector(field_to_search, config="english_nostop")
     query, and_query, or_query, not_query = get_search_queries(
         search_terms["as_q"] if "as_q" in search_terms.keys() else None,
         search_terms["as_qand"] if "as_qand" in search_terms.keys() else None,
         search_terms["as_qor"] if "as_qor" in search_terms.keys() else None,
         search_terms["as_qnot"] if "as_qnot" in search_terms.keys() else None,
     )
-    search_headline = SearchHeadline(field_to_search, query)
+    search_headline = SearchHeadline(field_to_search, query, config="english_nostop")
     paragraphs = paragraphs.annotate(search=search_vector).annotate(headline=search_headline)
     if query:
         paragraphs = paragraphs.filter(search=query)
