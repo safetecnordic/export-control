@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 22:53+0200\n"
+"POT-Creation-Date: 2022-10-28 09:09+0200\n"
 "PO-Revision-Date: 2022-10-27 12:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -48,6 +48,33 @@ msgstr "Om eksportkontrollov"
 msgid "Knowledge transfer"
 msgstr "Kunnskapsoverføring"
 
+#: .\base\templates\base\partials\footer.html:6
+msgid "SEARCH"
+msgstr ""
+
+#: .\base\templates\base\partials\footer.html:7
+#, fuzzy
+#| msgid "Export Control Law"
+msgid "Search in Export Control Law"
+msgstr "Eksportkontrollov"
+
+#: .\base\templates\base\partials\footer.html:10
+msgid "ABOUT US"
+msgstr ""
+
+#: .\base\templates\base\partials\footer.html:14
+msgid "CONTACT US"
+msgstr ""
+
+#: .\base\templates\base\partials\footer.html:15
+#: .\base\templates\base\partials\headbar.html:32
+msgid "Consult Safetec"
+msgstr "Kontakt Safetec"
+
+#: .\base\templates\base\partials\footer.html:18
+msgid "FOLLOW US"
+msgstr ""
+
 #: .\base\templates\base\partials\form.html:11
 msgid "Saving..."
 msgstr "Lagrer..."
@@ -75,10 +102,6 @@ msgstr "sjekk feilen nedenfor og prøb igjen"
 #: .\base\templates\base\partials\headbar.html:22
 msgid "Export Control Law"
 msgstr "Eksportkontrollov"
-
-#: .\base\templates\base\partials\headbar.html:32
-msgid "Consult Safetec"
-msgstr "Kontakt Safetec"
 
 #: .\base\templates\base\partials\pagination.html:9
 msgid "First"

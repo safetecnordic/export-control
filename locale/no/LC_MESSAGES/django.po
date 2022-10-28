@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 22:53+0200\n"
+"POT-Creation-Date: 2022-10-28 09:02+0200\n"
 "PO-Revision-Date: 2022-10-27 11:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -348,25 +348,6 @@ msgid_plural "{len_type} values are required, but {len_value} were given."
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\venv\Lib\site-packages\crispy_forms\tests\test_form_helper.py:130
-#: .\venv\Lib\site-packages\crispy_forms\tests\test_form_helper.py:140
-#: .\venv\Lib\site-packages\django\forms\fields.py:91
-msgid "This field is required."
-msgstr ""
-
-#: .\venv\Lib\site-packages\crispy_forms\tests\test_layout.py:392
-msgid "i18n text"
-msgstr ""
-
-#: .\venv\Lib\site-packages\crispy_forms\tests\test_layout.py:394
-msgid "i18n legend"
-msgstr ""
-
-#: .\venv\Lib\site-packages\crispy_forms\tests\test_layout_objects.py:143
-#: .\venv\Lib\site-packages\django\core\validators.py:22
-msgid "Enter a valid value."
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15
 msgid "Messages"
 msgstr ""
@@ -399,6 +380,10 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\paginator.py:57
 msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:104
@@ -809,6 +794,10 @@ msgstr ""
 #. characters will prevent the default label_suffix to be appended to the label
 #: .\venv\Lib\site-packages\django\forms\boundfield.py:176
 msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:91
+msgid "This field is required."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:298
