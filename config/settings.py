@@ -71,9 +71,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-PARAGRAPH_SEARCH_SETTINGS = {
-    "config": "english_no_steam",
-}
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
