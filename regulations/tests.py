@@ -18,15 +18,23 @@ class SearchTests(TestCase):
         self.paragraphs = Paragraph.objects.all()
         cursor = connection.cursor()
         cursor.execute(
-            """CREATE TEXT SEARCH DICTIONARY english_stem_nostop (
+            """
+            CREATE TEXT SEARCH DICTIONARY english_stem_nostop (
             Template = snowball
             , Language = english
-        );"""
+            );
+            """
         )
-        cursor.execute("""CREATE TEXT SEARCH CONFIGURATION public.english_nostop ( COPY = pg_catalog.english );""")
         cursor.execute(
-            """ALTER TEXT SEARCH CONFIGURATION public.english_nostop
-        ALTER MAPPING FOR asciiword, asciihword, hword_asciipart, hword, hword_part, word WITH english_stem_nostop;"""
+            """
+            CREATE TEXT SEARCH CONFIGURATION public.english_nostop ( COPY = pg_catalog.english );
+            """
+        )
+        cursor.execute(
+            """
+            ALTER TEXT SEARCH CONFIGURATION public.english_nostop
+            ALTER MAPPING FOR asciiword, asciihword, hword_asciipart, hword, hword_part, word WITH english_stem_nostop;
+            """
         )
 
     def test_get_formated_string(self):
@@ -240,6 +248,44 @@ class SearchTests(TestCase):
         }
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         p = paragraphs.first()
+        self.assertEqual(paragraphs.count(), 0)
+
+    def test_stop_words_database(self):
+        input_values = {"as_q": "message"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "nuclear"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "nuclears"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')", "as_and": "and"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_q": "exportcontrol", "as_qnot": "message"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+        input_values = {"as_q": "exportcontrol", "as_qnot": "message_wrong"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclears and exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclears exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclear exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclear test exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+        input_values = {"as_qor": "message", "as_qand": "nuclear_test exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 0)
 
     def test_get_filtered_paragraphs(self):
