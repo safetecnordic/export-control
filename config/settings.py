@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     "default": {
@@ -84,6 +83,9 @@ DATABASES = {
         "PORT": to_int_or_default(os.getenv("DBPORT"), default=5432),
     }
 }
+
+DB_SEARCH_CONFIG = "english_nostop"
+
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [

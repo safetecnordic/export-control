@@ -34,7 +34,6 @@ class Contact(models.Model):
     )
     message: types.TextField = models.TextField(
         _("Message"),
-        blank=True,
     )
     status: types.CharField = models.CharField(
         _("Status"),

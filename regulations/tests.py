@@ -1,3 +1,4 @@
+from django.db import connection
 from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -15,6 +16,26 @@ class SearchTests(TestCase):
 
     def setUp(self):
         self.paragraphs = Paragraph.objects.all()
+        cursor = connection.cursor()
+        cursor.execute(
+            """
+            CREATE TEXT SEARCH DICTIONARY english_stem_nostop (
+            Template = snowball
+            , Language = english
+            );
+            """
+        )
+        cursor.execute(
+            """
+            CREATE TEXT SEARCH CONFIGURATION public.english_nostop ( COPY = pg_catalog.english );
+            """
+        )
+        cursor.execute(
+            """
+            ALTER TEXT SEARCH CONFIGURATION public.english_nostop
+            ALTER MAPPING FOR asciiword, asciihword, hword_asciipart, hword, hword_part, word WITH english_stem_nostop;
+            """
+        )
 
     def test_get_formated_string(self):
         self.assertEqual(get_formated_string("", "OR"), "()")
@@ -71,6 +92,9 @@ class SearchTests(TestCase):
         input_values = {"as_q": "django"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "only"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
         input_values = {"as_q": "only django"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
@@ -105,43 +129,100 @@ class SearchTests(TestCase):
         self.assertEqual(paragraphs.count(), 2)
 
         # CHECK "AND QUERY"
-        input_values = {"as_q": "field"}
+        input_values = {"as_q": "word"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 6)
-        input_values = {"as_q": "field", "as_qand": "uranium"}
+        self.assertEqual(paragraphs.count(), 7)
+        input_values = {"as_q": "words"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 7)
+        input_values = {"as_q": "words", "as_qand": "uranium"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "field", "as_qand": "test words"}
+        input_values = {"as_q": "words", "as_qand": "hydrogen"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 5)
+        input_values = {"as_q": "hydrogen", "as_qand": "uranium and"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 1)
-
-        # CHECK "OR QUERY"
-        input_values = {"as_q": "field", "as_qor": "Magnesium"}
+        input_values = {"as_q": "hydrogen", "as_qand": "uranium and hydrogen"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "field", "as_qor": "hydrogen"}
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "hydrogen", "as_qand": "uranium hydrogen"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "words", "as_qand": "This field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "field", "as_qor": "('hydrogen' OR 'Magnesium')"}
+        input_values = {"as_q": "words", "as_qand": "TEST field"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "words", "as_qand": "field contains"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 6)
+        input_values = {"as_q": "words", "as_qand": "field contains TEST"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "words", "as_qand": "field contains the"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "words", "as_qand": "This field contains the"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_q": "words", "as_qand": "This field contains TEST"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "words", "as_qand": "TEST field contains the"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_q": "words", "as_qand": "TEST field contains TEST"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+
+        # CHECK "OR QUERY"
+        input_values = {"as_q": "words", "as_qor": "Magnesium"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "word", "as_qor": "Magnesium"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "words", "as_qor": "hydrogen"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 5)
+        input_values = {"as_q": "words", "as_qor": "('hydrogen' OR 'Magnesium')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 7)
         input_values = {"as_qor": "('hydrogen' OR 'Magnesium')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 9)
         input_values = {"as_q": "TEST", "as_qor": "('hydrogen' OR 'Magnesium')"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_qor": "('word')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 7)
+        input_values = {"as_qor": "('words')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 7)
+        input_values = {"as_qor": "('words' OR 'word')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 7)
 
         # CHECK "AND QUERY" & "NOT QUERY"
         input_values = {"as_q": "hydrogen", "as_qand": "This field"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "test"}
+        self.assertEqual(paragraphs.count(), 4)
+        input_values = {"as_q": "hydrogen", "as_qand": "This field contains"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('magnesium' OR 'test')"}
+        self.assertEqual(paragraphs.count(), 4)
+        input_values = {"as_q": "hydrogen", "as_qand": "This field contain"}
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 2)
+        self.assertEqual(paragraphs.count(), 4)
+        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "contain"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('contain' OR 'test')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
 
         # CHECK "AND QUERY" & "OR QUERY" & "NOT QUERY"
         input_values = {
@@ -167,6 +248,44 @@ class SearchTests(TestCase):
         }
         paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         p = paragraphs.first()
+        self.assertEqual(paragraphs.count(), 0)
+
+    def test_stop_words_database(self):
+        input_values = {"as_q": "message"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "nuclear"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "nuclears"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 3)
+        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')", "as_and": "and"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 2)
+        input_values = {"as_q": "exportcontrol", "as_qnot": "message"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+        input_values = {"as_q": "exportcontrol", "as_qnot": "message_wrong"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclears and exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclears exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclear exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 1)
+        input_values = {"as_qor": "message", "as_qand": "nuclear test exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        self.assertEqual(paragraphs.count(), 0)
+        input_values = {"as_qor": "message", "as_qand": "nuclear_test exportcontrol"}
+        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
         self.assertEqual(paragraphs.count(), 0)
 
     def test_get_filtered_paragraphs(self):
