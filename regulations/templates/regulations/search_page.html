@@ -12,8 +12,9 @@
 {% endblock %}
 
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
     <div class="row g-5">
-        <div class="col-md-12">
+        <div class="col-md-8">
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
           {% if search_applied %}
             <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
@@ -53,5 +54,27 @@
               {% endif %}
           {% endif %}
         </div>
+
+        <div class="col-md-4">
+          <div class="position-sticky" style="top: 2rem;">
+            <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="fst-italic">
+              {% if LANGUAGE_CODE == "no" %}
+                    {{ flatpage.extendedflatpage.sidebar_title_no}}
+                {% else %}
+                    {{ flatpage.extendedflatpage.sidebar_title}}
+                {% endif %} 
+            </h4>
+            <p class="mb-0">
+               {% if LANGUAGE_CODE == "no" %}
+                    {{ flatpage.extendedflatpage.sidebar_text_no | safe}}
+                {% else %}
+                    {{ flatpage.extendedflatpage.sidebar_text | safe}}
+                {% endif %} 
+            </p>
+            </div>
+        </div>
+          </div>
+      </div>
     </div>
 {% endblock %}

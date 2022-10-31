@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
+from django.contrib.flatpages.models import FlatPage
 
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
@@ -29,6 +30,7 @@ class SearchView(ListView):
             else False
         )
         context["no_results"] = bool(search_term and not self.get_queryset())
+        context["flatpage"] = FlatPage.objects.get(url='/search/')
         return context
 
     def get_queryset(self):
