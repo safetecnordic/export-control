@@ -86,7 +86,7 @@ Info site for the Norwegian Export Control law.
 12. Set up postgres search configuration
 
    ```
-   python manage.py set_postgres_searcg_config
+   python manage.py set_postgres_search_config
    ```
 
 13. Parse law data from `regulations/fixtures/regulations.json` into the database
