@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% block breadcrumbs %}
-
+{% block title %}{{ site_name }} - {{ flatpage.extendedflatpage.title}}{% endblock %}
 {% get_current_language as LANGUAGE_CODE %}
 
 <nav aria-label="breadcrumb">
