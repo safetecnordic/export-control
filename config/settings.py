@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + ([AZURE_WEBSITE_HOSTNAME] if AZURE_
 INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -130,3 +131,41 @@ SITE_TAGLINE = "Safetec"
 if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "ExportControl Admin",
+    "site_header": "ExportControl Admin",
+    "site_logo": "base/img/logo/safetec-logosymbol-rgb-10px.png",
+    "site_brand": "Export Control",
+    "login_logo": None,
+    "login_logo_dark": None,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    "welcome_sign": "Admin Panel Control",
+    "copyright": "ExportControl Admin Panel Control",
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Site", "url": "front_page", "new_window": True},
+        {"name": "Search", "url": "search", "new_window": True},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": False,
+    "custom_css": None,
+    "custom_js": None,
+    "show_ui_builder": False,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    "language_chooser": False,
+}
