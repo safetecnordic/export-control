@@ -1,5 +1,6 @@
 {% extends "base/layout.html" %}
 {% load i18n %} 
+{% load static %} 
 {% load widget_tweaks %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
@@ -46,7 +47,7 @@
                       <p class="lead mb-4">{% trans "Your search returned no results, please try your search again or contact safetec for more information" %}</p>
                       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                         <a href="{% url 'add_contact' %}" class="btn btn-primary px-4 gap-3">{% trans "Consult Safetec" %}</a>
-                        <a href="{% url 'export_control_law' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
+                        <a href="{% static 'base/documents/export-control-appendix2.pdf' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
                       </div>
                     </div>
                   </div>

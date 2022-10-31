@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    'django.contrib.flatpages',
+    "django.contrib.flatpages",
     "django_bootstrap5",
     "widget_tweaks",
     "ckeditor",
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -124,7 +124,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # public files
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'config/public/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "config/public/media")
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -141,7 +141,7 @@ if DEBUG:
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
 
-LOCALE_PATHS = [BASE_DIR /'locale']
+LOCALE_PATHS = [BASE_DIR / "locale"]
 JAZZMIN_SETTINGS = {
     "site_title": "ExportControl Admin",
     "site_header": "ExportControl Admin",
@@ -178,4 +178,3 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False,
 }
-

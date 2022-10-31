@@ -1,3 +1,22 @@
+{% extends "base/layout.html" %}
 {% load i18n %} 
-<h1> 404</h1>
-<p>{% trans "Page not found" %}</p>
+{% block breadcrumbs %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home" %}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{% trans "404 Page" %}</li>
+    </ol>
+  </nav>
+{% endblock %}
+
+{% block header %}
+    <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+        <div class="col-md-8 px-0">
+        <h1 class="display-4 fst-italic">
+            {% trans "404 Page not found" %}
+        </h1>
+        </div>
+    </div>
+{% endblock %}
+
+ 
