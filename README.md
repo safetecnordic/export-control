@@ -83,9 +83,19 @@ Info site for the Norwegian Export Control law.
     ```
     python manage.py createsuperuser --username=admin --email=admin@example.com
     ```
+12. Set up postgres search configuration
 
-12. Parse law data from `regulations/fixtures/regulations.json` into the database
+   ```
+   python manage.py set_postgres_searcg_config
+   ```
+
+13. Parse law data from `regulations/fixtures/regulations.json` into the database
 
     ```
     python manage.py loaddata regulations
     ```
+14. Run tests
+
+   ```
+   python manage.py test
+   ```

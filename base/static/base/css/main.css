@@ -65,6 +65,7 @@ header {
   
 .logo {
      margin-right:30px;
+     width: 100%;
 }
 
 .active {
@@ -73,6 +74,10 @@ header {
 
 .nav-link:hover {
   color: #00abd7;
+}
+
+.hoverlink li a:hover {
+  color: #00abd7 !important;
 }
     
 footer {
@@ -115,8 +120,9 @@ footer ul {
 }
 
 body {
+  font-size: 18px;
+  line-height: 26px;
   margin-bottom: 140px;
-  /* bottom = footer height */
   padding-bottom: 40px;
 }
 

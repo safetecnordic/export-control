@@ -31,9 +31,6 @@
 {% get_current_language as LANGUAGE_CODE %}
     <div class="row g-5">
         <div class="col-md-8">
-        <h3 class="pb-4 fst-italic">
-            <i class="bi bi-search"></i> {% trans "Search" %}
-        </h3>
         <h3>
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
         </div>

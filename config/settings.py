@@ -75,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     "default": {
@@ -88,6 +87,9 @@ DATABASES = {
     }
 }
 
+DB_SEARCH_CONFIG = "english_nostop"
+
+
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -97,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
