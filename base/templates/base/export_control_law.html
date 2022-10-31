@@ -23,29 +23,37 @@
   </div>
 </div>
 {% endblock %} {% block content %}
-<div class="d-grid gap-2 d-md-flex justify-content-md-around mb-4">
-  <div>
-    <a
-      class="btn btn-info btn-large"
-      href="{% static 'base/documents/export-control-appendix1.pdf' %}"
-    >
-      Liste I
-    </a>
-  </div>
-  <div>
-    <a class="btn btn-info btn-large" href="{% static 'base/documents/export-control-appendix2.pdf' %}"
-      >Liste II</a
-    >
-  </div>
-  <div>
-    <a class="btn btn-info btn-large" href="https://lovdata.no/dokument/SF/forskrift/2013-06-19-718#KAPITTEL_8">
-        Lovdata eksportkontrollforskriften
-    </a>
-  </div>
+
+<div class="list-group w-auto">
+  <a href="{% static 'base/documents/export-control-appendix1.pdf' %}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+        <h6 class="mb-0">Liste I</h6>
+      </div>
+      <small class="opacity-50 text-nowrap">Open</small>
+    </div>
+  </a>
+  <a href="{% static 'base/documents/export-control-appendix2.pdf' %}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+        <h6 class="mb-0">List II</h6>
+      </div>
+      <small class="opacity-50 text-nowrap">Open</small>
+    </div>
+  </a>
+  <a href="https://lovdata.no/dokument/SF/forskrift/2013-06-19-718#KAPITTEL_8" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+        <h6 class="mb-0">Lovdata eksportkontrollforskriften</h6>
+      </div>
+      <small class="opacity-50 text-nowrap">Open</small>
+    </div>
+  </a>
 </div>
+
 <div class="row featurette">
   <div class="col-md-7">
-    <h2 class="text-center">
+    <h2 class="text-center mt-5">
         Formål med loven
     </h2>
     <h3>
