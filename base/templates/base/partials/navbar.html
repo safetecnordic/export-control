@@ -2,18 +2,27 @@
 {% load i18n %}
 {% load switch_lan %}
 {% load display_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 
 
 <nav class="bg-light border-bottom">
     <div class="container d-flex flex-wrap">
-      {% get_current_language as LANGUAGE_CODE %}
-      {% get_available_languages as LANGUAGES %}
-      {% get_language_info_list for LANGUAGES as languages %}
-  
       <ul class="nav me-auto"></ul>
       <ul class="nav">
-        <li class="nav-item"><a href="{{ request.path|switch_lan:'no'}}?{% get_parameters %}" class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/norway.png' %}"></a></li>
-        <li class="nav-item"><a href="{{ request.path|switch_lan:'en'}}?{% get_parameters %}"class="nav-link link-dark px-2"><img src="{% static 'base/img/flags/english.png' %}"></a></li>
+        <ul class="nav navbar-nav navbar-right language menu">
+            <li>
+                <a href="/en{{ request.get_full_path|slice:'3:' }}"
+                    class="{% if 'en' == LANGUAGE_CODE %}selected{% endif %}"
+                    lang="en">
+                    <img src="{% static 'base/img/flags/english.png' %}">
+                  </a>
+                <a href="/no{{ request.get_full_path|slice:'3:' }}"
+                    class="{% if 'no' == LANGUAGE_CODE %}selected{% endif %}"
+                    lang="no">
+                    <img src="{% static 'base/img/flags/norway.png' %}">
+                  </a>
+            </li>
+      </ul>
       </ul>
     </div>
   </nav>
