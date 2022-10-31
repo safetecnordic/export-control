@@ -9,14 +9,10 @@
       <ul class="nav">
         <ul class="nav navbar-nav navbar-right language menu">
             <li>
-                <a href="/en{{ request.get_full_path|slice:'3:' }}"
-                    class="{% if 'en' == LANGUAGE_CODE %}selected{% endif %}"
-                    lang="en">
+                <a href="/en{{ request.get_full_path|slice:'3:' }}" lang="en">
                     <img src="{% static 'base/img/flags/english.png' %}">
                   </a>
-                <a href="/no{{ request.get_full_path|slice:'3:' }}"
-                    class="{% if 'no' == LANGUAGE_CODE %}selected{% endif %}"
-                    lang="no">
+                <a href="/no{{ request.get_full_path|slice:'3:' }}" lang="no">
                     <img src="{% static 'base/img/flags/norway.png' %}">
                   </a>
             </li>
