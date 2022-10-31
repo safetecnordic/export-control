@@ -24,13 +24,13 @@
               </li>
               <li class="nav-item ms-4">
                 <a
-                  href="{% url 'export_control_law' %}"
+                  href="{% url 'django.contrib.flatpages.views.flatpage' url='/export/' %}"
                   class="nav-link px-2 link-dark  {% if 'export' in request.path %} active {% endif %}"
                   >{% trans "Export Control Law" %}</a>
               </li>
               <li class="nav-item ms-4">
                 <a
-                  href="{% url 'knowledge_transfer' %}"
+                  href="{% url 'django.contrib.flatpages.views.flatpage' url='/about-us/' %}"
                   class="nav-link px-2 link-dark  {% if 'knowledge-transfer' in request.path %} active {% endif %}"
                   >{% trans "Knowledge Transfer" %}</a>
               </li>
