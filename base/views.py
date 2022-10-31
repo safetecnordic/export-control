@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from regulations.forms import SearchForm
 from django.urls import reverse
 
-from django.contrib.flatpages.models import FlatPage
+from base.models import ExtendedFlatPage
 
 
 class FrontPageView(TemplateView):
@@ -12,5 +12,5 @@ class FrontPageView(TemplateView):
         context = super(FrontPageView, self).get_context_data(**kwargs)
         context["search_form"] = SearchForm(self.request.GET)
         context["form_action"] = reverse("search")
-        context["flatpage"] = FlatPage.objects.get(url='/home/')
+        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/home/")
         return context

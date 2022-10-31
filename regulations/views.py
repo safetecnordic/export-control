@@ -7,6 +7,7 @@ from django.contrib.flatpages.models import FlatPage
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
 from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
+from base.models import ExtendedFlatPage
 
 
 class SearchView(ListView):
@@ -30,7 +31,7 @@ class SearchView(ListView):
             else False
         )
         context["no_results"] = bool(search_term and not self.get_queryset())
-        context["flatpage"] = FlatPage.objects.get(url='/search/')
+        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/search/")
         return context
 
     def get_queryset(self):

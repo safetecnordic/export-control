@@ -44,7 +44,7 @@
                 {% else %}
                     {{ flatpage.extendedflatpage.sidebar_text | safe}}
                 {% endif %} 
-                <a href="{% url 'export' %}">Read more</a>
+                <a href="{% url 'django.contrib.flatpages.views.flatpage' url='export-control-law/' %}">{% trans "Read More" %}</a>
             </p>
             </div>
         </div>
