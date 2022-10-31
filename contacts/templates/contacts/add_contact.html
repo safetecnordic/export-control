@@ -16,16 +16,16 @@
         <div class="col-md-8 px-0">
         <h1 class="display-4 fst-italic">
           {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.extendedflatpage.title_no}}
+            {{ flatpage.title_no}}
           {% else %}
             {{ flatpage.title}}
           {% endif %} 
         </h1>
         <p class="lead my-2">
           {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.extendedflatpage.title_description_no}}
+            {{ flatpage.title_description_no}}
           {% else %}
-            {{ flatpage.extendedflatpage.title_description}}
+            {{ flatpage.title_description}}
           {% endif %} 
         </p>
         </div>
@@ -52,9 +52,9 @@
           <h4 class="fst-italic">{% trans "About" %}</h4>
           <p class="mb-0">
             {% if LANGUAGE_CODE == "no" %}
-              {{ flatpage.extendedflatpage.sidebar_text_no | safe}}
+              {{ flatpage.sidebar_text_no | safe}}
             {% else %}
-              {{ flatpage.extendedflatpage.sidebar_text | safe}}
+              {{ flatpage.sidebar_text | safe}}
             {% endif %} 
 
           </p>

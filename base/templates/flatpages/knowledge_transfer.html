@@ -18,9 +18,9 @@
         <div class="col-md-8 px-0">
         <h1 class="display-4 fst-italic">
           {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.extendedflatpage.title_no}}
+            {{ flatpage.title_no}}
           {% else %}
-            {{ flatpage.extendedflatpage.title}}
+            {{ flatpage.title}}
           {% endif %} 
         </h1>
         </div>
@@ -33,15 +33,15 @@
   <div class="col-md-7">
     <p class="lead">
       {% if LANGUAGE_CODE == "no" %}
-        {{ flatpage.extendedflatpage.page_content_no | safe}}
+        {{ flatpage.page_content_no | safe}}
       {% else %}
-        {{ flatpage.extendedflatpage.page_content | safe}}
+        {{ flatpage.page_content | safe}}
       {% endif %} 
     </p>
   </div>
   <div class="col-md-5">
-    {% if  flatpage.extendedflatpage.image %}
-      <img  class = "img-fluid mx-auto" src = "{{flatpage.extendedflatpage.image.url}}" width="500" height="500"/>
+    {% if  flatpage.image %}
+      <img  class = "img-fluid mx-auto" src = "{{flatpage.image.url}}" width="500" height="500"/>
     {% else %}
       <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
     {% endif %}
