@@ -2,10 +2,12 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
+from django.contrib.flatpages.models import FlatPage
 
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
 from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
+from base.models import ExtendedFlatPage
 
 
 class SearchView(ListView):
@@ -29,6 +31,7 @@ class SearchView(ListView):
             else False
         )
         context["no_results"] = bool(search_term and not self.get_queryset())
+        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/search/")
         return context
 
     def get_queryset(self):
@@ -54,4 +57,5 @@ class RegulationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
+        context["page_title"] = _("Regulation") + f" {self.object.code}"
         return context

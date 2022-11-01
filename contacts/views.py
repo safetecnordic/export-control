@@ -4,6 +4,7 @@ from django.views.generic import CreateView
 
 from contacts.forms import ContactForm
 from contacts.models import Contact
+from base.models import ExtendedFlatPage
 
 
 class AddContactView(CreateView):
@@ -14,5 +15,5 @@ class AddContactView(CreateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(AddContactView, self).get_context_data(**kwargs)
-        context["page_title"] = _("Consult Safetec")
+        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/consult/")
         return context

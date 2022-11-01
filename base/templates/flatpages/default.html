@@ -1,0 +1,54 @@
+{% extends "base/layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ site_name }} - {{ flatpage.extendedflatpage.title}}{% endblock %}
+{% block breadcrumbs %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">      
+      {% if LANGUAGE_CODE == "no" %}
+      {{ flatpage.extendedflatpage.title_no}}
+      {% else %}
+      {{ flatpage.extendedflatpage.title}}
+      {% endif %} 
+    </li>
+  </ol>
+</nav>
+{% endblock %} 
+{% block header %}
+<div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+  <div class="col-md-8 px-0">
+    <h1 class="display-4 fst-italic">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% if LANGUAGE_CODE == "no" %}
+        {{ flatpage.extendedflatpage.title_no}} 
+      {% else %}
+        {{ flatpage.extendedflatpage.title}}
+      {% endif %} 
+    </h1>
+  </div>
+</div>
+{% endblock %} 
+{% block content %}
+<div class="row featurette">
+  <div class="col-md-7">
+    <p class="lead">
+      {% if LANGUAGE_CODE == "no" %}
+        {{ flatpage.extendedflatpage.page_content_no | safe}}
+      {% else %}
+        {{ flatpage.extendedflatpage.page_content | safe}}
+      {% endif %} 
+    </p>
+  </div>
+  <div class="col-md-5">
+    {% if flatpage.extendedflatpage.image %}
+      <img  class = "img-fluid mx-auto" src = "{{flatpage.extendedflatpage.image.url}}" width="500" height="500"/>
+    {% else %}
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

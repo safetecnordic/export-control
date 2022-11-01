@@ -1,18 +1,21 @@
 {% extends "base/layout.html" %}
 {% load i18n %} 
+{% load static %} 
 {% load widget_tweaks %}
+{% block title %}{{ site_name }} - {{ page_title }}{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
       <li class="breadcrumb-item active" aria-current="page">{% trans "Search" %}</li>
     </ol>
   </nav>
 {% endblock %}
 
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
     <div class="row g-5">
-        <div class="col-md-12">
+        <div class="col-md-8">
           {% block search %}{% include "base/partials/search.html" %}{% endblock %}
           {% if search_applied %}
             <div class="row pb-4 fst-italic mt-5" style="margin-left:5px;">
@@ -45,12 +48,34 @@
                       <p class="lead mb-4">{% trans "Your search returned no results, please try your search again or contact safetec for more information" %}</p>
                       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                         <a href="{% url 'add_contact' %}" class="btn btn-primary px-4 gap-3">{% trans "Consult Safetec" %}</a>
-                        <a href="{% url 'export_control_law' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
+                        <a href="{% static 'base/documents/export-control-appendix2.pdf' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
                       </div>
                     </div>
                   </div>
               {% endif %}
           {% endif %}
         </div>
+
+        <div class="col-md-4">
+          <div class="position-sticky" style="top: 2rem;">
+            <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="fst-italic">
+              {% if LANGUAGE_CODE == "no" %}
+                    {{ flatpage.sidebar_title_no}}
+                {% else %}
+                    {{ flatpage.sidebar_title}}
+                {% endif %} 
+            </h4>
+            <p class="mb-0">
+               {% if LANGUAGE_CODE == "no" %}
+                    {{ flatpage.sidebar_text_no | safe}}
+                {% else %}
+                    {{ flatpage.sidebar_text | safe}}
+                {% endif %} 
+            </p>
+            </div>
+        </div>
+          </div>
+      </div>
     </div>
 {% endblock %}
