@@ -18,107 +18,103 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 msgid "all these words:"
-msgstr ""
+msgstr "alle disse ordene:"
 
 msgid "Type in the important words: <b>Chemical Heat Molecular</b>"
-msgstr ""
+msgstr "Skriv inn viktige ord: <b>Chemical Heat Molecular</b>"
 
 msgid "this exact phrase:"
-msgstr ""
+msgstr "eksakt sitat:"
 
 msgid "Type the exact phrase: <b>High Stability</b>"
-msgstr ""
+msgstr "Finn eksakt sitat: <b>High Stability</b>"
 
 msgid "any of these words:"
-msgstr ""
+msgstr "hvilket som helst av disse:"
 
-msgid ""
-"Type all the words you want to include, separated by space: <b>Thumbnail "
-"Standard </b>"
-msgstr ""
+msgid "Type all the words you want to include, separated by space: <b>Thumbnail Standard </b>"
+msgstr "Skriv inn alle ord du vil inkludere, separert med mellomrom: <b>Thumbnail Standard </b>"
 
 msgid "none of these words:"
-msgstr ""
+msgstr "ingen av disse ordene:"
 
 msgid "Type all words you want to exclude, separated by space: <b>nuclear</b>"
-msgstr ""
+msgstr "Skriv inn alle ord du vil ekskludere, separert med mellomrom: <b>nuclear</b>"
 
 msgid "category:"
-msgstr ""
+msgstr "kategori:"
 
 msgid "Filter by <b>Category</b>"
-msgstr ""
+msgstr "Filtrer på <b>kategori</b>"
 
 msgid "sub category:"
-msgstr ""
+msgstr "underkategori:"
 
 msgid "Filter by <b>Sub Category</b>"
-msgstr ""
+msgstr "Filtrer på <b>underkategori</b>"
 
 msgid "regime:"
-msgstr ""
+msgstr "regime:"
 
 msgid "Filter by <b>Regime</b>"
-msgstr ""
+msgstr "Filtrer på <b>regime</b>"
 
 msgid "type:"
-msgstr ""
+msgstr "type:"
 
 msgid "Filter by Note Type: <b>BASE, N.B., Technical Note,  Note</b>"
-msgstr ""
+msgstr "Filtrer på notat-type: <b>BASE, N.B., Technical Note,  Note</b>"
 
 msgid "Incorrect value entered."
-msgstr ""
+msgstr "Ugyldig verdi gitt."
 
 msgid "Date created"
-msgstr ""
+msgstr "Opprettelsesdato"
 
 msgid "Date updated"
-msgstr ""
+msgstr "Sist oppdatert"
 
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 msgid "N.B."
-msgstr ""
+msgstr "N.B."
 
 msgid "Technical Note"
-msgstr ""
+msgstr "Technical Note"
 
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 msgid "Regulation"
-msgstr ""
+msgstr "Regulering"
 
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
 msgid "all these words::"
-msgstr ""
+msgstr "alle disse ordene:"
 
 msgid "Results:"
-msgstr ""
+msgstr "Resultater:"
 
 msgid "of"
-msgstr ""
+msgstr "av"
 
 msgid "No results found...."
-msgstr ""
+msgstr "Ingen resultater funnet..."
 
-msgid ""
-"Your search returned no results, please try your search again or contact "
-"safetec for more information"
-msgstr ""
+msgid "Your search returned no results, please try your search again or contact Safetec for more information"
+msgstr "Søket ditt returnerte ingen resultater, vennligst søk på nytt eller kontakt Safetec for mer informasjon"
 
 msgid "Consult Safetec"
-msgstr ""
+msgstr "Kontakt Safetec"
 
 msgid "Export Control Law"
-msgstr ""
+msgstr "Eksportkontrolloven"
 
 msgid "Advanced Search"
-msgstr ""
+msgstr "Avansert søk"

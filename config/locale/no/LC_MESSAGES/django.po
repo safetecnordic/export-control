@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 msgid "English"
-msgstr ""
+msgstr "Engelsk"
 
 msgid "Norwegian"
-msgstr ""
+msgstr "Norsk"

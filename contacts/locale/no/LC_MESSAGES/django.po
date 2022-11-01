@@ -18,71 +18,70 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 msgid "Name*"
-msgstr ""
+msgstr "Navn"
 
 msgid "Email*"
-msgstr ""
+msgstr "Epost"
 
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefonnummer"
 
 msgid "Enter your message here..."
-msgstr ""
+msgstr "Skriv meldingen din her..."
 
 msgid "New"
-msgstr ""
+msgstr "Ny"
 
 msgid "In Progress"
-msgstr ""
+msgstr "Aktiv"
 
 msgid "Resolved"
-msgstr ""
+msgstr "Løst"
 
 msgid "Canceled"
-msgstr ""
+msgstr "Kansellert"
 
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 msgid "Email"
-msgstr ""
+msgstr "Epost"
 
 msgid "Message"
-msgstr ""
+msgstr "Melding"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Archived"
-msgstr ""
+msgstr "Arkivert"
 
 msgid "Date created"
-msgstr ""
+msgstr "Opprettet"
 
 msgid "Date updated"
-msgstr ""
+msgstr "Sist oppdatert"
 
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 msgid "Consult Safetec"
-msgstr ""
+msgstr "Kontakt Safetec"
 
 msgid "Send Message"
-msgstr ""
+msgstr "Send melding"
 
 msgid "Thank you"
-msgstr ""
+msgstr "Takk"
 
 msgid "Thank you for your question. We get back to you soon!"
-msgstr ""
+msgstr "Takk for ditt spørsmål, vi kommer tilbake til deg snart!"
 
-msgid ""
-"Would you like to visit our home page to find out more about our services?"
-msgstr ""
+msgid "Would you like to visit our home page to find out more about our services?"
+msgstr "Ønsker du å besøke vår hjemmeside og finne ut mer om våre tjenester?"
 
 msgid "Visit Safetec"
-msgstr ""
+msgstr "Safetecs hjemmeside"
 
 msgid "Continue search"
-msgstr ""
+msgstr "Fortsett søk"

@@ -21,22 +21,22 @@ msgid "Advanced options"
 msgstr "Avanserte valg"
 
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 msgid "404 Page"
-msgstr ""
+msgstr "404"
 
 msgid "404 Page not found"
-msgstr ""
+msgstr "404 Ikke funnet"
 
 msgid "About"
 msgstr "Om eksportkontrollov"
 
 msgid "Read More"
-msgstr ""
+msgstr "Les mer"
 
 msgid "SEARCH"
-msgstr ""
+msgstr "SØK"
 
 #, fuzzy
 #| msgid "Export Control Law"
@@ -44,19 +44,19 @@ msgid "Search in Export Control Law"
 msgstr "Eksportkontrollov"
 
 msgid "Login"
-msgstr ""
+msgstr "Logg inn"
 
 msgid "ABOUT US"
-msgstr ""
+msgstr "OM OSS"
 
 msgid "CONTACT US"
-msgstr ""
+msgstr "KONTAKT OSS"
 
 msgid "Consult Safetec"
 msgstr "Kontakt Safetec"
 
 msgid "FOLLOW US"
-msgstr ""
+msgstr "FØLG OSS"
 
 msgid "Saving..."
 msgstr "Lagrer..."
@@ -80,7 +80,7 @@ msgid "Search"
 msgstr "Søk"
 
 msgid "Export Control Law"
-msgstr "Eksportkontrollov"
+msgstr "Eksportkontrolloven"
 
 #, fuzzy
 #| msgid "Knowledge transfer"
@@ -91,13 +91,13 @@ msgid "First"
 msgstr "Først"
 
 msgid "Page"
-msgstr ""
+msgstr "Side"
 
 msgid "of"
-msgstr ""
+msgstr "av"
 
 msgid "Last"
-msgstr "Sist"
+msgstr "Siste"
 
 msgid "Enter the text..."
 msgstr "Skriv her..."
@@ -106,7 +106,7 @@ msgid "Searching...."
 msgstr "Søker..."
 
 msgid "Advanced Search"
-msgstr ""
+msgstr "Avansert søk"
 
 #, fuzzy
 #| msgid "Consult Safetec"
