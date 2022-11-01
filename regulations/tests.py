@@ -1,11 +1,10 @@
-from django.db import connection
 from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from regulations.forms import SearchForm
 from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
-from regulations.utils import get_formated_string
+from regulations.utils import get_formated_string, set_postgres_search_config
 from regulations.models import Category, SubCategory, Regime, Paragraph
 
 
@@ -16,26 +15,7 @@ class SearchTests(TestCase):
 
     def setUp(self):
         self.paragraphs = Paragraph.objects.all()
-        cursor = connection.cursor()
-        cursor.execute(
-            """
-            CREATE TEXT SEARCH DICTIONARY english_stem_nostop (
-            Template = snowball
-            , Language = english
-            );
-            """
-        )
-        cursor.execute(
-            """
-            CREATE TEXT SEARCH CONFIGURATION public.english_nostop ( COPY = pg_catalog.english );
-            """
-        )
-        cursor.execute(
-            """
-            ALTER TEXT SEARCH CONFIGURATION public.english_nostop
-            ALTER MAPPING FOR asciiword, asciihword, hword_asciipart, hword, hword_part, word WITH english_stem_nostop;
-            """
-        )
+        set_postgres_search_config()
 
     def test_get_formated_string(self):
         self.assertEqual(get_formated_string("", "OR"), "()")
