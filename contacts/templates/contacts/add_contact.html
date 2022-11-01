@@ -1,10 +1,10 @@
 {% extends "base/layout.html" %}
 {% load i18n %} 
-
+{% block title %}{{ site_name }} - {{ flatpage.title_description }}{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
       <li class="breadcrumb-item active" aria-current="page">{% trans "Consult Safetec" %}</li>
     </ol>
   </nav>
