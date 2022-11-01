@@ -1,7 +1,5 @@
 {% load static %} 
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-
 
 <nav class="bg-light border-bottom">
     <div class="container d-flex flex-wrap">
@@ -9,10 +7,10 @@
       <ul class="nav">
         <ul class="nav navbar-nav navbar-right language menu">
             <li>
-                <a href="/en{{ request.get_full_path|slice:'3:' }}" lang="en">
+                <a href="/en{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}" lang="en">
                     <img src="{% static 'base/img/flags/english.png' %}">
                   </a>
-                <a href="/no{{ request.get_full_path|slice:'3:' }}" lang="no">
+                <a href="/no{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}" lang="no">
                     <img src="{% static 'base/img/flags/norway.png' %}">
                   </a>
             </li>
