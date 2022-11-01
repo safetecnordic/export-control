@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 22:53+0200\n"
+"POT-Creation-Date: 2022-11-01 11:49+0100\n"
 "PO-Revision-Date: 2022-09-12 13:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,78 +17,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: .\contacts\forms.py:19
 msgid "Name*"
 msgstr ""
 
-#: .\contacts\forms.py:20
 msgid "Email*"
 msgstr ""
 
-#: .\contacts\forms.py:21 .\contacts\models.py:31
 msgid "Phone Number"
 msgstr ""
 
-#: .\contacts\forms.py:22
 msgid "Enter your message here..."
 msgstr ""
 
-#: .\contacts\models.py:17
 msgid "New"
 msgstr ""
 
-#: .\contacts\models.py:18
 msgid "In Progress"
 msgstr ""
 
-#: .\contacts\models.py:19
 msgid "Resolved"
 msgstr ""
 
-#: .\contacts\models.py:20
 msgid "Canceled"
 msgstr ""
 
-#: .\contacts\models.py:24
 msgid "Name"
 msgstr ""
 
-#: .\contacts\models.py:28
 msgid "Email"
 msgstr ""
 
-#: .\contacts\models.py:36
 msgid "Message"
 msgstr ""
 
-#: .\contacts\models.py:40
 msgid "Status"
 msgstr ""
 
-#: .\contacts\models.py:46
 msgid "Archived"
 msgstr ""
 
-#: .\contacts\models.py:50
 msgid "Date created"
 msgstr ""
 
-#: .\contacts\models.py:55
 msgid "Date updated"
 msgstr ""
 
-#: .\contacts\templates\contacts\add_contact.html:8
-msgid "Consult Safetech"
+msgid "Home"
 msgstr ""
 
-#: .\contacts\templates\contacts\add_contact.html:31
+msgid "Consult Safetec"
+msgstr ""
+
 msgid "Send Message"
 msgstr ""
 
-#: .\contacts\templates\contacts\add_contact.html:39
-msgid "About"
+msgid "Thank you"
 msgstr ""
 
-#: .\contacts\templates\contacts\thank_you.html:8
-msgid "Thank you"
+msgid "Thank you for your question. We get back to you soon!"
+msgstr ""
+
+msgid ""
+"Would you like to visit our home page to find out more about our services?"
+msgstr ""
+
+msgid "Visit Safetec"
+msgstr ""
+
+msgid "Continue search"
 msgstr ""
