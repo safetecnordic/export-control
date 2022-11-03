@@ -11,7 +11,7 @@ class AddContactView(CreateView):
     model = Contact
     form_class = ContactForm
     template_name = "contacts/add_contact.html"
-    success_url = reverse_lazy("thank_you")
+    success_url = reverse_lazy("success")
 
     def get_context_data(self, *args, **kwargs):
         context = super(AddContactView, self).get_context_data(**kwargs)

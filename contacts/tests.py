@@ -55,7 +55,7 @@ class ContactTests(TestCase):
                 "message": "Add here some text",
             },
         )
-        success_url = reverse("thank_you")
+        success_url = reverse("success")
         self.assertRedirects(response, success_url)
 
         contacts = Contact.objects.all()
