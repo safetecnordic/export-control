@@ -10,10 +10,10 @@ from base.models import ExtendedFlatPage
 class AddContactView(CreateView):
     model = Contact
     form_class = ContactForm
-    template_name = "contacts/add_contact.html"
+    template_name = "contacts/consult.html"
     success_url = reverse_lazy("success")
 
     def get_context_data(self, *args, **kwargs):
         context = super(AddContactView, self).get_context_data(**kwargs)
-        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/consult/")
+        context["flatpage"] = ExtendedFlatPage.objects.get(url="/consult/")
         return context

@@ -47,7 +47,7 @@
                     <div class="col-lg-6 mx-auto">
                       <p class="lead mb-4">{% trans "Your search returned no results, please try your search again or contact safetec for more information" %}</p>
                       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a href="{% url 'add_contact' %}" class="btn btn-primary px-4 gap-3">{% trans "Consult Safetec" %}</a>
+                        <a href="{% url 'consult' %}" class="btn btn-primary px-4 gap-3">{% trans "Consult Safetec" %}</a>
                         <a href="{% static 'base/documents/export-control-appendix2.pdf' %}" class="btn btn-outline-secondary px-4">{% trans "Export Control Law" %}</a>
                       </div>
                     </div>
@@ -66,7 +66,7 @@
                     {{ flatpage.sidebar_title}}
                 {% endif %} 
             </h4>
-            <p><a href="{% url 'add_contact' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a></p>
+            <p><a href="{% url 'consult' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a></p>
             <p class="mb-0">
                {% if LANGUAGE_CODE == "no" %}
                     {{ flatpage.sidebar_text_no | safe}}
