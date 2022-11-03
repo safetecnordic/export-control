@@ -31,7 +31,7 @@ class SearchView(ListView):
             else False
         )
         context["no_results"] = bool(search_term and not self.get_queryset())
-        context["flatpage"], new = ExtendedFlatPage.objects.get_or_create(url="/search/")
+        context["flatpage"] = ExtendedFlatPage.objects.get(url="/search/")
         return context
 
     def get_queryset(self):
@@ -58,4 +58,5 @@ class RegulationDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
         context["page_title"] = _("Regulation") + f" {self.object.code}"
+        context["flatpage"] = ExtendedFlatPage.objects.get(url="/search/")
         return context

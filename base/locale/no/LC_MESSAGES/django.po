@@ -102,8 +102,8 @@ msgid "Search"
 msgstr "Søk"
 
 #: templates/base/partials/headbar.html:29
-msgid "Export Control Law"
-msgstr "Eksportkontrolloven"
+msgid "About Export Control"
+msgstr "Om eksportkontroll"
 
 #: templates/base/partials/headbar.html:35
 #, fuzzy
