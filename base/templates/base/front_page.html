@@ -17,9 +17,9 @@
             {% endif %} 
         </h1>
         <p class="lead my-2">
-            {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.title_description_no }}
-            {% else %}
+            {% if LANGUAGE_CODE == "no" and flatpage.title_description_no %}
+             {{ flatpage.title_description_no }}
+            {% elif flatpage.title_description%}
                 {{ flatpage.title_description }}
             {% endif %} 
         </p>
