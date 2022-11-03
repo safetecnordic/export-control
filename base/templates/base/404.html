@@ -14,8 +14,15 @@
     <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
         <div class="col-md-8 px-0">
         <h1 class="display-4 fst-italic">
-            {% trans "404 Page not found" %}
-        </h1>
+            {% trans "404" %}
+          </h1>
+         <h2 class="display-6 fst-italic">
+            {% trans "Oops! This Page Could Not Be Found" %}
+          </h2>
+          <p>
+            {% trans "SORRY BUT THE PAGE YOU ARE LOOKING FOR DOES NOT EXIST, HAVE BEEN REMOVED. NAME CHANGED OR IS TEMPORARILY UNAVAILABLE" %}
+          </p>
+          <a href="{% url 'front_page' %}" class="btn btn-lg btn-primary">{% trans "Go to HomePage" %}</a>
         </div>
     </div>
 {% endblock %}
