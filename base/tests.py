@@ -36,7 +36,7 @@ class BaseTests(TestCase):
 
     def test_flatpages(self):
         site = Site.objects.get(id=1)
-        url_title = "/export-control-law/"
+        url_title = "/about/"
         url = reverse("django.contrib.flatpages.views.flatpage", kwargs={"url": url_title})
         response = self.client.get(url, follow=True)
         self.assertEqual(response.status_code, 404)

@@ -16,9 +16,8 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path("home/", handler404),
-    path("consult/", handler404),
     path("regulations/", include("regulations.urls")),
-    path("contacts/", include("contacts.urls")),
+    path("consult/", include("contacts.urls")),
     path("", include("django.contrib.flatpages.urls")),
     path("", FrontPageView.as_view(), name="front_page"),
 )
