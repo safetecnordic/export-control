@@ -163,6 +163,12 @@ msgstr "Kontakt Safetec"
 msgid "Export Control Law"
 msgstr "Eksportkontrolloven"
 
+msgid "Regimes"
+msgstr "Regimer"
+
+msgid "Knowledge Transfer"
+msgstr "Kunnskapsoverføring"
+
 #: tests.py:36
 msgid "Advanced Search"
 msgstr "Avansert søk"

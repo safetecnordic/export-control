@@ -66,6 +66,7 @@
                     {{ flatpage.sidebar_title}}
                 {% endif %} 
             </h4>
+            <p><a href="{% url 'add_contact' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a></p>
             <p class="mb-0">
                {% if LANGUAGE_CODE == "no" %}
                     {{ flatpage.sidebar_text_no | safe}}
