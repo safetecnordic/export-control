@@ -1,4 +1,3 @@
-from tkinter import E
 import django
 from django.conf.urls.static import static
 from django.contrib import admin
