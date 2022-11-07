@@ -12,42 +12,44 @@ Info site for the Norwegian Export Control law.
 
 ## Project setup
 
+Follow these steps to set up the project locally:
+
 1. Make sure you have Python 3.10 installed (https://www.python.org/downloads/)
 
-   ```
-   python3 --version
-   ```
+```
+python3 --version
+```
 
 2. Make sure you have PostgreSQL 14.5 installed (https://www.postgresql.org/download/)
 
-   ```
-   psql --version
-   ```
+```
+psql --version
+```
 
 3. Clone the repo (and navigate into it)
 
-   ```
-   git clone https://github.com/cdp-group4/export-control.git
-   cd export-control
-   ```
+```
+git clone https://github.com/cdp-group4/export-control.git
+cd export-control
+```
 
 4. Set up Python virtual environment (to isolate dependencies)
 
-   ```
-   python3 -m venv venv
-   ```
+```
+python3 -m venv venv
+```
 
 5. Activate virtual environment
 
-   ```
-   source venv/bin/activate
-   ```
+```
+source venv/bin/activate
+```
 
 6. Install dependencies
 
-   ```
-   pip install -r requirements.txt
-   ```
+```
+pip install -r requirements.txt
+```
 
 7. Set up linting and formatting in VSCode
 
@@ -57,45 +59,52 @@ Info site for the Norwegian Export Control law.
    - Search `formatting` -> choose `black` in `Python > Formatting Provider`
    - Search `format on save` -> check `Editor: Format On Save`
 
-8. Create `.env` file in the root of the project, with the following values:
+8. Create `.env` file in the root of the project, and copy the values below into it
+   - If you have set a custom database name, user, password, host or port in Postgres, also add values for `DBNAME`/`DBUSER`/`DBPASS`/`DBHOST`/`DBPORT`
 
-   ```
-   SECRET_KEY=django-insecure-7bk+5=k2aa)kt=45p1s+#&&i#u&$0#2@-6#wtle2*e&tv^^9s-
-   DEBUG=true
-   ```
-
-   If you have set a custom database name, user, password, host or port for Postgres, also add values for `DBNAME`/`DBUSER`/`DBPASS`/`DBHOST`/`DBPORT`.
+```
+SECRET_KEY=django-insecure-7bk+5=k2aa)kt=45p1s+#&&i#u&$0#2@-6#wtle2*e&tv^^9s-
+DEBUG=true
+```
 
 9. Start server (requires Postgres database server to be running as well)
 
-   ```
-   python manage.py runserver
-   ```
+```
+python manage.py runserver
+```
 
-10. Make migrations
+10. Run migrations to add models to the database
 
-    ```
-    python manage.py migrate
-    ```
+```
+python manage.py migrate
+```
 
 11. Create admin user
 
-    ```
-    python manage.py createsuperuser --username=admin --email=admin@example.com
-    ```
-12. Set up postgres search configuration
+```
+python manage.py createsuperuser --username=admin --email=admin@example.com
+```
 
-   ```
-   python manage.py set_postgres_search_config
-   ```
+12. Set up Postgres search configuration
 
-13. Parse law data from `regulations/fixtures/regulations.json` into the database
+```
+python manage.py set_postgres_search_config
+```
 
-    ```
-    python manage.py loaddata regulations
-    ```
-14. Run tests
+13. Load law data from `regulations/fixtures/regulations.json` into the database
 
-   ```
-   python manage.py test
-   ```
+```
+python manage.py loaddata regulations
+```
+
+14. Load page content from `base/fixtures/init_pages.json` into the database
+
+```
+python manage.py loaddata init_pages
+```
+
+15. Run tests
+
+```
+python manage.py test
+```
