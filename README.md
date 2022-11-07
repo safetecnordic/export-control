@@ -97,7 +97,7 @@ python manage.py set_postgres_search_config
 python manage.py loaddata regulations
 ```
 
-14. Load page content from `regulations/fixtures/init_pages.json` into the database
+14. Load page content from `base/fixtures/init_pages.json` into the database
 
 ```
 python manage.py loaddata init_pages
