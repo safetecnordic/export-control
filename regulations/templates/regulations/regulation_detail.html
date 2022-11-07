@@ -26,11 +26,9 @@
 {% block content %}
   <div class="row">
     <div class="col-md-12">
-        <ul>
-          {% for paragraph in root_paragraphs %} 
-            {% include "regulations/partials/recursive_paragraph.html" %}
-          {%endfor%}
-        </ul>
+        {% for paragraph in paragraphs %} 
+          {% include "regulations/partials/paragraph.html" %}
+        {%endfor%}
     </div>
   </div>
 {% endblock %}
