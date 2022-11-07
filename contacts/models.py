@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
-
+from django.utils.safestring import mark_safe
 from utils import types
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -62,15 +62,18 @@ class Contact(models.Model):
     def get_status_display_in_admin(self):
         text = ""
         if self.status:
-            status_title = ""
             status_class = ""
             if self.status == self.NEW:
                 status_class = "info"
             elif self.status == self.IN_PROGRESS:
-                status_class = "default"
+                status_class = "secondary"
             elif self.status == self.CANCELED:
                 status_class = "danger"
             elif self.status == self.RESOLVED:
                 status_class = "success"
-            text = f"<div class='label label-{status_class}' rel='tooltip-top' title='{status_title}' style='min-width: 65px; display:inline-block;'>{status_title}</div>"
+            text = mark_safe(
+                f"<div class='badge bg-{status_class}' title='{self.status.title()}' style='min-width: 65px; display:inline-block;'>{self.status.title()}</div>"
+            )
         return text
+
+    get_status_display_in_admin.short_description = _("Status")  # type: ignore
