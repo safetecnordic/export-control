@@ -4,60 +4,95 @@ from django.db.models import Q
 from django.conf import settings
 
 
-def get_search_queries(as_q, as_qand, as_qor, as_qnot):
-    query = None
-    not_query = None
-    and_query = None
-    or_query = None
-    if as_q:
-        query = SearchQuery(as_q, config=settings.DB_SEARCH_CONFIG)
-    if as_qand:
-        and_query = SearchQuery(as_qand, search_type="phrase", config=settings.DB_SEARCH_CONFIG)
-    if as_qor:
-        if as_q:
-            as_qor = f"{as_q} {as_qor}"
-        or_query = SearchQuery(as_qor, search_type="websearch", config=settings.DB_SEARCH_CONFIG)
-    if as_qnot:
-        not_query = SearchQuery(as_qnot, search_type="websearch", config=settings.DB_SEARCH_CONFIG)
-    return query, and_query, or_query, not_query
+FIELD_TO_SEARCH = "text"
 
 
-def get_searched_paragraphs(search_terms: dict, paragraphs: MP_NodeManager) -> MP_NodeManager:
-    field_to_search = "text"
-    search_vector = SearchVector(field_to_search, config=settings.DB_SEARCH_CONFIG)
-    query, and_query, or_query, not_query = get_search_queries(
-        search_terms["as_q"] if "as_q" in search_terms.keys() else None,
-        search_terms["as_qand"] if "as_qand" in search_terms.keys() else None,
-        search_terms["as_qor"] if "as_qor" in search_terms.keys() else None,
-        search_terms["as_qnot"] if "as_qnot" in search_terms.keys() else None,
-    )
-    search_headline = SearchHeadline(field_to_search, query, config=settings.DB_SEARCH_CONFIG)
-    paragraphs = paragraphs.annotate(search=search_vector).annotate(headline=search_headline)
-    if query:
-        paragraphs = paragraphs.filter(search=query)
-    if and_query:
-        search_headline = SearchHeadline(field_to_search, and_query)
-        paragraphs = paragraphs.annotate(headline=search_headline).filter(search=and_query)
-    if or_query:
-        search_headline = SearchHeadline(field_to_search, or_query)
-        paragraphs = paragraphs.annotate(headline=search_headline).filter(search=or_query)
-    if not_query:
-        paragraphs = paragraphs.exclude(search=not_query)
+class SearchQueries:
+    query: SearchQuery | None
+    and_query: SearchQuery | None
+    or_query: SearchQuery | None
+    not_query: SearchQuery | None
+
+    category_query: str | None
+    subcategory_query: str | None
+    regime_query: str | None
+    type_query: str | None
+
+    def __init__(self, search_params: dict[str, str]):
+        query_param = search_params.get("as_q")
+        self.query = SearchQuery(query_param, config=settings.DB_SEARCH_CONFIG) if query_param else None
+
+        and_query_param = search_params.get("as_qand")
+        self.and_query = (
+            SearchQuery(and_query_param, search_type="phrase", config=settings.DB_SEARCH_CONFIG)
+            if and_query_param
+            else None
+        )
+
+        or_query_param = search_params.get("as_qor")
+        self.or_query = (
+            SearchQuery(
+                f"{query_param} {or_query_param}" if query_param else or_query_param,
+                search_type="websearch",
+                config=settings.DB_SEARCH_CONFIG,
+            )
+            if or_query_param
+            else None
+        )
+
+        not_query_param = search_params.get("as_qnot")
+        self.not_query = (
+            SearchQuery(not_query_param, search_type="websearch", config=settings.DB_SEARCH_CONFIG)
+            if not_query_param
+            else None
+        )
+
+        self.category_query = search_params.get("as_cat")
+        self.subcategory_query = search_params.get("as_subcat")
+        self.regime_query = search_params.get("as_reg")
+        self.type_query = search_params.get("as_type")
+
+
+def highlight_paragraphs(paragraphs: MP_NodeManager, queries: SearchQueries) -> MP_NodeManager:
+    for search_query in [queries.query, queries.and_query, queries.or_query]:
+        if search_query is None:
+            continue
+
+        search_headline = SearchHeadline(FIELD_TO_SEARCH, search_query, config=settings.DB_SEARCH_CONFIG)
+        paragraphs = paragraphs.annotate(headline=search_headline)
 
     return paragraphs
 
 
-def get_filtered_paragraphs(search_terms: dict, paragraphs: MP_NodeManager) -> MP_NodeManager:
-    if "as_cat" in search_terms.keys() and search_terms["as_cat"]:
+def filter_paragraphs(paragraphs: MP_NodeManager, queries: SearchQueries) -> MP_NodeManager:
+    if queries.category_query:
         paragraphs = paragraphs.filter(
-            Q(category=search_terms["as_cat"]) | Q(regulation__category=search_terms["as_cat"])
+            Q(category=queries.category_query) | Q(regulation__category=queries.category_query)
         )
-    if "as_subcat" in search_terms.keys() and search_terms["as_subcat"]:
+
+    if queries.subcategory_query:
         paragraphs = paragraphs.filter(
-            Q(sub_category=search_terms["as_subcat"]) | Q(regulation__sub_category=search_terms["as_subcat"])
+            Q(sub_category=queries.subcategory_query) | Q(regulation__sub_category=queries.subcategory_query)
         )
-    if "as_reg" in search_terms.keys() and search_terms["as_reg"]:
-        paragraphs = paragraphs.filter(regulation__regime=search_terms["as_reg"])
-    if "as_type" in search_terms.keys() and search_terms["as_type"] and search_terms["as_type"] != "base":
-        paragraphs = paragraphs.filter(note_type=search_terms["as_type"])
+
+    if queries.regime_query:
+        paragraphs = paragraphs.filter(regulation__regime=queries.regime_query)
+
+    if queries.type_query and queries.type_query != "base":
+        paragraphs = paragraphs.filter(note_type=queries.type_query)
+
+    search_vector = SearchVector(FIELD_TO_SEARCH, config=settings.DB_SEARCH_CONFIG)
+    paragraphs = paragraphs.annotate(search=search_vector)
+
+    if queries.query:
+        paragraphs = paragraphs.filter(search=queries.query)
+    if queries.and_query:
+        paragraphs = paragraphs.filter(search=queries.and_query)
+    if queries.or_query:
+        paragraphs = paragraphs.filter(search=queries.or_query)
+    if queries.not_query:
+        paragraphs = paragraphs.exclude(search=queries.not_query)
+
+    paragraphs = paragraphs.order_by("-depth")
+
     return paragraphs
