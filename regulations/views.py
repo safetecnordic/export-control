@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.db.models import F, Sum
+from django.db.models import F
 from django.utils.translation import gettext as _
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
@@ -7,6 +7,7 @@ from django.views.generic.list import ListView
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
 from regulations.search import SearchQueries, highlight_paragraphs, filter_paragraphs
+from base.models import ExtendedFlatPage
 
 
 class SearchView(ListView):
@@ -30,6 +31,7 @@ class SearchView(ListView):
             else False
         )
         context["no_results"] = bool(search_term and not self.get_queryset())
+        context["flatpage"] = ExtendedFlatPage.objects.get(url="/search/")
         return context
 
     def get_queryset(self):
@@ -55,6 +57,8 @@ class RegulationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["paragraphs"] = self.get_paragraphs()
+        context["page_title"] = _("Regulation") + f" {self.object.code}"
+        context["flatpage"] = ExtendedFlatPage.objects.get(url="/search/")
         return context
 
     def get_paragraphs(self):

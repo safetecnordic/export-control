@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-12 13:17+0200\n"
-"PO-Revision-Date: 2022-09-12 13:18+0200\n"
+"POT-Creation-Date: 2022-11-01 12:32+0100\n"
+"PO-Revision-Date: 2022-11-01 11:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: no\n"
@@ -17,5 +17,130 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
-msgid "This is a test to see if the translations work"
-msgstr "Dette er en test for å se om oversettelsene fungerer"
+#: admin.py:31
+msgid "Advanced options"
+msgstr "Avanserte valg"
+
+#: templates/base/404.html:7 templates/flatpages/default.html:10
+msgid "Home"
+msgstr "Hjem"
+
+#: templates/base/404.html:8
+msgid "404 Page"
+msgstr "404"
+
+#: templates/base/404.html:17
+msgid "404 Page not found"
+msgstr "404 Ikke funnet"
+
+#: templates/base/front_page.html:41
+msgid "About"
+msgstr "Om eksportkontrollov"
+
+#: templates/base/front_page.html:48
+msgid "Read More"
+msgstr "Les mer"
+
+#: templates/base/partials/footer.html:6
+msgid "SEARCH"
+msgstr "SØK"
+
+#: templates/base/partials/footer.html:7
+#, fuzzy
+#| msgid "Export Control Law"
+msgid "Search in Export Control Law"
+msgstr "Eksportkontrollov"
+
+#: templates/base/partials/footer.html:8
+msgid "Login"
+msgstr "Logg inn"
+
+#: templates/base/partials/footer.html:11
+msgid "ABOUT US"
+msgstr "OM OSS"
+
+#: templates/base/partials/footer.html:17
+msgid "CONTACT US"
+msgstr "KONTAKT OSS"
+
+#: templates/base/partials/footer.html:18
+#: templates/base/partials/headbar.html:39 tests.py:16
+msgid "Consult Safetec"
+msgstr "Kontakt Safetec"
+
+#: templates/base/partials/footer.html:21
+msgid "FOLLOW US"
+msgstr "FØLG OSS"
+
+#: templates/base/partials/form.html:11
+msgid "Saving..."
+msgstr "Lagrer..."
+
+#: templates/base/partials/form.html:11
+msgid "Save"
+msgstr "Lagre"
+
+#: templates/base/partials/form.html:12
+msgid "or"
+msgstr "eller"
+
+#: templates/base/partials/form.html:12
+msgid "cancel"
+msgstr "avbryt"
+
+#: templates/base/partials/form_fields.html:5
+msgid "Oops! We found some errors"
+msgstr "Oops! Vi fant noen feil"
+
+#: templates/base/partials/form_fields.html:5
+msgid "please check the error messages below and try again"
+msgstr "sjekk feilen nedenfor og prøb igjen"
+
+#: templates/base/partials/headbar.html:22
+#: templates/base/partials/search.html:11 tests.py:15
+msgid "Search"
+msgstr "Søk"
+
+#: templates/base/partials/headbar.html:29
+msgid "About Export Control"
+msgstr "Om eksportkontroll"
+
+#: templates/base/partials/headbar.html:35
+#, fuzzy
+#| msgid "Knowledge transfer"
+msgid "Knowledge Transfer"
+msgstr "Kunnskapsoverføring"
+
+#: templates/base/partials/pagination.html:8
+msgid "First"
+msgstr "Først"
+
+#: templates/base/partials/pagination.html:14
+msgid "Page"
+msgstr "Side"
+
+#: templates/base/partials/pagination.html:14
+msgid "of"
+msgstr "av"
+
+#: templates/base/partials/pagination.html:21
+msgid "Last"
+msgstr "Siste"
+
+#: templates/base/partials/search.html:7
+msgid "Enter the text..."
+msgstr "Skriv her..."
+
+#: templates/base/partials/search.html:10
+msgid "Searching...."
+msgstr "Søker..."
+
+#: templates/base/partials/search.html:19
+msgid "Advanced Search"
+msgstr "Avansert søk"
+
+#: tests.py:14
+#, fuzzy
+#| msgid "Consult Safetec"
+msgid "Safetec"
+msgstr "Kontakt Safetec"

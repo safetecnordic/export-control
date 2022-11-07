@@ -7,7 +7,7 @@ from contacts.models import Contact
 
 class ContactTests(TestCase):
     def test_add_contat_view(self):
-        url = reverse("add_contact")
+        url = reverse("consult")
         response = self.client.get(url, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, _("Consult Safetec"))
@@ -55,7 +55,7 @@ class ContactTests(TestCase):
                 "message": "Add here some text",
             },
         )
-        success_url = reverse("thank_you")
+        success_url = reverse("success")
         self.assertRedirects(response, success_url)
 
         contacts = Contact.objects.all()

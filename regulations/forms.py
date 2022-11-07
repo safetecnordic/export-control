@@ -1,5 +1,5 @@
 from django import forms
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from regulations.models import Category, Paragraph, SubCategory, Regime
 from regulations.utils import get_formated_string
 

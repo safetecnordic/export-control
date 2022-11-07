@@ -188,7 +188,7 @@ class Paragraph(MP_Node):
     _full_name_separator = " > "
 
     def __str__(self):
-        return self.full_name
+        return self.code
 
     @property
     def full_name(self):
@@ -234,4 +234,5 @@ class Paragraph(MP_Node):
         """
         :returns: A queryset of descendant paragraphs ordered as DFS, including the paragraph itself.
         """
+        print("di qui")
         return self.get_tree(self)

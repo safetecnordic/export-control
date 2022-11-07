@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def get_parameters(context, except_field):
+def get_parameters(context, except_field=None):
     """
     Renders current get parameters except for the specified parameter
     """

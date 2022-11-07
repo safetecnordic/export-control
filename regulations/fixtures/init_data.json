@@ -1,1 +1,486 @@
-[{"model": "regulations.regulation", "pk": 1, "fields": {"category": 1, "sub_category": 1, "regime": 1, "code": "0A001", "date_created": "2022-10-24T10:33:52.804Z", "date_updated": "2022-10-24T10:33:52.804Z"}}, {"model": "regulations.regulation", "pk": 2, "fields": {"category": 1, "sub_category": 2, "regime": 1, "code": "0B001", "date_created": "2022-10-24T10:34:18.786Z", "date_updated": "2022-10-24T10:34:18.786Z"}}, {"model": "regulations.category", "pk": 1, "fields": {"identifier": 0, "name": "Nuclear materials, facilities and equipment", "part": null, "date_created": "2022-10-24T10:31:56.389Z", "date_updated": "2022-10-24T10:31:56.389Z"}}, {"model": "regulations.category", "pk": 2, "fields": {"identifier": 1, "name": "Special materials and related equipment", "part": null, "date_created": "2022-10-24T10:31:56.396Z", "date_updated": "2022-10-24T10:31:56.396Z"}}, {"model": "regulations.category", "pk": 3, "fields": {"identifier": 2, "name": "Materials processing", "part": null, "date_created": "2022-10-24T10:31:56.399Z", "date_updated": "2022-10-24T10:31:56.399Z"}}, {"model": "regulations.category", "pk": 4, "fields": {"identifier": 3, "name": "Electronics", "part": null, "date_created": "2022-10-24T10:31:56.401Z", "date_updated": "2022-10-24T10:31:56.401Z"}}, {"model": "regulations.category", "pk": 5, "fields": {"identifier": 4, "name": "Computers", "part": null, "date_created": "2022-10-24T10:31:56.403Z", "date_updated": "2022-10-24T10:31:56.403Z"}}, {"model": "regulations.category", "pk": 6, "fields": {"identifier": 5, "name": "Telecommunications and Information security", "part": 1, "date_created": "2022-10-24T10:31:56.405Z", "date_updated": "2022-10-24T10:31:56.405Z"}}, {"model": "regulations.category", "pk": 7, "fields": {"identifier": 5, "name": "Telecommunications and Information security", "part": 2, "date_created": "2022-10-24T10:31:56.407Z", "date_updated": "2022-10-24T10:31:56.407Z"}}, {"model": "regulations.category", "pk": 8, "fields": {"identifier": 6, "name": "Sensors and lasers", "part": null, "date_created": "2022-10-24T10:31:56.409Z", "date_updated": "2022-10-24T10:31:56.409Z"}}, {"model": "regulations.category", "pk": 9, "fields": {"identifier": 7, "name": "Navigation and avionics", "part": null, "date_created": "2022-10-24T10:31:56.411Z", "date_updated": "2022-10-24T10:31:56.411Z"}}, {"model": "regulations.category", "pk": 10, "fields": {"identifier": 8, "name": "Marine", "part": null, "date_created": "2022-10-24T10:31:56.413Z", "date_updated": "2022-10-24T10:31:56.413Z"}}, {"model": "regulations.category", "pk": 11, "fields": {"identifier": 9, "name": "Aerospace and propulsion", "part": null, "date_created": "2022-10-24T10:31:57.028Z", "date_updated": "2022-10-24T10:31:57.028Z"}}, {"model": "regulations.subcategory", "pk": 1, "fields": {"identifier": "A", "name": "Systems, equipment and components", "date_created": "2022-10-24T10:32:02.516Z", "date_updated": "2022-10-24T10:32:02.516Z"}}, {"model": "regulations.subcategory", "pk": 2, "fields": {"identifier": "B", "name": "Test, inspection and production equipment", "date_created": "2022-10-24T10:32:02.521Z", "date_updated": "2022-10-24T10:32:02.521Z"}}, {"model": "regulations.subcategory", "pk": 3, "fields": {"identifier": "C", "name": "Materials", "date_created": "2022-10-24T10:32:02.523Z", "date_updated": "2022-10-24T10:32:02.523Z"}}, {"model": "regulations.subcategory", "pk": 4, "fields": {"identifier": "D", "name": "Software", "date_created": "2022-10-24T10:32:02.526Z", "date_updated": "2022-10-24T10:32:02.526Z"}}, {"model": "regulations.subcategory", "pk": 5, "fields": {"identifier": "E", "name": "Tecnology (technical assistance and technical data)", "date_created": "2022-10-24T10:32:03.408Z", "date_updated": "2022-10-24T10:32:03.408Z"}}, {"model": "regulations.regime", "pk": 1, "fields": {"name": "Wassenaar Arrangement (WA)", "number_range_min": 0, "number_range_max": 99, "date_created": "2022-10-24T10:32:09.541Z", "date_updated": "2022-10-24T10:32:09.541Z"}}, {"model": "regulations.regime", "pk": 2, "fields": {"name": "Missile Technology Control Regime (MTCR)", "number_range_min": 101, "number_range_max": 199, "date_created": "2022-10-24T10:32:09.546Z", "date_updated": "2022-10-24T10:32:09.546Z"}}, {"model": "regulations.regime", "pk": 3, "fields": {"name": "Nuclear Suppliers Group (NSG)", "number_range_min": 201, "number_range_max": 299, "date_created": "2022-10-24T10:32:09.549Z", "date_updated": "2022-10-24T10:32:09.549Z"}}, {"model": "regulations.regime", "pk": 4, "fields": {"name": "Australia Group (AG)", "number_range_min": 301, "number_range_max": 399, "date_created": "2022-10-24T10:32:09.552Z", "date_updated": "2022-10-24T10:32:09.552Z"}}, {"model": "regulations.regime", "pk": 5, "fields": {"name": "Chemical Weapons Convention (CWC)", "number_range_min": 401, "number_range_max": 499, "date_created": "2022-10-24T10:32:10.295Z", "date_updated": "2022-10-24T10:32:10.295Z"}}, {"model": "regulations.paragraph", "pk": 3880, "fields": {"path": "0001", "depth": 1, "numchild": 4, "code": "0A001", "note_type": "base", "text": "<p>This field contains the words uranium and hydrogen</p>", "is_public": true, "regulation": 1, "category": null, "sub_category": null, "date_created": "2022-10-20T08:51:42.497Z", "date_updated": "2022-10-24T11:02:56.683Z"}}, {"model": "regulations.paragraph", "pk": 3881, "fields": {"path": "00010002", "depth": 2, "numchild": 0, "code": "a", "note_type": "base", "text": "<p>This field contains the words uranium hydrogen</p>", "is_public": true, "regulation": 1, "category": null, "sub_category": null, "date_created": "2022-10-20T08:52:43.949Z", "date_updated": "2022-10-24T11:03:04.513Z"}}, {"model": "regulations.paragraph", "pk": 3882, "fields": {"path": "00010003", "depth": 2, "numchild": 0, "code": "b", "note_type": "base", "text": "<p>TEST field contains the words hydrogen uranium</p>", "is_public": true, "regulation": 1, "category": null, "sub_category": null, "date_created": "2022-10-20T08:53:06.834Z", "date_updated": "2022-10-24T11:03:10.446Z"}}, {"model": "regulations.paragraph", "pk": 3883, "fields": {"path": "00010005", "depth": 2, "numchild": 0, "code": "c", "note_type": "base", "text": "<p>This field contains TEST words hydrogen and uranium</p>", "is_public": true, "regulation": 1, "category": null, "sub_category": null, "date_created": "2022-10-20T08:53:16.521Z", "date_updated": "2022-10-24T11:00:03.448Z"}}, {"model": "regulations.paragraph", "pk": 3884, "fields": {"path": "0002", "depth": 1, "numchild": 1, "code": "0B001", "note_type": "base", "text": "<p>Another text word Magnesium</p>", "is_public": true, "regulation": 2, "category": null, "sub_category": null, "date_created": "2022-10-20T09:33:40.738Z", "date_updated": "2022-10-24T10:41:30.502Z"}}, {"model": "regulations.paragraph", "pk": 3885, "fields": {"path": "00020001", "depth": 2, "numchild": 6, "code": "a", "note_type": "base", "text": "<p>&nbsp;uranium Magnesium hydrogen</p>", "is_public": true, "regulation": 2, "category": null, "sub_category": null, "date_created": "2022-10-20T09:34:10.862Z", "date_updated": "2022-10-24T11:02:11.473Z"}}, {"model": "regulations.paragraph", "pk": 3886, "fields": {"path": "000200010004", "depth": 3, "numchild": 0, "code": "3", "note_type": "base", "text": "<p>Only django Uranium</p>", "is_public": true, "regulation": 2, "category": null, "sub_category": null, "date_created": "2022-10-21T07:12:55.540Z", "date_updated": "2022-10-28T07:43:28.587Z"}}, {"model": "regulations.paragraph", "pk": 3887, "fields": {"path": "000200010002", "depth": 3, "numchild": 0, "code": "1", "note_type": "base", "text": "<p>only hydrogen</p>", "is_public": true, "regulation": 2, "category": null, "sub_category": null, "date_created": "2022-10-21T07:13:15.709Z", "date_updated": "2022-10-24T11:01:25.539Z"}}, {"model": "regulations.paragraph", "pk": 3888, "fields": {"path": "000200010003", "depth": 3, "numchild": 0, "code": "2", "note_type": "base", "text": "<p>this field contain words magnesium uranium</p>", "is_public": true, "regulation": 2, "category": null, "sub_category": null, "date_created": "2022-10-21T08:48:58.220Z", "date_updated": "2022-10-24T11:01:30.315Z"}}, {"model": "regulations.paragraph", "pk": 3889, "fields": {"path": "00010001", "depth": 2, "numchild": 0, "code": "d", "note_type": "base", "text": "<p>This field contain words magnesium hydrogen</p>", "is_public": true, "regulation": 1, "category": null, "sub_category": null, "date_created": "2022-10-21T08:57:47.032Z", "date_updated": "2022-10-24T10:59:47.147Z"}}, {"model": "regulations.paragraph", "pk": 3890, "fields": {"path": "000200010005", "depth": 3, "numchild": 0, "code": "4", "note_type": "base", "text": "<p>Message Nuclear</p>", "is_public": true, "regulation": null, "category": null, "sub_category": null, "date_created": "2022-10-28T07:43:11.366Z", "date_updated": "2022-10-28T07:44:01.132Z"}}, {"model": "regulations.paragraph", "pk": 3891, "fields": {"path": "000200010006", "depth": 3, "numchild": 0, "code": "5", "note_type": "base", "text": "<p>Message nuclears and exportcontrol</p>", "is_public": true, "regulation": null, "category": null, "sub_category": null, "date_created": "2022-10-28T07:43:46.857Z", "date_updated": "2022-10-28T07:56:47.064Z"}}, {"model": "regulations.paragraph", "pk": 3892, "fields": {"path": "000200010007", "depth": 3, "numchild": 0, "code": "6", "note_type": "base", "text": "<p>message_wrong nuclears exportcontrol</p>", "is_public": true, "regulation": null, "category": null, "sub_category": null, "date_created": "2022-10-28T07:44:29.171Z", "date_updated": "2022-10-28T07:58:36.283Z"}}]
+[
+  {
+    "model": "regulations.regulation",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "sub_category": 1,
+      "regime": 1,
+      "code": "0A001",
+      "date_created": "2022-10-24T10:33:52.804Z",
+      "date_updated": "2022-10-24T10:33:52.804Z"
+    }
+  },
+  {
+    "model": "regulations.regulation",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "sub_category": 2,
+      "regime": 1,
+      "code": "0B001",
+      "date_created": "2022-10-24T10:34:18.786Z",
+      "date_updated": "2022-10-24T10:34:18.786Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 1,
+    "fields": {
+      "identifier": 0,
+      "name": "Nuclear materials, facilities and equipment",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.389Z",
+      "date_updated": "2022-10-24T10:31:56.389Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 2,
+    "fields": {
+      "identifier": 1,
+      "name": "Special materials and related equipment",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.396Z",
+      "date_updated": "2022-10-24T10:31:56.396Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 3,
+    "fields": {
+      "identifier": 2,
+      "name": "Materials processing",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.399Z",
+      "date_updated": "2022-10-24T10:31:56.399Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 4,
+    "fields": {
+      "identifier": 3,
+      "name": "Electronics",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.401Z",
+      "date_updated": "2022-10-24T10:31:56.401Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 5,
+    "fields": {
+      "identifier": 4,
+      "name": "Computers",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.403Z",
+      "date_updated": "2022-10-24T10:31:56.403Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 6,
+    "fields": {
+      "identifier": 5,
+      "name": "Telecommunications and Information security",
+      "part": 1,
+      "date_created": "2022-10-24T10:31:56.405Z",
+      "date_updated": "2022-10-24T10:31:56.405Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 7,
+    "fields": {
+      "identifier": 5,
+      "name": "Telecommunications and Information security",
+      "part": 2,
+      "date_created": "2022-10-24T10:31:56.407Z",
+      "date_updated": "2022-10-24T10:31:56.407Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 8,
+    "fields": {
+      "identifier": 6,
+      "name": "Sensors and lasers",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.409Z",
+      "date_updated": "2022-10-24T10:31:56.409Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 9,
+    "fields": {
+      "identifier": 7,
+      "name": "Navigation and avionics",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.411Z",
+      "date_updated": "2022-10-24T10:31:56.411Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 10,
+    "fields": {
+      "identifier": 8,
+      "name": "Marine",
+      "part": null,
+      "date_created": "2022-10-24T10:31:56.413Z",
+      "date_updated": "2022-10-24T10:31:56.413Z"
+    }
+  },
+  {
+    "model": "regulations.category",
+    "pk": 11,
+    "fields": {
+      "identifier": 9,
+      "name": "Aerospace and propulsion",
+      "part": null,
+      "date_created": "2022-10-24T10:31:57.028Z",
+      "date_updated": "2022-10-24T10:31:57.028Z"
+    }
+  },
+  {
+    "model": "regulations.subcategory",
+    "pk": 1,
+    "fields": {
+      "identifier": "A",
+      "name": "Systems, equipment and components",
+      "date_created": "2022-10-24T10:32:02.516Z",
+      "date_updated": "2022-10-24T10:32:02.516Z"
+    }
+  },
+  {
+    "model": "regulations.subcategory",
+    "pk": 2,
+    "fields": {
+      "identifier": "B",
+      "name": "Test, inspection and production equipment",
+      "date_created": "2022-10-24T10:32:02.521Z",
+      "date_updated": "2022-10-24T10:32:02.521Z"
+    }
+  },
+  {
+    "model": "regulations.subcategory",
+    "pk": 3,
+    "fields": {
+      "identifier": "C",
+      "name": "Materials",
+      "date_created": "2022-10-24T10:32:02.523Z",
+      "date_updated": "2022-10-24T10:32:02.523Z"
+    }
+  },
+  {
+    "model": "regulations.subcategory",
+    "pk": 4,
+    "fields": {
+      "identifier": "D",
+      "name": "Software",
+      "date_created": "2022-10-24T10:32:02.526Z",
+      "date_updated": "2022-10-24T10:32:02.526Z"
+    }
+  },
+  {
+    "model": "regulations.subcategory",
+    "pk": 5,
+    "fields": {
+      "identifier": "E",
+      "name": "Tecnology (technical assistance and technical data)",
+      "date_created": "2022-10-24T10:32:03.408Z",
+      "date_updated": "2022-10-24T10:32:03.408Z"
+    }
+  },
+  {
+    "model": "regulations.regime",
+    "pk": 1,
+    "fields": {
+      "name": "Wassenaar Arrangement (WA)",
+      "number_range_min": 0,
+      "number_range_max": 99,
+      "date_created": "2022-10-24T10:32:09.541Z",
+      "date_updated": "2022-10-24T10:32:09.541Z"
+    }
+  },
+  {
+    "model": "regulations.regime",
+    "pk": 2,
+    "fields": {
+      "name": "Missile Technology Control Regime (MTCR)",
+      "number_range_min": 101,
+      "number_range_max": 199,
+      "date_created": "2022-10-24T10:32:09.546Z",
+      "date_updated": "2022-10-24T10:32:09.546Z"
+    }
+  },
+  {
+    "model": "regulations.regime",
+    "pk": 3,
+    "fields": {
+      "name": "Nuclear Suppliers Group (NSG)",
+      "number_range_min": 201,
+      "number_range_max": 299,
+      "date_created": "2022-10-24T10:32:09.549Z",
+      "date_updated": "2022-10-24T10:32:09.549Z"
+    }
+  },
+  {
+    "model": "regulations.regime",
+    "pk": 4,
+    "fields": {
+      "name": "Australia Group (AG)",
+      "number_range_min": 301,
+      "number_range_max": 399,
+      "date_created": "2022-10-24T10:32:09.552Z",
+      "date_updated": "2022-10-24T10:32:09.552Z"
+    }
+  },
+  {
+    "model": "regulations.regime",
+    "pk": 5,
+    "fields": {
+      "name": "Chemical Weapons Convention (CWC)",
+      "number_range_min": 401,
+      "number_range_max": 499,
+      "date_created": "2022-10-24T10:32:10.295Z",
+      "date_updated": "2022-10-24T10:32:10.295Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3880,
+    "fields": {
+      "path": "0001",
+      "depth": 1,
+      "numchild": 4,
+      "code": "0A001",
+      "note_type": "base",
+      "text": "<p>This field contains the words uranium and hydrogen</p>",
+      "is_public": true,
+      "regulation": 1,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T08:51:42.497Z",
+      "date_updated": "2022-10-24T11:02:56.683Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3881,
+    "fields": {
+      "path": "00010002",
+      "depth": 2,
+      "numchild": 0,
+      "code": "a",
+      "note_type": "base",
+      "text": "<p>This field contains the words uranium hydrogen</p>",
+      "is_public": true,
+      "regulation": 1,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T08:52:43.949Z",
+      "date_updated": "2022-10-24T11:03:04.513Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3882,
+    "fields": {
+      "path": "00010003",
+      "depth": 2,
+      "numchild": 0,
+      "code": "b",
+      "note_type": "base",
+      "text": "<p>TEST field contains the words hydrogen uranium</p>",
+      "is_public": true,
+      "regulation": 1,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T08:53:06.834Z",
+      "date_updated": "2022-10-24T11:03:10.446Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3883,
+    "fields": {
+      "path": "00010005",
+      "depth": 2,
+      "numchild": 0,
+      "code": "c",
+      "note_type": "base",
+      "text": "<p>This field contains TEST words hydrogen and uranium</p>",
+      "is_public": true,
+      "regulation": 1,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T08:53:16.521Z",
+      "date_updated": "2022-10-24T11:00:03.448Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3884,
+    "fields": {
+      "path": "0002",
+      "depth": 1,
+      "numchild": 1,
+      "code": "0B001",
+      "note_type": "base",
+      "text": "<p>Another text word Magnesium</p>",
+      "is_public": true,
+      "regulation": 2,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T09:33:40.738Z",
+      "date_updated": "2022-10-24T10:41:30.502Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3885,
+    "fields": {
+      "path": "00020001",
+      "depth": 2,
+      "numchild": 6,
+      "code": "a",
+      "note_type": "base",
+      "text": "<p>&nbsp;uranium Magnesium hydrogen</p>",
+      "is_public": true,
+      "regulation": 2,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-20T09:34:10.862Z",
+      "date_updated": "2022-10-24T11:02:11.473Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3886,
+    "fields": {
+      "path": "000200010004",
+      "depth": 3,
+      "numchild": 0,
+      "code": "3",
+      "note_type": "base",
+      "text": "<p>Only django Uranium</p>",
+      "is_public": true,
+      "regulation": 2,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-21T07:12:55.540Z",
+      "date_updated": "2022-10-28T07:43:28.587Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3887,
+    "fields": {
+      "path": "000200010002",
+      "depth": 3,
+      "numchild": 0,
+      "code": "1",
+      "note_type": "base",
+      "text": "<p>only hydrogen</p>",
+      "is_public": true,
+      "regulation": 2,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-21T07:13:15.709Z",
+      "date_updated": "2022-10-24T11:01:25.539Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3888,
+    "fields": {
+      "path": "000200010003",
+      "depth": 3,
+      "numchild": 0,
+      "code": "2",
+      "note_type": "base",
+      "text": "<p>this field contain words magnesium uranium</p>",
+      "is_public": true,
+      "regulation": 2,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-21T08:48:58.220Z",
+      "date_updated": "2022-10-24T11:01:30.315Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3889,
+    "fields": {
+      "path": "00010001",
+      "depth": 2,
+      "numchild": 0,
+      "code": "d",
+      "note_type": "base",
+      "text": "<p>This field contain words magnesium hydrogen</p>",
+      "is_public": true,
+      "regulation": 1,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-21T08:57:47.032Z",
+      "date_updated": "2022-10-24T10:59:47.147Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3890,
+    "fields": {
+      "path": "000200010005",
+      "depth": 3,
+      "numchild": 0,
+      "code": "4",
+      "note_type": "base",
+      "text": "<p>Message Nuclear</p>",
+      "is_public": true,
+      "regulation": null,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-28T07:43:11.366Z",
+      "date_updated": "2022-10-28T07:44:01.132Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3891,
+    "fields": {
+      "path": "000200010006",
+      "depth": 3,
+      "numchild": 0,
+      "code": "5",
+      "note_type": "base",
+      "text": "<p>Message nuclears and exportcontrol</p>",
+      "is_public": true,
+      "regulation": null,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-28T07:43:46.857Z",
+      "date_updated": "2022-10-28T07:56:47.064Z"
+    }
+  },
+  {
+    "model": "regulations.paragraph",
+    "pk": 3892,
+    "fields": {
+      "path": "000200010007",
+      "depth": 3,
+      "numchild": 0,
+      "code": "6",
+      "note_type": "base",
+      "text": "<p>message_wrong nuclears exportcontrol</p>",
+      "is_public": true,
+      "regulation": null,
+      "category": null,
+      "sub_category": null,
+      "date_created": "2022-10-28T07:44:29.171Z",
+      "date_updated": "2022-10-28T07:58:36.283Z"
+    }
+  }
+]

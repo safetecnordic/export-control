@@ -1,10 +1,10 @@
 {% extends "base/layout.html" %}
 {% load i18n %}
-
+{% block title %}{{ site_name }} - {{ page_title }}{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
       <li class="breadcrumb-item" aria-current="page">{{ object.category }}</li>
       <li class="breadcrumb-item" aria-current="page">{{ object.sub_category }}</li>
       <li class="breadcrumb-item" aria-current="page">{{ object.regime }}</li>
@@ -25,11 +25,33 @@
 
 {% block content %}
   <div class="row">
-    <div class="col-md-12">
-        {% for paragraph in paragraphs %} 
-          {% include "regulations/partials/paragraph.html" %}
-        {%endfor%}
+    <div class="col-md-8">
+      {% for paragraph in paragraphs %} 
+        {% include "regulations/partials/paragraph.html" %}
+      {%endfor%}
     </div>
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="fst-italic">
+          {% if LANGUAGE_CODE == "no" %}
+                {{ flatpage.sidebar_title_no}}
+            {% else %}
+                {{ flatpage.sidebar_title}}
+            {% endif %} 
+        </h4>
+        <p><a href="{% url 'consult' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a></p>
+        <p class="mb-0">
+           {% if LANGUAGE_CODE == "no" %}
+                {{ flatpage.sidebar_text_no | safe}}
+            {% else %}
+                {{ flatpage.sidebar_text | safe}}
+            {% endif %} 
+        </p>
+        </div>
+    </div>
+      </div>
+  </div>
   </div>
 {% endblock %}
   

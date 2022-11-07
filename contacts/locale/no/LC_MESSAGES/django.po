@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-01 11:49+0100\n"
+"PO-Revision-Date: 2022-11-01 12:24+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
+
+msgid "Name*"
+msgstr "Navn*"
+
+msgid "Email*"
+msgstr "Epost*"
+
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+msgid "Enter your message here..."
+msgstr "Skriv meldingen din her..."
+
+msgid "New"
+msgstr "Ny"
+
+msgid "In Progress"
+msgstr "Aktiv"
+
+msgid "Resolved"
+msgstr "Løst"
+
+msgid "Canceled"
+msgstr "Kansellert"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Email"
+msgstr "Epost"
+
+msgid "Message"
+msgstr "Melding"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Archived"
+msgstr "Arkivert"
+
+msgid "Date created"
+msgstr "Opprettet"
+
+msgid "Date updated"
+msgstr "Sist oppdatert"
+
+msgid "Home"
+msgstr "Hjem"
+
+msgid "Consult Safetec"
+msgstr "Kontakt Safetec"
+
+msgid "Send Message"
+msgstr "Send melding"
+
+msgid "Thank you"
+msgstr "Takk"
+
+msgid "Thank you for your question. We get back to you soon!"
+msgstr "Takk for ditt spørsmål, vi kommer tilbake til deg snart!"
+
+msgid "Would you like to visit our home page to find out more about our services?"
+msgstr "Ønsker du å besøke vår hjemmeside og finne ut mer om våre tjenester?"
+
+msgid "Visit Safetec"
+msgstr "Safetecs hjemmeside"
+
+msgid "Continue search"
+msgstr "Fortsett søk"
