@@ -15,5 +15,5 @@ class AddContactView(CreateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(AddContactView, self).get_context_data(**kwargs)
-        context["flatpage"] = ExtendedFlatPage.objects.get(url="/consult/")
+        context["flatpage"], created = ExtendedFlatPage.objects.get_or_create(url="/consult/")
         return context

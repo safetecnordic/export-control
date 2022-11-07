@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from regulations.forms import SearchForm
-from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
+from regulations.search import SearchQueries, filter_paragraphs
 from regulations.utils import get_formated_string, set_postgres_search_config
 from regulations.models import Category, SubCategory, Regime, Paragraph
 
@@ -46,172 +46,216 @@ class SearchTests(TestCase):
         form = SearchForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    def test_get_searched_paragraphs(self):
+    def test_paragraph_search(self):
         # CHECK "QUERY"
-        input_values = {"as_q": "URANIUM"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "URANIUM"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "urANIum"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "urANIum"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "uranium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "hydrogen uranium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen uranium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "uranium hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "Magnesium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "Magnesium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "django"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "django"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "only"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "only"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "only django"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "only django"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "uranium hydrogenTest"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium hydrogenTest"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
         # CHECK "NOT QUERY"
-        input_values = {"as_q": "uranium hydrogen", "as_qnot": "hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "uranium hydrogen", "as_qnot": "hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
-        input_values = {"as_q": "uranium hydrogen", "as_qnot": "uranium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium hydrogen", "as_qnot": "uranium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
-        input_values = {"as_q": "uranium", "as_qnot": "hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium", "as_qnot": "hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "hydrogen", "as_qnot": "uranium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qnot": "uranium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "uranium", "as_qnot": "words"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium", "as_qnot": "words"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "uranium", "as_qnot": "('TEST' OR 'django')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium", "as_qnot": "('TEST' OR 'django')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "hydrogen", "as_qnot": "('magnesium')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qnot": "('magnesium')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "uranium", "as_qnot": "('TEST' OR 'django' OR 'magnesium')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "uranium", "as_qnot": "('TEST' OR 'django' OR 'magnesium')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
 
         # CHECK "AND QUERY"
-        input_values = {"as_q": "word"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "word"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "words"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_q": "words", "as_qand": "uranium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "uranium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qand": "hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "hydrogen", "as_qand": "uranium and"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "uranium and"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "hydrogen", "as_qand": "uranium and hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "uranium and hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "hydrogen", "as_qand": "uranium hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "uranium hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "This field"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "This field"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qand": "TEST field"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "TEST field"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "field contains"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "field contains"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 6)
-        input_values = {"as_q": "words", "as_qand": "field contains TEST"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "field contains TEST"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "field contains the"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "field contains the"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "words", "as_qand": "This field contains the"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "This field contains the"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "words", "as_qand": "This field contains TEST"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "This field contains TEST"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "TEST field contains the"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "TEST field contains the"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_q": "words", "as_qand": "TEST field contains TEST"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qand": "TEST field contains TEST"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
         # CHECK "OR QUERY"
-        input_values = {"as_q": "words", "as_qor": "Magnesium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "words", "as_qor": "Magnesium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "word", "as_qor": "Magnesium"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "word", "as_qor": "Magnesium"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "words", "as_qor": "hydrogen"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qor": "hydrogen"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
-        input_values = {"as_q": "words", "as_qor": "('hydrogen' OR 'Magnesium')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "words", "as_qor": "('hydrogen' OR 'Magnesium')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_qor": "('hydrogen' OR 'Magnesium')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_qor": "('hydrogen' OR 'Magnesium')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 9)
-        input_values = {"as_q": "TEST", "as_qor": "('hydrogen' OR 'Magnesium')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "TEST", "as_qor": "('hydrogen' OR 'Magnesium')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_qor": "('word')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_qor": "('word')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_qor": "('words')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_qor": "('words')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
-        input_values = {"as_qor": "('words' OR 'word')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_qor": "('words' OR 'word')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 7)
 
         # CHECK "AND QUERY" & "NOT QUERY"
-        input_values = {"as_q": "hydrogen", "as_qand": "This field"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "This field"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field contains"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "This field contains"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field contain"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "This field contain"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 4)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "contain"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "contain"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
-        input_values = {"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('contain' OR 'test')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "hydrogen", "as_qand": "This field", "as_qnot": "('contain' OR 'test')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
         # CHECK "AND QUERY" & "OR QUERY" & "NOT QUERY"
-        input_values = {
+        queries = SearchQueries({
             "as_q": "hydrogen",
             "as_qand": "This field",
             "as_qnot": "('test')",
             "as_qor": "('magnesium')",
-        }
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        })
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         p = paragraphs.first()
         self.assertEqual(paragraphs.count(), 1)
 
@@ -220,105 +264,118 @@ class SearchTests(TestCase):
         self.assertTrue("magnesium" in p.text)
         self.assertFalse("test" in p.text)
 
-        input_values = {
+        queries = SearchQueries({
             "as_q": "hydrogen",
             "as_qand": "This field",
             "as_qnot": "('words' OR 'test')",
             "as_qor": "('magnesium')",
-        }
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        })
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         p = paragraphs.first()
         self.assertEqual(paragraphs.count(), 0)
 
     def test_stop_words_database(self):
-        input_values = {"as_q": "message"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "message"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "nuclear"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "nuclear"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "nuclears"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "nuclears"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 3)
-        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')", "as_and": "and"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "exportcontrol", "as_qor": "('message_wrong' OR 'nuclears')", "as_and": "and"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 2)
-        input_values = {"as_q": "exportcontrol", "as_qnot": "message"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 0)
-        input_values = {"as_q": "exportcontrol", "as_qnot": "message_wrong"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "message", "as_qand": "nuclears and exportcontrol"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "message", "as_qand": "nuclears exportcontrol"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "message", "as_qand": "nuclear exportcontrol"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 1)
-        input_values = {"as_qor": "message", "as_qand": "nuclear test exportcontrol"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
-        self.assertEqual(paragraphs.count(), 0)
-        input_values = {"as_qor": "message", "as_qand": "nuclear_test exportcontrol"}
-        paragraphs = get_searched_paragraphs(input_values, self.paragraphs)
+
+        queries = SearchQueries({"as_q": "exportcontrol", "as_qnot": "message"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
-    def test_get_filtered_paragraphs(self):
-        input_values = {"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE}  # pk: 0 = Category: 0
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_q": "exportcontrol", "as_qnot": "message_wrong"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 1)
+
+        queries = SearchQueries({"as_qor": "message", "as_qand": "nuclears and exportcontrol"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 1)
+
+        queries = SearchQueries({"as_qor": "message", "as_qand": "nuclears exportcontrol"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 1)
+
+        queries = SearchQueries({"as_qor": "message", "as_qand": "nuclear exportcontrol"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 1)
+
+        queries = SearchQueries({"as_qor": "message", "as_qand": "nuclear test exportcontrol"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 0)
+
+        queries = SearchQueries({"as_qor": "message", "as_qand": "nuclear_test exportcontrol"})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
+        self.assertEqual(paragraphs.count(), 0)
+
+    def test_category_filters(self):
+        # pk: 0 = Category: 0
+        queries = SearchQueries({"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 10)
 
-        input_values = {"as_cat": Category.objects.get(identifier=1), "as_type": Paragraph.BASE}
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_cat": Category.objects.get(identifier=1), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
-        input_values = {"as_subcat": SubCategory.objects.get(identifier="A"), "as_type": Paragraph.BASE}
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_subcat": SubCategory.objects.get(identifier="A"), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        input_values = {"as_subcat": SubCategory.objects.get(identifier="B"), "as_type": Paragraph.BASE}
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        queries = SearchQueries({"as_subcat": SubCategory.objects.get(identifier="B"), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        input_values = {
+        queries = SearchQueries({
             "as_cat": Category.objects.get(identifier=0),
             "as_subcat": SubCategory.objects.get(identifier="A"),
             "as_type": Paragraph.BASE,
-        }
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        })
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        input_values = {
+        queries = SearchQueries({
             "as_cat": Category.objects.get(identifier=0),
             "as_subcat": SubCategory.objects.get(identifier="A"),
             "as_reg": Regime.objects.get(pk=1),
             "as_type": Paragraph.BASE,
-        }
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        })
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        input_values = {
+        queries = SearchQueries({
             "as_cat": Category.objects.get(identifier=0),
             "as_subcat": SubCategory.objects.get(identifier="A"),
             "as_reg": Regime.objects.get(pk=2),
             "as_type": Paragraph.BASE,
-        }
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs)
+        })
+        paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 
     def test_is_public_paragraphs(self):
-        input_values = {"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE}
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs.filter(is_public=True))
+        queries = SearchQueries({"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries).filter(is_public=True)
         self.assertEqual(paragraphs.count(), 10)
 
         p = paragraphs.get(code="0A001")
         p.is_public = False
         p.save()
-        input_values = {"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE}
-        paragraphs = get_filtered_paragraphs(input_values, self.paragraphs.filter(is_public=True))
+
+        queries = SearchQueries({"as_cat": Category.objects.get(identifier=0), "as_type": Paragraph.BASE})
+        paragraphs = filter_paragraphs(self.paragraphs, queries).filter(is_public=True)
         self.assertEqual(paragraphs.count(), 9)

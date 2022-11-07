@@ -41,7 +41,7 @@ class BaseTests(TestCase):
         response = self.client.get(url, follow=True)
         self.assertEqual(response.status_code, 404)
         self.assertFalse(ExtendedFlatPage.objects.filter(url=url).exists())
-        page, new = ExtendedFlatPage.objects.get_or_create(
+        page, created = ExtendedFlatPage.objects.get_or_create(
             url=url,
             title="ExportControl Law ENG",
             title_no="ExportControl Law NO",
