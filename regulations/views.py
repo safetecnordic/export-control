@@ -1,11 +1,12 @@
 from django.contrib import messages
+from django.db.models import F, Sum
 from django.utils.translation import gettext as _
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
 from regulations.forms import SearchForm
 from regulations.models import Paragraph, Regulation
-from regulations.search import get_searched_paragraphs, get_filtered_paragraphs
+from regulations.search import SearchQueries, highlight_paragraphs, filter_paragraphs
 
 
 class SearchView(ListView):
@@ -36,9 +37,9 @@ class SearchView(ListView):
         paragraphs = list()
         if self.form.is_valid():
             paragraphs = Paragraph.objects.filter(is_public=True)
-            paragraphs = get_filtered_paragraphs(self.form.cleaned_data, paragraphs)
-            paragraphs = get_searched_paragraphs(self.form.cleaned_data, paragraphs)
-            paragraphs = paragraphs.order_by("-depth")
+            search_queries = SearchQueries(self.form.cleaned_data)
+            paragraphs = filter_paragraphs(paragraphs, search_queries)
+            paragraphs = highlight_paragraphs(paragraphs, search_queries)
         else:
             for error in self.form.errors:
                 messages.error(self.request, f"{self.form.fields[error].label} {self.form.errors[error]}")
@@ -53,5 +54,20 @@ class RegulationDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["root_paragraphs"] = self.object.paragraphs.filter(depth=1)
+        context["paragraphs"] = self.get_paragraphs()
         return context
+
+    def get_paragraphs(self):
+        paragraphs = self.object.paragraphs
+
+        form = SearchForm(self.request.GET)
+        if form.is_valid():
+            search_queries = SearchQueries(form.cleaned_data)
+            paragraphs = highlight_paragraphs(paragraphs, search_queries)
+        else:
+            for error in form.errors:
+                messages.error(self.request, f"{form.fields[error].label} {form.errors[error]}")
+
+        paragraphs = paragraphs.annotate(margin=((F("depth") - 1) * 20))
+
+        return paragraphs
