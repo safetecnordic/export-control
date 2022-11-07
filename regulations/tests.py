@@ -10,7 +10,7 @@ from regulations.models import Category, SubCategory, Regime, Paragraph
 
 class SearchTests(TestCase):
     fixtures = [
-        "init_data",
+        "test_data",
     ]
 
     def setUp(self):
