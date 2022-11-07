@@ -29,7 +29,7 @@
               {% if paragraph_list %}
                 <div class="mt-5">
                   {% for paragraph in paragraph_list %}
-                  <a href="{% if paragraph.regulation %}{% url 'regulation_detail' code=paragraph.regulation.code %}#{{paragraph.pk}}{% endif %}" class="text-dark text-decoration-none">   
+                  <a href="{% if paragraph.regulation %}{% url 'regulation_detail' code=paragraph.regulation.code %}?{{ request.GET.urlencode }}#{{paragraph.pk}}{% endif %}" class="text-dark text-decoration-none">   
                     <p>{{ paragraph.full_name }}: &nbsp;
                         {{paragraph.headline | safe}}...
                       </p>
