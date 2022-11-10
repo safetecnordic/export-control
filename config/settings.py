@@ -52,7 +52,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -100,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "no"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
@@ -131,7 +130,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # HOMEPAGE
-HOMEPAGE = reverse_lazy("front_page")
+HOMEPAGE = reverse_lazy("home")
 
 # DEFAULTS
 SITE_ID = 1
@@ -155,7 +154,7 @@ JAZZMIN_SETTINGS = {
     "copyright": "ExportControl Admin Panel Control",
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Site", "url": "front_page", "new_window": True},
+        {"name": "Site", "url": "home", "new_window": True},
         {"name": "Search", "url": "search", "new_window": True},
     ],
     "show_sidebar": True,

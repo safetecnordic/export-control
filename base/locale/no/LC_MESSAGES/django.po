@@ -33,14 +33,6 @@ msgstr "404"
 msgid "404 Page not found"
 msgstr "404 Ikke funnet"
 
-#: templates/base/front_page.html:41
-msgid "About"
-msgstr "Om eksportkontrollov"
-
-#: templates/base/front_page.html:48
-msgid "Read More"
-msgstr "Les mer"
-
 #: templates/base/partials/footer.html:30
 msgid "Login"
 msgstr "Logg inn"
@@ -91,7 +83,7 @@ msgid "please check the error messages below and try again"
 msgstr "sjekk feilen nedenfor og prøb igjen"
 
 #: templates/base/partials/headbar.html:22
-#: templates/base/partials/search.html:11 tests.py:15
+#: templates/regulations/partials/search.html:11 tests.py:15
 msgid "Search"
 msgstr "Søk"
 
@@ -121,15 +113,15 @@ msgstr "av"
 msgid "Last"
 msgstr "Siste"
 
-#: templates/base/partials/search.html:7
+#: templates/regulations/partials/search.html:7
 msgid "Enter the text..."
 msgstr "Skriv her..."
 
-#: templates/base/partials/search.html:10
+#: templates/regulations/partials/search.html:10
 msgid "Searching...."
 msgstr "Søker..."
 
-#: templates/base/partials/search.html:19
+#: templates/regulations/partials/search.html:19
 msgid "Advanced Search"
 msgstr "Avansert søk"
 
