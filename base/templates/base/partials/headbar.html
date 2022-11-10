@@ -1,54 +1,51 @@
-{% load display_tags %} {% load i18n %} {% load static %}
-
-<header class="p-3 mb-3">
+{% load display_tags %}
+{% load i18n %}
+{% load static %}
+<header class="pt-3 ps-3 pe-3">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start logo">
       <div class="logo mb-4 border-bottom pb-4 pt-3">
         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
-          <a
-            href="{% url 'front_page' %}"
-            class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
-          >
-            <img src="{% static 'base/img/logo/safetec-logo-rgb.png' %}" width="150" />
+          <a href="{% url 'home' %}"
+             class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <img src="{% static 'base/img/logo/safetec-logo-rgb.png' %}"
+                 width="150"
+                 alt="Safetec logo"/>
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <button class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav position-absolute end-0 bg-white">
               <li class="nav-item ms-4">
-                <a
-                  href="{% url 'search' %}"
-                  class="nav-link px-2 link-dark {% if 'search' in request.path %}fw-bold{% endif %}"
-                  >{% trans "Search" %}</a
-                >
+                <a href="{% url 'search' %}"
+                   class="nav-link px-2 link-dark {% if 'search' in request.path %}fw-bold{% endif %}">
+                  {% trans "Search" %}
+                </a>
               </li>
               <li class="nav-item ms-4">
-                <a
-                  href="{% url 'django.contrib.flatpages.views.flatpage' url='about/' %}"
-                  class="nav-link px-2 link-dark {% if 'about' in request.path %}fw-bold{% endif %}"
-                  >{% trans "About Export Control" %}</a
-                >
+                <a href="{% url 'about' %}"
+                   class="nav-link px-2 link-dark {% if 'about' in request.path %}fw-bold{% endif %}">{% trans "About Export Control" %}
+                </a>
               </li>
               <li class="nav-item ms-4">
-                <a
-                  href="{% url 'django.contrib.flatpages.views.flatpage' url='regimes/' %}"
-                  class="nav-link px-2 link-dark {% if 'regimes' in request.path %}fw-bold{% endif %}"
-                  >{% trans "Regimes" %}</a
-                >
+                <a href="{% url 'regimes' %}"
+                   class="nav-link px-2 link-dark {% if 'regimes' in request.path %}fw-bold{% endif %}">
+                  {% trans "Regimes" %}
+                </a>
               </li>
               <li class="nav-item ms-4">
-                <a
-                  href="{% url 'django.contrib.flatpages.views.flatpage' url='knowledge-transfer/' %}"
-                  class="nav-link px-2 link-dark {% if 'knowledge-transfer' in request.path %}fw-bold{% endif %}"
-                  >{% trans "Knowledge Transfer" %}</a
-                >
+                <a href="{% url 'knowledge-transfer' %}"
+                   class="nav-link px-2 link-dark {% if 'knowledge-transfer' in request.path %}fw-bold{% endif %}">
+                  {% trans "Knowledge Transfer" %}
+                </a>
               </li>
               <li class="nav-item ms-4">
-                <a
-                  href="{% url 'consult' %}"
-                  class="nav-link px-2 link-dark {% if 'consult' in request.path %}fw-bold{% endif %}"
-                >
+                <a href="{% url 'consult' %}"
+                   class="nav-link px-2 link-dark {% if 'consult' in request.path %}fw-bold{% endif %}">
                   {% trans "Consult Safetec" %}
                 </a>
               </li>

@@ -1,24 +1,24 @@
 {% extends "base/layout.html" %}
-{% load i18n %} 
-{% block title %}{{ site_name }} - {% trans "Thank you" %}{% endblock %}
-
-{% block header %}
-    <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-        <div class="col-md-8 px-0">
-        <h1 class="display-6 fst-italic">{% trans "Thank you" %}</h1>
-        <p class="fst-italic">{% trans "Thank you for your question. We get back to you soon!"%}</p>
-        </div>
-    </div>
+{% load i18n %}
+{% block title %}
+  {{ site_name }} - {% trans "Thank you" %}
 {% endblock %}
-
+{% block header %}
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+    <div class="col-md-8 px-0">
+      <h1 class="display-6 fst-italic">{% trans "Thank you" %}</h1>
+      <p class="fst-italic">{% trans "Thank you for your question. We get back to you soon!" %}</p>
+    </div>
+  </div>
+{% endblock %}
 {% block content %}
-<div class="row featurette">
+  <div class="row featurette">
     <div class="col-md-8 ">
-      <p class="lead">{% trans "Would you like to visit our home page to find out more about our services?"%}</p>
+      <p class="lead">{% trans "Would you like to visit our home page to find out more about our services?" %}</p>
       <hr/>
       <div class="text-center">
-        <a class="btn btn-primary shadow-none" href="https://www.safetec.no/">{% trans "Visit Safetec"%}</a>
-        <a class="btn btn-outline-primary shadow-none" href="{% url 'search' %}">{% trans "Continue search"%}</a>
+        <a class="btn btn-primary shadow-none" href="https://www.safetec.no/">{% trans "Visit Safetec" %}</a>
+        <a class="btn btn-outline-primary shadow-none" href="{% url 'search' %}">{% trans "Continue search" %}</a>
       </div>
     </div>
   </div>

@@ -9,3 +9,8 @@ plugins = ["mypy_django_plugin.main"]
 [tool.django-stubs]
 django_settings_module = "config.settings"
 ignore_missing_model_attributes = true
+
+[tool.djlint]
+max_line_length=120
+indent=2
+ignore="H006,H021,H023"
