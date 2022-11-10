@@ -41,7 +41,7 @@
             {% endif %}
           </div>
           <div class="col-md-12 text-right">
-            <i class="bi bi-check2-circle"></i>{% trans "Results:" %}</a> <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
+            <i class="bi bi-check2-circle"></i>{% trans "Results:" %} <b>{{ paragraph_list|length }} {% trans "of" %} {{ page_obj.paginator.count }}</b>
           </div>
         </div>
         {% if paragraph_list %}
@@ -57,7 +57,7 @@
               <hr />
             {% endfor %}
           </div>
-          {% include "base/partials/pagination.html" %}
+          {% include "regulations/partials/pagination.html" %}
         {% else %}
           <div class="px-4 py-5 my-5 text-center">
             <h1 class="display-5 fw-bold">{% trans "No results found...." %}</h1>

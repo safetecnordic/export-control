@@ -1,8 +1,6 @@
 {% extends "base/layout.html" %}
 {% load i18n %}
-{% block title %}
-  {{ site_name }} - {{ flatpage.title_description }}
-{% endblock %}
+{% block title %}{{ site_name }} - {{ flatpage.title_description }}{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -41,7 +39,7 @@
       <div class="form-group">
         <form method="post">
           {% csrf_token %}
-          {% include "base/partials/form_fields.html" with form=form %}
+          {% include "contacts/partials/form_fields.html" with form=form %}
           <div class="row button-div">
             <button type="submit" class="btn-block btn btn-primary shadow-none mb-5 mt-4">{% trans "Send Message" %}</button>
           </div>

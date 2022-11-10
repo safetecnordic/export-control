@@ -58,29 +58,13 @@ msgstr "Kontakt Safetec"
 msgid "FOLLOW US"
 msgstr "FØLG OSS"
 
-#: templates/base/partials/form.html:11
-msgid "Saving..."
-msgstr "Lagrer..."
-
-#: templates/base/partials/form.html:11
-msgid "Save"
-msgstr "Lagre"
-
-#: templates/base/partials/form.html:12
-msgid "or"
-msgstr "eller"
-
-#: templates/base/partials/form.html:12
-msgid "cancel"
-msgstr "avbryt"
-
-#: templates/base/partials/form_fields.html:5
+#: templates/contacts/partials/form_fields.html:5
 msgid "Oops! We found some errors"
 msgstr "Oops! Vi fant noen feil"
 
-#: templates/base/partials/form_fields.html:5
-msgid "please check the error messages below and try again"
-msgstr "sjekk feilen nedenfor og prøb igjen"
+#: templates/contacts/partials/form_fields.html:5
+msgid "Please check the error messages below and try again"
+msgstr "Sjekk feilen nedenfor og prøv igjen"
 
 #: templates/base/partials/headbar.html:22
 #: templates/regulations/partials/search.html:11 tests.py:15
@@ -97,19 +81,19 @@ msgstr "Om eksportkontroll"
 msgid "Knowledge Transfer"
 msgstr "Kunnskapsoverføring"
 
-#: templates/base/partials/pagination.html:8
+#: templates/regulations/partials/pagination.html:8
 msgid "First"
 msgstr "Først"
 
-#: templates/base/partials/pagination.html:14
+#: templates/regulations/partials/pagination.html:14
 msgid "Page"
 msgstr "Side"
 
-#: templates/base/partials/pagination.html:14
+#: templates/regulations/partials/pagination.html:14
 msgid "of"
 msgstr "av"
 
-#: templates/base/partials/pagination.html:21
+#: templates/regulations/partials/pagination.html:21
 msgid "Last"
 msgstr "Siste"
 
