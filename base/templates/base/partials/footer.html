@@ -1,36 +1,44 @@
 {% load i18n %}
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-5 mt-4 border-top">  
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-5 mt-4 border-top">
   <div class="container">
     <div class="row">
-      <div class="col-md-3  d-flex align-items-left">
-          <p><span class = "footer-title">{% trans "SEARCH" %}</span> <br />
-          <a href="{% url 'search' %}">{% trans "Search in Export Control Law" %}</a>  <br />
-          <a href="{% url 'admin:login' %}">{% trans "Login" %}</a>  <br />
-      </div>
       <div class="col-md-3 d-flex align-items-left">
-        <p><span class = "footer-title">{% trans "ABOUT US" %}</span> <br />
-        {% comment %}<a href="{% url 'about_us' %}">About Us</a>  <br />{% endcomment %}
-       <a href="https://www.safetec.no/">Safetec</a></p>
+        <p>
+          <span class="footer-title">{% trans "ABOUT US" %}</span> <br />
+          {% comment %}<a href="{% url 'about_us' %}">About Us</a> <br />{% endcomment %}
+          <a href="https://www.safetec.no/" target="_blank">Safetec</a>
+        </p>
       </div>
+
       <div class="col-md-3 d-flex align-items-left">
-      <p><span class = "footer-title">{% trans "CONTACT US" %}</span> <br />
-       <a href="{% url 'consult' %}">{% trans "Consult Safetec" %}</a>  <br />
+        <p>
+          <span class="footer-title">{% trans "CONTACT US" %}</span> <br />
+          <a href="{% url 'consult' %}">{% trans "Consult Safetec" %}</a> <br />
+        </p>
       </div>
+
+      <div class="col-md-3 d-flex align-items-left">
+        <p>
+          <span class="footer-title">{% trans "ADMIN" %}</span> <br />
+          <a href="{% url 'admin:login' %}">{% trans "Login" %}</a> <br />
+        </p>
+      </div>
+
       <div class="col-md-3 d-flex justify-content-end align-items-left">
-      <span class = "footer-title">{% trans "FOLLOW US" %}</span>  <br />
-        <ul class="list-unstyled  d-flex">
+        <span class="footer-title">{% trans "FOLLOW US" %}</span> <br />
+        <ul class="list-unstyled d-flex">
           <li class="ms-3">
-            <a class = "social-icon" href="https://www.linkedin.com/company/safetec-nordic-as/">
+            <a class="social-icon" href="https://www.linkedin.com/company/safetec-nordic-as/" target="_blank">
               <i class="bi bi-linkedin"></i>
             </a>
           </li>
           <li class="ms-3">
-            <a class = "social-icon" href="https://www.safetec.no/feed/">
+            <a class="social-icon" href="https://www.safetec.no/feed/" target="_blank">
               <i class="bi bi-rss"></i>
             </a>
           </li>
-       </ul>
+        </ul>
       </div>
     </div>
-  </div>  
+  </div>
 </footer>

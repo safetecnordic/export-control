@@ -156,7 +156,7 @@ class Paragraph(MP_Node):
     )
 
     NOTE_TYPE_CHOICES = (
-        (BASE, _("Base")),
+        (BASE, _("Non-note paragraph")),
         (NOTE, _("Note")),
         (NOTA_BENE, _("N.B.")),
         (TECHNICAL_NOTE, _("Technical Note")),

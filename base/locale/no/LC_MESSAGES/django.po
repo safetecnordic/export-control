@@ -41,17 +41,7 @@ msgstr "Om eksportkontrollov"
 msgid "Read More"
 msgstr "Les mer"
 
-#: templates/base/partials/footer.html:6
-msgid "SEARCH"
-msgstr "SØK"
-
-#: templates/base/partials/footer.html:7
-#, fuzzy
-#| msgid "Export Control Law"
-msgid "Search in Export Control Law"
-msgstr "Eksportkontrollov"
-
-#: templates/base/partials/footer.html:8
+#: templates/base/partials/footer.html:30
 msgid "Login"
 msgstr "Logg inn"
 
@@ -62,6 +52,10 @@ msgstr "OM OSS"
 #: templates/base/partials/footer.html:17
 msgid "CONTACT US"
 msgstr "KONTAKT OSS"
+
+#: templates/base/partials/footer.html:29
+msgid "ADMIN"
+msgstr "ADMIN"
 
 #: templates/base/partials/footer.html:18
 #: templates/base/partials/headbar.html:39 tests.py:16
