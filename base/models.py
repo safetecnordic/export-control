@@ -1,9 +1,8 @@
-from distutils.command.upload import upload
-import black
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 from utils import types  # type: ignore
 from ckeditor.fields import RichTextField
+
 
 class ExtendedFlatPage(FlatPage):
     title_description: types.CharField = models.CharField(max_length=256, null=True, blank=True)

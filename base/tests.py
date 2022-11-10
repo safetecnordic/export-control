@@ -8,7 +8,6 @@ from base.models import ExtendedFlatPage
 class BaseTests(TestCase):
     def test_flatpages(self):
         site = Site.objects.get(id=1)
-        url_title = "/about/"
         url = reverse("about")
         response = self.client.get(url, follow=True)
         self.assertEqual(response.status_code, 404)

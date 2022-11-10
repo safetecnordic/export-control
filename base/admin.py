@@ -4,6 +4,7 @@ from django.contrib.flatpages.models import FlatPage
 from base.models import ExtendedFlatPage
 from django.utils.translation import gettext_lazy as _
 
+
 # Define a new FlatPageAdmin
 class FlatPageAdmin(FlatPageAdmin):
     fieldsets = (

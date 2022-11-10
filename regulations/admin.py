@@ -1,5 +1,5 @@
 from django.contrib import admin
-from regulations.models import *
+from regulations.models import Regulation, Category, SubCategory, Regime, Paragraph
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 
