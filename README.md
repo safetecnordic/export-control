@@ -93,10 +93,10 @@ python manage.py set_postgres_search_config
 
 13. Load initial data into the database
     - Law data from `regulations/fixtures/regulations.json`
-    - Page content from `base/fixtures/init_pages.json`
+    - Page content from `base/fixtures/pages.json`
 
 ```
-python manage.py loaddata regulations init_pages
+python manage.py loaddata regulations pages
 ```
 
 14. Run tests
