@@ -3,11 +3,11 @@
 {% load static %}
 {% block title %}
   {% get_current_language as LANGUAGE_CODE %}
-  {% trans "Export Control" %} -
+  {% trans "Export Control" %}
   {% if LANGUAGE_CODE == "no" %}
-    {{ flatpage.extendedflatpage.title_no }}
+    {% if flatpage.extendedflatpage.title_no != "Eksportkontroll" %}- {{ flatpage.extendedflatpage.title_no }}{% endif %}
   {% else %}
-    {{ flatpage.title }}
+    {% if flatpage.title != "Export Control" %}- {{ flatpage.title }}{% endif %}
   {% endif %}
 {% endblock %}
 {% block breadcrumbs %}
