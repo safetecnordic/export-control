@@ -4,38 +4,38 @@
       action="{{ form_action }}"
       method="get"
       enctype="multipart/form-data">
-  <div class="row justify-content-center">
-    <div class="col-md-10 text-left mt-2">
+  {% get_current_language as LANGUAGE_CODE %}
+  {% if LANGUAGE_CODE == "no" %}
+    <small id="emailHelp" class="form-text text-muted">
+      <i class="bi bi-info-circle"></i> {% trans "Search must be in English (since the regulations are written in English)" %}
+    </small>
+  {% endif %}
+  <div class="d-flex flex-column gap-3">
+    <div class="d-flex flex-row gap-3">
       <input type="text"
-             class="form-control border-bottom-1"
-             style="margin-left:10px"
+             class="form-control border-bottom-1 flex-grow-1"
              value="{{ search_term }}"
              placeholder="{% trans 'Enter the text...' %}"
              name="as_q"/>
-    </div>
-    <div class="col-md-2 text-left mt-2">
       <button class="btn btn-primary"
+              style="width: 120px"
               type="submit"
               data-loading-text="{% trans "Searching...." %}">
         <i class="bi bi-search"></i> {% trans 'Search' %}
       </button>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-12 text-left mt-2">
-      <p>
-        <button class="btn btn-primary"
-                onclick="$('#advanced_box').toggle(); return false;">
-          {% trans "Advanced Search" %} <i class="bi bi-gear"></i>
-        </button>
-      </p>
-      <div id="advanced_box" style="display: none;">
-        {% for field in search_form %}
-          {% if field.name != "as_q" %}
-            {% include 'regulations/partials/form_field_search.html' with field=field %}
-          {% endif %}
-        {% endfor %}
-      </div>
+    <div>
+      <button class="btn btn-primary"
+              onclick="$('#advanced_box').toggle(); return false;">
+        {% trans "Advanced Search" %} <i class="bi bi-gear"></i>
+      </button>
+    </div>
+    <div id="advanced_box" style="display: none;">
+      {% for field in search_form %}
+        {% if field.name != "as_q" %}
+          {% include 'regulations/partials/form_field_search.html' with field=field %}
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </form>

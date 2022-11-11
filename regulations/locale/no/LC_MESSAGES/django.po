@@ -39,6 +39,10 @@ msgstr ""
 msgid "None of these words:"
 msgstr "Ingen av disse ordene:"
 
+# templates/regulations/partials/search.html:10
+msgid "Search must be in English (since the regulations are written in English)"
+msgstr "Søket må være på engelsk (siden forskriftene er skrevet på engelsk)"
+
 #: forms.py:32
 msgid "Category:"
 msgstr "Kategori:"
