@@ -29,14 +29,23 @@
 {% block header %}
   <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
     <div class="col-md-8 px-0">
+      {% get_current_language as LANGUAGE_CODE %}
       <h1 class="display-4 fst-italic">
-        {% get_current_language as LANGUAGE_CODE %}
         {% if LANGUAGE_CODE == "no" %}
           {{ flatpage.extendedflatpage.title_no }}
         {% else %}
           {{ flatpage.extendedflatpage.title }}
         {% endif %}
       </h1>
+      {% if flatpage.extendedflatpage.title_description %}
+        <p class="lead my-2">
+          {% if LANGUAGE_CODE == "no" %}
+            {{ flatpage.extendedflatpage.title_description_no }}
+          {% else %}
+            {{ flatpage.extendedflatpage.title_description }}
+          {% endif %}
+        </p>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
