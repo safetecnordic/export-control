@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: templates/base/base.html:11
+msgid "Export Control"
+msgstr "Eksportkontroll"
+
 #: admin.py:31
 msgid "Advanced options"
 msgstr "Avanserte valg"

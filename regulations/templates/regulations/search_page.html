@@ -2,7 +2,9 @@
 {% load i18n %}
 {% load static %}
 {% load widget_tweaks %}
-{% block title %}{{ site_name }} - {{ page_title }}{% endblock %}
+{% block title %}
+  {% trans "Export Control" %} - {{ page_title }}
+{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">

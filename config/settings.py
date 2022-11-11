@@ -142,8 +142,8 @@ if DEBUG:
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
 JAZZMIN_SETTINGS = {
-    "site_title": "ExportControl Admin",
-    "site_header": "ExportControl Admin",
+    "site_title": "Export Control Admin",
+    "site_header": "Export Control Admin",
     "site_logo": "base/img/logo/safetec-logosymbol-rgb-10px.png",
     "site_brand": "Export Control",
     "login_logo": None,
@@ -151,7 +151,7 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle",
     "site_icon": None,
     "welcome_sign": "Admin Panel Control",
-    "copyright": "ExportControl Admin Panel Control",
+    "copyright": "Export Control Admin Panel Control",
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         {"name": "Site", "url": "home", "new_window": True},

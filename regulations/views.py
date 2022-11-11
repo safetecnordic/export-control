@@ -57,7 +57,7 @@ class RegulationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["paragraphs"] = self.get_paragraphs()
-        context["page_title"] = _("Regulation") + f" {self.object.code}"
+        context["page_title"] = self.object.code
         context["flatpage"], created = ExtendedFlatPage.objects.get_or_create(url="/search/")
         return context
 

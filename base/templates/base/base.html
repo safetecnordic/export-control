@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <title>
-      {% block title %}{{ site_name }} - {{ site_tagline }}{% endblock %}
+      {% block title %}
+        {% trans "Export Control" %}
+      {% endblock %}
     </title>
     <link rel="stylesheet"
           href="{% static 'base/bootstrap5/css/bootstrap-icons.css' %}"

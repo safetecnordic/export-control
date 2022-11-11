@@ -33,7 +33,7 @@
     "pk": 2,
     "fields": {
       "url": "/about/",
-      "title": "Export Control Law",
+      "title": "About Export Control",
       "content": "",
       "enable_comments": false,
       "template_name": "",

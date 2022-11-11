@@ -2,8 +2,13 @@
 {% load i18n %}
 {% load static %}
 {% block title %}
-  {{ site_name }} -
-  {{ flatpage.extendedflatpage.title }}
+  {% get_current_language as LANGUAGE_CODE %}
+  {% trans "Export Control" %} -
+  {% if LANGUAGE_CODE == "no" %}
+    {{ flatpage.extendedflatpage.title_no }}
+  {% else %}
+    {{ flatpage.title }}
+  {% endif %}
 {% endblock %}
 {% block breadcrumbs %}
   {% get_current_language as LANGUAGE_CODE %}
