@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from utils import types
 from phonenumber_field.modelfields import PhoneNumberField
@@ -14,47 +13,27 @@ class Contact(models.Model):
         "canceled",
     )
     STATUS_CHOICES = (
-        (NEW, _("New")),
-        (IN_PROGRESS, _("In Progress")),
-        (RESOLVED, _("Resolved")),
-        (CANCELED, _("Canceled")),
+        (NEW, "New"),
+        (IN_PROGRESS, "In progress"),
+        (RESOLVED, "Resolved"),
+        (CANCELED, "Cancelled"),
     )
 
-    name: types.CharField = models.CharField(
-        _("Name"),
-        max_length=128,
-    )
-    email: types.CharField = models.EmailField(
-        _("Email"),
-    )
-    phone_number = PhoneNumberField(
-        _("Phone Number"),
-        null=True,
-        blank=True,
-    )
-    message: types.TextField = models.TextField(
-        _("Message"),
-    )
-    status: types.CharField = models.CharField(
-        _("Status"),
-        choices=STATUS_CHOICES,
-        max_length=30,
-        default=NEW,
-    )
-    archived: types.BooleanField = models.BooleanField(
-        _("Archived"),
-        default=False,
-    )
-    date_created: types.DateTimeField = models.DateTimeField(
-        _("Date created"),
-        auto_now_add=True,
-        db_index=True,
-    )
-    date_updated: types.DateTimeField = models.DateTimeField(
-        _("Date updated"),
-        auto_now=True,
-        db_index=True,
-    )
+    name: types.CharField = models.CharField(max_length=128)
+
+    email: types.CharField = models.EmailField()
+
+    phone_number = PhoneNumberField(null=True, blank=True)
+
+    message: types.TextField = models.TextField()
+
+    status: types.CharField = models.CharField(choices=STATUS_CHOICES, max_length=30, default=NEW)
+
+    archived: types.BooleanField = models.BooleanField(default=False)
+
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
         return self.name
@@ -76,4 +55,4 @@ class Contact(models.Model):
             )
         return text
 
-    get_status_display_in_admin.short_description = _("Status")  # type: ignore
+    get_status_display_in_admin.short_description = "Status"  # type: ignore

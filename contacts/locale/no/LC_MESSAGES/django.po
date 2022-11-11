@@ -29,39 +29,6 @@ msgstr "Telefonnummer"
 msgid "Enter your message here..."
 msgstr "Skriv meldingen din her..."
 
-msgid "New"
-msgstr "Ny"
-
-msgid "In Progress"
-msgstr "Aktiv"
-
-msgid "Resolved"
-msgstr "Løst"
-
-msgid "Canceled"
-msgstr "Kansellert"
-
-msgid "Name"
-msgstr "Navn"
-
-msgid "Email"
-msgstr "Epost"
-
-msgid "Message"
-msgstr "Melding"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Archived"
-msgstr "Arkivert"
-
-msgid "Date created"
-msgstr "Opprettet"
-
-msgid "Date updated"
-msgstr "Sist oppdatert"
-
 msgid "Home"
 msgstr "Hjem"
 
