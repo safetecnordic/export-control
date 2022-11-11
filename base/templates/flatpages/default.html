@@ -1,55 +1,73 @@
 {% extends "base/layout.html" %}
 {% load i18n %}
 {% load static %}
-{% block title %}{{ site_name }} - {{ flatpage.extendedflatpage.title}}{% endblock %}
+{% block title %}
+  {% get_current_language as LANGUAGE_CODE %}
+  {% trans "Export Control" %} -
+  {% if LANGUAGE_CODE == "no" %}
+    {{ flatpage.extendedflatpage.title_no }}
+  {% else %}
+    {{ flatpage.title }}
+  {% endif %}
+{% endblock %}
 {% block breadcrumbs %}
-{% get_current_language as LANGUAGE_CODE %}
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">      
-      {% if LANGUAGE_CODE == "no" %}
-      {{ flatpage.extendedflatpage.title_no}}
+  {% get_current_language as LANGUAGE_CODE %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      {% if flatpage.url == "/" %}
+        <li class="breadcrumb-item">{% trans "Home" %}</li>
       {% else %}
-      {{ flatpage.extendedflatpage.title}}
-      {% endif %} 
-    </li>
-  </ol>
-</nav>
-{% endblock %} 
+        <li class="breadcrumb-item">
+          <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+          {% if LANGUAGE_CODE == "no" %}
+            {{ flatpage.extendedflatpage.title_no }}
+          {% else %}
+            {{ flatpage.extendedflatpage.title }}
+          {% endif %}
+        </li>
+      {% endif %}
+    </ol>
+  </nav>
+{% endblock %}
 {% block header %}
-<div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-  <div class="col-md-8 px-0">
-    <h1 class="display-4 fst-italic">
+  <div class="p-4 p-md-5 mb-2 text-dark rounded bg-light">
+    <div class="col-md-8 px-0">
       {% get_current_language as LANGUAGE_CODE %}
-      {% if LANGUAGE_CODE == "no" %}
-        {{ flatpage.extendedflatpage.title_no}} 
-      {% else %}
-        {{ flatpage.extendedflatpage.title}}
-      {% endif %} 
-    </h1>
-  </div>
-</div>
-{% endblock %} 
-{% block content %}
-{% get_current_language as LANGUAGE_CODE %}
-<div class="row featurette">
-  <div class="col-md-7">
-    <p class="lead">
-      {% if LANGUAGE_CODE == "no" %}
-        {{ flatpage.extendedflatpage.page_content_no | safe}}
-      {% else %}
-        {{ flatpage.extendedflatpage.page_content | safe}}
-      {% endif %} 
-    </p>
-  </div>
-  <div class="col-md-5">
-    <div class="position-sticky" style="top: 2rem;">
-      {% if flatpage.url == "/regimes/" %}
-        <img src="{% static 'base/img/export_control_categories.png' %}" width="500" />
+      <h1 class="display-4 fst-italic">
+        {% if LANGUAGE_CODE == "no" %}
+          {{ flatpage.extendedflatpage.title_no }}
+        {% else %}
+          {{ flatpage.extendedflatpage.title }}
+        {% endif %}
+      </h1>
+      {% if flatpage.extendedflatpage.description %}
+        <p class="lead my-2">
+          {% if LANGUAGE_CODE == "no" %}
+            {{ flatpage.extendedflatpage.description_no }}
+          {% else %}
+            {{ flatpage.extendedflatpage.description }}
+          {% endif %}
+        </p>
       {% endif %}
     </div>
   </div>
-</div>
+{% endblock %}
+{% block content %}
+  {% get_current_language as LANGUAGE_CODE %}
+  <div class="row featurette">
+    <div class="col-md-7">
+      <p class="lead">
+        {% if LANGUAGE_CODE == "no" %}
+          {{ flatpage.extendedflatpage.page_content_no | safe }}
+        {% else %}
+          {{ flatpage.extendedflatpage.page_content | safe }}
+        {% endif %}
+      </p>
+    </div>
+    <div class="col-md-5">
+      <div class="position-sticky" style="top: 2rem"></div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,12 +1,11 @@
-<p class="mt-0 mb-0" style="margin-left: {{ paragraph.margin }}px"> 
-  <span class="fw-bold {% if paragraph.is_note %}fst-italic{% endif %}" id="{{ paragraph.pk }}">
+<p class="mt-0 mb-0" style="margin-left: {{ paragraph.margin }}px">
+  <span class="fw-bold {% if paragraph.is_note %}fst-italic{% endif %}"
+        id="{{ paragraph.pk }}">
     {% if user.is_authenticated and user.is_staff %}
       <a href="{% url 'admin:regulations_paragraph_change' paragraph.pk %}">{{ paragraph.code }}</a>
     {% else %}
       {{ paragraph.code }}
     {% endif %}
   </span>
-  <span class="{% if paragraph.is_note %}fst-italic{% endif %}">
-    {{ paragraph.headline | safe }}
-  </span>
+  <span class="{% if paragraph.is_note %}fst-italic{% endif %}">{{ paragraph.headline | safe }}</span>
 </p>

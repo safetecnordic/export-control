@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: templates/base/base.html:11
+msgid "Export Control"
+msgstr "Eksportkontroll"
+
 #: admin.py:31
 msgid "Advanced options"
 msgstr "Avanserte valg"
@@ -33,25 +37,7 @@ msgstr "404"
 msgid "404 Page not found"
 msgstr "404 Ikke funnet"
 
-#: templates/base/front_page.html:41
-msgid "About"
-msgstr "Om eksportkontrollov"
-
-#: templates/base/front_page.html:48
-msgid "Read More"
-msgstr "Les mer"
-
-#: templates/base/partials/footer.html:6
-msgid "SEARCH"
-msgstr "SØK"
-
-#: templates/base/partials/footer.html:7
-#, fuzzy
-#| msgid "Export Control Law"
-msgid "Search in Export Control Law"
-msgstr "Eksportkontrollov"
-
-#: templates/base/partials/footer.html:8
+#: templates/base/partials/footer.html:30
 msgid "Login"
 msgstr "Logg inn"
 
@@ -63,6 +49,10 @@ msgstr "OM OSS"
 msgid "CONTACT US"
 msgstr "KONTAKT OSS"
 
+#: templates/base/partials/footer.html:29
+msgid "ADMIN"
+msgstr "ADMIN"
+
 #: templates/base/partials/footer.html:18
 #: templates/base/partials/headbar.html:39 tests.py:16
 msgid "Consult Safetec"
@@ -72,32 +62,16 @@ msgstr "Kontakt Safetec"
 msgid "FOLLOW US"
 msgstr "FØLG OSS"
 
-#: templates/base/partials/form.html:11
-msgid "Saving..."
-msgstr "Lagrer..."
-
-#: templates/base/partials/form.html:11
-msgid "Save"
-msgstr "Lagre"
-
-#: templates/base/partials/form.html:12
-msgid "or"
-msgstr "eller"
-
-#: templates/base/partials/form.html:12
-msgid "cancel"
-msgstr "avbryt"
-
-#: templates/base/partials/form_fields.html:5
+#: templates/contacts/partials/form_fields.html:5
 msgid "Oops! We found some errors"
 msgstr "Oops! Vi fant noen feil"
 
-#: templates/base/partials/form_fields.html:5
-msgid "please check the error messages below and try again"
-msgstr "sjekk feilen nedenfor og prøb igjen"
+#: templates/contacts/partials/form_fields.html:5
+msgid "Please check the error messages below and try again"
+msgstr "Sjekk feilen nedenfor og prøv igjen"
 
 #: templates/base/partials/headbar.html:22
-#: templates/base/partials/search.html:11 tests.py:15
+#: templates/regulations/partials/search.html:11 tests.py:15
 msgid "Search"
 msgstr "Søk"
 
@@ -111,31 +85,31 @@ msgstr "Om eksportkontroll"
 msgid "Knowledge Transfer"
 msgstr "Kunnskapsoverføring"
 
-#: templates/base/partials/pagination.html:8
+#: templates/regulations/partials/pagination.html:8
 msgid "First"
 msgstr "Først"
 
-#: templates/base/partials/pagination.html:14
+#: templates/regulations/partials/pagination.html:14
 msgid "Page"
 msgstr "Side"
 
-#: templates/base/partials/pagination.html:14
+#: templates/regulations/partials/pagination.html:14
 msgid "of"
 msgstr "av"
 
-#: templates/base/partials/pagination.html:21
+#: templates/regulations/partials/pagination.html:21
 msgid "Last"
 msgstr "Siste"
 
-#: templates/base/partials/search.html:7
+#: templates/regulations/partials/search.html:7
 msgid "Enter the text..."
 msgstr "Skriv her..."
 
-#: templates/base/partials/search.html:10
+#: templates/regulations/partials/search.html:10
 msgid "Searching...."
 msgstr "Søker..."
 
-#: templates/base/partials/search.html:19
+#: templates/regulations/partials/search.html:19
 msgid "Advanced Search"
 msgstr "Avansert søk"
 

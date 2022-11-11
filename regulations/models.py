@@ -1,7 +1,6 @@
 from __future__ import annotations
 from django.db import models
 from django.db.models import Q, F
-from django.utils.translation import gettext as _
 from django.db.models import Exists, OuterRef
 from utils import types  # type: ignore
 from ckeditor.fields import RichTextField
@@ -28,8 +27,8 @@ class Regulation(models.Model):
     regime: types.ForeignKey[Regime] = models.ForeignKey("Regime", on_delete=models.CASCADE)
     code: types.CharField = models.CharField(max_length=256, null=True, unique=True)
 
-    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
-    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
 
     # Related field from foreign key on Paragraph model
     paragraphs: models.Manager[Paragraph]
@@ -59,8 +58,12 @@ class Category(models.Model):
     name: types.CharField = models.CharField(max_length=256)
     part: types.IntegerField = models.IntegerField(null=True)
 
-    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
-    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
+
+    class Meta:
+        verbose_name = "category"
+        verbose_name_plural = "categories"
 
     def __str__(self) -> str:
         part_str = f".{self.part}" if self.part is not None else ""
@@ -80,8 +83,12 @@ class SubCategory(models.Model):
     identifier: types.CharField = models.CharField(max_length=256, unique=True)
     name: types.CharField = models.CharField(max_length=256)
 
-    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
-    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
+
+    class Meta:
+        verbose_name = "subcategory"
+        verbose_name_plural = "subcategories"
 
     def __str__(self) -> str:
         return f"{self.identifier}: {self.name}"
@@ -104,8 +111,8 @@ class Regime(models.Model):
     number_range_min: types.IntegerField = models.IntegerField(unique=True)
     number_range_max: types.IntegerField = models.IntegerField(unique=True)
 
-    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
-    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
 
     class Meta:
         # Enforces that number_range_min is less than number_range_max.
@@ -156,10 +163,10 @@ class Paragraph(MP_Node):
     )
 
     NOTE_TYPE_CHOICES = (
-        (BASE, _("Base")),
-        (NOTE, _("Note")),
-        (NOTA_BENE, _("N.B.")),
-        (TECHNICAL_NOTE, _("Technical Note")),
+        (BASE, "Non-note paragraph"),
+        (NOTE, "Note"),
+        (NOTA_BENE, "N.B."),
+        (TECHNICAL_NOTE, "Technical Note"),
     )
 
     code: types.CharField = models.CharField(max_length=256, default="-")
@@ -182,8 +189,8 @@ class Paragraph(MP_Node):
         "SubCategory", null=True, blank=True, on_delete=models.CASCADE, related_name="paragraphs"
     )
 
-    date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
-    date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+    date_created: types.DateTimeField = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated: types.DateTimeField = models.DateTimeField(auto_now=True, db_index=True)
 
     _full_name_separator = " > "
 

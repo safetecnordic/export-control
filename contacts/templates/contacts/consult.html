@@ -1,70 +1,69 @@
 {% extends "base/layout.html" %}
-{% load i18n %} 
-{% block title %}{{ site_name }} - {{ flatpage.title_description }}{% endblock %}
+{% load i18n %}
+{% block title %}
+  {% trans "Export Control" %} - {% trans "Consult Safetec" %}
+{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{% trans "Consult Safetec" %}</li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">{% trans "Consult Safetec" %}</li>
     </ol>
   </nav>
 {% endblock %}
-
 {% block header %}
-{% get_current_language as LANGUAGE_CODE %}
-    <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
-        <div class="col-md-8 px-0">
-        <h1 class="display-4 fst-italic">
-          {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.title_no}}
-          {% else %}
-            {{ flatpage.title}}
-          {% endif %} 
-        </h1>
-        <p class="lead my-2">
-          {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.title_description_no}}
-          {% else %}
-            {{ flatpage.title_description}}
-          {% endif %} 
-        </p>
-        </div>
+  {% get_current_language as LANGUAGE_CODE %}
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-light">
+    <div class="col-md-8 px-0">
+      <h1 class="display-4 fst-italic">
+        {% if LANGUAGE_CODE == "no" %}
+          {{ flatpage.title_no }}
+        {% else %}
+          {{ flatpage.title }}
+        {% endif %}
+      </h1>
+      <p class="lead my-2">
+        {% if LANGUAGE_CODE == "no" %}
+          {{ flatpage.description_no }}
+        {% else %}
+          {{ flatpage.description }}
+        {% endif %}
+      </p>
     </div>
+  </div>
 {% endblock %}
-
 {% block content %}
-{% get_current_language as LANGUAGE_CODE %}
-  <div class="row mt-5">
-    <div class="col-md-8 ">
+  {% get_current_language as LANGUAGE_CODE %}
+  <div class="row">
+    <div class="col-md-8">
       <div class="form-group">
         <form method="post">
           {% csrf_token %}
-          {% include "base/partials/form_fields.html" with form=form %}
-          <div class="row button-div">
-            <button type="submit" class="btn-block btn btn-primary shadow-none mb-5 mt-4">{% trans "Send Message" %}</button>
-          </div>
+          {% include "contacts/partials/form_fields.html" with form=form %}
         </form>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
-          <div class="p-4 mb-3 bg-light rounded">
-          <h4 class="fst-italic">            
+      <div class="position-sticky" style="top: 2rem">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="fst-italic">
             {% if LANGUAGE_CODE == "no" %}
-            {{ flatpage.sidebar_title_no | safe}}
-          {% else %}
-            {{ flatpage.sidebar_title | safe}}
-          {% endif %} </h4>
+              {{ flatpage.sidebar_title_no | safe }}
+            {% else %}
+              {{ flatpage.sidebar_title | safe }}
+            {% endif %}
+          </h4>
           <p class="mb-0">
             {% if LANGUAGE_CODE == "no" %}
-              {{ flatpage.sidebar_text_no | safe}}
+              {{ flatpage.sidebar_text_no | safe }}
             {% else %}
-              {{ flatpage.sidebar_text | safe}}
-            {% endif %} 
+              {{ flatpage.sidebar_text | safe }}
+            {% endif %}
           </p>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
   </div>
-
 {% endblock %}

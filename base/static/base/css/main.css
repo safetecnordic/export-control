@@ -1,14 +1,23 @@
-@font-face {
-  font-family: 'AktivGrotesk-Regular';
-  src: url('../fonts/AktivGrotesk-Regular.ttf') format("truetype"),
-       url('../fonts/AktivGrotesk-Regular.otf') format("truetype"),
-       url('../fonts/AktivGroteskCorp-Regular.woff') format("truetype"),
-       url('../fonts/AktivGroteskCorp-Regular.woff2') format("truetype");
+:root {
+  /* Colors provided by Safetec */
+  --safetec-petrol: #377f82;
+  --safetec-aquamarine: #41a0a2;
+  --safetec-grey: #c0cbc2;
+
+  --breadcrumb-color: #6c757d;
 }
 
 @font-face {
-  font-family: 'AktivGrotesk-Light';
-  src: url('../fonts/AktivGrotesk-Light.ttf') format("truetype");
+  font-family: "AktivGrotesk-Regular";
+  src: url("../fonts/AktivGrotesk-Regular.ttf") format("truetype"),
+    url("../fonts/AktivGrotesk-Regular.otf") format("truetype"),
+    url("../fonts/AktivGroteskCorp-Regular.woff") format("truetype"),
+    url("../fonts/AktivGroteskCorp-Regular.woff2") format("truetype");
+}
+
+@font-face {
+  font-family: "AktivGrotesk-Light";
+  src: url("../fonts/AktivGrotesk-Light.ttf") format("truetype");
 }
 
 html {
@@ -17,102 +26,102 @@ html {
 }
 
 body {
-  font-family: "AktivGrotesk-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "AktivGrotesk-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
 }
-
 
 header {
   font-family: "AktivGrotesk-Light";
   font-size: 19px;
   line-height: 21px;
   font-weight: 400;
-  color: #3c3c3b;
+}
+
+a {
+  color: var(--safetec-aquamarine);
+}
+
+a:hover {
+  color: var(--safetec-petrol);
+}
+
+.navbar-nav a {
+  text-decoration: none;
+}
+
+.breadcrumb {
+  color: var(--breadcrumb-color);
 }
 
 .btn-primary {
-    background-color: #58B0AE;
-    border: 2px solid #58B0AE;
-    border: 2px solid #58B0AE;
-    margin-left:10px;
-    font-weight: normal;
+  background-color: var(--safetec-aquamarine);
+  border: 2px solid var(--safetec-aquamarine);
+  border: 2px solid var(--safetec-aquamarine);
+  font-weight: normal;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: #347F82;
-    border: 2px solid #347F82;
+  background-color: var(--safetec-petrol);
+  border: 2px solid var(--safetec-petrol);
 }
 
 .btn-outline-primary {
-  color: #58B0AE;
-  margin-left:0px;
+  color: var(--safetec-aquamarine);
+  margin-left: 0px;
   font-weight: normal;
-  border: 2px solid #58B0AE;
+  border: 2px solid var(--safetec-aquamarine);
 }
 
 .btn-outline-primary:hover,
 .btn-outline-primary:active,
 .btn-outline-primary:focus {
-  background-color: #347F82;
-  border: 2px solid #347F82;
+  background-color: var(--safetec-petrol);
+  border: 2px solid var(--safetec-petrol);
 }
 
-.button-div {
-    margin-right: 10px;
-}
-
-  
 .logo {
-     margin-right:30px;
-     width: 100%;
-}
-
-.active {
-  color: #00abd7;
+  margin-right: 30px;
+  width: 100%;
 }
 
 .nav-link:hover {
-  color: #00abd7;
+  color: var(--safetec-petrol) !important;
 }
 
-.hoverlink li a:hover {
-  color: #00abd7 !important;
-}
-    
 footer {
-  background-color: #002748;
-  color:white;
+  background-color: var(--safetec-grey);
   font-size: 14px;
   line-height: 14px;
 }
 
-.social-icon {
-  color:grey;
-}
-
-.social-icon:hover,
-.social-icon:active,
-.social-icon:focus {
-    color: #0DABCD;
-}
-
 .footer-title {
-  color: #009fcd;
+  color: var(--safetec-petrol);
   display: block;
 }
 
 footer a {
-  color: white;
+  color: black;
   display: block;
   line-height: 8px;
   text-decoration: none;
 }
 
 footer a:hover,
-footer aactive,
-.footer a:focus {
-    color: #0DABCD;
+footer a:active,
+footer a:focus {
+  color: var(--safetec-petrol);
+}
+
+.social-icon {
+  color: black;
+}
+
+.social-icon:hover,
+.social-icon:active,
+.social-icon:focus {
+  color: var(--safetec-petrol);
 }
 
 footer ul {
@@ -126,15 +135,15 @@ body {
   padding-bottom: 40px;
 }
 
-footer{
+footer {
   position: absolute;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   height: 140px;
   overflow: hidden;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body {
     margin-bottom: 320px;
   }

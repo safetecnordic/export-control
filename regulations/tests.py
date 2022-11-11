@@ -249,12 +249,14 @@ class SearchTests(TestCase):
         self.assertEqual(paragraphs.count(), 0)
 
         # CHECK "AND QUERY" & "OR QUERY" & "NOT QUERY"
-        queries = SearchQueries({
-            "as_q": "hydrogen",
-            "as_qand": "This field",
-            "as_qnot": "('test')",
-            "as_qor": "('magnesium')",
-        })
+        queries = SearchQueries(
+            {
+                "as_q": "hydrogen",
+                "as_qand": "This field",
+                "as_qnot": "('test')",
+                "as_qor": "('magnesium')",
+            }
+        )
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         p = paragraphs.first()
         self.assertEqual(paragraphs.count(), 1)
@@ -264,12 +266,14 @@ class SearchTests(TestCase):
         self.assertTrue("magnesium" in p.text)
         self.assertFalse("test" in p.text)
 
-        queries = SearchQueries({
-            "as_q": "hydrogen",
-            "as_qand": "This field",
-            "as_qnot": "('words' OR 'test')",
-            "as_qor": "('magnesium')",
-        })
+        queries = SearchQueries(
+            {
+                "as_q": "hydrogen",
+                "as_qand": "This field",
+                "as_qnot": "('words' OR 'test')",
+                "as_qor": "('magnesium')",
+            }
+        )
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         p = paragraphs.first()
         self.assertEqual(paragraphs.count(), 0)
@@ -341,29 +345,35 @@ class SearchTests(TestCase):
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        queries = SearchQueries({
-            "as_cat": Category.objects.get(identifier=0),
-            "as_subcat": SubCategory.objects.get(identifier="A"),
-            "as_type": Paragraph.BASE,
-        })
+        queries = SearchQueries(
+            {
+                "as_cat": Category.objects.get(identifier=0),
+                "as_subcat": SubCategory.objects.get(identifier="A"),
+                "as_type": Paragraph.BASE,
+            }
+        )
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        queries = SearchQueries({
-            "as_cat": Category.objects.get(identifier=0),
-            "as_subcat": SubCategory.objects.get(identifier="A"),
-            "as_reg": Regime.objects.get(pk=1),
-            "as_type": Paragraph.BASE,
-        })
+        queries = SearchQueries(
+            {
+                "as_cat": Category.objects.get(identifier=0),
+                "as_subcat": SubCategory.objects.get(identifier="A"),
+                "as_reg": Regime.objects.get(pk=1),
+                "as_type": Paragraph.BASE,
+            }
+        )
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 5)
 
-        queries = SearchQueries({
-            "as_cat": Category.objects.get(identifier=0),
-            "as_subcat": SubCategory.objects.get(identifier="A"),
-            "as_reg": Regime.objects.get(pk=2),
-            "as_type": Paragraph.BASE,
-        })
+        queries = SearchQueries(
+            {
+                "as_cat": Category.objects.get(identifier=0),
+                "as_subcat": SubCategory.objects.get(identifier="A"),
+                "as_reg": Regime.objects.get(pk=2),
+                "as_type": Paragraph.BASE,
+            }
+        )
         paragraphs = filter_paragraphs(self.paragraphs, queries)
         self.assertEqual(paragraphs.count(), 0)
 

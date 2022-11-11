@@ -52,7 +52,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -100,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "no"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
@@ -131,7 +130,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # HOMEPAGE
-HOMEPAGE = reverse_lazy("front_page")
+HOMEPAGE = reverse_lazy("home")
 
 # DEFAULTS
 SITE_ID = 1
@@ -143,8 +142,8 @@ if DEBUG:
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
 JAZZMIN_SETTINGS = {
-    "site_title": "ExportControl Admin",
-    "site_header": "ExportControl Admin",
+    "site_title": "Export Control Admin",
+    "site_header": "Export Control Admin",
     "site_logo": "base/img/logo/safetec-logosymbol-rgb-10px.png",
     "site_brand": "Export Control",
     "login_logo": None,
@@ -152,10 +151,10 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle",
     "site_icon": None,
     "welcome_sign": "Admin Panel Control",
-    "copyright": "ExportControl Admin Panel Control",
+    "copyright": "Export Control Admin Panel Control",
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Site", "url": "front_page", "new_window": True},
+        {"name": "Site", "url": "home", "new_window": True},
         {"name": "Search", "url": "search", "new_window": True},
     ],
     "show_sidebar": True,
@@ -178,3 +177,5 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False,
 }
+
+LOGIN_REDIRECT_URL = "/admin/"

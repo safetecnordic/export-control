@@ -18,101 +18,50 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #: forms.py:11
-msgid "all these words:"
-msgstr "alle disse ordene:"
-
-#: forms.py:12
-msgid "Type in the important words: <b>Chemical Heat Molecular</b>"
-msgstr "Skriv inn viktige ord: <b>Chemical Heat Molecular</b>"
+msgid "All these words:"
+msgstr "Alle disse ordene:"
 
 #: forms.py:16 templates/regulations/search_page.html:25
-msgid "this exact phrase:"
-msgstr "eksakt sitat:"
-
-#: forms.py:17
-msgid "Type the exact phrase: <b>High Stability</b>"
-msgstr "Finn eksakt sitat: <b>High Stability</b>"
+msgid "This exact phrase:"
+msgstr "Eksakt sitat:"
 
 #: forms.py:21 templates/regulations/search_page.html:26
-msgid "any of these words:"
-msgstr "hvilket som helst av disse:"
+msgid "Any of these words:"
+msgstr "Hvilket som helst av disse ordene:"
 
 #: forms.py:22
 msgid ""
-"Type all the words you want to include, separated by space: <b>Thumbnail "
-"Standard </b>"
+"(separated by space)"
 msgstr ""
-"Skriv inn alle ord du vil inkludere, separert med mellomrom: <b>Thumbnail "
-"Standard </b>"
+"(separert med mellomrom)"
 
 #: forms.py:26 templates/regulations/search_page.html:27
-msgid "none of these words:"
-msgstr "ingen av disse ordene:"
+msgid "None of these words:"
+msgstr "Ingen av disse ordene:"
 
-#: forms.py:27
-msgid "Type all words you want to exclude, separated by space: <b>nuclear</b>"
-msgstr ""
-"Skriv inn alle ord du vil ekskludere, separert med mellomrom: <b>nuclear</b>"
+# templates/regulations/partials/search.html:10
+msgid "Search must be in English (since the regulations are written in English)"
+msgstr "Søket må være på engelsk (siden eksportkontroll-listene er skrevet på engelsk)"
 
 #: forms.py:32
-msgid "category:"
-msgstr "kategori:"
-
-#: forms.py:33
-msgid "Filter by <b>Category</b>"
-msgstr "Filtrer på <b>kategori</b>"
+msgid "Category:"
+msgstr "Kategori:"
 
 #: forms.py:38
-msgid "sub category:"
-msgstr "underkategori:"
-
-#: forms.py:39
-msgid "Filter by <b>Sub Category</b>"
-msgstr "Filtrer på <b>underkategori</b>"
+msgid "Subcategory:"
+msgstr "Underkategori:"
 
 #: forms.py:44
-msgid "regime:"
-msgstr "regime:"
-
-#: forms.py:45
-msgid "Filter by <b>Regime</b>"
-msgstr "Filtrer på <b>regime</b>"
+msgid "Regime:"
+msgstr "Regime:"
 
 #: forms.py:50
-msgid "type:"
-msgstr "type:"
-
-#: forms.py:51
-msgid "Filter by Note Type: <b>BASE, N.B., Technical Note,  Note</b>"
-msgstr "Filtrer på notat-type: <b>BASE, N.B., Technical Note,  Note</b>"
+msgid "Note type:"
+msgstr "Notat-type:"
 
 #: forms.py:62
 msgid "Incorrect value entered."
 msgstr "Ugyldig verdi gitt."
-
-#: models.py:31 models.py:62 models.py:83 models.py:107 models.py:185
-msgid "Date created"
-msgstr "Opprettelsesdato"
-
-#: models.py:32 models.py:63 models.py:84 models.py:108 models.py:186
-msgid "Date updated"
-msgstr "Sist oppdatert"
-
-#: models.py:159
-msgid "Base"
-msgstr "Base"
-
-#: models.py:160
-msgid "Note"
-msgstr "Note"
-
-#: models.py:161
-msgid "N.B."
-msgstr "N.B."
-
-#: models.py:162
-msgid "Technical Note"
-msgstr "Technical Note"
 
 #: templates/regulations/regulation_detail.html:7
 #: templates/regulations/search_page.html:9
@@ -127,10 +76,6 @@ msgstr "Regulering"
 msgid "Search"
 msgstr "Søk"
 
-#: templates/regulations/search_page.html:24
-msgid "all these words::"
-msgstr "alle disse ordene:"
-
 #: templates/regulations/search_page.html:30
 msgid "Results:"
 msgstr "Resultater:"
@@ -144,16 +89,12 @@ msgid "No results found...."
 msgstr "Ingen resultater funnet..."
 
 #: templates/regulations/search_page.html:49
-#, fuzzy
-#| msgid ""
-#| "Your search returned no results, please try your search again or contact "
-#| "Safetec for more information"
 msgid ""
 "Your search returned no results, please try your search again or contact "
-"safetec for more information"
+"Safetec for more information."
 msgstr ""
 "Søket ditt returnerte ingen resultater, vennligst søk på nytt eller kontakt "
-"Safetec for mer informasjon"
+"Safetec for mer informasjon."
 
 #: templates/regulations/search_page.html:51
 msgid "Consult Safetec"

@@ -1,57 +1,61 @@
 {% extends "base/layout.html" %}
 {% load i18n %}
-{% block title %}{{ site_name }} - {{ page_title }}{% endblock %}
+{% block title %}
+  {% trans "Export Control" %} - {{ page_title }}
+{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'front_page' %}">{% trans "Home"%}</a></li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'search' %}">{% trans "Search" %}</a>
+      </li>
       <li class="breadcrumb-item" aria-current="page">{{ object.category }}</li>
       <li class="breadcrumb-item" aria-current="page">{{ object.sub_category }}</li>
       <li class="breadcrumb-item" aria-current="page">{{ object.regime }}</li>
-      <li class="breadcrumb-item active" aria-current="page">{{ object.code }}</li>
+      <li class="breadcrumb-item" aria-current="page">{{ object.code }}</li>
     </ol>
   </nav>
 {% endblock %}
-
 {% block header %}
   <div class="row p-4 mb-4 p-md-5 text-dark rounded bg-light">
     <div class="col-md-12">
-      <h1 class="display-6 fst-italic">
-        {% trans "Regulation" %} {{ object.code }}
-      </h1>
+      <h1 class="display-6 fst-italic">{% trans "Regulation" %} {{ object.code }}</h1>
     </div>
   </div>
 {% endblock %}
-
 {% block content %}
+  {% get_current_language as LANGUAGE_CODE %}
   <div class="row">
     <div class="col-md-8">
-      {% for paragraph in paragraphs %} 
+      {% for paragraph in paragraphs %}
         {% include "regulations/partials/paragraph.html" %}
-      {%endfor%}
+      {% endfor %}
     </div>
     <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
+      <div class="position-sticky" style="top: 2rem">
         <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="fst-italic">
-          {% if LANGUAGE_CODE == "no" %}
-                {{ flatpage.sidebar_title_no}}
+          <h4 class="fst-italic">
+            {% if LANGUAGE_CODE == "no" %}
+              {{ flatpage.sidebar_title_no }}
             {% else %}
-                {{ flatpage.sidebar_title}}
-            {% endif %} 
-        </h4>
-        <p><a href="{% url 'consult' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a></p>
-        <p class="mb-0">
-           {% if LANGUAGE_CODE == "no" %}
-                {{ flatpage.sidebar_text_no | safe}}
+              {{ flatpage.sidebar_title }}
+            {% endif %}
+          </h4>
+          <p>
+            <a href="{% url 'consult' %}" class="btn btn-primary ms-0">{% trans "Consult Safetec" %}</a>
+          </p>
+          <p class="mb-0">
+            {% if LANGUAGE_CODE == "no" %}
+              {{ flatpage.sidebar_text_no | safe }}
             {% else %}
-                {{ flatpage.sidebar_text | safe}}
-            {% endif %} 
-        </p>
+              {{ flatpage.sidebar_text | safe }}
+            {% endif %}
+          </p>
         </div>
-    </div>
       </div>
-  </div>
+    </div>
   </div>
 {% endblock %}
-  

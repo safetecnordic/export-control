@@ -1,20 +1,22 @@
-{% load static %} 
+{% load static %}
 {% load i18n %}
-
 <nav class="bg-light border-bottom">
-    <div class="container d-flex flex-wrap">
-      <ul class="nav me-auto"></ul>
-      <ul class="nav">
-        <ul class="nav navbar-nav navbar-right language menu">
-            <li>
-                <a href="/en{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}" lang="en">
-                    <img src="{% static 'base/img/flags/english.png' %}">
-                  </a>
-                <a href="/no{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}" lang="no">
-                    <img src="{% static 'base/img/flags/norway.png' %}">
-                  </a>
-            </li>
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+    </ul>
+    <ul class="nav">
+      <ul class="nav navbar-nav navbar-right language menu">
+        <li>
+          <a href="/en{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}"
+             lang="en">
+            <img src="{% static 'base/img/flags/english.png' %}" alt="British flag" />
+          </a>
+          <a href="/no{% if '/en/' in request.path or '/no/' in request.path %}{{ request.get_full_path|slice:'3:' }}{% else %}{{ request.get_full_path }}{% endif %}"
+             lang="no">
+            <img src="{% static 'base/img/flags/norway.png' %}" alt="Norwegian flag" />
+          </a>
+        </li>
       </ul>
-      </ul>
-    </div>
-  </nav>
+    </ul>
+  </div>
+</nav>

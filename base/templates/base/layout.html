@@ -1,18 +1,13 @@
 {% extends "base/base.html" %}
-{% load i18n %} 
-
+{% load i18n %}
 {% block layout %}
-    
-    {% include "base/partials/navbar.html" %}
-    {% include "base/partials/headbar.html" %}
-    
-    <main class="container">
-        {% block breadcrumbs %}{% endblock %}
-        {% block header %}{% endblock %}
-        {% include "base/partials/alert_messages.html" %}
-        {% block content %}{% endblock %}        
-    </main>
-    {% include "base/partials/footer.html" %}
-    
-
+  {% include "base/partials/navbar.html" %}
+  {% include "base/partials/headbar.html" %}
+  <main class="container">
+    {% block breadcrumbs %}{% endblock %}
+    {% block header %}{% endblock %}
+    {% include "base/partials/alert_messages.html" %}
+    {% block content %}{% endblock %}
+  </main>
+  {% include "base/partials/footer.html" %}
 {% endblock layout %}
