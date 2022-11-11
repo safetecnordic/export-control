@@ -63,30 +63,6 @@ msgstr "Notat-type:"
 msgid "Incorrect value entered."
 msgstr "Ugyldig verdi gitt."
 
-#: models.py:31 models.py:62 models.py:83 models.py:107 models.py:185
-msgid "Date created"
-msgstr "Opprettelsesdato"
-
-#: models.py:32 models.py:63 models.py:84 models.py:108 models.py:186
-msgid "Date updated"
-msgstr "Sist oppdatert"
-
-#: models.py:159
-msgid "Non-note paragraph"
-msgstr "Ikke notat"
-
-#: models.py:160
-msgid "Note"
-msgstr "Note"
-
-#: models.py:161
-msgid "N.B."
-msgstr "N.B."
-
-#: models.py:162
-msgid "Technical Note"
-msgstr "Technical Note"
-
 #: templates/regulations/regulation_detail.html:7
 #: templates/regulations/search_page.html:9
 msgid "Home"
