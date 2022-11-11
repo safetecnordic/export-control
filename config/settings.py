@@ -177,3 +177,5 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False,
 }
+
+LOGIN_REDIRECT_URL = "/admin/"

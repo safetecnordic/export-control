@@ -5,14 +5,34 @@ from ckeditor.fields import RichTextField
 
 
 class ExtendedFlatPage(FlatPage):
-    title_description: types.CharField = models.CharField(max_length=256, null=True, blank=True)
-    page_content: types.RichTextField = RichTextField(null=True, blank=True)
-    image: types.ImageField = models.ImageField(null=True, blank=True, upload_to="flatpages/images")
-    sidebar_title: types.CharField = models.CharField(max_length=256, null=True, blank=True)
-    sidebar_text: types.RichTextField = RichTextField(null=True, blank=True)
+    title_no: types.CharField = models.CharField(
+        max_length=256, null=True, blank=True, verbose_name="title (Norwegian)"
+    )
 
-    title_no: types.CharField = models.CharField(max_length=256, null=True, blank=True)
-    title_description_no: types.CharField = models.CharField(max_length=256, null=True, blank=True)
-    page_content_no: types.RichTextField = RichTextField(null=True, blank=True)
-    sidebar_title_no: types.CharField = models.CharField(max_length=256, null=True, blank=True)
-    sidebar_text_no: types.RichTextField = RichTextField(null=True, blank=True)
+    description: types.CharField = models.CharField(
+        max_length=256, null=True, blank=True, verbose_name="description (English)"
+    )
+    description_no: types.CharField = models.CharField(
+        max_length=256, null=True, blank=True, verbose_name="description (Norwegian)"
+    )
+
+    page_content: types.RichTextField = RichTextField(null=True, blank=True, verbose_name="page content (English)")
+    page_content_no: types.RichTextField = RichTextField(null=True, blank=True, verbose_name="page content (Norwegian)")
+
+    sidebar_title: types.CharField = models.CharField(
+        max_length=256, null=True, blank=True, verbose_name="sidebar title (English)"
+    )
+    sidebar_title_no: types.CharField = models.CharField(
+        max_length=256, null=True, blank=True, verbose_name="sidebar title (Norwegian)"
+    )
+
+    sidebar_text: types.RichTextField = RichTextField(null=True, blank=True, verbose_name="sidebar text (English)")
+    sidebar_text_no: types.RichTextField = RichTextField(null=True, blank=True, verbose_name="sidebar text (Norwegian)")
+
+    image: types.ImageField = models.ImageField(
+        null=True, blank=True, upload_to="flatpages/images", verbose_name="sidebar image"
+    )
+
+    class Meta:
+        verbose_name = "page"
+        verbose_name_plural = "pages"

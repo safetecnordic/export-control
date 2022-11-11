@@ -62,6 +62,10 @@ class Category(models.Model):
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
 
+    class Meta:
+        verbose_name = "category"
+        verbose_name_plural = "categories"
+
     def __str__(self) -> str:
         part_str = f".{self.part}" if self.part is not None else ""
         return f"{self.identifier}{part_str}: {self.name}"
@@ -82,6 +86,10 @@ class SubCategory(models.Model):
 
     date_created: types.DateTimeField = models.DateTimeField(_("Date created"), auto_now_add=True, db_index=True)
     date_updated: types.DateTimeField = models.DateTimeField(_("Date updated"), auto_now=True, db_index=True)
+
+    class Meta:
+        verbose_name = "subcategory"
+        verbose_name_plural = "subcategories"
 
     def __str__(self) -> str:
         return f"{self.identifier}: {self.name}"

@@ -1,6 +1,6 @@
 {% extends "base/layout.html" %}
 {% load i18n %}
-{% block title %}{{ site_name }} - {{ flatpage.title_description }}{% endblock %}
+{% block title %}{{ site_name }} - {{ flatpage.description }}{% endblock %}
 {% block breadcrumbs %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -24,9 +24,9 @@
       </h1>
       <p class="lead my-2">
         {% if LANGUAGE_CODE == "no" %}
-          {{ flatpage.title_description_no }}
+          {{ flatpage.description_no }}
         {% else %}
-          {{ flatpage.title_description }}
+          {{ flatpage.description }}
         {% endif %}
       </p>
     </div>
