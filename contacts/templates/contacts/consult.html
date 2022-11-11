@@ -36,15 +36,12 @@
 {% endblock %}
 {% block content %}
   {% get_current_language as LANGUAGE_CODE %}
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-md-8">
       <div class="form-group">
         <form method="post">
           {% csrf_token %}
           {% include "contacts/partials/form_fields.html" with form=form %}
-          <div class="row button-div">
-            <button type="submit" class="btn-block btn btn-primary shadow-none mb-5 mt-4">{% trans "Send Message" %}</button>
-          </div>
         </form>
       </div>
     </div>

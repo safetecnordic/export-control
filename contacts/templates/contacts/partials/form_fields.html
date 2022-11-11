@@ -11,6 +11,9 @@
     </div>
   {% endfor %}
 {% endif %}
-{% for field in form %}
-  {% include 'contacts/partials/form_field.html' with field=field style=style %}
-{% endfor %}
+<div class="d-flex flex-column gap-3">
+  {% for field in form %}
+    {% include 'contacts/partials/form_field.html' with field=field style=style %}
+  {% endfor %}
+  <button type="submit" class="btn btn-primary shadow-none">{% trans "Send Message" %}</button>
+</div>

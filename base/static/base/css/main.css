@@ -57,7 +57,6 @@ a:hover {
   background-color: var(--safetec-aquamarine);
   border: 2px solid var(--safetec-aquamarine);
   border: 2px solid var(--safetec-aquamarine);
-  margin-left: 10px;
   font-weight: normal;
 }
 
@@ -80,10 +79,6 @@ a:hover {
 .btn-outline-primary:focus {
   background-color: var(--safetec-petrol);
   border: 2px solid var(--safetec-petrol);
-}
-
-.button-div {
-  margin-right: 10px;
 }
 
 .logo {
@@ -148,7 +143,7 @@ footer {
   overflow: hidden;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body {
     margin-bottom: 320px;
   }

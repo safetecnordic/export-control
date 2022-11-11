@@ -5,7 +5,7 @@
   {% block control_group %}
     <div class="form-group{% if style == "horizontal" %} row{% endif %}">
       {% block label %}
-        {% if not nolabel and field.widget_type != 'checkbox' %}
+        {% if not nolabel and field.widget_type != 'checkbox' and field.label %}
           <label for="{{ field.auto_id }}"
                  class="{% if style|default:"stacked" != 'stacked' %}col-sm-4{% endif %} col-form-label{% if field.field.required %} required{% endif %}">
             {{ field.label|safe }}
