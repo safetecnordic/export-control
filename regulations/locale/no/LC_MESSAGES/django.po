@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
+msgid "Back to search"
+msgstr "Tilbake til søk"
+
 #: forms.py:11
 msgid "All these words:"
 msgstr "Alle disse ordene:"
