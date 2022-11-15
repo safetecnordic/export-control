@@ -16,13 +16,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", "false") == "true"
 
-AZURE_WEBSITE_HOSTNAME = os.getenv("WEBSITE_HOSTNAME")
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + ([AZURE_WEBSITE_HOSTNAME] if AZURE_WEBSITE_HOSTNAME is not None else [])
-
-INTERNAL_IPS = ["127.0.0.1"]
+ALLOWED_HOSTS_ENV = os.getenv("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + ALLOWED_HOSTS_ENV.split(",") if ALLOWED_HOSTS_ENV is not None else []
 
 CSRF_TRUSTED_ORIGINS_ENV = os.getenv("CSRF_TRUSTED_ORIGINS")
 CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS_ENV.split(",") if CSRF_TRUSTED_ORIGINS_ENV is not None else []
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
     "jazzmin",
