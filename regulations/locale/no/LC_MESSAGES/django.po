@@ -103,9 +103,9 @@ msgstr ""
 msgid "Consult Safetec"
 msgstr "Kontakt Safetec"
 
-#: templates/regulations/search_page.html:52
-msgid "Export Control Law"
-msgstr "Eksportkontrolloven"
+#: templates/regulations/search_page.html:73
+msgid "Try again"
+msgstr "Prøv igjen"
 
 msgid "Regimes"
 msgstr "Regimer"
