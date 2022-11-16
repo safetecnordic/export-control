@@ -1,6 +1,11 @@
+{% load i18n %}
 {% load widget_tweaks %}
 <div class="input-group mb-3">
-  <span class="input-group-text"><small>{{ field.label }}</small></span>
+  {% get_current_language as LANGUAGE_CODE %}
+  <span class="input-group-text"
+        style="width: {% if LANGUAGE_CODE == 'no' %}240{% else %}160{% endif %}px">
+    <small class="w-100 text-end">{{ field.label }}</small>
+  </span>
   {% block widget %}
     {% render_field field class+="form-control" %}
   {% endblock %}
